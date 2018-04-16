@@ -38,9 +38,13 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<!-- 혜우 -->	
+	<bean id="mainDAO" class="spacebook.main.model.MainDAO">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="spaceDAO" class="spacebook.submit.model.SpaceDAO">
 	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<!-- 남현 -->
 	<bean id="spaceDetailDAO" class="spacebook.view.model.SpaceDetailDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>

@@ -65,6 +65,7 @@
 		<definition name="submitSpaceForm" extends="base_layout">
 			<put-attribute name="title" value="공간등록" />
 			<put-attribute name="body" value="/WEB-INF/views/space/submit/submitSpaceForm.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/space/submit/submitSpaceFormScript.jsp" />
 		</definition>
 		<definition name="submitRedirect" extends="base_layout">
 			<put-attribute name="title" value="공간등록완료" />
