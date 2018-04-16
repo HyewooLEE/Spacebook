@@ -19,9 +19,10 @@
 	<context:component-scan base-package="spacebook.login.controller"/>	
 	<context:component-scan base-package="spacebook.profile.controller"/>	
 	<context:component-scan base-package="spacebook.admin.controller"/>	
-	
+	<!-- 혜우 -->
+	<context:component-scan base-package="spacebook.submit.controller"/>
+	<!-- 남현 -->
 	<context:component-scan base-package="spacebook.view.controller"/>	
-	<context:component-scan base-package="spacebook.submit.controller"/>	
 	<context:component-scan base-package="spacebook.reserve.controller"/>
 	
     

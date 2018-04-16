@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+
+	<select id="selectSpaceCategory" parameterType="List" resultType="spacebook.submit.model.SpaceDTO">
+		<!-- select * from (select * from space where space_category='#{space_category}' order by space_no desc) where rownum = 1 -->
+		select * from space
+		where (space_category, space_no) in (
+    		select space_category, max (space_no) from space group by space_category
+		)
+		order by space_no desc
+	</select>
+	
+	<select id="countSpaceCategory" resultType="int">
+		<!-- select count(*), space_category from space group by space_category -->
+	</select>
+	
+</mapper>
