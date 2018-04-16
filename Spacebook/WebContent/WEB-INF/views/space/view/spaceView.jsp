@@ -73,9 +73,24 @@
 						<div class="list-single-main-media fl-wrap">
                                <div class="single-slider-wrapper fl-wrap">
                                    <div class="single-slider fl-wrap"  >
-                                       <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"></div>
-                                       <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"></div>
-                                       <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"></div>
+                                   <c:if test="${spaceDetail.space_img2!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img2}" style="width:738px;height:394px;"></div>
+                                   </c:if>
+                                   <c:if test="${spaceDetail.space_img3!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img3}" style="width:738px;height:394px;"></div>
+                                   </c:if>
+                                   <c:if test="${spaceDetail.space_img4!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img4}" style="width:738px;height:394px;"></div>
+                                   </c:if>
+                                   <c:if test="${spaceDetail.space_img5!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img5}" style="width:738px;height:394px;"></div>
+                                   </c:if>
+                                   <c:if test="${spaceDetail.space_img6!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img6}" style="width:738px;height:394px;"></div>
+                                   </c:if>
+                                   <c:if test="${spaceDetail.space_img7!=null}">
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img7}" style="width:738px;height:394px;"></div>
+                                   </c:if>
                                    </div>
                                    <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left" style="margin-top: 16px"></i></div>
                                    <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right" style="margin-top: 16px"></i></div>

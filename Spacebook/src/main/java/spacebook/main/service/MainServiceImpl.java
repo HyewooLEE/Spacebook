@@ -24,9 +24,8 @@ public class MainServiceImpl implements MainService{
 	}
 
 	/*@Override
-	public int countSpaceCategory(String space_category) {
-		int countCate = mainDao.countSpaceCategory(space_category);
-		return countCate;
+	public List<SpaceDTO> countSpaceCategory() {
+		return mainDao.countSpaceCategory();
 	}*/
 
 }

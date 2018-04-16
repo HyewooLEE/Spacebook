@@ -1,8 +1,6 @@
 package spacebook.main.model;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -14,11 +12,9 @@ public class MainDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("main.selectSpaceCategory");
 	}
 	
-	/*public int countSpaceCategory(String space_category) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("space_category", space_category);
+	/*public List<SpaceDTO> countSpaceCategory() {
 		
-		return getSqlSession().selectOne("main.countSpaceCategory",map);
+		return getSqlSession().selectList("main.countSpaceCategory");
 	}*/
 
 }

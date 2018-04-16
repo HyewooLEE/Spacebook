@@ -95,33 +95,29 @@
                 <div class="container" class="col-md-3">
                     <!-- listing-item -->
                     <c:forEach var="spaceAll" items="${spaceAll}" varStatus="status">
-                    <%-- <c:if test="${status.count % 2 == 1}"> --%>
                     <div class="listing-item">
-                    <%-- </c:if> --%>
                         <article class="geodir-category-listing fl-wrap">
 	                            <div class="geodir-category-img">
-	                                <img src="${pageContext.request.contextPath}/${spaceAll.space_img1 }" alt="">
+	                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:350px;height:210px;"></a>
 	                                <div class="overlay"></div>
 	                                <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div>
 	                            </div>
-                            <div class="geodir-category-content fl-wrap">
+                            <div class="geodir-category-content fl-wrap" style="width:350px;height:230px;">
                                 <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
                                 <div class="listing-avatar"><a href="author-single.html"><img src="${login.mem_Img }" alt=""></a>
                                     <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>
                                 </div>
-                                <h3><a href="listing-single.html">${spaceAll.space_name }</a></h3>
+                                <h3><a href="spaceView.do?space_no=${spaceAll.space_no }">${spaceAll.space_name }</a></h3>
                                 <p>${spaceAll.space_intro1 }</p>
                                 <div class="geodir-category-options fl-wrap">
                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
                                         <span>(7 reviews)</span>
                                     </div>
-                                    <div class="geodir-category-location"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} ${spaceAll.space_addr2}</a></div>
+                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>${spaceAll.space_addr2}</div>
                                 </div>
                             </div>
                         </article>
-                    <%-- <c:if test="${status.count % 2 == 0}"> --%>
                     </div>
-                    <%-- </c:if> --%>
                     </c:forEach>
                     <!-- listing-item end-->                           
                     <div class="clearfix"></div>

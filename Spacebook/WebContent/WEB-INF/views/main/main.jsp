@@ -68,11 +68,11 @@
 					<div class="listing-item-grid">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>10 </span> Locations
+							<span>${category.space_category }</span>
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
+								<a href="spaceView.do?space_no=${category.space_no }">${category.space_category } - ${category.space_name }</a>
 							</h3>
 							<p>${category.space_intro1 }</p>
 						</div>
@@ -88,7 +88,7 @@
 					<div class="listing-item-grid">
 						<img src="${category.space_img1}" style="width:795px;height:424px;">
 						<div class="listing-counter">
-							<span>6 </span> Locations
+							<span>${category.space_category }</span>
 						</div>
 						<div class="listing-item-cat">
 							<h3>
@@ -108,7 +108,7 @@
 					<div class="listing-item-grid">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>6 </span> Locations
+							<span>${category.space_category }</span>
 						</div>
 						<div class="listing-item-cat">
 							<h3>
@@ -128,7 +128,7 @@
 					<div class="listing-item-grid">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>6 </span> Locations
+							<span>${category.space_category }</span>
 						</div>
 						<div class="listing-item-cat">
 							<h3>
@@ -148,7 +148,7 @@
 					<div class="listing-item-grid">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>6 </span> Locations
+							<span>${category.space_category }</span>
 						</div>
 						<div class="listing-item-cat">
 							<h3>

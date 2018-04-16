@@ -8,6 +8,6 @@ public interface MainService {
 	
 	public List<SpaceDTO> categorySpace();
 	
-	/*public int countSpaceCategory(String space_category);*/
+	//public List<SpaceDTO> countSpaceCategory();
 
 }

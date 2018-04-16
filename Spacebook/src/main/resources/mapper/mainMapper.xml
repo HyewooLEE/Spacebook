@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by space_no desc
 	</select>
 	
-	<select id="countSpaceCategory" resultType="int">
-		<!-- select count(*), space_category from space group by space_category -->
+	<select id="countSpaceCategory" parameterType="List" resultType="spacebook.submit.model.SpaceDTO">
+		<!-- select count(*) count, space_category from space group by space_category -->
 	</select>
 	
 </mapper>
