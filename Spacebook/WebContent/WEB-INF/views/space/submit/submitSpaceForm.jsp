@@ -55,7 +55,7 @@
                     <div class="col-md-9">
                     
                     <form id="submitSpaceForm" action="submitSpace.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" id="mem_no" name="mem_no" value="1" />
+                    <input type="hidden" name="mem_no" value="${login.mem_No}">
                         <!-- profile-edit-container--> 
                         <div class="profile-edit-container add-list-container">
                             <div class="profile-edit-header fl-wrap">

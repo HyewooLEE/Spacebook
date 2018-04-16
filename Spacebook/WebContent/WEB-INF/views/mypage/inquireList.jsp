@@ -66,8 +66,7 @@
 						<div class="col-md-12">
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
-								<div class="profile-edit-header fl-wrap"
-									style="padding-bottom: 0px;">
+								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
 									<h4>프로필 정보</h4>
 								</div>
 								<div class="custom-form">
