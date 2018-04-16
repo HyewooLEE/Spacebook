@@ -134,13 +134,11 @@ function nextReview() {
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			$("#review").remove();
+			$('#review').children().remove();
 			for(var i=0; i<result.data.length; i++) {
 				//var result = result.data[i];
-				$("#review").appendTo(
-						"<div> 멍청아!!!!!" +
-						"</div>"
-						/*"<div class='reviews-comments-item'>" +
+				$('#review').append(
+						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
 							"<img src='images/avatar/1.jpg'>" +
 						"</div>" +
@@ -153,17 +151,10 @@ function nextReview() {
 								"<i class='fa fa-calendar-check-o'></i>'"+ result.data[i].rev_writeDate +"'" +
 							"</span>" +
 						"</div>"+
-						"</div>"*/
+						"</div>"
 				);
 			}
-			/*
-			alert("review::"+result.review[0].rev_no);
-			alert(result);*/
 		}
-	,error:function(e){
-		alert(e.responseText);
-		alert("error 실패");
-	}
 	});	
 }
 
@@ -173,17 +164,34 @@ function preReview() {
 	} else {
 		reviewPage = 1;
 	}
-	alert("preReview");
+	var params = "startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	$.ajax({
-		type: "POST",
+		type: "get",
 		url: "/Spacebook/showReview.do",
-		data: {startReview:reviewPage, endReview:reviewPage+2},
+		data: params,
 		cache: false,
-		encoding: 'UTF-8',
-		datatype:"json",
+		dataType:"json",
 		success:function(result) {
-			alert(result);
-			/*$("#results").append(result);*/
+			$('#review').children().remove();
+			for(var i=0; i<result.data.length; i++) {
+				//var result = result.data[i];
+				$('#review').append(
+						"<div class='reviews-comments-item'>" +
+						"<div class='review-comments-avatar'>" +
+							"<img src='images/avatar/1.jpg'>" +
+						"</div>" +
+						"<div class='reviews-comments-item-text'>" + 
+							"<h4><a href='#'>'"+ result.data[i].mem_name + "'</a></h4>" +
+							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'></div>" +
+							"<div class='clearfix'></div>" +
+							"<p>'"+ result.data[i].rev_note +"'</p>" +
+							"<span class='reviews-comments-item-date'>" +
+								"<i class='fa fa-calendar-check-o'></i>'"+ result.data[i].rev_writeDate +"'" +
+							"</span>" +
+						"</div>"+
+						"</div>"
+				);
+			}
 		}
 	});
 }

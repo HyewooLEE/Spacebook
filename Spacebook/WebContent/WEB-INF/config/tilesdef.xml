@@ -84,6 +84,7 @@
 		<definition name="spaceView" extends="base_layout">
 			<put-attribute name="title" value="공간상세페이지" />
 			<put-attribute name="body" value="/WEB-INF/views/space/view/spaceView.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/space/submit/mapScript.jsp" />
 		</definition>
 		<definition name="spaceReserve" extends="base_layout">
 			<put-attribute name="title" value="공간예약상세페이지" />
