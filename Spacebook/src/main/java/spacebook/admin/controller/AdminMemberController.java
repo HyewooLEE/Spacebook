@@ -1,5 +1,6 @@
 package spacebook.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,33 @@ public class AdminMemberController {
 	public void setService(@Qualifier("UserDaoServiceImpl") MemberDaoService service) {
 		this.service = service;
 	}
-	@RequestMapping(value="adminMember.do",method=RequestMethod.GET)
-	public ModelAndView adminMember(String pageNumber) {
+	@RequestMapping(value="adminMember.do",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView adminMember(String type1,String type2,String search,String pageNumber) {
+		ModelAndView mv = new ModelAndView("adminMember");
+		HashMap<String, String> map = new HashMap<String,String>();
+		List<MemberVO> members = null;
+		
 		if(pageNumber==null||pageNumber.equals("")) {
 			pageNumber = "1";
 		}
-		ModelAndView mv = new ModelAndView("adminMember");
-		List<MemberVO> members = service.memberList(pageNumber);
-		int memberCount =service.memberCount();
+		
+		map.put("type1", type1);
+		map.put("type2", type2);
+		map.put("search", search);
+		map.put("pageNumber", pageNumber);
+		System.out.println(map.toString());
+		members = service.memberList(map);
+		
+		int memberCount =service.memberCount(map);
+		System.out.println(memberCount);
+		
 		Pagination page =  new Pagination(Integer.parseInt(pageNumber), memberCount);
+		
 		mv.addObject("members", members);
 		mv.addObject("page", page);
+		
 	return mv;	
 	}
+	
+	
 }

@@ -43,8 +43,9 @@ public class NoticeController {
 	
 	@RequestMapping(value="writeNotice.do",method=RequestMethod.POST)
 	public ModelAndView writeNotice(NoticeDTO dto) {
-		ModelAndView	mv = new ModelAndView("redirect:/noticeWriteForm.do");
+		ModelAndView	mv = new ModelAndView("redirect:/notice.do");
 		service.insertNotice(dto);
+		mv.addObject("check", "writeSuccess");
 		return mv;
 	}
 	@RequestMapping(value="noticeContent.do",method=RequestMethod.GET)
@@ -73,6 +74,7 @@ public class NoticeController {
 	public ModelAndView updateNotice(NoticeDTO dto) {
 		ModelAndView mv = new ModelAndView("redirect:/notice.do");
 		int check = service.updateNotice(dto);
+		mv.addObject("check", "updateSuccess");
 		return mv;
 	}
 	

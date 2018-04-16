@@ -124,21 +124,41 @@ var reviewPage = 1;
 
 function nextReview() {
 	reviewPage += 3;
-	alert("nextReview");
+	
 	//{startReview:reviewPage, endReview:reviewPage+2}
-	var params = "startReview="+ reviewPage +"&endReview="+ reviewPage+2;
+	var params = "startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/showReview.do",
 		data: params,
 		cache: false,
-		datatype:"json",
+		dataType:"json",
 		success:function(result) {
-			alert("성공");
-			
-			/*$("#results").append(result);*/
+			$("#review").remove();
+			for(var i=0; i<result.data.length; i++) {
+				//var result = result.data[i];
+				$("#review").append(
+						"<div> 멍청아!!!!!" +
+						"</div>"
+						/*"<div class='reviews-comments-item'>" +
+						"<div class='review-comments-avatar'>" +
+							"<img src='images/avatar/1.jpg'>" +
+						"</div>" +
+						"<div class='reviews-comments-item-text'>" + 
+							"<h4><a href='#'>'"+ result.data[i].mem_name + "'</a></h4>" +
+							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'></div>" +
+							"<div class='clearfix'></div>" +
+							"<p>'"+ result.data[i].rev_note +"'</p>" +
+							"<span class='reviews-comments-item-date'>" +
+								"<i class='fa fa-calendar-check-o'></i>'"+ result.data[i].rev_writeDate +"'" +
+							"</span>" +
+						"</div>"+
+						"</div>"*/
+				);
+			}
+			/*
 			alert("review::"+result.review[0].rev_no);
-			alert(result);
+			alert(result);*/
 		}
 	,error:function(e){
 		alert(e.responseText);

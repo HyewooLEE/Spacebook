@@ -1,5 +1,6 @@
 package spacebook.login.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,5 +12,6 @@ public interface MemberDaoService {
  public int findMember(String ID);
  public int insertInform(MemberVO vo);
  public List<MemberVO> memberList(String pageNumber);
- public int memberCount();
+ public List<MemberVO> memberList(HashMap<String, String> map);
+ public int memberCount(HashMap<String, String> map);
 }

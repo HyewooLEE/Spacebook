@@ -1,5 +1,6 @@
 package spacebook.login.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,8 +33,12 @@ public class MemberDAO extends SqlSessionDaoSupport {
 		List<MemberVO> members = getSqlSession().selectList(QueryId,pageNumber);
 		return members;
 	}
-	public int memberCount(String QueryId){
-		int memberCount = getSqlSession().selectOne(QueryId);
+	public List<MemberVO> memberList(String QueryId,HashMap<String, String> map){
+		List<MemberVO> members = getSqlSession().selectList(QueryId,map);
+		return members;
+	}
+	public int memberCount(String QueryId,HashMap<String, String> map){
+		int memberCount = getSqlSession().selectOne(QueryId,map);
 		return memberCount;
 	}
 }

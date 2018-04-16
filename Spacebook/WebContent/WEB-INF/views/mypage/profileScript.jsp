@@ -2,22 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#file").on('change', function() {
-
-			readURL(this);
-		});
-	});
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-
-			reader.onload = function(e) {
-				$('#profileImg').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
 	function kume1() {
 		new daum.Postcode(
 				{
@@ -68,54 +52,79 @@
 				}).open();
 
 	}
-
-	function Check() {
-		if ($("#name").val() == '') {
-			swal.getState();
-			swal("실패", "이름을 입력해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-		if ($("#phone").val() == '') {
-			swal.getState();
-			swal("실패", "전화번호를 입력해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-		if ($("#sample3_postcode").val() == '') {
-			swal.getState();
-			swal("실패", "주소를 입력해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-		if ($("#sample3_address").val() == '') {
-			swal.getState();
-			swal("실패", "주소를 입력해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-		if ($("#detail_address").val() == '') {
-			swal.getState();
-			swal("실패", "주소를 입력해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-		if (!$("#check-a").is(":checked")) {
-			swal.getState();
-			swal("실패", "약관의 동의 해주세요", "warning", {
-				buttons : "닫기"
-			});
-			return false;
-		}
-
-		document.getElementById('form').submit();
-	}
 </script>
+<script>
+function Check() {
+	if ($("#name").val() == '') {
+		swal.getState();
+		swal("실패", "이름을 입력해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+	if ($("#phone").val() == '') {
+		swal.getState();
+		swal("실패", "전화번호를 입력해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+	if ($("#sample3_postcode").val() == '') {
+		swal.getState();
+		swal("실패", "주소를 입력해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+	if ($("#sample3_address").val() == '') {
+		swal.getState();
+		swal("실패", "주소를 입력해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+	if ($("#detail_address").val() == '') {
+		swal.getState();
+		swal("실패", "주소를 입력해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+
+	document.getElementById('form').submit();
+}
+$(document).ready( function() {
+	        $("input[type=file]").change(function () {
+	            var fileInput = document.getElementById("file");
+	            var files = fileInput.files;
+	            var file;
+	            for (var i = 0; i < files.length; i++) {
+	                file = files[i];
+	                var  ext = file.name.split(".").pop().toLowerCase();
+					if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+						$('#photo_file_nm').val('');
+						swal.getState();	
+						swal("오류!","사진 형식의 파일만 업로드가 가능합니다.","warning", {buttons: "닫기"});
+										return false;
+					}else{
+						readURL(this);
+						
+					}
+	            }
+	        });
+	    });
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function(e) {
+			$('#profileImg').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
+
 <c:if test="${login.mem_Favor ne null}">
 <c:forTokens var="favor" items="${login.mem_Favor}" delims=",">
 	<script>
