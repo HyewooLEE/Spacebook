@@ -7,9 +7,9 @@
 		<!-- profile-edit-wrap -->
 		<div class="profile-edit-wrap">
 			<div class="profile-edit-page-header">
-				<h2>프로필 수정</h2>
+				<h2>나의 1:1문의</h2>
 				<div class="breadcrumbs">
-					<a href=main.do>홈</a><span>프로필 수정</span>
+					<a href=main.do>홈</a><span>1:1문의</span>
 				</div>
 			</div>
 			<div class="row">
@@ -31,7 +31,7 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
+                                        <li><a href="myInquireList.do"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  

@@ -44,14 +44,14 @@
 	<bean id="spaceDAO" class="spacebook.submit.model.SpaceDAO">
 	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="spaceInquireDAO" class="spacebook.view.model.SpaceInquireDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<!-- 남현 -->
 	<bean id="spaceDetailDAO" class="spacebook.view.model.SpaceDetailDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<bean id="spaceReviewDAO" class="spacebook.view.model.SpaceReviewDAO">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-	<bean id="spaceInquireDAO" class="spacebook.view.model.SpaceInquireDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 </beans>

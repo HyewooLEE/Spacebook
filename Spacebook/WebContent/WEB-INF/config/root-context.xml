@@ -15,6 +15,7 @@
 	<!-- 혜우 -->
 	<context:component-scan base-package="spacebook.main.service"/>
 	<context:component-scan base-package="spacebook.submit.service"/>
+	<context:component-scan base-package="spacebook.inquire.service"/>
 	<!-- 남현 -->
 	<context:component-scan base-package="spacebook.view.service"/>
 	
