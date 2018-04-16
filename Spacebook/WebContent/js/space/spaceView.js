@@ -137,7 +137,7 @@ function nextReview() {
 			$("#review").remove();
 			for(var i=0; i<result.data.length; i++) {
 				//var result = result.data[i];
-				$("#review").append(
+				$("#review").appendTo(
 						"<div> 멍청아!!!!!" +
 						"</div>"
 						/*"<div class='reviews-comments-item'>" +
