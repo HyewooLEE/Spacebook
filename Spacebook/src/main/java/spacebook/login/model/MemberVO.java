@@ -15,6 +15,8 @@ public class MemberVO {
 	private String mem_KakaoNickName;
 	private String mem_KakaoProfile;
 	private String mem_Code;
+	private String mem_Auth;
+	private String mem_Enabled;
 	public int getMem_No() {
 		return mem_No;
 	}
@@ -99,13 +101,23 @@ public class MemberVO {
 	public void setMem_Code(String mem_Code) {
 		this.mem_Code = mem_Code;
 	}
+	public String getMem_Auth() {
+		return mem_Auth;
+	}
+	public void setMem_Auth(String mem_Auth) {
+		this.mem_Auth = mem_Auth;
+	}
+	public String getMem_Enabled() {
+		return mem_Enabled;
+	}
+	public void setMem_Enabled(String mem_Enabled) {
+		this.mem_Enabled = mem_Enabled;
+	}
 	public MemberVO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	public MemberVO(int mem_No, String mem_Id, String mem_Pwd, String mem_Name, String mem_Phone, String mem_Favor,
 			String mem_Addr1, String mem_Addr2, String mem_Addr3, String mem_Img, String mem_KakaoEmail,
-			String mem_KakaoNickName, String mem_KakaoProfile, String mem_Code) {
+			String mem_KakaoNickName, String mem_KakaoProfile, String mem_Code, String mem_Auth, String mem_Enabled) {
 		this.mem_No = mem_No;
 		this.mem_Id = mem_Id;
 		this.mem_Pwd = mem_Pwd;
@@ -120,6 +132,8 @@ public class MemberVO {
 		this.mem_KakaoNickName = mem_KakaoNickName;
 		this.mem_KakaoProfile = mem_KakaoProfile;
 		this.mem_Code = mem_Code;
+		this.mem_Auth = mem_Auth;
+		this.mem_Enabled = mem_Enabled;
 	}
 	@Override
 	public String toString() {
@@ -127,8 +141,10 @@ public class MemberVO {
 				+ ", mem_Phone=" + mem_Phone + ", mem_Favor=" + mem_Favor + ", mem_Addr1=" + mem_Addr1 + ", mem_Addr2="
 				+ mem_Addr2 + ", mem_Addr3=" + mem_Addr3 + ", mem_Img=" + mem_Img + ", mem_KakaoEmail=" + mem_KakaoEmail
 				+ ", mem_KakaoNickName=" + mem_KakaoNickName + ", mem_KakaoProfile=" + mem_KakaoProfile + ", mem_Code="
-				+ mem_Code + "]";
+				+ mem_Code + ", mem_Auth=" + mem_Auth + ", mem_Enabled=" + mem_Enabled + "]";
 	}
+	
+	
 	
 
 }

@@ -11,6 +11,17 @@ $(".dashboard-message-text a.toggle").on("click", function (a) {
         $(this).next('div.accordion-inner').slideToggle();
     }
 });
+
+$(document).ready( function() {
+	
+	 $("#type1").change(function () {
+		document.getElementById('form1').submit();
+        });
+	 $("#type2").change(function () {
+		document.getElementById('form1').submit();
+        });
+});
+ 
 </script>
 <style>
 .selectbox .select{
@@ -24,5 +35,4 @@ height: 35px;
 height: 37px;
 border-radius: 0px 10px 10px 0px;
 }
-
 </style>

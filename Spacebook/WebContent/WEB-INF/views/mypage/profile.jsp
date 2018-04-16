@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data"">
+				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data" id="form">
 				<div class="col-md-9">
 					<div class="row">
 						<div class="col-md-12">
@@ -74,12 +74,12 @@
 									<div class="row">
 										<div class="col-md-3">
 											<label>이름<i class="fa fa-user-o"></i></label> 
-											<input type="text" value="${login.mem_Name }" readonly name="mem_Name"/>
+											<input type="text" value="${login.mem_Name }" name="mem_Name" id="name"/>
 										</div>
 										<div class="col-md-9" style="padding: 0px;">
 											<div class="col-md-6">
 												<label>핸드폰<i class="fa fa-phone"></i>
-												</label> <input type="text" value="${login.mem_Phone }"  name="mem_Phone"/>
+												</label> <input type="text" value="${login.mem_Phone }"  name="mem_Phone" id="phone"/>
 											</div>
 											<div class="col-md-6">
 												<c:set var="str1" value="${login.mem_Id }" />
@@ -113,17 +113,17 @@
 											<div class="row">
 												<div class="col-md-6">
 													<label> 우편번호 <i class="fa fa-map-marker"></i></label>
-													<input type="text" value="${login.mem_Addr1 }" readonly  name="mem_Addr1" />
+													<input type="text" value="${login.mem_Addr1 }" readonly  name="mem_Addr1" id="sample3_postcode" onClick="kume1()"/>
 												</div>
 												<div class="col-md-6">
 													<label> 주소 <i class="fa fa-map-marker"></i></label>
-													<input type="text" value="${login.mem_Addr2 }" readonly  name="mem_Addr2"/>
+													<input type="text" value="${login.mem_Addr2 }" readonly  name="mem_Addr2" id="sample3_address" onClick="kume1()"/>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12">
 													<label> 상세주소 <i class="fa fa-map-marker"></i></label> 
-													<input type="text" value="${login.mem_Addr3 }"  name="mem_Addr3"/>
+													<input type="text" value="${login.mem_Addr3 }"  name="mem_Addr3" id="detail_address"/>
 												</div>
 											</div>
 											<div class="row">
@@ -178,7 +178,7 @@
 														<label for="기타">기타</label>
 													</div>
 												</div>
-												<button class="btn  big-btn  color-bg flat-btn pull-right" type="submit">변경하기</button>	
+												<button class="btn big-btn color-bg flat-btn pull-right"  onClick="return Check();">변경하기</button>	
 											</div>
 										</div>
 									</div>

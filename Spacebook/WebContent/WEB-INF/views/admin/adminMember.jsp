@@ -2,6 +2,7 @@
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script src=""></script>
 <section>
 	<!-- container -->
 	<div class="container">
@@ -63,27 +64,30 @@
 				<div class="col-md-9">
 					<div class="dashboard-list-box fl-wrap">
 						<div class="dashboard-header fl-wrap">
-							<form class="fl-wrap">
+							<form class="fl-wrap" method="POST" action="adminMember.do" id="form1">
+							<input type="hidden" name="pageNumber" value="${page.pageNumber }"/>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<!-- <h3 style="display:inline; float:left;">회원 관리</h3> -->
 							<div class="box-widget-item fl-wrap pull-right" style="display: inline; width:300px; margin-bottom: 0px">
 		                        <div class="box-widget search-widget pull-right">
-		                                <input name="se" id="se" type="text" class="search" placeholder="검색하시오" value="">
+		                                <input name="search" id="search" type="text" class="search" placeholder="검색하시오" value="">
 		                                <button class="search-submit" id="submit_btn"><i class="fa fa-search transition"></i> </button>
 		                        </div>
 		                    </div>
-							<div class="listsearch-input-item pull-left" style="width:auto;">
-	                            <select data-placeholder="Location" class="chosen-select" >
-	                                <option style="display:none;">권한</option>
-	                                <option>게스트</option>
-	                                <option>멤버</option>
-	                                <option>관리자</option>
+							<div class="listsearch-input-item pull-left" style="width:110px;">
+	                            <select data-placeholder="Location" class="chosen-select" id="type1" name="type1">
+	                                <option value="" style="display:none;">권한</option>
+	                                <option value="ROLE_GUEST">게스트</option>
+	                                <option value="ROLE_USER">멤버</option>
+	                                <option value="ROLE_ADMIN">관리자</option>
+	                                <option value="NONENABLED">정지계정</option>
 	                            </select>
 	                         </div>
-							<div class="listsearch-input-item pull-left" style="width:125px;">
-	                            <select data-placeholder="Location" class="chosen-select" >
-	                                <option style="display:none;">유형</option>
-	                                <option>일반계정</option>
-	                                <option>카카오 계정</option>
+							<div class="listsearch-input-item pull-left" style="width:140px;">
+	                            <select data-placeholder="Location" class="chosen-select"  id="type2" name="type2">
+	                                <option value="" style="display:none;">유형</option>
+	                                <option value="@">일반계정</option>
+	                                <option value=".">카카오계정</option>
 	                            </select>
 	                         </div>
 		                    </form>
@@ -93,17 +97,38 @@
 						<div class="dashboard-list " style="width:100%">
 							<div class="dashboard-message" >
 								<div class="dashboard-message-avatar">
-									<img src="${members.mem_Img}" alt="">
+									<img src="${members.mem_Img}" alt="" style="object-fit: cover; width:50px; height: 50px;">
 								</div>
 								<div class="dashboard-message-text " style=" padding-top:15px;">
-									<div class="listsearch-input-item pull-right" style="width:auto;">
+									<div class="listsearch-input-item pull-right" style="width:115px;">
 			                            <select data-placeholder="Location" class="chosen-select" >
 			                                <option style="display:none;">권한</option>
-			                                <option>게스트</option>
-			                                <option>멤버</option>
-			                                <option>관리자</option>
+			                                <c:if test="${members.mem_Auth eq 'ROLE_USER'}">
+			                                <option value="ROLE_GUEST">게스트</option>
+			                                <option value="ROLE_USER" selected="selected">멤버</option>
+			                                <option value="ROLE_ADMIN">관리자</option>
+			                                <option value="NONENABLED">정지계정</option>
+			                               </c:if>
+			                                <c:if test="${members.mem_Auth eq 'ROLE_QUEST'}">
+			                                <option value="ROLE_GUEST" selected="selected">게스트</option>
+			                                <option value="ROLE_USER">멤버</option>
+			                                <option value="ROLE_ADMIN">관리자</option>
+			                                <option value="NONENABLED">정지계정</option>
+			                               </c:if>
+			                                <c:if test="${members.mem_Auth eq 'ROLE_ADMIN'}">
+			                                <option value="ROLE_GUEST">게스트</option>
+			                                <option value="ROLE_USER">멤버</option>
+			                                <option value="ROLE_ADMIN" selected="selected">관리자</option>
+			                                <option value="NONENABLED">정지계정</option>
+			                               </c:if>
+			                                <c:if test="${members.mem_Enabled ne '1'}">
+			                                <option value="ROLE_GUEST">게스트</option>
+			                                <option value="ROLE_USER">멤버</option>
+			                                <option value="ROLE_ADMIN">관리자</option>
+			                                <option value="NONENABLED" selected="selected">정지계정</option>
+			                               </c:if>
 			                            </select>
-			                         </div>
+		                         </div>
 									<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
 										${members.mem_Id }
 										<c:if test="${members.mem_Name eq null}">
@@ -151,18 +176,18 @@
 					<c:if test="${page.articleCount > 0}">
 					<div class="pagination">
 						<c:if test="${page.pageNumber > 10}">
-						<a href="notice.do?pageNumber=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
+						<a href="adminMember.do?pageNumber=${page.startPage-10 }&type1=${type1}&type2=${type2}&search=${search}" class="prevposts-link">&lt;</a> 
 						</c:if>
 						<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
 							<c:if test="${page.pageNumber == i }">
-							<a href="notice.do?pageNumber=${i}" class="current-page">${i}</a>
+							<a href="adminMember.do?pageNumber=${i}&type1=${type1}&type2=${type2}&search=${search}" class="current-page">${i}</a>
 							</c:if>
 							<c:if test="${page.pageNumber != i }">
-							<a href="notice.do?pageNumber=${i}">${i}</a>
+							<a href="adminMember.do?pageNumber=${i}&type1=${type1}&type2=${type2}&search=${search}">${i}</a>
 							</c:if>
 						</c:forEach>
 						<c:if test="${page.endPage < page.pageCount}">
-						<a href="notice.do?pageNumber=${page.startPage+10 }" class="nextposts-link">&gt;</a>
+						<a href="adminMember.do?pageNumber=${page.startPage+10 }&type1=${type1}&type2=${type2}&search=${search}" class="nextposts-link">&gt;</a>
 						</c:if>
 					</div>
 					</c:if>
