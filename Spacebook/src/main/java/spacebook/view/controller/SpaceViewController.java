@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,13 +96,13 @@ public class SpaceViewController {
 		System.out.println("space_no::"+ space_no);
 		System.out.println("startReview::"+ startReview);
 		System.out.println("endReview::"+ endReview);
-		response.setContentType("text/html;charset=utf-8");
+		
 		
 		List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
 		
-		JSONObject json = new JSONObject();
-		json.put("review", review_list);
+		JSONObject jso = new JSONObject();
+		jso.put("data", review_list);
 		PrintWriter out = response.getWriter();
-		out.println(json.toString());
+		out.println(jso.toString());
 	}
 }

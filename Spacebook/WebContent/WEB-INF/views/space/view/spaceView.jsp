@@ -129,7 +129,7 @@
 									리뷰 - <span> ${countReview} </span>
 								</h3>
 							</div>
-							<div class="reviews-comments-wrap">
+							<div class="reviews-comments-wrap" id="review">
 								<!-- reviews-comments-item -->
 								<c:forEach var="reviewList" items="${reviewList}">
 								<div class="reviews-comments-item">
