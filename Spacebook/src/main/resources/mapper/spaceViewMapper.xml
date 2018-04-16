@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spaceView">
+	<select id="spaceDetails" resultType="spacebook.submit.model.SpaceDTO">
+		SELECT * FROM SPACE WHERE SPACE_NO = #{space_no}
+	</select>
+	<select id="etcSpaceList" resultType="spacebook.view.model.EtcSpaceDTO">
+		SELECT SPACE_NO, SPACE_NAME, MEM_NO, SPACE_OPEN, SPACE_CLOSE FROM SPACE WHERE MEM_NO = #{mem_no}
+	</select>
+</mapper>

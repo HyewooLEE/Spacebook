@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- controller -->
+	<context:annotation-config/>
+	<context:component-scan base-package="spacebook.main.controller"/>	
+	<!-- 주영 -->
+	<context:component-scan base-package="spacebook.login.controller"/>	
+	<context:component-scan base-package="spacebook.profile.controller"/>	
+	<context:component-scan base-package="spacebook.admin.controller"/>	
+	
+	<context:component-scan base-package="spacebook.view.controller"/>	
+	<context:component-scan base-package="spacebook.submit.controller"/>	
+	<context:component-scan base-package="spacebook.reserve.controller"/>
+	
+    
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	<!-- <bean id = "uploadPath" class="java.lang.String">
+		<constructor-arg value="C:\Users\LeeHyewoo\git\Spacebook\Spacebook\src\main\resources\images" />
+	</bean> -->
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/kakaologin.do" />
+			<bean id="InfromCheckInterceptor" class="spacebook.login.handler.InfromCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+	<bean id="tileConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/config/tilesdef.xml</value>
+			</list>		
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
+	</bean>
+</beans>

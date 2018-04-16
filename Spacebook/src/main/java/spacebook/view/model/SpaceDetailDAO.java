@@ -1,0 +1,25 @@
+package spacebook.view.model;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import spacebook.submit.model.SpaceDTO;
+
+public class SpaceDetailDAO extends SqlSessionDaoSupport{
+	public SpaceDTO spaceDetail(int space_no) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("space_no", space_no);
+		
+		return getSqlSession().selectOne("spaceView.spaceDetails", map);
+	}
+	
+	public List<EtcSpaceDTO> etcSpaceList(int mem_no) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("mem_no", mem_no);
+		
+		return getSqlSession().selectList("spaceView.etcSpaceList", map);
+	}
+}

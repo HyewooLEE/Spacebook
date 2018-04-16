@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<insert id="insertKakao" parameterType="spacebook.login.model.MemberVO">
+		insert into MEMBER
+		(MEM_NO,MEM_ID,MEM_IMG,MEM_ENABLED,MEM_AUTH) values (
+		MEMBER_SEQ.NEXTVAL ,
+		#{mem_Id},
+		'/Spacebook/PROFILE/profile_default.jpg',
+		1,
+		'ROLE_USER'
+		)
+	</insert>
+	<select id="kakaoOne" parameterType="String"
+		resultType="spacebook.login.model.MemberVO">
+		select * from MEMBER where MEM_ID = #{MEM_ID}
+	</select>
+	<select id="kakaoFind" parameterType="String" resultType="Int">
+		select
+		count(*) from member where MEM_ID = #{MEM_ID}
+	</select>
+	<select id="informCheck" parameterType="String" resultType="Int">
+		select count(*) from member where
+		MEM_ID = #{MEM_ID} and
+		MEM_FAVOR is
+		null and
+		MEM_NAME is null and
+		MEM_PHONE is null
+	</select>
+	<select id="auth" parameterType="String" resultType="java.util.Map">
+		SELECT
+		MEM_ID as username,
+		MEM_PWD as password,
+		MEM_ENABLED as enabled,
+		MEM_AUTH as authority
+		FROM MEMBER
+		WHERE MEM_ID = #{username}
+	</select>
+	<insert id="insertMember" parameterType="java.util.Map">
+		INSERT INTO MEMBER(MEM_NO,MEM_ID,MEM_PWD,MEM_IMG,MEM_ENABLED,MEM_AUTH)
+		VALUES(
+		MEMBER_SEQ.NEXTVAL,
+		#{email},
+		#{passwd},
+		'/Spacebook/PROFILE/profile_default.jpg',
+		1,
+		#{authority})
+	</insert>
+	<update id="updateInform" parameterType="spacebook.login.model.MemberVO">
+		UPDATE MEMBER SET
+		MEM_NAME = #{mem_Name},
+		MEM_PHONE = #{mem_Phone},
+		MEM_ADDR1 = #{mem_Addr1},
+		MEM_ADDR2 = #{mem_Addr2},
+		MEM_ADDR3 = #{mem_Addr3},
+		MEM_FAVOR = #{mem_Favor}
+		<if test="mem_Img != null">
+			,MEM_IMG = #{mem_Img}
+		</if>
+		WHERE MEM_ID = #{mem_Id}
+	</update>
+	<select id="selectMember" parameterType="String" resultType="spacebook.login.model.MemberVO">
+		SELECT * FROM MEMBER WHERE MEM_ID = #{username}
+	</select>
+	<select id="memberList" resultType="spacebook.login.model.MemberVO" parameterType="String">
+		select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH 
+		from (select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH, rownum r 
+        from ( select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH
+        from MEMBER order by MEM_NO desc) order by MEM_NO desc ) 
+        where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
+	</select>
+	<select id="memberCount" resultType="Int">
+		select count(*) from member
+	</select>
+</mapper>

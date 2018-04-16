@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//WebContent/WEB-INF/views/main/join.jsp=UTF-8
+=======
+encoding//WebContent/WEB-INF/views/space/view/spaceView.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook.git
+encoding/<project>=UTF-8

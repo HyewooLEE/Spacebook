@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spaceReview">
+	<select id="reviewDetails" resultType="spacebook.view.model.SpaceReviewDTO">
+		SELECT * FROM REVIEW WHERE SPACE_NO = #{space_no} ORDER BY REV_NO DESC
+	</select>
+	<select id="countReview" resultType="int">
+		SELECT COUNT(*) FROM REVIEW WHERE SPACE_NO = #{space_no}
+	</select>
+	<insert id="insertReview" parameterType="spacebook.view.model.SpaceReviewDTO">
+		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{space_no}, #{mem_name}, #{rev_writeDate}, #{rev_note}, #{rev_rate})
+	</insert>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="space">
+	
+	<insert id="insertSpace" parameterType="spacebook.submit.model.SpaceDTO" >
+		insert into space values(
+		space_seq.nextval,
+		#{mem_no},
+		#{space_name},
+		#{space_category},
+		#{space_addr1},
+		#{space_addr2},
+		#{space_intro1},
+		#{space_intro2},
+		#{space_tag},
+		#{fac_no},
+		#{space_site},
+		#{space_img1},
+		#{space_img2,jdbcType=VARCHAR},
+		#{space_img3,jdbcType=VARCHAR},
+		#{space_img4,jdbcType=VARCHAR},
+		#{space_img5,jdbcType=VARCHAR},
+		#{space_img6,jdbcType=VARCHAR},
+		#{space_img7,jdbcType=VARCHAR},
+		#{space_phone},
+		#{space_cau},
+		#{space_peo_count},
+		#{space_open},
+		#{space_close},
+		#{space_sum},
+		#{space_bank},
+		#{space_account},
+		#{space_depositor})
+	</insert>
+	
+	<insert id="insertMap" parameterType="spacebook.submit.model.SpaceDTO">
+		insert into map values (space_seq.currval, #{map_latitude}, #{map_longitude})
+	</insert>
+	
+	<select id="selectFacility" resultType="spacebook.submit.model.SpaceFacilityDTO" parameterType="spacebook.submit.model.SpaceFacilityDTO" >
+		select * from space_facility
+	</select>
+	
+	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO" >
+		select * from space s left outer join MEMBER m on s.mem_no = m.mem_no order by s.space_no
+	</select>
+	
+	
+	
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 	<tiles-definitions>
+		<definition name ="base_layout" template="/WEB-INF/views/tiles/layout.jsp" >
+			<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="main" extends="base_layout" >
+			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
+			<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+		</definition>
+		<!-- 주영 -->
+		<definition name="login" extends="base_layout" >
+			<put-attribute name="title" value="정보 등록"/>
+			<put-attribute name="body" value="/WEB-INF/views/main/login.jsp"/>
+		</definition>
+		<definition name="join" extends="base_layout" >
+			<put-attribute name="title" value="정보 등록"/>
+			<put-attribute name="body" value="/WEB-INF/views/main/join.jsp"/>
+		</definition>
+		<definition name="join2" extends="base_layout" >
+			<put-attribute name="title" value="정보 등록"/>
+			<put-attribute name="body" value="/WEB-INF/views/main/join2.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/main/join2Script.jsp" />
+		</definition>
+		<definition name="profile" extends="base_layout" >
+			<put-attribute name="title" value="프로필 수정"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/profile.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/mypage/profileScript.jsp" />
+		</definition>
+		<definition name="password" extends="base_layout" >
+			<put-attribute name="title" value="비밀번호 변경"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/password.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="adminMember" extends="base_layout" >
+			<put-attribute name="title" value="회원 관리"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/adminMember.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/admin/adminMemberScript.jsp"/>
+		</definition>
+		<definition name="notice" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/notice.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="noticeForm" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/noticeWriteForm.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="noticeUpdateForm" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/noticeUpdateForm.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="noticeContent" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/noticeContent.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<!-- 혜우 -->
+		<definition name="submitSpaceForm" extends="base_layout">
+			<put-attribute name="title" value="공간등록" />
+			<put-attribute name="body" value="/WEB-INF/views/space/submit/submitSpaceForm.jsp" />
+		</definition>
+		<definition name="submitRedirect" extends="base_layout">
+			<put-attribute name="title" value="공간등록완료" />
+			<put-attribute name="body" value="/WEB-INF/views/space/submit/submitRedirect.jsp" />
+		</definition>
+		<definition name="listSpace" extends="base_layout">
+			<put-attribute name="title" value="공간전체리스트" />
+			<put-attribute name="body" value="/WEB-INF/views/space/submit/listSpace.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/space/submit/mapScript.jsp" />
+		</definition>
+		<!-- 남현 -->
+		<definition name="spaceView" extends="base_layout">
+			<put-attribute name="title" value="공간상세페이지" />
+			<put-attribute name="body" value="/WEB-INF/views/space/view/spaceView.jsp" />
+		</definition>
+		<definition name="spaceReserve" extends="base_layout">
+			<put-attribute name="title" value="공간예약상세페이지" />
+			<put-attribute name="body" value="/WEB-INF/views/space/reserve/spaceReserve.jsp" />
+		</definition>
+		<!-- 병현 -->
+		
+		
+	</tiles-definitions>

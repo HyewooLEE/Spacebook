@@ -1,0 +1,14 @@
+.slick-slide{
+	height: auto;
+}
+.video-container video{
+	width : auto;
+}
+video{
+	max-width: none;
+}
+
+.soc-log a:hover{
+	background: none;
+}
+	

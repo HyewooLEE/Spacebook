@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<insert id="memberInsert" parameterType="spacebook.login.model.MemberDTO">
+		insert into MEMBER values (MEMBER_SEQ.NEXTVAL ,
+		#{MEM_KAKAO,jdbcType=VARCHAR},
+		#{MEM_EMAIL,jdbcType=VARCHAR},
+		#{MEM_PWD,jdbcType=VARCHAR},
+		#{MEM_NAME,jdbcType=VARCHAR},
+		#{MEM_PHONE,jdbcType=VARCHAR},
+		#{MEM_FAVOR,jdbcType=VARCHAR},
+		#{MEM_IMG,jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="memberLogin" parameterType="String" resultType="String">
+		select MEM_PWD from member where MEM_EMAIL = #{MEM_EMAIL}
+	</select>
+	<select id="kakaoFind" parameterType="String" resultType="Int">
+		select count(*) from member where MEM_KAKAO = #{MEM_KAKAO}
+	</select>
+	<select id="kakaoOne" parameterType="String">
+		select * from MEMBER where MEM_KAKAO = #{MEM_KAKAO}
+	</select>
+	<select id="informCheck" parameterType="String" resultType="Int">
+		select count(*) from member where
+		MEM_KAKAO = #{MEM_KAKAO} and
+		MEM_FAVOR is null and
+		MEM_NAME is null and
+		MEM_PHONE is null
+	</select>
+	<select id="auth"  parameterType="String" resultType="java.util.Map">
+		SELECT
+		MEM_EMAIL as username,
+		MEM_PWD as password,
+		MEM_ENABLED as enabled,
+		MEM_AUTH as authority
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{username}
+	</select>
+	<insert id="insertMember" parameterType="java.util.Map" >
+		  INSERT INTO MEMBER(MEM_NO,MEM_EMAIL,MEM_PWD,MEM_IMG,MEM_ENABLED,MEM_AUTH)
+		  VALUES(
+		  MEMBER_SEQ.NEXTVAL,
+		  #{email},
+		  #{passwd},
+		  '192.168.40.79:8328/Spacebook/PROFILE/profile_default.jpg',
+		  1,
+		  #{authority})
+	 </insert>
+	 <select id="selectMember"  parameterType="String" resultType="spacebook.login.model.MemberVO">
+		SELECT * FROM MEMBER WHERE MEM_EMAIL = #{username}
+	</select>
+
+
+</mapper>
