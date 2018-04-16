@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<!--  carousel-->
 	<section class="parallax-section single-par list-single-section" data-scrollax-parent="true" id="sec1">
-           <div class="bg par-elem "  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+           <div class="bg par-elem "  data-bg="${spaceDetail.space_img1}" data-scrollax="properties: { translateY: '30%' }"></div>
            <div class="overlay"></div>
            <div class="bubble-bg"></div>
            <div class="list-single-header absolute-header fl-wrap">
@@ -94,7 +94,8 @@
 							</div>
 							<div class="listing-features fl-wrap">
 								<ul>
-									<li><i class="fa fa-rocket"></i> Elevator in building</li>
+									<c:forEach var="fac_no" items="fac_no">
+									<li><img src="${pageContext.request.contextPath}/resources/bootstrap/images/icon/${fac_no}.png"> Elevator in building</li>
 									<li><i class="fa fa-wifi"></i> Free Wi Fi</li>
 									<li><i class="fa fa-motorcycle"></i> Free Parking</li>
 									<li><i class="fa fa-cloud"></i> Air Conditioned</li>
@@ -102,6 +103,7 @@
 									<li><i class="fa fa-paw"></i> Pet Friendly</li>
 									<li><i class="fa fa-tree"></i> Outdoor Seating</li>
 									<li><i class="fa fa-wheelchair"></i> Wheelchair Friendly</li>
+									</c:forEach>
 								</ul>
 							</div>
 							<span class="fw-separator"></span>
@@ -148,12 +150,12 @@
 								</div>
 								</c:forEach>
 								<!--reviews-comments-item end-->
+							</div>
 								<c:if test="${countReview > 0}">
 									<a href="javascript:;" onclick="preReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
 									<a href="javascript:;" onclick="nextReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
 								</c:if>
-							</div>
 						</div>
 						<!-- list-single-main-item end -->
 						<!-- list-single-main-item -->

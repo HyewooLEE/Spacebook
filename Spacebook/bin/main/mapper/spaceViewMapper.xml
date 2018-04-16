@@ -8,6 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM SPACE WHERE SPACE_NO = #{space_no}
 	</select>
 	<select id="etcSpaceList" resultType="spacebook.view.model.EtcSpaceDTO">
-		SELECT SPACE_NO, SPACE_NAME, MEM_NO, SPACE_OPEN, SPACE_CLOSE FROM SPACE WHERE MEM_NO = #{mem_no}
+		SELECT SPACE_NO, SPACE_NAME, MEM_NO, SPACE_OPEN, SPACE_CLOSE FROM SPACE WHERE MEM_NO = #{mem_no} AND ROWNUM BETWEEN 1 AND 3
 	</select>
 </mapper>
