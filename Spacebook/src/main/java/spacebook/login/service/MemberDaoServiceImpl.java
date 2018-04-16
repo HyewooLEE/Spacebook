@@ -1,5 +1,6 @@
 package spacebook.login.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +37,6 @@ public class MemberDaoServiceImpl implements MemberDaoService {
 		// TODO Auto-generated method stub
 		return dao.insertKakao("Member.insertKakao", vo);
 	}
-
 	@Override
 	public int findMember(String ID) {
 		return dao.findMember("Member.kakaoFind", ID);
@@ -50,10 +50,14 @@ public class MemberDaoServiceImpl implements MemberDaoService {
 	public List<MemberVO> memberList(String pageNumber) {
 		return dao.memberList("Member.memberList",pageNumber);
 	}
+	@Override
+	public List<MemberVO> memberList(HashMap<String, String> map) {
+		return dao.memberList("Member.memberFilter",map);
+	}
 
 	@Override
-	public int memberCount() {
-		return dao.memberCount("Member.memberCount");
+	public int memberCount(HashMap<String, String> map) {
+		return dao.memberCount("Member.memberCount",map);
 	}
 
 }

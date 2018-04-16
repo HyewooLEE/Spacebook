@@ -17,11 +17,11 @@
 				<div class="col-md-12">
 					<div class="list-single-main-item fl-wrap">
 						<div class="list-single-main-item-title fl-wrap">
-							<h3>
+							<h3 style="font-size:22px;">
 								<a href="#">${article.notice_Title }</a>
 							</h3>
 						</div>
-						<p>${article.notice_Content }</p>
+						<p style="font-size: 18px;">${article.notice_Content }</p>
 						<div class="post-author pull-right">
 							<a href="#"><span>관리자</span></a>
 						</div>
@@ -33,7 +33,8 @@
 					</div>
 					<c:if test="${login.mem_Id eq 'admin@admin.com' }">
 						<a href="noticeUpdateForm.do?notice_No=${article.notice_No }" class="btn circle-btn color-bg flat-btn pull-right" style="margin-top: 20px; margin-left: 15px;">수정하기</a> 
-						<a href="noticeDelete.do?notice_No=${article.notice_No}" onClick="noticeDelete()" class="btn circle-btn color-bg flat-btn pull-right" style="margin-top: 20px; margin-left: 15px;">삭제하기</a>
+						<a onClick="return noticeDelete()" class="btn circle-btn color-bg flat-btn pull-right" style="margin-top: 20px; margin-left: 15px;">삭제하기</a>
+						 <%-- href="noticeDelete.do?notice_No=${article.notice_No}"  --%>
 					</c:if>
 				</div>
 				<div class="col-md-12">
@@ -54,17 +55,18 @@ function noticeDelete(){
 		  text: "글이 삭제되면 복구가 되지 않습니다.",
 		  icon: "warning",
 		  buttons: ["취소","삭제"]
-		})
-		.then((willDelete) =>{
+		}).then((willDelete) =>{
 		  if (willDelete) {
 			  swal("성공 적으로 삭제 되었습니다.", {
 			      icon: "success",
+			    }).then(function(){
+				    window.location.href = '/Spacebook/notice.do';
 			    });
 			  fetch('/Spacebook/noticeDelete.do?notice_No=${article.notice_No}');
 		  } else {
 			  return false;
 		  }
 		});
-	
 }
+
 </script>

@@ -22,13 +22,13 @@
 						<!-- Add Review Box -->
 						<div id="add-review" class="add-review-box">
 							<!-- Review Comment -->
-							<form class="add-comment custom-form" action="writeNotice.do"  method="POST">
+							<form class="add-comment custom-form" action="writeNotice.do"  method="POST" id="form">
 								<fieldset>
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-									<input type="text" placeholder="제목" style="padding: 25px 20px; height: 50px;" name="notice_Title"/>
-									<textarea cols="80" rows="10" placeholder="내용" style="height: 350px;" name="notice_Content"></textarea>
+									<input type="text" placeholder="제목" style="padding: 25px 20px; height: 50px;" name="notice_Title" id="title"/>
+									<textarea cols="80" rows="10" placeholder="내용" style="height: 350px;" name="notice_Content" id="content"></textarea>
 								</fieldset>
-								<button class="btn  big-btn  color-bg flat-btn pull-right">글쓰기&nbsp;&gt;</button>
+								<button class="btn  big-btn  color-bg flat-btn pull-right" type="button" onClick="return Check();">글쓰기&nbsp;&gt;</button>
 							</form>
 						</div>
 						<!-- Add Review Box / End -->
@@ -43,4 +43,4 @@
 <!-- section end -->
 <div class="limit-box fl-wrap"></div>
 <!--section -->
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin/noticeForm.js"></script>
