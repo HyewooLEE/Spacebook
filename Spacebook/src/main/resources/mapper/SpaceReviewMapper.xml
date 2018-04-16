@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spaceReview">
 	<select id="reviewDetails" resultType="spacebook.view.model.SpaceReviewDTO">
-		SELECT * FROM REVIEW WHERE SPACE_NO = #{space_no} ORDER BY REV_NO DESC
+		SELECT REV_NO, SPACE_NO, MEM_NAME, REV_WRITEDATE, REV_NOTE, REV_RATE FROM (SELECT ROWNUM R, REV_NO, SPACE_NO, MEM_NAME, REV_WRITEDATE, REV_NOTE, REV_RATE FROM REVIEW WHERE SPACE_NO = #{space_no} ORDER BY REV_NO DESC) WHERE R BETWEEN #{startReview} AND #{endReview} ORDER BY REV_NO DESC
 	</select>
 	<select id="countReview" resultType="int">
 		SELECT COUNT(*) FROM REVIEW WHERE SPACE_NO = #{space_no}

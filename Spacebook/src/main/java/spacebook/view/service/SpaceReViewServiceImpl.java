@@ -29,8 +29,8 @@ public class SpaceReViewServiceImpl implements SpaceReviewService{
 	}
 
 	@Override
-	public List<SpaceReviewDTO> selectSpaceReview(int space_no) {
-		return dao.selectSpaceReview(space_no);
+	public List<SpaceReviewDTO> selectSpaceReview(int space_no, int startReview, int endReview) {
+		return dao.selectSpaceReview(space_no, startReview, endReview);
 	}
 
 	@Override

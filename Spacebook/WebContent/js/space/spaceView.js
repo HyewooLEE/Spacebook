@@ -120,33 +120,54 @@ function reviewSubmit() {
 	}
 	spaceReviewForm.submit();
 }
-/*$(function(){
-	$("#preReview").click(function(){
-		$.ajax({
-			type: "POST",
-			url: "/spaceView.do",
-			data: {name:"john", location:"boston"},
-			cache: false,
-			encoding: 'UTF-8',
-			success:function(result) {
-				$("#results").append(result);
-			}
-		});
+var reviewPage = 1;
+
+function nextReview() {
+	reviewPage += 3;
+	alert("nextReview");
+	//{startReview:reviewPage, endReview:reviewPage+2}
+	var params = "startReview="+ reviewPage +"&endReview="+ reviewPage+2;
+	$.ajax({
+		type: "get",
+		url: "/Spacebook/showReview.do",
+		data: params,
+		cache: false,
+		datatype:"json",
+		success:function(result) {
+			alert("성공");
+			
+			/*$("#results").append(result);*/
+			alert("review::"+result.review[0].rev_no);
+			alert(result);
+		}
+	,error:function(e){
+		alert(e.responseText);
+		alert("error 실패");
+	}
+	});	
+}
+
+function preReview() {
+	if(reviewPage > 3) {
+		reviewPage -= 3;
+	} else {
+		reviewPage = 1;
+	}
+	alert("preReview");
+	$.ajax({
+		type: "POST",
+		url: "/Spacebook/showReview.do",
+		data: {startReview:reviewPage, endReview:reviewPage+2},
+		cache: false,
+		encoding: 'UTF-8',
+		datatype:"json",
+		success:function(result) {
+			alert(result);
+			/*$("#results").append(result);*/
+		}
 	});
-	
-	$("#nextReview").click(function(){
-		$.ajax({
-			type: "POST",
-			url: "/spaceView.do",
-			data: {name:"john", location:"boston"},
-			cache: false,
-			encoding: 'UTF-8',
-			success:function(result) {
-				$("#results").append(result);
-			}
-		});
-	});
-});*/
+}
+
 
 function openInquire() {
 	$('.modalInquire').fadeIn();

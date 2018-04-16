@@ -14,22 +14,17 @@
                     <fieldset>
                      	<form class="add-comment custom-form" action="spaceInquire.do" method="post" id="spaceInquireForm">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<input type="hidden" name="mem_no" value="${login.mem_No}">
 						<input type="hidden" name="space_no" value="${spaceDetail.space_no}"> 
                         <div class="row">
-                             <div class="col-md-4">
-                                 <label><i class="fa fa-user-o"></i></label>
-                                 <input type="text" placeholder="작성자명" name="mem_name" value="${login.mem_Name}"/>
-                             </div>
-                             <div class="col-md-8">
-                                 <label><i class="fa fa-envelope-o"></i>  </label>
-                                 <input type="text" placeholder="Email Address*" name="mem_id" value="${login.mem_Id}"/>
-                             </div>
-                        </div>
-                        <input type="text" name="inq_sub" id="inq_sub" placeholder="제목을 입력주세요.">
-                        <textarea cols="40" rows="3" name="inq_note" id="inq_note" placeholder="문의 사항을 작성해주세요."></textarea>
-                   		</form>
-                   		<button class="btn color-bg flat-btn" onclick="inquire()">등록 <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-						<button class="btn flat-btn" style="background-color: gray;" onclick="inquireCancel()">취소</button>
+							<input type="text" name="inq_sub" id="inq_sub" placeholder="제목을 입력주세요.">
+                        	<textarea cols="40" rows="3" name="inq_note" id="inq_note" placeholder="문의 사항을 작성해주세요."></textarea>
+	                    </div>
+                        </form>
+                   		<div class="row" style="padding-top: 20px">
+                   			<button class="btn color-bg flat-btn" onclick="inquire()">등록 <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+							<button class="btn flat-btn" style="background-color: gray;" onclick="inquireCancel()">취소</button>
+                   		</div>
                     </fieldset>
                 </div>
                 <!-- Add Review Box / End -->
