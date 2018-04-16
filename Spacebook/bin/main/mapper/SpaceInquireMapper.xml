@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spaceInquire">
 	<insert id="insertInquire" parameterType="spacebook.view.model.SpaceInquireDTO">
-		INSERT INTO INQUIRE VALUES(INQUIRE_SEQ.NEXTVAL, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_sub}, #{inq_note})
+		INSERT INTO INQUIRE VALUES(INQUIRE_SEQ.NEXTVAL, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_sub}, #{inq_note}, #{inq_ref}, #{inq_step}, #{inq_level})
 	</insert>
 	<delete id="deleteInquire">
 		DELETE INQUIRE WHERE INQ_NO = #{inq_no}

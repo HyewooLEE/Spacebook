@@ -55,7 +55,7 @@
                     <div class="col-md-9">
                     
                     <form id="submitSpaceForm" action="submitSpace.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" id="mem_no" name="mem_no" value="3" />
+                    <input type="hidden" id="mem_no" name="mem_no" value="1" />
                         <!-- profile-edit-container--> 
                         <div class="profile-edit-container add-list-container">
                             <div class="profile-edit-header fl-wrap">
@@ -171,11 +171,12 @@
                                     <div class="col-md-4">
                                     <label>대표 이미지</label>
                                         <div class="add-list-media-wrap">
-                                            <div class="fuzone" id="img1">
-                                                <div class="fu-text">
+                                            <div class="fuzone" ><%-- style="src:${space_img1 }" id="space_img1_src" --%>
+                                            	<div id="img1" style="display:none;"><img src="${space_img1 }" id="space_img1_src" style="width:271px;height:179px;" ></div>
+                                                <div class="fu-text" id="text1">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img1" name="report1" value="${space_img1 }">
+                                                <input type="file" class="upload" id="space_img1" name="report1" value="${space_img1 }" accept="image/*">
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +192,8 @@
                                     <div class="col-md-4">
                                     	<div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                            	<div  id="img2" style="display:none;"><img src="${space_img2 }" id="space_img2_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text2">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img2" name="report2" value="${space_img2 }">
@@ -201,7 +203,8 @@
                                     <div class="col-md-4">
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                            	<div  id="img3" style="display:none;"><img src="${space_img3 }" id="space_img3_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text3">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img3" name="report3" value="${space_img3 }">
@@ -211,7 +214,8 @@
                                     <div class="col-md-4">
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                            	<div  id="img4" style="display:none;"><img src="${space_img4 }" id="space_img4_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text4">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img4" name="report4" value="${space_img4 }">
@@ -226,7 +230,8 @@
                                     <label></label>
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                                <div  id="img5" style="display:none;"><img src="${space_img5 }" id="space_img5_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text5">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img5" name="report5" value="${space_img5 }">
@@ -237,7 +242,8 @@
                                     <label></label>
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                                <div  id="img6" style="display:none;"><img src="${space_img6 }" id="space_img6_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text6">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img6" name="report6" value="${space_img6 }">
@@ -248,7 +254,8 @@
                                     <label></label>
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone">
-                                                <div class="fu-text">
+                                                <div  id="img7" style="display:none;"><img src="${space_img7 }" id="space_img7_src" style="width:271px;height:179px;"></div>
+                                                <div class="fu-text" id="text7">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
                                                 <input type="file" class="upload" id="space_img7" name="report7" value="${space_img7 }">
@@ -326,12 +333,3 @@
     <!-- section end -->	
     <div class="limit-box fl-wrap"></div>
     <!-- wrapper end -->	
-    
-	<!-- javascript start -->
-	<!-- 다음지도 -->
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<!-- 구글지도 -->
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDJW3_aez5Ahaxl88X9ZNR5QB2JMa1lcs0" type="text/javascript"></script>   
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/space/submitSpaceForm.js" ></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/map/findMap.js" ></script>
-	<!-- javascript end -->

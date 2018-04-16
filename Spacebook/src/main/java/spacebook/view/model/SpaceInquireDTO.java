@@ -3,8 +3,7 @@ package spacebook.view.model;
 public class SpaceInquireDTO {
 	private int inq_no;
 	private int space_no;
-	private String mem_name;
-	private String mem_id;
+	private String mem_no;
 	private String inq_writeDate;
 	private String inq_sub;
 	private String inq_note;
@@ -12,6 +11,12 @@ public class SpaceInquireDTO {
 	private int inq_step;
 	private int inq_level;
 	
+	public String getMem_no() {
+		return mem_no;
+	}
+	public void setMem_no(String mem_no) {
+		this.mem_no = mem_no;
+	}
 	public String getInq_sub() {
 		return inq_sub;
 	}
@@ -59,17 +64,5 @@ public class SpaceInquireDTO {
 	}
 	public void setInq_level(int inq_level) {
 		this.inq_level = inq_level;
-	}
-	public String getMem_name() {
-		return mem_name;
-	}
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
-	}
-	public String getMem_id() {
-		return mem_id;
-	}
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
 	}
 }

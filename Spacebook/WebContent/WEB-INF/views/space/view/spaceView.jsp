@@ -86,7 +86,7 @@
 								<h3>상세 정보</h3>
 							</div>
 							<p>${spaceDetail.space_intro2}</p>
-							<a href="${spaceDetail.space_site}" class="btn transparent-btn float-btn">홈페이지
+							<a href="javascript:window.open('${spaceDetail.space_site}')" class="btn transparent-btn float-btn">홈페이지
 							<i class="fa fa-angle-right"></i>
 							</a> <span class="fw-separator"></span>
 							<div class="list-single-main-item-title fl-wrap">
@@ -149,9 +149,9 @@
 								</c:forEach>
 								<!--reviews-comments-item end-->
 								<c:if test="${countReview > 0}">
-									<a id="preReview"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
+									<a href="javascript:;" onclick="preReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
-									<a id="nextReview"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
+									<a href="javascript:;" onclick="nextReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
 								</c:if>
 							</div>
 						</div>
@@ -343,7 +343,6 @@
 											</ul>
 										</div>
 										<a href="javascript:;" onclick="openInquire()" class="btn transparent-btn"> 1:1 문의 </a>
-										<button class="btn transparent-btn" onClick="viewQuest()"> 1:1 문의 </button>
 									</div>
 								</div>
 							</div>

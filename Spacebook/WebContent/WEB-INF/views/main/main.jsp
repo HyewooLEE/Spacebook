@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--section -->
 <section class="scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1" style="height: -webkit-fill-available; padding-top: 250px;" >
 	<div class="media-container video-parallax" data-scrollax="properties: { translateY: '200px' }"  >
@@ -60,110 +61,107 @@
 		<!-- portfolio start -->
 		<div class="gallery-items fl-wrap mr-bot spad">
 			<!-- gallery-item-->
+			<c:forEach var="category" items="${category }" varStatus="status" begin="0" end="4">
+			<c:if test="${status.index=='0' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
 					<div class="listing-item-grid">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-							alt="">
+						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
 							<span>10 </span> Locations
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">Conference and Event</a>
+								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
 							</h3>
-							<p>Constant care and attention to the patients makes good
-								record</p>
+							<p>${category.space_intro1 }</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
 			<!-- gallery-item end-->
 			<!-- gallery-item-->
+			<c:if test="${status.index=='1' }">
 			<div class="gallery-item gallery-item-second">
 				<div class="grid-item-holder">
 					<div class="listing-item-grid">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-							alt="">
+						<img src="${category.space_img1}" style="width:795px;height:424px;">
 						<div class="listing-counter">
 							<span>6 </span> Locations
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">Cafe - Pub</a>
+								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
 							</h3>
-							<p>Constant care and attention to the patients makes good
-								record</p>
+							<p>${category.space_intro1 }</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
 			<!-- gallery-item end-->
 			<!-- gallery-item-->
+			<c:if test="${status.index=='2' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
 					<div class="listing-item-grid">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-							alt="">
+						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>21 </span> Locations
+							<span>6 </span> Locations
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">Gym - Fitness</a>
+								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
 							</h3>
-							<p>Constant care and attention to the patients makes good
-								record</p>
+							<p>${category.space_intro1 }</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
 			<!-- gallery-item end-->
 			<!-- gallery-item-->
+			<c:if test="${status.index=='3' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
 					<div class="listing-item-grid">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-							alt="">
+						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>7 </span> Locations
+							<span>6 </span> Locations
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">Hotels</a>
+								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
 							</h3>
-							<p>Constant care and attention to the patients makes good
-								record</p>
+							<p>${category.space_intro1 }</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
 			<!-- gallery-item end-->
 			<!-- gallery-item-->
+			<c:if test="${status.index=='4' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
 					<div class="listing-item-grid">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-							alt="">
+						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
-							<span>15 </span> Locations
+							<span>6 </span> Locations
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">Shop - Store</a>
+								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
 							</h3>
-							<p>Constant care and attention to the patients makes good
-								record</p>
+							<p>${category.space_intro1 }</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
 			<!-- gallery-item end-->
+			</c:forEach>
 		</div>
 		<!-- portfolio end -->
 		<a href="listSpace.do" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn">모두 보기<i class="fa fa-eye"></i>

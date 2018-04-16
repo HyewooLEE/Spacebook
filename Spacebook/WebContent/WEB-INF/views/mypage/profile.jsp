@@ -30,7 +30,7 @@
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>나의 찜공간 <span>2</span></a></li>
+                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
                                         <li><a href="dashboard-review.html"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
                                     </ul>
                                 </div>

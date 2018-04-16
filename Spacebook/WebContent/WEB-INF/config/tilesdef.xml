@@ -65,15 +65,20 @@
 		<definition name="submitSpaceForm" extends="base_layout">
 			<put-attribute name="title" value="공간등록" />
 			<put-attribute name="body" value="/WEB-INF/views/space/submit/submitSpaceForm.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/space/submit/submitSpaceFormScript.jsp" />
 		</definition>
 		<definition name="submitRedirect" extends="base_layout">
-			<put-attribute name="title" value="공간등록완료" />
+			<put-attribute name="title" value="공간등록 완료" />
 			<put-attribute name="body" value="/WEB-INF/views/space/submit/submitRedirect.jsp" />
 		</definition>
 		<definition name="listSpace" extends="base_layout">
-			<put-attribute name="title" value="공간전체리스트" />
+			<put-attribute name="title" value="공간전체 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/space/submit/listSpace.jsp" />
 			<put-attribute name="script" value="/WEB-INF/views/space/submit/mapScript.jsp" />
+		</definition>
+		<definition name="inquireList" extends="base_layout">
+			<put-attribute name="title" value="1:1문의 리스트" />
+			<put-attribute name="body" value="/WEB-INF/views/space/mypage/inquireList.jsp" />
 		</definition>
 		<!-- 남현 -->
 		<definition name="spaceView" extends="base_layout">
