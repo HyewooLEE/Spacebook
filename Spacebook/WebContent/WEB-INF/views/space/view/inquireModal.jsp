@@ -17,7 +17,7 @@
 						<input type="hidden" name="mem_no" value="${login.mem_No}">
 						<input type="hidden" name="space_no" value="${spaceDetail.space_no}"> 
                         <div class="row">
-							<input type="text" name="inq_sub" id="inq_sub" placeholder="제목을 입력주세요.">
+							<input type="text" name="inq_title" id="inq_title" placeholder="제목을 입력주세요.">
                         	<textarea cols="40" rows="3" name="inq_note" id="inq_note" placeholder="문의 사항을 작성해주세요."></textarea>
 	                    </div>
                         </form>

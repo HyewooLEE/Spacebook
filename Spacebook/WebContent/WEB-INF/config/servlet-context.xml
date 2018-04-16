@@ -21,15 +21,13 @@
 	<context:component-scan base-package="spacebook.admin.controller"/>	
 	<!-- 혜우 -->
 	<context:component-scan base-package="spacebook.submit.controller"/>
+	<context:component-scan base-package="spacebook.inquire.controller"/>
 	<!-- 남현 -->
 	<context:component-scan base-package="spacebook.view.controller"/>	
 	<context:component-scan base-package="spacebook.reserve.controller"/>
 	
     
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-	<!-- <bean id = "uploadPath" class="java.lang.String">
-		<constructor-arg value="C:\Users\LeeHyewoo\git\Spacebook\Spacebook\src\main\resources\images" />
-	</bean> -->
 
 	<mvc:interceptors>
 		<mvc:interceptor>

@@ -195,13 +195,13 @@ function openInquire() {
 }
 
 function inquireCancel() {
-	inq_sub = document.getElementById("inq_sub").value;
+	inq_title = document.getElementById("inq_title").value;
 	inq_note = document.getElementById("inq_note").value;
 	
 	$('.modalInquire').fadeOut();
     $("html, body").removeClass("hid-body");
-    if(inq_sub != "") {
-    	inq_sub = "";
+    if(inq_title != "") {
+    	inq_title = "";
     }
     
     if(inq_note != "") {
@@ -210,10 +210,10 @@ function inquireCancel() {
 }
 
 function inquire() {
-	inq_sub = document.getElementById("inq_sub").value;
+	inq_title = document.getElementById("inq_title").value;
 	inq_note = document.getElementById("inq_note").value;
 	
-	if(inq_sub == "") {
+	if(inq_title == "") {
 		swal("제목을 입력해주세요.");
 		return;
 	}

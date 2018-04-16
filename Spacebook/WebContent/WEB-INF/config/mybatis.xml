@@ -44,7 +44,7 @@
 	<bean id="spaceDAO" class="spacebook.submit.model.SpaceDAO">
 	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	<bean id="spaceInquireDAO" class="spacebook.view.model.SpaceInquireDAO">
+	<bean id="spaceInquireDAO" class="spacebook.inquire.model.SpaceInquireDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<!-- 남현 -->

@@ -3,21 +3,17 @@ package spacebook.inquire.model;
 public class SpaceInquireDTO {
 	private int inq_no;
 	private int space_no;
+	private int mem_no;
 	private String mem_name;
 	private String mem_id;
 	private String inq_writeDate;
-	private String inq_sub;
+	private String inq_title;
 	private String inq_note;
 	private int inq_ref;
 	private int inq_step;
 	private int inq_level;
 	
-	public String getInq_sub() {
-		return inq_sub;
-	}
-	public void setInq_sub(String inq_sub) {
-		this.inq_sub = inq_sub;
-	}
+	
 	public int getInq_no() {
 		return inq_no;
 	}
@@ -30,11 +26,23 @@ public class SpaceInquireDTO {
 	public void setSpace_no(int space_no) {
 		this.space_no = space_no;
 	}
+	public int getMem_no() {
+		return mem_no;
+	}
+	public void setMem_no(int mem_no) {
+		this.mem_no = mem_no;
+	}
 	public String getInq_writeDate() {
 		return inq_writeDate;
 	}
 	public void setInq_writeDate(String inq_writeDate) {
 		this.inq_writeDate = inq_writeDate;
+	}
+	public String getInq_title() {
+		return inq_title;
+	}
+	public void setInq_title(String inq_title) {
+		this.inq_title = inq_title;
 	}
 	public String getInq_note() {
 		return inq_note;

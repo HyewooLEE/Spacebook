@@ -6,11 +6,13 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import spacebook.view.model.SpaceInquireDAO;
-import spacebook.view.model.SpaceInquireDTO;
+import spacebook.inquire.model.SpaceInquireDAO;
+import spacebook.inquire.model.SpaceInquireDTO;
+
 
 @Service
 public class SpaceInquireServiceImpl implements SpaceInquireService{
+	
 	@Autowired
 	SpaceInquireDAO dao;
 	
@@ -19,16 +21,17 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	}
 
 	@Override
-	public void insertSpaceInquire(SpaceInquireDTO dto) {
+	public void insertSpaceInquire(SpaceInquireDTO inquireDTO) {
 		Date dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		dto.setInq_writeDate(sdf.format(dt));
+		inquireDTO.setInq_writeDate(sdf.format(dt));
 		
-		dao.spaceInquireInsert(dto);
+		dao.spaceInquireInsert(inquireDTO);
 	}
 
 	@Override
-	public void deleteSpaceInquire(SpaceInquireDTO dto) {
-		dao.spaceInquireDelete(dto);
+	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO) {
+		dao.spaceInquireDelete(inquireDTO);
 	}
+
 }
