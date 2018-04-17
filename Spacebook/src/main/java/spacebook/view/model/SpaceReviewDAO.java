@@ -16,7 +16,7 @@ public class SpaceReviewDAO extends SqlSessionDaoSupport {
 		map.put("space_no", space_no);
 		map.put("startReview", startReview);
 		map.put("endReview", endReview);
-		
+		System.out.println("space_no:::::::"+ space_no);
 		return getSqlSession().selectList("spaceReview.reviewDetails", map);
 	}
 	

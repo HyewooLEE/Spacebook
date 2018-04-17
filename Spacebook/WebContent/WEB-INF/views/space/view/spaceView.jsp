@@ -162,7 +162,7 @@
 								<c:if test="${countReview > 0}">
 									<a href="javascript:;" onclick="preReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
-									<a href="javascript:;" onclick="nextReview(${countReview})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
+									<a href="javascript:;" onclick="nextReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
 								</c:if>
 						</div>
 						<!-- list-single-main-item end -->
