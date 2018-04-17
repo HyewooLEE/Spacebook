@@ -2,6 +2,7 @@ package spacebook.inquire.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +29,17 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 		
 		dao.spaceInquireInsert(inquireDTO);
 	}
+	
+	@Override
+	public List<SpaceInquireDTO> selectSpaceInquire() {
+		return dao.spaceInquireSelect();
+	}
 
 	@Override
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO) {
 		dao.spaceInquireDelete(inquireDTO);
 	}
+
+	
 
 }

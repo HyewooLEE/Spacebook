@@ -74,12 +74,12 @@
                             <!-- Checkboxes -->
                             <div class=" fl-wrap filter-tags">
                                 <h4>편의시설</h4>
-                                <div class="col-md-3">
                                 <c:forEach var="facility" items="${facility}">
+                                <div class="col-md-3">
                                		<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
 	                         		<label for="${facility.fac_no}">${facility.fac_name }</label>
-                               	</c:forEach>
                                	</div>
+                               	</c:forEach>
                             </div>
                         </div>
                         <!-- hidden-listing-filter end -->
