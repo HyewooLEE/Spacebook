@@ -1,4 +1,4 @@
-package spacebook.submit.model;
+package spacebook.view.model;
 
 public class SpaceFacilityDTO {
 	private int fac_no;
@@ -23,4 +23,20 @@ public class SpaceFacilityDTO {
 	public void setFac_icon(String fac_icon) {
 		this.fac_icon = fac_icon;
 	}
+	public SpaceFacilityDTO(int fac_no, String fac_name, String fac_icon) {
+		super();
+		this.fac_no = fac_no;
+		this.fac_name = fac_name;
+		this.fac_icon = fac_icon;
+	}
+	public SpaceFacilityDTO() {
+		fac_no = 0;
+		fac_name = "";
+		fac_icon = "";
+	}
+	@Override
+	public String toString() {
+		return "SpaceFacilityDTO [fac_no=" + fac_no + ", fac_name=" + fac_name + ", fac_icon=" + fac_icon + "]";
+	}
+	
 }

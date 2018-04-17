@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.view.model.EtcSpaceDTO;
 import spacebook.view.model.SpaceDetailDAO;
+import spacebook.view.model.SpaceFacilityDTO;
 
 @Service
 public class SpaceViewServiceImpl implements SpaceViewService {
@@ -26,5 +27,10 @@ public class SpaceViewServiceImpl implements SpaceViewService {
 	@Override
 	public List<EtcSpaceDTO> etcSpaceList(int mem_no) {
 		return dao.etcSpaceList(mem_no);
+	}
+
+	@Override
+	public SpaceFacilityDTO facilityList(String fac_no) {
+		return dao.facilityList(fac_no);
 	}
 }

@@ -122,11 +122,13 @@ function reviewSubmit() {
 }
 var reviewPage = 1;
 
-function nextReview() {
-	reviewPage += 3;
-	
+function nextReview(totalReview) {
+	if(reviewPage < totalReview) {
+		reviewPage += 3;
+	}
 	//{startReview:reviewPage, endReview:reviewPage+2}
 	var params = "startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
+	
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/showReview.do",
@@ -134,21 +136,29 @@ function nextReview() {
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			$('#review').children().remove();
+			
+			/*$('#review').children().remove();*/
+			$('#review').html('');
 			for(var i=0; i<result.data.length; i++) {
-				//var result = result.data[i];
+				var star = "";
+				for(var j=0; j<result.data[i].rev_rate; j++) {
+					star += "<i class='fa fa-star'></i>";
+				}
+				
 				$('#review').append(
 						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
 							"<img src='images/avatar/1.jpg'>" +
 						"</div>" +
 						"<div class='reviews-comments-item-text'>" + 
-							"<h4><a href='#'>'"+ result.data[i].mem_name + "'</a></h4>" +
-							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'></div>" +
+							"<h4><a href='#'>"+ result.data[i].mem_name + "</a></h4>" +
+							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'>"+
+								star + 
+							"</div>" +
 							"<div class='clearfix'></div>" +
-							"<p>'"+ result.data[i].rev_note +"'</p>" +
+							"<p>"+ result.data[i].rev_note +"</p>" +
 							"<span class='reviews-comments-item-date'>" +
-								"<i class='fa fa-calendar-check-o'></i>'"+ result.data[i].rev_writeDate +"'" +
+								"<i class='fa fa-calendar-check-o'></i>"+ result.data[i].rev_writeDate +
 							"</span>" +
 						"</div>"+
 						"</div>"
@@ -172,21 +182,27 @@ function preReview() {
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			$('#review').children().remove();
+			$('#review').html('');
 			for(var i=0; i<result.data.length; i++) {
-				//var result = result.data[i];
+				var star = "";
+				for(var j=0; j<result.data[i].rev_rate; j++) {
+					star += "<i class='fa fa-star'></i>";
+				}
+				
 				$('#review').append(
 						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
 							"<img src='images/avatar/1.jpg'>" +
 						"</div>" +
 						"<div class='reviews-comments-item-text'>" + 
-							"<h4><a href='#'>'"+ result.data[i].mem_name + "'</a></h4>" +
-							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'></div>" +
+							"<h4><a href='#'>"+ result.data[i].mem_name + "</a></h4>" +
+							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'>"+
+								star + 
+							"</div>" +
 							"<div class='clearfix'></div>" +
-							"<p>'"+ result.data[i].rev_note +"'</p>" +
+							"<p>"+ result.data[i].rev_note +"</p>" +
 							"<span class='reviews-comments-item-date'>" +
-								"<i class='fa fa-calendar-check-o'></i>'"+ result.data[i].rev_writeDate +"'" +
+								"<i class='fa fa-calendar-check-o'></i>"+ result.data[i].rev_writeDate +
 							"</span>" +
 						"</div>"+
 						"</div>"
