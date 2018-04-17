@@ -75,7 +75,7 @@ public class SpaceViewController {
 	public String insertReview(@RequestParam(value = "space_no", defaultValue="1") int space_no, SpaceReviewDTO dto, Model model) {
 		srs.insertSpaceReview(dto);
 		
-		return "redirect:spaceView.do";
+		return "redirect:spaceView.do?space_no="+ space_no;
 	}
 	
 	@RequestMapping(value="/showReview.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
