@@ -122,12 +122,12 @@ function reviewSubmit() {
 }
 var reviewPage = 1;
 
-function nextReview(totalReview) {
+function nextReview(totalReview, space_no) {
 	if(reviewPage < totalReview) {
 		reviewPage += 3;
 	}
 	//{startReview:reviewPage, endReview:reviewPage+2}
-	var params = "startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
+	var params = "space_no="+ space_no +"startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	
 	$.ajax({
 		type: "get",
@@ -174,7 +174,7 @@ function preReview() {
 	} else {
 		reviewPage = 1;
 	}
-	var params = "startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
+	var params = "space_no="+ space_no +"startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/showReview.do",

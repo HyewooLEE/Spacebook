@@ -64,6 +64,8 @@ public class SpaceViewController {
 		model.addAttribute("fac_list", fac_list);
 		model.addAttribute("etcSpaceList", etc_dto);
 		model.addAttribute("countReview", review_count);
+		
+		System.out.println("review_count::::"+ review_count);
 		model.addAttribute("reviewList", review_list);
 		model.addAttribute("spaceDetail", dto);
 		model.addAttribute("space_tag", tag_list);
