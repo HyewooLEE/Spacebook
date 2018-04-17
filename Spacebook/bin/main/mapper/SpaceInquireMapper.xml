@@ -13,8 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from inquire i, member m where i.mem_no=m.mem_no
 	</select>
 	
-	<select id="selectInqContent" parameterType="int" resultType="spacebook.inquire.model.SpaceInquireDTO">
-		select * from inquire i, member m where i.mem_no=m.mem_no and inq_no=#{inq_no}
+	<select id="selectInqContent" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
+		select * from inquire i, member m where i.mem_no=m.mem_no and inq_no=#{inqNo}
 	</select>
 	
 	<delete id="deleteInquire">
