@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import spacebook.main.model.MainDAO;
 import spacebook.submit.model.SpaceDTO;
+import spacebook.view.model.SpaceReviewDTO;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -21,6 +22,11 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public List<SpaceDTO> categorySpace() {
 		return mainDao.selectCategorySpace();
+	}
+
+	@Override
+	public List<SpaceReviewDTO> reviewList() {
+		return mainDao.reviewList();
 	}
 
 	/*@Override
