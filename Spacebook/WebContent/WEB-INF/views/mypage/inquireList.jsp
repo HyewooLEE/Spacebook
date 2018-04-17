@@ -74,19 +74,21 @@
 							<div >
 							  <table class="table table-hover">
 							    <thead>
-							      <tr>
-							        <th>작성자</th>
-							        <th align="center">제목</th>
-							        <th>작성일</th>
+							      <tr > 
+							        <th style="text-align:center">작성자</th>
+							        <th style="text-align:center">제목</th>
+							        <th style="text-align:center">작성일</th>
 							      </tr>
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-							      <tr>
-							        <td width="20%">${inquireList.mem_name }</td>
+							    <c:if test="${inquireList.mem_no==login.mem_No }">
+							      <tr style="text-align:center">
+							        <td width="20%" >${inquireList.mem_name }</td>
 							        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 							        <td width="20%">${inquireList.inq_writeDate }</td>
 							      </tr>
+							      </c:if>
 							    </c:forEach>
 							    </tbody>
 							  </table>
