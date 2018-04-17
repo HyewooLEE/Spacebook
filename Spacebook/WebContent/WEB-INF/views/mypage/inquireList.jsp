@@ -84,7 +84,7 @@
 							    <c:forEach var="inquireList" items="${inquireList }">
 							      <tr>
 							        <td width="20%">${inquireList.mem_name }</td>
-							        <td width="60%"><a href="inquireContent.do?inq_no="${inquireList.inq_no }>${inquireList.inq_title }</a></td>
+							        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 							        <td width="20%">${inquireList.inq_writeDate }</td>
 							      </tr>
 							    </c:forEach>

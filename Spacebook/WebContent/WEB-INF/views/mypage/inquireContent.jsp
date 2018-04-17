@@ -76,42 +76,23 @@
 							    <thead>
 							      <tr>
 							        <th>작성자</th>
+							      </tr>
+							      <tr>
 							        <th align="center">제목</th>
+							      </tr>
+							      <tr>
 							        <th>작성일</th>
 							      </tr>
 							    </thead>
 							    <tbody>
-							    <c:forEach var="inquireList" items="${inquireList }">
 							      <tr>
-							        <td width="20%">${inquireList.mem_name }</td>
-							        <td width="60%"><a href="">${inquireList.inq_title }</a></td>
-							        <td width="20%">${inquireList.inq_writeDate }</td>
+							        <td width="20%"></td>
+							        <td width="60%"><a href=""></a></td>
+							        <td width="20%"></td>
 							      </tr>
-							    </c:forEach>
 							    </tbody>
 							  </table>
 							</div>
-							
-							<%-- <div class="dashboard-list-box fl-wrap">
-								<div class="dashboard-header fl-wrap">
-									 <h3 style="display:inline; float:left;">작성자</h3>
-									 <h3 style="display:inline; float:center;">제목</h3>
-									 <h3 style="display:inline; float:right;">작성일</h3>
-								</div>
-								<c:forEach var="inquireList" items="${inquireList }">
-								<div class="dashboard-list" style="width:100%">
-									<div class="dashboard-message" >
-										<div class="dashboard-message-text" style="margin-left:0px;">
-											<h4 style="padding-bottom: 0px;">
-												<span>${inquireList.inq_title }</span>
-												<a href="">${inquireList.inq_title }</a>
-												<span class="pull-right">${inquireList.inq_writeDate }</span>
-											</h4>
-		 								</div>
-									</div>
-								</div>
-								</c:forEach>
-							</div> --%>
 						</div>
 					</div>
 				</div>
