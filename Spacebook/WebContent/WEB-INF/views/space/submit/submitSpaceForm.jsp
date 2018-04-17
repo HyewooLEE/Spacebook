@@ -118,14 +118,10 @@
                             	<!-- Checkboxes -->
                                 <div class="filter-tags">
                                 	<c:forEach var="facility" items="${facility}" varStatus="status">
-                                		<%-- <c:if test="${status.count % 7 == 1}"> --%>
 				                        <div class="col-md-3">
-				                        <%-- </c:if> --%>
                                 		<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
 		                         		<label for="${facility.fac_no}">${facility.fac_name }</label>
-		                         		<%-- <c:if test="${status.count % 7 == 0}"> --%>
 				                        </div>
-				                        <%-- </c:if> --%>
                                 	</c:forEach>
                                 </div>
                                 <label>공간태그 ( , 로 구분 해주세요 )<i class="fa fa-key"></i></label>
