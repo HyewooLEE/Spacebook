@@ -22,4 +22,14 @@ public class SpaceDetailDAO extends SqlSessionDaoSupport{
 		
 		return getSqlSession().selectList("spaceView.etcSpaceList", map);
 	}
+	
+	public SpaceFacilityDTO facilityList(String fac_no) {
+		System.out.println("fac_no:::" + fac_no);
+		Map<String, String> map = new HashMap<String, String>();
+		int facility_no = Integer.parseInt(fac_no);
+		System.out.println(facility_no);
+		map.put("fac_no", fac_no);
+		
+		return getSqlSession().selectOne("spaceView.facilityList", map);
+	}
 }

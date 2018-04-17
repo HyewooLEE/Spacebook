@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import spacebook.submit.model.SpaceDTO;
+import spacebook.view.model.SpaceReviewDTO;
 
 public class MainDAO extends SqlSessionDaoSupport{
 	
@@ -17,4 +18,7 @@ public class MainDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("main.countSpaceCategory");
 	}*/
 
+	public List<SpaceReviewDTO> reviewList() {
+		return getSqlSession().selectList("main.reviewList");
+	}
 }

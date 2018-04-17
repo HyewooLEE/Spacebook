@@ -35,14 +35,6 @@
                            		<option value="카페">카페</option>
                            		<option value="기타">기타</option>
                            	</select>
-                            <!-- <select data-placeholder="All Categories" class="chosen-select" >
-                                <option>종류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                                <option>Shops</option>
-                                <option>Hotels</option>
-                                <option>Restaurants</option>
-                                <option>Fitness</option>
-                                <option>Events</option>
-                            </select> -->
                         </div>
                         <button class="header-search-button" onclick="window.location.href='listing.html'">검색하기</button>
                     </div>
@@ -68,8 +60,11 @@
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 예약리스트</a></li>
                             <li><a href="#">나의 찜공간</a></li>
+                            <li><a href="inquireList.do">1:1문의</a></li>
+                            <li><a href="#"></a></li>
                             <li><a href="#">나의 공간관리</a></li>
                             <li><a href="#">공간 예약현황</a></li>
+                            <li><a href="#">1:1문의관리</a></li>
                             <li><a href="#">공간 정산정보</a></li>
                             <li><a href="#"></a></li>
                             <c:if test="${login.mem_Id eq 'admin@admin.com' }">

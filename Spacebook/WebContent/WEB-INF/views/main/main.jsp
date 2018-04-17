@@ -92,7 +92,7 @@
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
+								<a href="spaceView.do?space_no=${category.space_no }">${category.space_category } - ${category.space_name }</a>
 							</h3>
 							<p>${category.space_intro1 }</p>
 						</div>
@@ -112,7 +112,7 @@
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
+								<a href="spaceView.do?space_no=${category.space_no }">${category.space_category } - ${category.space_name }</a>
 							</h3>
 							<p>${category.space_intro1 }</p>
 						</div>
@@ -132,7 +132,7 @@
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
+								<a href="spaceView.do?space_no=${category.space_no }">${category.space_category } - ${category.space_name }</a>
 							</h3>
 							<p>${category.space_intro1 }</p>
 						</div>
@@ -152,7 +152,7 @@
 						</div>
 						<div class="listing-item-cat">
 							<h3>
-								<a href="listing.html">${category.space_category } - ${category.space_name }</a>
+								<a href="spaceView.do?space_no=${category.space_no }">${category.space_category } - ${category.space_name }</a>
 							</h3>
 							<p>${category.space_intro1 }</p>
 						</div>
@@ -563,7 +563,7 @@
 		<div class="intro-item fl-wrap">
 			<h2>비어있는 나의 공간을 가치있게 활용하세요!</h2>
 			<h3>무용지물 나의 공간이 가치있는 공간으로 재탄생 합니다! </h3>
-			<a class="trs-btn" href="#">공간 등록하기 + </a>
+			<a class="trs-btn" href="submitSpaceForm.do">공간 등록하기 + </a>
 		</div>
 	</div>
 </section>
@@ -583,25 +583,21 @@
 		<!--testimonials-carousel-->
 		<div class="testimonials-carousel single-carousel fl-wrap">
 			<!--slick-slide-item-->
+			<c:forEach var="reviewList" items="reviewList">
 			<div class="slick-slide-item">
 				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis"
-						data-starrating2="5"></div>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit
-						voluptatem accusantium doloremque laudantium, totam rem aperiam,
-						eaque ipsa quae ab illo inventore veritatis et quasi arch itecto
-						beatae vitae dicta sunt explicabo.</p>
+					<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.getRev_rate}"></div>
+					<p>${reviewList.getRev_note}</p>
 				</div>
 				<div class="testimonilas-avatar-item">
 					<div class="testimonilas-avatar">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-							alt="">
+						<img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg">
 					</div>
 					<h4>Lisa Noory</h4>
 					<span>Restaurant Owner</span>
 				</div>
 			</div>
+			</c:forEach>
 			<!--slick-slide-item end-->
 			<!--slick-slide-item-->
 			<div class="slick-slide-item">

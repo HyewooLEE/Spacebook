@@ -73,26 +73,29 @@
 							</div>
 							<div >
 							  <table class="table table-hover">
-							    <thead>
-							      <tr > 
-							        <th style="text-align:center">작성자</th>
-							        <th style="text-align:center">제목</th>
-							        <th style="text-align:center">작성일</th>
-							      </tr>
-							    </thead>
 							    <tbody>
-							    <c:forEach var="inquireList" items="${inquireList }">
-							    <c:if test="${inquireList.mem_no==login.mem_No }">
-							      <tr style="text-align:center">
-							        <td width="20%" >${inquireList.mem_name }</td>
-							        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-							        <td width="20%">${inquireList.inq_writeDate }</td>
+							      <tr>
+							        <th width="30%">작성자</th>
+							        <td width="70%">${inquireList.mem_name }</td>
 							      </tr>
-							      </c:if>
-							    </c:forEach>
+							      <tr>
+							        <th>작성일</th>
+							        <td>${inquireList.inq_writeDate }</td>
+							      </tr>
+							      <tr>
+							        <th align="center">제목</th>
+							        <td>${inquireList.inq_title }</td>
+							      </tr>
+							      <tr>
+							        <th align="center">내용</th>
+							        <td>${inquireList.inq_note }</td>
+							      </tr>
 							    </tbody>
 							  </table>
 							</div>
+							<a class="btn  big-btn  color-bg flat-btn" onclick='history.back(-1); return false;'>
+								목록으로<i class="fa fa-angle-right"></i>
+							</a>
 						</div>
 					</div>
 				</div>

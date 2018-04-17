@@ -74,22 +74,22 @@
                                <div class="single-slider-wrapper fl-wrap">
                                    <div class="single-slider fl-wrap"  >
                                    <c:if test="${spaceDetail.space_img2!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img2}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img2}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    <c:if test="${spaceDetail.space_img3!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img3}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img3}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    <c:if test="${spaceDetail.space_img4!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img4}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img4}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    <c:if test="${spaceDetail.space_img5!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img5}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img5}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    <c:if test="${spaceDetail.space_img6!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img6}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img6}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    <c:if test="${spaceDetail.space_img7!=null}">
-                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img7}" style="width:738px;height:394px;"></div>
+                                   	<div class="slick-slide-item"><img src="${spaceDetail.space_img7}" style="width:806px;height:533px;"></div>
                                    </c:if>
                                    </div>
                                    <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left" style="margin-top: 16px"></i></div>
@@ -101,7 +101,7 @@
 								<h3>상세 정보</h3>
 							</div>
 							<p>${spaceDetail.space_intro2}</p>
-							<a href="javascript:window.open('${spaceDetail.space_site}')" class="btn transparent-btn float-btn">홈페이지
+							<a href="javascript:window.open('http://${spaceDetail.space_site}')" class="btn transparent-btn float-btn">홈페이지
 							<i class="fa fa-angle-right"></i>
 							</a> <span class="fw-separator"></span>
 							<div class="list-single-main-item-title fl-wrap">
@@ -109,15 +109,8 @@
 							</div>
 							<div class="listing-features fl-wrap">
 								<ul>
-									<c:forEach var="fac_no" items="fac_no">
-									<li><img src="${pageContext.request.contextPath}/resources/bootstrap/images/icon/${fac_no}.png"> Elevator in building</li>
-									<li><i class="fa fa-wifi"></i> Free Wi Fi</li>
-									<li><i class="fa fa-motorcycle"></i> Free Parking</li>
-									<li><i class="fa fa-cloud"></i> Air Conditioned</li>
-									<li><i class="fa fa-shopping-cart"></i> Online Ordering</li>
-									<li><i class="fa fa-paw"></i> Pet Friendly</li>
-									<li><i class="fa fa-tree"></i> Outdoor Seating</li>
-									<li><i class="fa fa-wheelchair"></i> Wheelchair Friendly</li>
+									<c:forEach var="fac_list" items="${fac_list}">
+										<li><img src="${pageContext.request.contextPath}/resources/bootstrap/images/icon/${fac_list.fac_icon}.png"> ${fac_list.fac_name} </li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -146,8 +139,7 @@
 									리뷰 - <span> ${countReview} </span>
 								</h3>
 							</div>
-							<div class="reviews-comments-wrap" id="review">
-								<!-- reviews-comments-item -->
+							<div class="reviews-comments-wrap" id="review" style="width:100%;">
 								<c:forEach var="reviewList" items="${reviewList}">
 								<div class="reviews-comments-item">
 									<div class="review-comments-avatar">
@@ -155,7 +147,8 @@
 									</div>
 									<div class="reviews-comments-item-text">
 										<h4><a href="#">${reviewList.mem_name}</a></h4>
-										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
+										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}">
+										</div>
 										<div class="clearfix"></div>
 										<p>${reviewList.rev_note}</p>
 										<span class="reviews-comments-item-date">
@@ -167,16 +160,16 @@
 								<!--reviews-comments-item end-->
 							</div>
 								<c:if test="${countReview > 0}">
-									<a href="javascript:;" onclick="preReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
+									<a href="javascript:;" onclick="preReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
-									<a href="javascript:;" onclick="nextReview()"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
+									<a href="javascript:;" onclick="nextReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
 								</c:if>
 						</div>
 						<!-- list-single-main-item end -->
 						<!-- list-single-main-item -->
 						<div class="list-single-main-item fl-wrap" id="sec5">
 							<div class="list-single-main-item-title fl-wrap">
-								<h3>리뷰 & 별점</h3>
+								<h3>리뷰 &amp; 별점</h3>
 							</div>
 							<!-- Add Review Box -->
 								<div id="add-review" class="add-review-box">
@@ -306,8 +299,8 @@
 							</div>
 							<div class="box-widget">
 								<div class="map-container">
-									<div id="singleMap" data-latitude="37.388169"
-										data-longitude="-73.11445617675781"
+									<div id="singleMap" data-latitude="${spaceDetail.map_latitude}"
+										data-longitude="${spaceDetail.map_longitude}"
 										data-mapTitle="Our Location"></div>
 								</div>
 								<div class="box-widget-content">

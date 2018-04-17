@@ -1,5 +1,7 @@
 package spacebook.inquire.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,13 +32,27 @@ public class InquireController {
 	}
 
 	@RequestMapping("inquireList.do")
-	public String inquireList(Model model) {
+	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
+		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("inquireList",inquireList);
 		
 		return "inquireList";
 	}
 	
+	@RequestMapping("inquireContent.do")
+	public String inquireContent(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value = "inq_no") int inq_no, Model model) {
+		System.out.println(inq_no);
+		
+		SpaceInquireDTO inquireDTO = inquireService.selectInqContent(inq_no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("inquireList", inquireDTO);
+		
+		return "inquireContent";
+	}
+	
 	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String insertInquire(@RequestParam(value = "space_no", defaultValue="1") int space_no, SpaceInquireDTO inquireDTO, Model model) {
+	public String insertInquire(@RequestParam(value = "space_no") int space_no, SpaceInquireDTO inquireDTO, Model model) {
 		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
 		inquireService.insertSpaceInquire(inquireDTO);
 		model.addAttribute("spaceDetail", spaceDTO);
