@@ -121,13 +121,17 @@ function reviewSubmit() {
 	spaceReviewForm.submit();
 }
 var reviewPage = 1;
+var reviewCurPage = 1;
 
 function nextReview(totalReview, space_no) {
-	if(reviewPage < totalReview) {
+	alert(totalReview);
+	alert(reviewCurPage);
+	if(reviewCurPage <= totalReview / 3) {
+		reviewCurPage ++;
 		reviewPage += 3;
 	}
 	//{startReview:reviewPage, endReview:reviewPage+2}
-	var params = "space_no="+ space_no +"startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
+	var params = "space_no="+ space_no +"&startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	
 	$.ajax({
 		type: "get",
@@ -168,13 +172,17 @@ function nextReview(totalReview, space_no) {
 	});	
 }
 
-function preReview() {
-	if(reviewPage > 3) {
+function preReview(totalReview, space_no) {
+	alert(totalReview);
+	alert(reviewCurPage);
+	if(reviewCurPage >= totalReview / 3) {
+		reviewCurPage--;
 		reviewPage -= 3;
 	} else {
+		reviewCurPage= 1;
 		reviewPage = 1;
 	}
-	var params = "space_no="+ space_no +"startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
+	var params = "space_no="+ space_no +"&startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/showReview.do",
