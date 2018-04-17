@@ -93,6 +93,9 @@
 							    </tbody>
 							  </table>
 							</div>
+							<a class="btn  big-btn  color-bg flat-btn" onclick='history.back(-1); return false;'>
+								목록으로<i class="fa fa-angle-right"></i>
+							</a>
 						</div>
 					</div>
 				</div>
