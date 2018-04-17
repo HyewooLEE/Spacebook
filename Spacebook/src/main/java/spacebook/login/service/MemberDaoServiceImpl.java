@@ -60,4 +60,12 @@ public class MemberDaoServiceImpl implements MemberDaoService {
 		return dao.memberCount("Member.memberCount",map);
 	}
 
+	@Override
+	public int updateAuth(String filter,String mem_Id) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("filter", filter);
+		map.put("mem_Id", mem_Id);
+		return dao.updateAuth("Member.updateAuth", map);
+	}
+
 }

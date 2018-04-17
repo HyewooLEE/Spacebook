@@ -111,9 +111,8 @@
                             	<li><a href="#">이용 안내 <i class="fa fa-caret-down"></i></a>
                                     <!--second level -->   
                                     <ul>
-                                        <li><a href="#">회사소개</a></li>
-                                        <li><a href="#">메뉴얼</a></li>
-                                        <li><a href="#">CONTACT</a></li>
+                                        <li><a href="company.do">회사소개</a></li>
+                                        <li><a href="howitwork.do">메뉴얼</a></li>
                                     </ul>
                                     <!--second level end-->                                
                                 </li>

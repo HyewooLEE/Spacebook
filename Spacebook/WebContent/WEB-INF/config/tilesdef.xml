@@ -61,6 +61,16 @@
 			<put-attribute name="body" value="/WEB-INF/views/admin/noticeContent.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>
+		<definition name="company" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/company.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/admin/companyScript.jsp" />
+		</definition>
+		<definition name="howitwork" extends="base_layout" >
+			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/howitwork.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
 		<!-- 혜우 -->
 		<definition name="submitSpaceForm" extends="base_layout">
 			<put-attribute name="title" value="공간등록" />

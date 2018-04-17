@@ -41,4 +41,9 @@ public class MemberDAO extends SqlSessionDaoSupport {
 		int memberCount = getSqlSession().selectOne(QueryId,map);
 		return memberCount;
 	}
+	
+	public int updateAuth(String QueryId, HashMap<String, String> map) {
+		int check = getSqlSession().update(QueryId, map);
+		return check;
+	}
 }

@@ -74,43 +74,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberCount" resultType="Int" parameterType="java.util.Map">
 		select count(*) from member
 		<where>
-		<if test="search != null">
-         and mem_Name LIKE '%'||#{search}||'%'
+		<if test='search != null and !search.equals("") and search !="" '>
+        and mem_Name LIKE '%'||#{search}||'%'
         </if>
-         <if test="type2 != null and type2.equals('@') ">
+        <if test='type2 != null and !type2.equals("") and type2.equals("E")' >
         and mem_Id LIKE '%@%'
         </if>
-        <if test="type2 != null and type2.equals('.')">
-        and mem_Id not LIKE '%@%'
+        <if test='type2 != null and !type2.equals("") and type2.equals("K")'>
+        and mem_Id NOT LIKE '%@%'
         </if>
-        <if test="type1 !=null and type1.equals('NONENABLED')">
+        <if test='type1 !=null and !type1.equals("") and type1.equals("N")'>
         and mem_enabled != 1
         </if>
-        <if test="type1 != null">
-        and mem_Auth = #{type1}
-        </if>
-		</where>
+        <if test='type1 != null and !type1.equals("") and !type1.equals("N")'>
+        and mem_Auth = #{type1} and mem_enabled =1
+        </if>        
+        </where>
 	</select>
 	<select id="memberFilter" parameterType="java.util.Map" resultType="spacebook.login.model.MemberVO">
 		select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH 
 		from (select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH, rownum r 
         from ( select MEM_NO,MEM_ID,MEM_NAME,MEM_PHONE,MEM_ADDR2,MEM_ADDR3,MEM_IMG,MEM_FAVOR,MEM_ENABLED,MEM_AUTH
-        from MEMBER order by MEM_NO desc) order by MEM_NO desc ) 
-        where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
-        <if test="search != null and !search.equals('')">
+        from MEMBER 
+        <where>
+		<if test='search != null and !search.equals("") and search !="" '>
         and mem_Name LIKE '%'||#{search}||'%'
         </if>
-        <if test="type2 != null and !type2.equals('') and type2.equals('@') ">
+        <if test='type2 != null and !type2.equals("") and type2.equals("E")' >
         and mem_Id LIKE '%@%'
         </if>
-        <if test="type2 != null and !type2.equals('') and type2.equals('.')">
+        <if test='type2 != null and !type2.equals("") and type2.equals("K")'>
         and mem_Id NOT LIKE '%@%'
         </if>
-        <if test="type1 !=null and !type1.equals('') and type1.equals('NONENABLED')">
+        <if test='type1 !=null and !type1.equals("") and type1.equals("N")'>
         and mem_enabled != 1
         </if>
-        <if test="type1 != null and !type1.equals('') ">
-        and mem_Auth = #{type1}
-        </if>
+        <if test='type1 != null and !type1.equals("") and !type1.equals("N")'>
+        and mem_Auth = #{type1} and mem_enabled =1
+        </if>        
+        </where>
+        order by MEM_NO desc) order by MEM_NO desc ) 
+        where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
 	</select>
+	<update id="updateAuth" parameterType="java.util.Map">
+	update member set 
+	mem_auth = #{filter}
+	where mem_Id= #{mem_Id}
+	</update>
 </mapper>
