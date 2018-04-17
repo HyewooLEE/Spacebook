@@ -73,22 +73,22 @@
 							</div>
 							<div >
 							  <table class="table table-hover">
-							    <thead>
+							    <tbody>
 							      <tr>
-							        <th>작성자</th>
-							      </tr>
-							      <tr>
-							        <th align="center">제목</th>
+							        <th width="30%">작성자</th>
+							        <td width="70%">${inquireList.mem_name }</td>
 							      </tr>
 							      <tr>
 							        <th>작성일</th>
+							        <td>${inquireList.inq_writeDate }</td>
 							      </tr>
-							    </thead>
-							    <tbody>
 							      <tr>
-							        <td width="20%"></td>
-							        <td width="60%"><a href=""></a></td>
-							        <td width="20%"></td>
+							        <th align="center">제목</th>
+							        <td>${inquireList.inq_title }</td>
+							      </tr>
+							      <tr>
+							        <th align="center">내용</th>
+							        <td>${inquireList.inq_note }</td>
 							      </tr>
 							    </tbody>
 							  </table>
