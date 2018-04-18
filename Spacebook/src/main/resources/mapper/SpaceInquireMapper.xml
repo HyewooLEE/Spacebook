@@ -5,33 +5,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spaceInquire">
 
+	<!-- <resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	    <result column="MEM_NO" property="mem_No"/>
+	    <result column="MEM_ID" property="mem_Id"/>
+	    <result column="MEM_NAME" property="mem_Name"/>
+	</resultMap>
+
+	<resultMap type="spacebook.submit.model.SpaceDTO" id="SpaceDTO">
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
+	    <result column="SPACE_NAME" property="space_name"/>
+	</resultMap>
+
+	<resultMap type="SpaceInquireDTO" id="spaceInquireDTO">
+	    <result column="INQ_NO" property="inq_no"/>
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="INQ_WRITEDATE" property="inq_writeDate"/>
+	    <result column="INQ_TITLE" property="inq_title"/>
+	    <result column="INQ_NOTE" property="inq_note"/>
+	    <collection property="memberVO" resultMap="MemberVO"/>
+	    <collection property="spaceDTO" resultMap="SpaceDTO"/>
+	</resultMap> -->
+
 	<insert id="insertInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		insert into inquire values(inquire_seq.nextval, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_title}, #{inq_note}, #{inq_ref}, #{inq_step}, #{inq_level})
 	</insert>
 	
 	<select id="selectInquire" resultType="spacebook.inquire.model.SpaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
-		<!-- select * from inquire i, member m where i.mem_no=m.mem_no -->
 		select *
 	    from 
-	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME mem_Writer,s.MEM_NO ss
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
 	            from INQUIRE i inner join SPACE s
 	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
 	                    on i.mem_no =m.mem_no ) k
 	    inner join member m1 
-	        on k.ss = m1.mem_no
+	        on k.ss = m1.mem_no  
 	</select>
 	
 	<select id="selectInqContent" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
-		select * from inquire i, member m where i.mem_no=m.mem_no and inq_no=#{inqNo}
-		<!-- select *
+		select *
 		    from 
-		        (select i.INQ_NO,i.INQ_TITLE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,s.MEM_NO ss
+		        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
 		            from INQUIRE i inner join SPACE s
 		                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
 		                    on i.mem_no =m.mem_no ) k
 		    inner join member m1 
-		        on k.ss = m1.mem_no
-		    where inq_no=#{inqNo} -->
+		        on k.ss = m1.mem_no 
+		    where inq_no=#{inqNo} 
 	</select>
 	
 	<delete id="deleteInquire">
