@@ -38,7 +38,7 @@ public class InquireController {
 		model.addAttribute("inquireList",inquireList);
 		//System.out.println("auc?"+inquireList.get(0).getSpaceDTO().getSpace_addr1());
 		//System.out.println("값?"+inquireList.get(0).getSpace_no());
-		//System.out.println("counet?"+inquireList.get(0).getSpaceDTO().getCount());
+		//System.out.println("count?"+inquireList.get(0).getSpaceDTO().getCount());
 		
 		return "inquireList";
 	}
