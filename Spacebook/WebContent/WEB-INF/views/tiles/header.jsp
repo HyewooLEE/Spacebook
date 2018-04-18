@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <div class="loader-wrap">
             <div class="pin"></div>
             <div class="pulse"></div>
@@ -74,15 +75,16 @@
                             </c:if>
                             <c:set var="str1" value="${login.mem_Id }"/>
 							<c:set var="str2" value="@"/>
-                            <c:if test="${fn:contains(str1, str2)}">
-                            <li><a href="#" onclick="logout();"> 로그아웃</a></li>
+							<c:if test="${fn:contains(str1, str2)}">
+                           		<li><a href="#" onclick="logout();"> 로그아웃</a></li>
                             </c:if>
-                             <c:if test="${!fn:contains(str1, str2)}">
-                            <li><a href="kakaologout.do"> 로그아웃 </a></li>
-                            </c:if>
+                            <c:if test="${!fn:contains(str1, str2)}">
+                            	<li><a href="kakaologout.do"> 로그아웃 </a></li>
+                            </c:if> 
+                            	<li><a onclick="test()">죄송해요..</a></li>
                         </ul>
                     </div>
-                    <form action="logout.do" method="POST" style="display: none;">
+                    <form action="logout.do" method="POST" style="display: none;" id="logoutForm">
                     	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type="submit" value="Logout"  id="logout"/>
 					</form>
@@ -117,3 +119,12 @@
                     <!-- navigation  end -->
                 </div>
             </header>
+            <script>
+            	var test = function(){
+            	    Kakao.init('899499d6220daee9a08638718e824675');
+            	    if('${login.mem_Id}' != null){
+            	    	 Kakao.Auth.loginForm(function(){
+            	         });
+            	    }
+            	};
+            </script>

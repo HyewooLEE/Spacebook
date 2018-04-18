@@ -49,12 +49,12 @@
 		<definition name="noticeForm" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/noticeWriteForm.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/admin/noticeWriteFormScript.jsp" />
 		</definition>
 		<definition name="noticeUpdateForm" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/noticeUpdateForm.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/admin/noticeWriteFormScript.jsp" />
 		</definition>
 		<definition name="noticeContent" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
@@ -62,12 +62,12 @@
 			<put-attribute name="script" value="" />
 		</definition>
 		<definition name="company" extends="base_layout" >
-			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="title" value="회사소개"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/company.jsp"/>
 			<put-attribute name="script" value="/WEB-INF/views/admin/companyScript.jsp" />
 		</definition>
 		<definition name="howitwork" extends="base_layout" >
-			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="title" value="메뉴얼"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/howitwork.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>

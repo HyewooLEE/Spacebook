@@ -75,7 +75,8 @@
 		                    </div>
 							<div class="listsearch-input-item pull-left" style="width:110px;">
 	                            <select data-placeholder="Location" class="chosen-select" id="type1" name="type1">
-	                                <option value="" style="display:none;">권한</option>
+	                                <option value="">권한</option>
+	                                <option value="Z">전체</option>
 	                                <option value="ROLE_GUEST">게스트</option>
 	                                <option value="ROLE_USER">멤버</option>
 	                                <option value="ROLE_ADMIN">관리자</option>
@@ -84,7 +85,8 @@
 	                         </div>
 							<div class="listsearch-input-item pull-left" style="width:140px;">
 	                            <select data-placeholder="Location" class="chosen-select"  id="type2" name="type2">
-	                                <option value="" style="display:none;">유형</option>
+	                                <option value="">유형</option>
+	                                <option value="Y">전체</option>
 	                                <option value="E">일반계정</option>
 	                                <option value="K">카카오계정</option>
 	                            </select>
@@ -109,20 +111,19 @@
 								<div class="dashboard-message-text " style=" padding-top:15px;">
 									<div class="listsearch-input-item pull-right" style="width:125px;">
 			                            <select data-placeholder="Location" class="customFilter chosen-select" id="${members.mem_Id }" >
-			                                <option style="display:none;">권한</option>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_USER'}">
+			                                <c:if test="${members.mem_Auth eq 'ROLE_USER'  && members.mem_Enabled eq '1'}">
 			                                <option value="ROLE_GUEST">게스트</option>
 			                                <option value="ROLE_USER" selected="selected">멤버</option>
 			                                <option value="ROLE_ADMIN">관리자</option>
 			                                <option value="NONENABLED">정지계정</option>
 			                               </c:if>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_GUEST'}">
+			                                <c:if test="${members.mem_Auth eq 'ROLE_GUEST' && members.mem_Enabled eq '1'}">
 			                                <option value="ROLE_GUEST" selected="selected">게스트</option>
 			                                <option value="ROLE_USER">멤버</option>
 			                                <option value="ROLE_ADMIN">관리자</option>
 			                                <option value="NONENABLED">정지계정</option>
 			                               </c:if>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_ADMIN'}">
+			                                <c:if test="${members.mem_Auth eq 'ROLE_ADMIN' && members.mem_Enabled eq '1'}">
 			                                <option value="ROLE_GUEST">게스트</option>
 			                                <option value="ROLE_USER">멤버</option>
 			                                <option value="ROLE_ADMIN" selected="selected">관리자</option>

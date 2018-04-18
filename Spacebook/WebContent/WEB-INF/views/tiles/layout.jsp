@@ -14,6 +14,8 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/custom.css">
 <!--=============== favicons ===============-->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/bootstrap/images/favicon.ico">
+
+
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>

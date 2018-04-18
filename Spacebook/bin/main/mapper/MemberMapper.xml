@@ -83,10 +83,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test='type2 != null and !type2.equals("") and type2.equals("K")'>
         and mem_Id NOT LIKE '%@%'
         </if>
+        <if test='type2 != null and !type2.equals("") and type2.equals("Y")'>
+        and mem_No is not null
+        </if>        
         <if test='type1 !=null and !type1.equals("") and type1.equals("N")'>
         and mem_enabled != 1
         </if>
-        <if test='type1 != null and !type1.equals("") and !type1.equals("N")'>
+        <if test='type1 != null and !type1.equals("") and type1.equals("Z")'>
+        and mem_No is not null
+        </if>     
+        <if test='type1 != null and !type1.equals("") and !type1.equals("N") and !type1.equals("Z")'>
         and mem_Auth = #{type1} and mem_enabled =1
         </if>        
         </where>
@@ -106,19 +112,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test='type2 != null and !type2.equals("") and type2.equals("K")'>
         and mem_Id NOT LIKE '%@%'
         </if>
+        <if test='type2 != null and !type2.equals("") and type2.equals("Y")'>
+        and mem_No is not null
+        </if>              
         <if test='type1 !=null and !type1.equals("") and type1.equals("N")'>
         and mem_enabled != 1
         </if>
-        <if test='type1 != null and !type1.equals("") and !type1.equals("N")'>
+        <if test='type1 != null and !type1.equals("") and type1.equals("Z")'>
+        and mem_No is not null
+        </if>         
+      <if test='type1 != null and !type1.equals("") and !type1.equals("N") and !type1.equals("Z")'>
         and mem_Auth = #{type1} and mem_enabled =1
-        </if>        
+        </if>
         </where>
         order by MEM_NO desc) order by MEM_NO desc ) 
         where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
 	</select>
 	<update id="updateAuth" parameterType="java.util.Map">
 	update member set 
-	mem_auth = #{filter}
+	<if test='filter != null and !filter.equals("") and !filter.equals("NONENABLED")' >
+	mem_auth = #{filter}, mem_enabled =1
+	</if>
+	<if test='filter != null and !filter.equals("") and filter.equals("NONENABLED")' >
+	mem_enabled = 0
+	</if>
 	where mem_Id= #{mem_Id}
 	</update>
 </mapper>
