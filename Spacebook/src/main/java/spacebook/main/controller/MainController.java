@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spacebook.main.model.MainDTO;
 import spacebook.main.service.MainService;
 import spacebook.submit.model.SpaceDTO;
-import spacebook.view.model.SpaceReviewDTO;
 
 @Controller
 public class MainController {
@@ -25,10 +25,8 @@ public class MainController {
 	public String main(Model model) {
 		List<SpaceDTO> categorySpace = mainService.categorySpace();
 		//List<SpaceDTO> countCate = mainService.countSpaceCategory();
-		List<SpaceReviewDTO> review = mainService.reviewList();
-		for(int i=0; i<review.size(); i++) {
-			
-		}
+		List<MainDTO> review = mainService.reviewList();
+		
 		model.addAttribute("category", categorySpace);
 		model.addAttribute("review", review);
 		//model.addAttribute("countCate", countCate);
