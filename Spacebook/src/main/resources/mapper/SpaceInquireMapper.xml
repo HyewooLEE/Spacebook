@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spaceInquire">
 
-	<!-- <resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
 	    <result column="MEM_NO" property="mem_No"/>
 	    <result column="MEM_ID" property="mem_Id"/>
 	    <result column="MEM_NAME" property="mem_Name"/>
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_NAME" property="space_name"/>
 	</resultMap>
 
-	<resultMap type="SpaceInquireDTO" id="spaceInquireDTO">
+	<resultMap type="spacebook.inquire.model.SpaceInquireDTO" id="spaceInquireDTO">
 	    <result column="INQ_NO" property="inq_no"/>
 	    <result column="SPACE_NO" property="space_no"/>
 	    <result column="INQ_WRITEDATE" property="inq_writeDate"/>
@@ -25,13 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="INQ_NOTE" property="inq_note"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
 	    <collection property="spaceDTO" resultMap="SpaceDTO"/>
-	</resultMap> -->
+	</resultMap>
 
 	<insert id="insertInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		insert into inquire values(inquire_seq.nextval, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_title}, #{inq_note}, #{inq_ref}, #{inq_step}, #{inq_level})
 	</insert>
 	
-	<select id="selectInquire" resultType="spacebook.inquire.model.SpaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
+	<select id="selectInquire" resultMap="spaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		select *
 	    from 
 	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        on k.ss = m1.mem_no  
 	</select>
 	
-	<select id="selectInqContent" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
+	<select id="selectInqContent" resultMap="spaceInquireDTO" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
 		select *
 		    from 
 		        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
