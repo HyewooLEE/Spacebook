@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import spacebook.main.model.MainDAO;
+import spacebook.main.model.MainDTO;
 import spacebook.submit.model.SpaceDTO;
-import spacebook.view.model.SpaceReviewDTO;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -25,7 +25,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<SpaceReviewDTO> reviewList() {
+	public List<MainDTO> reviewList() {
 		return mainDao.reviewList();
 	}
 
