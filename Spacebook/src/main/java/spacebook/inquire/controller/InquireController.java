@@ -42,13 +42,29 @@ public class InquireController {
 	
 	@RequestMapping("inquireContent.do")
 	public String inquireContent(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value = "inq_no") int inq_no, Model model) {
-		System.out.println(inq_no);
-		
 		SpaceInquireDTO inquireDTO = inquireService.selectInqContent(inq_no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList", inquireDTO);
 		
 		return "inquireContent";
+	}
+	
+	@RequestMapping("inquireListHost.do")
+	public String inquireListHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
+		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("inquireList",inquireList);
+		
+		return "inquireListHost";
+	}
+	
+	@RequestMapping("inquireContentHost.do")
+	public String inquireContentHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value = "inq_no") int inq_no, Model model) {
+		SpaceInquireDTO inquireDTO = inquireService.selectInqContent(inq_no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("inquireList", inquireDTO);
+		
+		return "inquireContentHost";
 	}
 	
 	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")

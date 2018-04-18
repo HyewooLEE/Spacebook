@@ -60,11 +60,11 @@
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 예약리스트</a></li>
                             <li><a href="#">나의 찜공간</a></li>
-                            <li><a href="inquireList.do">1:1문의</a></li>
+                            <li><a href="inquireList.do">나의 1:1문의</a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 공간관리</a></li>
                             <li><a href="#">공간 예약현황</a></li>
-                            <li><a href="#">1:1문의관리</a></li>
+                            <li><a href="inquireListHost.do">1:1문의관리</a></li>
                             <li><a href="#">공간 정산정보</a></li>
                             <li><a href="#"></a></li>
                             <c:if test="${login.mem_Id eq 'admin@admin.com' }">

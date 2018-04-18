@@ -36,4 +36,8 @@ public class SpaceServiceImpl implements SpaceService{
 		return spaceAll;
 	}
 
+	@Override
+	public List<SpaceDTO> selectMapList(){
+		return spaceDao.selectMapList();
+	}
 }

@@ -33,7 +33,7 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
-                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
+                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  
@@ -44,7 +44,7 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 공간 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
+                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
@@ -68,27 +68,28 @@
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
-									<h4>1:1문의</h4>
+									<h4>나의 1:1문의</h4>
 								</div>
 							</div>
 							<div >
 							  <table class="table table-hover">
 							    <thead>
 							      <tr > 
-							        <th style="text-align:center">작성자</th>
+							        <th style="text-align:center">공간명</th>
 							        <th style="text-align:center">제목</th>
 							        <th style="text-align:center">작성일</th>
 							      </tr>
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-							    <c:if test="${inquireList.mem_no==login.mem_No }">
-							      <tr style="text-align:center">
-							        <td width="20%" >${inquireList.mem_name }</td>
-							        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-							        <td width="20%">${inquireList.inq_writeDate }</td>
-							      </tr>
-							      </c:if>
+								    <%-- <c:if test="${inquireList.mem_no==login.mem_No }"> --%>
+								    <c:if test="${inquireList.spaceDTO.mem_no==login.mem_No }">
+								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+								        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
+								        <td width="50%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								        <td width="20%">${inquireList.inq_writeDate }</td>
+								      </tr>
+								    </c:if>
 							    </c:forEach>
 							    </tbody>
 							  </table>

@@ -87,12 +87,20 @@
 			<put-attribute name="script" value="/WEB-INF/views/space/submit/mapScript.jsp" />
 		</definition>
 		<definition name="inquireList" extends="base_layout">
-			<put-attribute name="title" value="1:1문의 리스트" />
+			<put-attribute name="title" value="나의 1:1문의 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireList.jsp" />
 		</definition>
 		<definition name="inquireContent" extends="base_layout">
-			<put-attribute name="title" value="1:1문의 상세" />
+			<put-attribute name="title" value="나의 1:1문의 상세" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireContent.jsp" />
+		</definition>
+		<definition name="inquireListHost" extends="base_layout">
+			<put-attribute name="title" value="1:1문의 관리 (호스트)" />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireListHost.jsp" />
+		</definition>
+		<definition name="inquireContentHost" extends="base_layout">
+			<put-attribute name="title" value="1:1문의 관리 (호스트)"  />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireContentHost.jsp" />
 		</definition>
 		<!-- 남현 -->
 		<definition name="spaceView" extends="base_layout">
