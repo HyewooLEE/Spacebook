@@ -4,7 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
-.textBold {font-weight: bold;text-align:center;}
+.centerBold {font-weight: bold;text-align:center;}
+.center{text-align:center;}
 </style>
 <section>
 	<!-- container -->
@@ -75,29 +76,29 @@
 								</div>
 							</div>
 							<div >
-							  <table class="table table-hover">
+							  <table class="table table-bordered">
 							    <tbody>
-							      <tr >
-							        <th width="30%" class="textBold">작성자</th>
-							        <td width="70%">${inquireList.mem_name }</td>
+							      <tr>
+							        <th class="centerBold">제목</th>
+							        <td colspan="3" class="center">${inquireList.inq_title }</td>
 							      </tr>
 							      <tr>
-							        <th class="textBold">작성일</th>
-							        <td>${inquireList.inq_writeDate }</td>
+							        <th width="20%" class="centerBold">문의 남긴 공간명</th>
+							        <td width="30%" class="center">${inquireList.space_name }</td>
+							        <th width="20%" class="centerBold">작성일</th>
+							        <td width="30%" class="center">${inquireList.inq_writeDate }</td>
 							      </tr>
 							      <tr>
-							        <th class="textBold">제목</th>
-							        <td>${inquireList.inq_title }</td>
+							        <th class="centerBold">내용</th>
+							        <td colspan="3">${inquireList.inq_note }</td>
 							      </tr>
-							      <tr>
-							        <th class="textBold">내용</th>
-							        <td>${inquireList.inq_note }</td>
-							      </tr>
-							      <tr><td></td><td></td></tr>
 							    </tbody>
 							  </table>
 							</div>
 							<div align="right">
+								<!-- <button class="btn color-bg flat-btn" onclick="">
+									삭제<i class="fa fa-angle-left"></i>
+								</button> -->
 								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
 									목록으로<i class="fa fa-angle-left"></i>
 								</a>

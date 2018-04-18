@@ -143,7 +143,7 @@
 								<c:forEach var="reviewList" items="${reviewList}">
 								<div class="reviews-comments-item">
 									<div class="review-comments-avatar">
-										<img src="images/avatar/1.jpg">
+										<img src="${login.mem_Img}">
 									</div>
 									<div class="reviews-comments-item-text">
 										<h4><a href="#">${reviewList.mem_name}</a></h4>

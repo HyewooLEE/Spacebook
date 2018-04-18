@@ -32,7 +32,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectInquire" resultType="spacebook.inquire.model.SpaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
-		<!-- select * from inquire i, member m where i.mem_no=m.mem_no -->
 		select *
 	    from 
 	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
@@ -44,8 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectInqContent" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
-		select * from inquire i, member m where i.mem_no=m.mem_no and inq_no=#{inqNo}
-		<!-- select *
+		select *
 		    from 
 		        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO ss
 		            from INQUIRE i inner join SPACE s
@@ -53,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                    on i.mem_no =m.mem_no ) k
 		    inner join member m1 
 		        on k.ss = m1.mem_no 
-		    where inq_no=#{inqNo} -->
+		    where inq_no=#{inqNo} 
 	</select>
 	
 	<delete id="deleteInquire">
