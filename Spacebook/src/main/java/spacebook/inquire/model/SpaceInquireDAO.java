@@ -16,7 +16,6 @@ public class SpaceInquireDAO extends SqlSessionDaoSupport {
 	}
 	
 	public SpaceInquireDTO inquireContent(Map<String, Integer> inq_no) {
-		System.out.println(inq_no.get("inqNo"));
 		return getSqlSession().selectOne("spaceInquire.selectInqContent", inq_no);
 	}
 

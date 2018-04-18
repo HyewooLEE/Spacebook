@@ -33,7 +33,7 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
-                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
+                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  
@@ -82,13 +82,13 @@
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-							    <c:if test="${inquireList.mem_no==login.mem_No }">
-							      <tr style="text-align:center">
-							        <td width="20%" >${inquireList.mem_name }</td>
-							        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-							        <td width="20%">${inquireList.inq_writeDate }</td>
-							      </tr>
-							      </c:if>
+								    <c:if test="${inquireList.mem_no==login.mem_No }">
+								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+								        <td width="20%" >${inquireList.memberVO.mem_Addr1}</td>
+								        <td width="60%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								        <td width="20%">${inquireList.inq_writeDate }</td>
+								      </tr>
+								    </c:if>
 							    </c:forEach>
 							    </tbody>
 							  </table>

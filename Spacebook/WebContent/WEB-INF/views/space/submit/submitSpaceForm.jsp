@@ -314,7 +314,7 @@
                                     	<input type="text" id="space_depositor" name="space_depositor" value="${space_depositor }"/>
                                     </div>
                                 </div>
-                                <button class="btn color-bg flat-btn" type="submit" onClick="return fileSubmit()">등록<i class="fa fa-angle-left"></i></button>
+                                <button class="btn color-bg flat-btn" type="submit" onClick="return fileSubmit()">등록<i class="fa fa-angle-right"></i></button>
                             </div>
                         </div>
                         <!-- profile-edit-container end-->     

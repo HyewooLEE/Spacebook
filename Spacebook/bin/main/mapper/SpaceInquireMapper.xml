@@ -9,12 +9,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into inquire values(inquire_seq.nextval, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_title}, #{inq_note}, #{inq_ref}, #{inq_step}, #{inq_level})
 	</insert>
 	
-	<select id="selectInquire" resultType="spacebook.inquire.model.SpaceInquireDTO">
-		select * from inquire i, member m where i.mem_no=m.mem_no
+	<select id="selectInquire" resultType="spacebook.inquire.model.SpaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
+		<!-- select * from inquire i, member m where i.mem_no=m.mem_no -->
+		select *
+	    from 
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME mem_Writer,s.MEM_NO ss
+	            from INQUIRE i inner join SPACE s
+	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+	                    on i.mem_no =m.mem_no ) k
+	    inner join member m1 
+	        on k.ss = m1.mem_no
 	</select>
 	
 	<select id="selectInqContent" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
 		select * from inquire i, member m where i.mem_no=m.mem_no and inq_no=#{inqNo}
+		<!-- select *
+		    from 
+		        (select i.INQ_NO,i.INQ_TITLE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,s.MEM_NO ss
+		            from INQUIRE i inner join SPACE s
+		                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+		                    on i.mem_no =m.mem_no ) k
+		    inner join member m1 
+		        on k.ss = m1.mem_no
+		    where inq_no=#{inqNo} -->
 	</select>
 	
 	<delete id="deleteInquire">

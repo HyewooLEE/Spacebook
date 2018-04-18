@@ -36,14 +36,15 @@ public class InquireController {
 		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);
+		//System.out.println("auc?"+inquireList.get(0).getSpaceDTO().getSpace_addr1());
+		//System.out.println("값?"+inquireList.get(0).getSpace_no());
+		//System.out.println("counet?"+inquireList.get(0).getSpaceDTO().getCount());
 		
 		return "inquireList";
 	}
 	
 	@RequestMapping("inquireContent.do")
 	public String inquireContent(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value = "inq_no") int inq_no, Model model) {
-		System.out.println(inq_no);
-		
 		SpaceInquireDTO inquireDTO = inquireService.selectInqContent(inq_no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList", inquireDTO);
