@@ -124,8 +124,6 @@ var reviewPage = 1;
 var reviewCurPage = 1;
 
 function nextReview(totalReview, space_no) {
-	alert(totalReview);
-	alert(reviewCurPage);
 	if(reviewCurPage <= totalReview / 3) {
 		reviewCurPage ++;
 		reviewPage += 3;
@@ -173,8 +171,6 @@ function nextReview(totalReview, space_no) {
 }
 
 function preReview(totalReview, space_no) {
-	alert(totalReview);
-	alert(reviewCurPage);
 	if(reviewCurPage >= totalReview / 3) {
 		reviewCurPage--;
 		reviewPage -= 3;

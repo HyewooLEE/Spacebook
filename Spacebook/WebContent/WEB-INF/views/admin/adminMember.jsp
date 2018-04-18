@@ -2,7 +2,6 @@
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script src=""></script>
 <section>
 	<!-- container -->
 	<div class="container">
@@ -80,18 +79,26 @@
 	                                <option value="ROLE_GUEST">게스트</option>
 	                                <option value="ROLE_USER">멤버</option>
 	                                <option value="ROLE_ADMIN">관리자</option>
-	                                <option value="NONENABLED">정지계정</option>
+	                                <option value="N">정지계정</option>
 	                            </select>
 	                         </div>
 							<div class="listsearch-input-item pull-left" style="width:140px;">
 	                            <select data-placeholder="Location" class="chosen-select"  id="type2" name="type2">
 	                                <option value="" style="display:none;">유형</option>
-	                                <option value="@">일반계정</option>
-	                                <option value=".">카카오계정</option>
+	                                <option value="E">일반계정</option>
+	                                <option value="K">카카오계정</option>
 	                            </select>
 	                         </div>
 		                    </form>
 						</div>
+						<c:if test="${page.articleCount == 0}">
+						<div class="dashboard-list " style="width:100%">
+							<div class="dashboard-message"  align="center">
+										<h2>해당 결과물이 없습니다.</h2>
+							</div>
+						</div>
+						</c:if>
+						<c:if test="${page.articleCount > 0}">
 						<c:forEach var="members" items="${members }">
 						<!-- dashboard-list end-->
 						<div class="dashboard-list " style="width:100%">
@@ -100,8 +107,8 @@
 									<img src="${members.mem_Img}" alt="" style="object-fit: cover; width:50px; height: 50px;">
 								</div>
 								<div class="dashboard-message-text " style=" padding-top:15px;">
-									<div class="listsearch-input-item pull-right" style="width:115px;">
-			                            <select data-placeholder="Location" class="chosen-select" >
+									<div class="listsearch-input-item pull-right" style="width:125px;">
+			                            <select data-placeholder="Location" class="customFilter chosen-select" id="${members.mem_Id }" >
 			                                <option style="display:none;">권한</option>
 			                                <c:if test="${members.mem_Auth eq 'ROLE_USER'}">
 			                                <option value="ROLE_GUEST">게스트</option>
@@ -109,7 +116,7 @@
 			                                <option value="ROLE_ADMIN">관리자</option>
 			                                <option value="NONENABLED">정지계정</option>
 			                               </c:if>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_QUEST'}">
+			                                <c:if test="${members.mem_Auth eq 'ROLE_GUEST'}">
 			                                <option value="ROLE_GUEST" selected="selected">게스트</option>
 			                                <option value="ROLE_USER">멤버</option>
 			                                <option value="ROLE_ADMIN">관리자</option>
@@ -171,6 +178,7 @@
 						</div>
 						<!-- dashboard-list end-->
 						</c:forEach>
+						</c:if>
 					</div>
 					<!-- pagination-->
 					<c:if test="${page.articleCount > 0}">

@@ -583,25 +583,21 @@
 		<!--testimonials-carousel-->
 		<div class="testimonials-carousel single-carousel fl-wrap">
 			<!--slick-slide-item-->
+			<c:forEach var="reviewList" items="reviewList">
 			<div class="slick-slide-item">
 				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis"
-						data-starrating2="5"></div>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit
-						voluptatem accusantium doloremque laudantium, totam rem aperiam,
-						eaque ipsa quae ab illo inventore veritatis et quasi arch itecto
-						beatae vitae dicta sunt explicabo.</p>
+					<%-- <div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
+					<p>${reviewList.rev_note}</p> --%>
 				</div>
 				<div class="testimonilas-avatar-item">
 					<div class="testimonilas-avatar">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-							alt="">
+						<img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg">
 					</div>
 					<h4>Lisa Noory</h4>
 					<span>Restaurant Owner</span>
 				</div>
 			</div>
+			</c:forEach>
 			<!--slick-slide-item end-->
 			<!--slick-slide-item-->
 			<div class="slick-slide-item">

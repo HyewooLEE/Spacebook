@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 $(".dashboard-message-text a.toggle").on("click", function (a) {
     a.preventDefault();
@@ -21,8 +22,75 @@ $(document).ready( function() {
 		document.getElementById('form1').submit();
         });
 });
+$(document).ready( function() {
+	
+	 $(".customFilter").change(function (e) {
+	 	var filter = $(this).find('option:selected').attr('value');
+	 	var mem_Id = $(this).attr('id');
+	 	$.ajax({
+			type:"GET",
+			url:"${pageContext.request.contextPath}/changeAuth.do",
+			data:{
+				filter : filter,
+				mem_Id : mem_Id
+			},
+			dataType:"json",
+			success:function(check){
+				if(check.check == '1'){
+					swal.getState();
+					swal("성공", "수정 완료 됬습니다", "success", {
+						buttons : "닫기"
+					});
+				}else{
+					swal.getState();
+					swal("실패", "수정 실패했습니다", "warning", {
+						buttons : "닫기"
+					});
+				}
+			}
+			,error:function(e){
+				swal.getState();
+				swal("실패", "수정 실패했습니다", "warning", {
+					buttons : "닫기"
+				});
+			}
+		});
+	});
+        });
  
 </script>
+
+<c:if test="${param.type1 !='' && param.type1 != null &&param.type1 ne null}">
+<script>
+ $(document).ready(function(){
+   var filter = "${param.type1 }";
+   var text =$("option[value=${param.type1}]").html();
+   $("option[value=${param.type1}]").attr("selected","selected")
+   $("#form1 > div:nth-child(4) > span > div.select > div").html(text);  
+}); 
+</script>
+</c:if> 	
+
+
+<c:if test="${param.type2 !='' && param.type2 != null &&param.type2 ne null}">
+<script>
+ $(document).ready(function(){
+   var filter = "${param.type2 }";
+   var text =$("option[value=${param.type2}]").html();
+   $("option[value=${param.type2}]").attr("selected","selected")
+   $("#form1 > div:nth-child(5) > span > div.select > div").html(text);  
+}); 
+</script>
+</c:if>
+<c:if test="${param.search !='' && param.search != null &&param.search ne null}">
+<script>
+ $(document).ready(function(){
+   var filter = "${param.search }";
+   $("#search").prop("value",filter);
+}); 
+</script>
+</c:if>   
+
 <style>
 .selectbox .select{
 margin-top:10px;
