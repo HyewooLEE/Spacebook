@@ -102,7 +102,7 @@
 	                                <div class="overlay"></div>
 	                                <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div>
 	                            </div>
-                            <div class="geodir-category-content fl-wrap" style="width:367px;height:440px;">
+                            <div class="geodir-category-content fl-wrap" style="width:370px;height:230px;">
                                 <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
                                 <div class="listing-avatar"><a href="author-single.html"><img src="${login.mem_Img }" alt=""></a>
                                     <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>

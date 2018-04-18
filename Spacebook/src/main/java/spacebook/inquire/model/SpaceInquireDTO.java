@@ -20,7 +20,6 @@ public class SpaceInquireDTO {
 	private SpaceDTO spaceDTO;
 	private MemberVO memberVO;
 	
-	
 	public int getInq_no() {
 		return inq_no;
 	}

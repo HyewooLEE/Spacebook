@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="MEM_NO" property="mem_No"/>
 	    <result column="MEM_ID" property="mem_Id"/>
 	    <result column="MEM_NAME" property="mem_Name"/>
-	</resultMap>
+	</resultMap> 
 
 	<resultMap type="spacebook.submit.model.SpaceDTO" id="SpaceDTO">
 	    <result column="SPACE_NO" property="space_no"/>
