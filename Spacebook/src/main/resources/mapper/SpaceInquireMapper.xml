@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <collection property="spaceDTO" resultMap="SpaceDTO"/>
 	</resultMap>
 
-	<insert id="insertInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
+	<insert id="insertInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO" >
 		insert into inquire values(inquire_seq.nextval, #{space_no}, #{mem_no}, #{inq_writeDate}, #{inq_title}, #{inq_note}, #{inq_ref}, #{inq_step}, #{inq_level})
 	</insert>
 	
