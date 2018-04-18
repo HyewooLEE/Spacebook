@@ -56,7 +56,7 @@
 					<li><a href="#sec4">리뷰</a></li>
 				</ul>
 			</nav>
-			<a href="#" class="save-btn"> <i class="fa fa-heart"></i> 찜하기 </a>
+			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No} )" class="save-btn"><i class="fa fa-heart"></i> 찜하기 </a>
 		</div>
 	</div>
 	<!--  section   -->
@@ -143,7 +143,7 @@
 								<c:forEach var="reviewList" items="${reviewList}">
 								<div class="reviews-comments-item">
 									<div class="review-comments-avatar">
-										<img src="${login.mem_Img}">
+										<img src="images/avatar/1.jpg">
 									</div>
 									<div class="reviews-comments-item-text">
 										<h4><a href="#">${reviewList.mem_name}</a></h4>
