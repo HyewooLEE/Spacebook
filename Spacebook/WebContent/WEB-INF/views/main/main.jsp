@@ -586,8 +586,8 @@
 			<c:forEach var="reviewList" items="reviewList">
 			<div class="slick-slide-item">
 				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.getRev_rate}"></div>
-					<p>${reviewList.getRev_note}</p>
+					<%-- <div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
+					<p>${reviewList.rev_note}</p> --%>
 				</div>
 				<div class="testimonilas-avatar-item">
 					<div class="testimonilas-avatar">
