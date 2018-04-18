@@ -4,7 +4,7 @@
     //Icon
     var markerIcon = {
         anchor: new google.maps.Point(22, 16),
-        url: '/ProTest/resources/bootstrap/images/marker.png',
+        url: '/Spacebook/js/map/images/marker.png',
         //'images/marker.png'
         
     }

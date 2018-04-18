@@ -82,7 +82,7 @@
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-s								    <c:if test="${inquireList.mem_no==login.mem_No }">
+								    <c:if test="${inquireList.spaceDTO.mem_no==login.mem_No }">
 								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 								        <td width="30%" >${inquireList.space_name}</td>
 								        <td width="50%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
