@@ -4,7 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spaceFavorite">
-	<insert id="insertFavorite">
-		INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.NEXTVAL(), 'Y', )
+	<insert id="insertFavorite" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
+		INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.NEXTVAL, 'Y', #{mem_no}, #{space_no})
 	</insert>
+	<delete id="deleteFavorite">
+		DELETE FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
+	</delete>
+	<select id="selectFavorite" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
+		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
+	</select>
 </mapper>

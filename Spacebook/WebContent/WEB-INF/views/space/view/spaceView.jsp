@@ -56,7 +56,7 @@
 					<li><a href="#sec4">리뷰</a></li>
 				</ul>
 			</nav>
-			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No} )" class="save-btn"><i class="fa fa-heart"></i> 찜하기 </a>
+			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No})" class="save-btn"><i class="fa fa-heart-o" id="heart"></i> 찜하기 </a>
 		</div>
 	</div>
 	<!--  section   -->

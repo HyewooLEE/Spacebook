@@ -220,12 +220,16 @@ function favorite(space_no, mem_no) {
 	var params = "space_no="+ space_no +"&mem_no="+ mem_no;
 	$.ajax({
 		type: "get",
-		url: "/Spacebook/insertFavorite.do",
+		url: "/Spacebook/selectFavorite.do",
 		data: params,
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			
+			if(result.data == 1) {
+				$("#heart").attr('class','fa fa-heart');
+			} else if(result.data == 0) {
+				$("#heart").attr('class','fa fa-heart-o');
+			}			
 		}
 	});
 }

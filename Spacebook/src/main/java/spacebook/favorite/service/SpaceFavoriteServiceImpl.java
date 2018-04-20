@@ -18,6 +18,16 @@ public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
 
 	@Override
 	public void insertFavorite(SpaceFavoriteDTO dto) {
-		favoriteDAO.insertSpaceFavorite(dto);
+		favoriteDAO.insertFavorite(dto);
+	}
+
+	@Override
+	public void deleteFavorite(SpaceFavoriteDTO dto) {
+		favoriteDAO.deleteFavorite(dto);
+	}
+
+	@Override
+	public SpaceFavoriteDTO selectFavorite(SpaceFavoriteDTO dto) {
+		return favoriteDAO.selectFavorite(dto);
 	}
 }
