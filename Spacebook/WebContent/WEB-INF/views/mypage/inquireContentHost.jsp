@@ -84,7 +84,7 @@
 							      </tr>
 							      <tr>
 							        <th width="20%" class="centerBold">문의 남긴 공간명</th>
-							        <td width="30%" class="center">${inquireList.space_name }</td>
+							        <td width="30%" class="center">${inquireList.spaceDTO.space_name }</td>
 							        <th width="20%" class="centerBold">작성일</th>
 							        <td width="30%" class="center">${inquireList.inq_writeDate }</td>
 							      </tr>

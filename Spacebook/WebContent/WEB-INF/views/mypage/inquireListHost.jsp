@@ -75,18 +75,19 @@
 							  <table class="table table-hover">
 							    <thead>
 							      <tr > 
-							        <th style="text-align:center">공간명</th>
+							        <th style="text-align:center">나의 공간명</th>
+							        <th style="text-align:center">작성자</th>
 							        <th style="text-align:center">제목</th>
 							        <th style="text-align:center">작성일</th>
 							      </tr>
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-								    <%-- <c:if test="${inquireList.mem_no==login.mem_No }"> --%>
-								    <c:if test="${inquireList.spaceDTO.mem_no==login.mem_No }">
-								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-								        <td width="30%" >${inquireList.space_name}</td>
-								        <td width="50%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								    <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}">
+								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+								        <td width="20%" >${inquireList.spaceDTO.space_name}</td>
+								        <td width="20%" >${inquireList.memberVO.mem_Name}</td>
+								        <td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 								        <td width="20%">${inquireList.inq_writeDate }</td>
 								      </tr>
 								    </c:if>
