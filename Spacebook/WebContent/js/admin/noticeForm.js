@@ -1,4 +1,4 @@
-function Check(){
+function Check6(){
 	if ($("#title").val()=='' ) {
 		swal.getState();
 		swal("실패", "제목을 입력해주세요", "warning", {
@@ -13,6 +13,6 @@ function Check(){
 		});
 		return false;
 	}
-	document.getElementById('form').submit();
+	document.getElementById('noticeForm').submit();
 }
 

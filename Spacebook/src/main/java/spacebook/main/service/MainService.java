@@ -2,8 +2,8 @@ package spacebook.main.service;
 
 import java.util.List;
 
+import spacebook.main.model.MainDTO;
 import spacebook.submit.model.SpaceDTO;
-import spacebook.view.model.SpaceReviewDTO;
 
 public interface MainService {
 	
@@ -11,6 +11,6 @@ public interface MainService {
 	
 	//public List<SpaceDTO> countSpaceCategory();
 	
-	public List<SpaceReviewDTO> reviewList();
+	public List<MainDTO> reviewList();
 
 }

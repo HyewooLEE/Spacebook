@@ -583,81 +583,21 @@
 		<!--testimonials-carousel-->
 		<div class="testimonials-carousel single-carousel fl-wrap">
 			<!--slick-slide-item-->
-			<c:forEach var="reviewList" items="reviewList">
+			<c:forEach var="reviewList" items="${review}">
 			<div class="slick-slide-item">
 				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.getRev_rate}"></div>
-					<p>${reviewList.getRev_note}</p>
+					<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
+					<p>${reviewList.rev_note}</p>
 				</div>
 				<div class="testimonilas-avatar-item">
 					<div class="testimonilas-avatar">
 						<img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg">
 					</div>
-					<h4>Lisa Noory</h4>
-					<span>Restaurant Owner</span>
+					<h4>${reviewList.mem_name}</h4>
+					<span>${reviewList.space_name} 호스트</span>
 				</div>
 			</div>
 			</c:forEach>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis"
-						data-starrating2="4"></div>
-					<p>Aliquam erat volutpat. Curabitur convallis fringilla diam
-						sed aliquam. Sed tempor iaculis massa faucibus feugiat. In
-						fermentum facilisis massa, a consequat purus viverra.</p>
-				</div>
-				<div class="testimonilas-avatar-item">
-					<div class="testimonilas-avatar">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-							alt="">
-					</div>
-					<h4>Antony Moore</h4>
-					<span>Restaurant Owner</span>
-				</div>
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis"
-						data-starrating2="5"></div>
-					<p>Feugiat nulla facilisis at vero eros et accumsan et iusto
-						odio dignissim qui blandit praesent luptatum zzril delenit augue
-						duis dolore te odio dignissim qui blandit praesent.</p>
-				</div>
-				<div class="testimonilas-avatar-item">
-					<div class="testimonilas-avatar">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-							alt="">
-					</div>
-					<h4>Austin Harisson</h4>
-					<span>Restaurant Owner</span>
-				</div>
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<div class="testimonilas-text">
-					<div class="listing-rating card-popup-rainingvis"
-						data-starrating2="4"></div>
-					<p>Qui sequitur mutationem consuetudium lectorum. Mirum est
-						notare quam littera gothica, quam nunc putamus parum claram
-						seacula quarta decima et quinta decima.</p>
-				</div>
-				<div class="testimonilas-avatar-item">
-					<div class="testimonilas-avatar">
-						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-							alt="">
-					</div>
-					<h4>Garry Colonsi</h4>
-					<span>Restaurant Owner</span>
-				</div>
-			</div>
 			<!--slick-slide-item end-->
 		</div>
 		<!--testimonials-carousel end-->

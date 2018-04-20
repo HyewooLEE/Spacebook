@@ -2,7 +2,7 @@
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
- <section class="parallax-section" data-scrollax-parent="true">
+					<section class="parallax-section" data-scrollax-parent="true">
                         <div class="bg par-elem "  data-bg="${pageContext.request.contextPath}/resources/bootstrap/images/all/5.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
                         <div class="overlay"></div>
                         <div class="bubble-bg"></div>

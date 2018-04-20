@@ -47,7 +47,7 @@ function kume1() {
 
 }
 
-function Check(){
+function Check3(){
 	if ($("#name").val()=='' ) {
 		swal.getState();
 		swal("실패", "이름을 입력해주세요", "warning", {
@@ -91,6 +91,6 @@ function Check(){
 		return false;
 	}
 	
-	document.getElementById('form').submit();
+	document.getElementById('Join1_Form').submit();
 }
 

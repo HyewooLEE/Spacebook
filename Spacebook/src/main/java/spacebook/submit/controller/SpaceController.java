@@ -2,9 +2,11 @@ package spacebook.submit.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import net.sf.json.JSONObject;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.submit.model.SpaceFacilityDTO;
@@ -229,6 +232,19 @@ public class SpaceController {
 		model.addAttribute("realPath", contextPath);
 		
 		return "listSpace";
+	}
+	
+	//map
+	@RequestMapping(value = "/MapList.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public void startMap(HttpServletResponse response)throws Exception{
+		List<SpaceDTO> spacedto = spaceService.selectMapList();
+		
+		JSONObject jso = new JSONObject();  //json형태 -> 데이터를 text형태로 바꿔 가변게 만듬
+		jso.put("data", spacedto);
+		
+		response.setContentType("text/html;charset=utf-8"); 
+		PrintWriter out = response.getWriter();
+		out.print(jso.toString());
 	}
 
 }

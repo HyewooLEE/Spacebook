@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
 <!--=============== basic  ===============-->
@@ -34,11 +36,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/scripts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/main/main.js"></script>
 <tiles:insertAttribute name="script" />
+<c:if test="${param.fail ne null  }">
 <script>
-function logout(){
-	$("#logout").click();
-}
+swal.getState();
+swal("실패", "로그인 후 이용해주세요.", "warning", {
+	buttons : "닫기"
+}).then(function(){
+	$(".main-register-wrap").css("display","block");
+});
 </script>
+</c:if>
 </body>
 </html>

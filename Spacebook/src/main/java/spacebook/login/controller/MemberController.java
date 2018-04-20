@@ -75,5 +75,22 @@ public class MemberController {
 		request.getSession().setAttribute("login", vo2);
 		return "main";
 	}
+	
+	@RequestMapping(value = "passwordLogin.do", method = RequestMethod.POST)
+	public ModelAndView updatePwd(@RequestParam("email") String email, @RequestParam("passwd") String passwd, @RequestParam("passwdChange") String passwdChange) {
+		ModelAndView mv = new ModelAndView("redirect:/password.do");
+		String check ;
+		String nowpw = encoder.saltEncoding(passwd, email);
+		MemberVO vo = service.selectMember(email);
+		String dbpw = vo.getMem_Pwd();
+		if (nowpw.equals(dbpw)) {
+			String changePw = encoder.saltEncoding(passwdChange, email);
+			check = service.updatePwd(changePw,vo.getMem_Id())+"";
+		}else {
+			check = "-1";
+		}
+		mv.addObject("check", check);
+		return mv;
+	}
 
 }

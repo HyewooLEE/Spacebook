@@ -50,7 +50,7 @@
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
@@ -63,6 +63,7 @@
 					</div>
 				</div>
 				<div class="col-md-9">
+				<form action="passwordLogin.do" method="POST" id="pwdChange">
 					<!-- profile-edit-container-->
 					<div class="profile-edit-container">
 						<div class="profile-edit-header fl-wrap" style="margin-top: 30px">
@@ -70,23 +71,26 @@
 						</div>
 						<div class="custom-form no-icons">
 							<div class="pass-input-wrap fl-wrap">
-								<label>현재 비밀번호</label> <input type="password" class="pass-input" placeholder="" value="" /> 
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								<input type="hidden" name="email" value="${login.mem_Id }"/>
+								<label>현재 비밀번호</label> <input type="password" name="passwd" class="pass-input" placeholder="" id="pwd_Now" /> 
 								<span class="eye"><i class="fa fa-eye" aria-hidden="true"></i> </span>
 							</div>
 							<div class="pass-input-wrap fl-wrap">
-								<label>새로운 비밀번호</label> <input type="password" class="pass-input" placeholder="" value="" /> 
+								<label>새로운 비밀번호</label> <input type="password" class="pass-input" placeholder=""name="passwdChange" id="pwd_chg1"/> 
 								<span class="eye"><i class="fa fa-eye" aria-hidden="true"></i> </span>
 							</div>
 							<div class="pass-input-wrap fl-wrap">
-								<label>새로운 비밀번호 확인</label> <input type="password" class="pass-input" placeholder="" value="" /> 
+								<label>새로운 비밀번호 확인</label> <input type="password" class="pass-input" placeholder="" name="passwdChange2"  id="pwd_chg2"/> 
 								<span class="eye"><i class="fa fa-eye" aria-hidden="true"></i> </span>
 							</div>
-							<button class="btn  big-btn  color-bg flat-btn">
+							<button class="btn  big-btn  color-bg flat-btn" type="button" onClick="return CheckPwd();">
 								변경하기<i class="fa fa-angle-right"></i>
 							</button>
 						</div>
 					</div>
 					<!-- profile-edit-container end-->
+				</form>
 				</div>
 			</div>
 		</div>

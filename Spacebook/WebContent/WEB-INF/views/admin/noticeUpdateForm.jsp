@@ -24,14 +24,14 @@
 						<!-- Add Review Box -->
 						<div id="add-review" class="add-review-box">
 							<!-- Review Comment -->
-							<form class="add-comment custom-form" action="updateNotice.do"  method="POST" id="form">
+							<form class="add-comment custom-form" action="updateNotice.do"  method="POST" id="noticeForm">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<input type="text" placeholder="제목" style="padding: 25px 20px; height: 50px;" name="notice_Title" id="title" value="${article.notice_Title }"/>
 									<input type="hidden" name="notice_No" value="${article.notice_No }"/>
 									<div class="col-md-12" style="padding: 0px;">
 									<textarea cols="80" rows="10" placeholder="내용" style="height: 350px;" name="notice_Content" id="content" class="summernote">${article.notice_Content }</textarea>
 									</div>
-								<button class="btn  big-btn  color-bg flat-btn pull-right" type="button" onClick="return Check();">수정하기&nbsp;&gt;</button>
+								<button class="btn  big-btn  color-bg flat-btn pull-right" type="button" onClick="return Check6();">수정하기&nbsp;&gt;</button>
 							</form>
 						</div>
 						<!-- Add Review Box / End -->

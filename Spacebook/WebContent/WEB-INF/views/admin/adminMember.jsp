@@ -48,7 +48,7 @@
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>

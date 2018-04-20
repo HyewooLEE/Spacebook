@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <script>
 	$(document).ready(function() {
+	
 		$(".overlay").click(function() {
 			var check = $(this).attr("id");
 			if ($(this).css('opacity') == '0.1') {
@@ -22,4 +23,17 @@
 			 });
 		});
 	});
+</script>
+<script>
+function Check2(){
+	var size = $("input:checkbox[name='favor']:checked").length;
+	if (size == 0){
+		swal.getState();
+		swal("실패", "취향을 최소 하나 이상 선택해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
+	document.getElementById('check').submit()
+}
 </script>

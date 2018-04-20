@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{mem_Id},
 		'/Spacebook/PROFILE/profile_default.jpg',
 		1,
-		'ROLE_USER'
+		'ROLE_GUEST'
 		)
 	</insert>
 	<select id="kakaoOne" parameterType="String"
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{passwd},
 		'/Spacebook/PROFILE/profile_default.jpg',
 		1,
-		#{authority})
+		'ROLE_GUEST')
 	</insert>
 	<update id="updateInform" parameterType="spacebook.login.model.MemberVO">
 		UPDATE MEMBER SET
@@ -55,7 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		MEM_ADDR1 = #{mem_Addr1},
 		MEM_ADDR2 = #{mem_Addr2},
 		MEM_ADDR3 = #{mem_Addr3},
-		MEM_FAVOR = #{mem_Favor}
+		MEM_FAVOR = #{mem_Favor},
+		MEM_AUTH = 'ROLE_USER'
 		<if test="mem_Img != null">
 			,MEM_IMG = #{mem_Img}
 		</if>
@@ -137,5 +138,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	mem_enabled = 0
 	</if>
 	where mem_Id= #{mem_Id}
+	</update>
+	<update id="updatePwd" parameterType="java.util.Map">
+	update member set
+	mem_Pwd = #{mem_Pwd}
+	where mem_Id=#{mem_Id}
 	</update>
 </mapper>

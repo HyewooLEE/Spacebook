@@ -1,11 +1,12 @@
 package spacebook.inquire.model;
 
+import spacebook.login.model.MemberVO;
+import spacebook.submit.model.SpaceDTO;
+
 public class SpaceInquireDTO {
 	private int inq_no;
 	private int space_no;
 	private int mem_no;
-	private String mem_name;
-	private String mem_id;
 	private String inq_writeDate;
 	private String inq_title;
 	private String inq_note;
@@ -13,6 +14,11 @@ public class SpaceInquireDTO {
 	private int inq_step;
 	private int inq_level;
 	
+	private String mem_name;
+	private String space_name;
+	
+	private SpaceDTO spaceDTO;
+	private MemberVO memberVO;
 	
 	public int getInq_no() {
 		return inq_no;
@@ -74,10 +80,22 @@ public class SpaceInquireDTO {
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
-	public String getMem_id() {
-		return mem_id;
+	public String getSpace_name() {
+		return space_name;
 	}
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
+	public void setSpace_name(String space_name) {
+		this.space_name = space_name;
+	}
+	public SpaceDTO getSpaceDTO() {
+		return spaceDTO;
+	}
+	public void setSpaceDTO(SpaceDTO spaceDTO) {
+		this.spaceDTO = spaceDTO;
+	}
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 }

@@ -3,6 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+.centerBold {font-weight: bold;text-align:center;}
+.center{text-align:center;}
+</style>
 <section>
 	<!-- container -->
 	<div class="container">
@@ -33,7 +37,7 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
-                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>1:1문의 </a></li>
+                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  
@@ -49,7 +53,7 @@
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
@@ -68,34 +72,37 @@
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
-									<h4>1:1문의</h4>
+									<h4>나의 1:1문의</h4>
 								</div>
 							</div>
 							<div >
-							  <table class="table table-hover">
+							  <table class="table table-bordered">
 							    <tbody>
 							      <tr>
-							        <th width="30%">작성자</th>
-							        <td width="70%">${inquireList.mem_name }</td>
+							        <th class="centerBold">제목</th>
+							        <td colspan="3" class="center">${inquireList.inq_title }</td>
 							      </tr>
 							      <tr>
-							        <th>작성일</th>
-							        <td>${inquireList.inq_writeDate }</td>
+							        <th width="20%" class="centerBold">문의 남긴 공간명</th>
+							        <td width="30%" class="center">${inquireList.spaceDTO.space_name}</td>
+							        <th width="20%" class="centerBold">작성일</th>
+							        <td width="30%" class="center">${inquireList.inq_writeDate }</td>
 							      </tr>
 							      <tr>
-							        <th align="center">제목</th>
-							        <td>${inquireList.inq_title }</td>
-							      </tr>
-							      <tr>
-							        <th align="center">내용</th>
-							        <td>${inquireList.inq_note }</td>
+							        <th class="centerBold">내용</th>
+							        <td colspan="3">${inquireList.inq_note }</td>
 							      </tr>
 							    </tbody>
 							  </table>
 							</div>
-							<a class="btn  big-btn  color-bg flat-btn" onclick='history.back(-1); return false;'>
-								목록으로<i class="fa fa-angle-right"></i>
-							</a>
+							<div align="right">
+								<!-- <button class="btn color-bg flat-btn" onclick="">
+									삭제<i class="fa fa-angle-left"></i>
+								</button> -->
+								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
+									목록으로<i class="fa fa-angle-left"></i>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>

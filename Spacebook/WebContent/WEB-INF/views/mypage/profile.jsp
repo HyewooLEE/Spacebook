@@ -42,12 +42,12 @@
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 공간 <span>1</span> </a></li>
                                         <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
-                                        <li><a href="inquireList.do"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
+                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data" id="form">
+				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data" id="profile_Form">
 				<div class="col-md-9">
 					<div class="row">
 						<div class="col-md-12">
@@ -178,7 +178,7 @@
 														<label for="기타">기타</label>
 													</div>
 												</div>
-												<button class="btn big-btn color-bg flat-btn pull-right"  onClick="return Check();">변경하기</button>	
+												<button class="btn big-btn color-bg flat-btn pull-right"  onClick="return Check4();">변경하기</button>	
 											</div>
 										</div>
 									</div>

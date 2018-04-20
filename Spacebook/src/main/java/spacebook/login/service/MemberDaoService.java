@@ -15,4 +15,5 @@ public interface MemberDaoService {
  public List<MemberVO> memberList(HashMap<String, String> map);
  public int memberCount(HashMap<String, String> map);
  public int updateAuth(String filter,String mem_Id);
+ public int updatePwd(String changePwd,String mem_Id);
 }

@@ -17,6 +17,7 @@ public class MemberVO {
 	private String mem_Code;
 	private String mem_Auth;
 	private String mem_Enabled;
+	
 	public int getMem_No() {
 		return mem_No;
 	}

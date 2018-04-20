@@ -28,7 +28,7 @@
 			<div class="col-md-8">
 				<div class="profile-edit-container add-list-container" style="margin-bottom: 40px;">
 					<div class="custom-form" style="border-bottom: none;">
-						<form action="join2.do" method="POST" id="form" >
+						<form action="join2.do" method="POST" id="Join1_Form" >
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<div class="row">
 								<div class="col-md-12">
@@ -187,7 +187,7 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
 		</div>
 	</div>
 	<a href="main.do" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" style="margin-right: 25px;">건너뛰기</a> 
-	<a href="#" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" onClick="return Check();">다음 단계</a>
+	<a href="#" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" onClick="return Check3();">다음 단계</a>
 
 </section>
 <script src="${pageContext.request.contextPath}/js/main/join.js"></script>

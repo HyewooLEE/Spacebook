@@ -12,6 +12,10 @@
 			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
 			<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
 		</definition>
+		<definition name="accessDeny" extends="base_layout" >
+			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
+			<put-attribute name="body" value="/WEB-INF/views/main/access_denied.jsp"/>
+		</definition>
 		<!-- 주영 -->
 		<definition name="login" extends="base_layout" >
 			<put-attribute name="title" value="정보 등록"/>
@@ -34,7 +38,7 @@
 		<definition name="password" extends="base_layout" >
 			<put-attribute name="title" value="비밀번호 변경"/>
 			<put-attribute name="body" value="/WEB-INF/views/mypage/password.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/passwordScript.jsp" />
 		</definition>
 		<definition name="adminMember" extends="base_layout" >
 			<put-attribute name="title" value="회원 관리"/>
@@ -87,12 +91,20 @@
 			<put-attribute name="script" value="/WEB-INF/views/space/submit/mapScript.jsp" />
 		</definition>
 		<definition name="inquireList" extends="base_layout">
-			<put-attribute name="title" value="1:1문의 리스트" />
+			<put-attribute name="title" value="나의 1:1문의 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireList.jsp" />
 		</definition>
 		<definition name="inquireContent" extends="base_layout">
-			<put-attribute name="title" value="1:1문의 상세" />
+			<put-attribute name="title" value="나의 1:1문의 상세" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireContent.jsp" />
+		</definition>
+		<definition name="inquireListHost" extends="base_layout">
+			<put-attribute name="title" value="1:1문의 관리 (호스트)" />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireListHost.jsp" />
+		</definition>
+		<definition name="inquireContentHost" extends="base_layout">
+			<put-attribute name="title" value="1:1문의 관리 (호스트)"  />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireContentHost.jsp" />
 		</definition>
 		<!-- 남현 -->
 		<definition name="spaceView" extends="base_layout">

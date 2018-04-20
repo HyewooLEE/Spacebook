@@ -42,7 +42,7 @@
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>검색하기</span></div>
                     <a href="submitSpaceForm.do" class="add-list">공간 등록<span><i class="fa fa-plus"></i></span></a>
                     <c:if test="${ login.mem_Id eq null }">
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>로그인하기</div>
+                    <div class="show-reg-form modal-open" id="loginButton"><i class="fa fa-sign-in"></i>로그인하기</div>
                     </c:if>
                     <c:if test="${login.mem_Id ne null}">
                     <div class="header-user-menu">
@@ -61,14 +61,14 @@
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 예약리스트</a></li>
                             <li><a href="#">나의 찜공간</a></li>
-                            <li><a href="inquireList.do">1:1문의</a></li>
+                            <li><a href="inquireList.do">나의 1:1문의</a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 공간관리</a></li>
                             <li><a href="#">공간 예약현황</a></li>
-                            <li><a href="#">1:1문의관리</a></li>
+                            <li><a href="inquireListHost.do">1:1문의관리</a></li>
                             <li><a href="#">공간 정산정보</a></li>
                             <li><a href="#"></a></li>
-                            <c:if test="${login.mem_Id eq 'admin@admin.com' }">
+                            <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
                             <li><a href="adminMember.do">회원 관리</a></li>
                             <li><a href="adminArticle.do">게시글 관리</a></li>
                             <li><a href="#"></a></li>

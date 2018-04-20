@@ -48,6 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from space s left outer join MEMBER m on s.mem_no = m.mem_no order by s.space_no
 	</select>
 	
+	<select id="spaceMap" resultType="spacebook.submit.model.SpaceDTO" >
+	select * from space NATURAL JOIN map
+</select>
 	
 	
 </mapper>

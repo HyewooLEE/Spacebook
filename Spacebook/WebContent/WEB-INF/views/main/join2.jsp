@@ -230,7 +230,7 @@
 			</form>
 		</div>
 	<a href="main.do" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" style="margin-right:25px; margin-bottom: 25px;">건너뛰기</a>
-	<a href="#" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" onClick="document.getElementById('check').submit();">등록하기</a>
+	<a href="#" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn" onClick="return Check2();">등록하기</a>
 	</div>
 		</div>
 

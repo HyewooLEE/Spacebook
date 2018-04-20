@@ -56,10 +56,8 @@ public class KakaoController {
 	
 	@RequestMapping(value="kakaologout.do",method= {RequestMethod.GET} )
 	public String logout(@RequestHeader HttpHeaders headers ,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
-		System.out.println("1");
 		MemberVO vo = (MemberVO) session.getAttribute("login");
-		//kakaologin.logout(vo.getMem_Code());
-		System.out.println("2");
+		kakaologin.logout(vo.getMem_Code());
 		session.invalidate();
 		return "redirect:/main.do";
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,6 +30,7 @@ public class MemberAuthenticationService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
+		System.out.println("ㅎㅇㅎㅇ");
 		Map<String, Object> user = sqlSession.selectOne("Member.auth", username);
 		if (user == null)
 			throw new UsernameNotFoundException(username);
