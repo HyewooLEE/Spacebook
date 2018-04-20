@@ -11,10 +11,12 @@
 	http://www.springframework.org/schema/security/spring-security.xsd ">
 	<http pattern="/resources/**" security="none"/>
 	<http auto-config="true" use-expressions="true" create-session="never">
-		<intercept-url pattern="/admin/*.do" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/adminMember.do" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/submitSpaceForm.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
 		<intercept-url pattern="/join.do" access="permitAll" />
 		<intercept-url pattern="/main.do" access="permitAll" />
 		<intercept-url pattern="/**" access="permitAll" />
+		<access-denied-handler ref="accessDenied"/> 
 		<form-login 
 			login-page="/loginPage.do"
 			login-processing-url="/login.do"
@@ -26,14 +28,20 @@
 		<logout 
 			logout-url="/logout.do"
 			logout-success-url="/main.do"
-			delete-cookies="JSESSIONID,NID"   
+			delete-cookies="JSESSIONID,NID,SPRING_SECURITY_REMEMBER_ME_COOKIE"   
 			invalidate-session="true" />
-			
-		<session-management>
+		<remember-me token-validity-seconds="2419200" remember-me-parameter="remember-me"/>
+		<session-management invalid-session-url="/user/loginPage">
 			<concurrency-control max-sessions="1" expired-url="/main.do" error-if-maximum-exceeded="true" />
-		</session-management>
+		</session-management> 
 		<csrf/>
 	</http>
+	
+ 
+	<beans:bean id="accessDenied" class="spacebook.login.handler.CustomAccessDeniedHandler">
+	  <beans:property name="errorPage" value="/accessDeny.do" />
+	</beans:bean>
+ 
 	<beans:bean id="customAuthenticationSuccessHandler" class="spacebook.login.handler.CustomAuthenticationSuccessHandler"/>
 	<beans:bean id="customAuthenticationFailureHandler" class="spacebook.login.handler.CustomAuthenticationFailureHandler"/>
 	<beans:bean id="userService" class="spacebook.login.service.MemberAuthenticationService">

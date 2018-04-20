@@ -20,7 +20,11 @@ public class MainController {
 	public void setMainService(MainService mainService) {
 		this.mainService = mainService;
 	}
-
+	@RequestMapping("accessDeny.do")
+	public String accessDenyPage() {
+		return "accessDeny";
+	}
+	
 	@RequestMapping("main.do")
 	public String main(Model model) {
 		List<SpaceDTO> categorySpace = mainService.categorySpace();

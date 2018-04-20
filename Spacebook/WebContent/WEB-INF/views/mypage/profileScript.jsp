@@ -54,7 +54,7 @@
 	}
 </script>
 <script>
-function Check() {
+function Check4() {
 	if ($("#name").val() == '') {
 		swal.getState();
 		swal("실패", "이름을 입력해주세요", "warning", {
@@ -90,8 +90,16 @@ function Check() {
 		});
 		return false;
 	}
+	var size = $("input:checkbox[name='mem_Favor']:checked").length;
+	if (size == 0){
+		swal.getState();
+		swal("실패", "취향을 최소 하나 이상 선택해주세요", "warning", {
+			buttons : "닫기"
+		});
+		return false;
+	}
 
-	document.getElementById('form').submit();
+	document.getElementById('profile_Form').submit();
 }
 $(document).ready( function() {
 	        $("input[type=file]").change(function () {
