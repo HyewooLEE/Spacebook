@@ -87,7 +87,7 @@
 							<button class="btn  big-btn  color-bg flat-btn" type="button" onClick="return CheckPwd();">
 								변경하기<i class="fa fa-angle-right"></i>
 							</button>
-						</div>
+						</div>  
 					</div>
 					<!-- profile-edit-container end-->
 				</form>
