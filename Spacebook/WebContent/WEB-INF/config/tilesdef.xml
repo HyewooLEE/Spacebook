@@ -8,23 +8,33 @@
 			<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>
+		<definition name ="base_layout2" template="/WEB-INF/views/tiles/layout2.jsp" >
+			<put-attribute name="header" value=""/>
+			<put-attribute name="footer" value=""/>
+			<put-attribute name="script" value="" />
+		</definition>
 		<definition name="main" extends="base_layout" >
 			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
 			<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
 		</definition>
-		<!-- 주영 -->
-		<definition name="login" extends="base_layout" >
-			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/login.jsp"/>
+		<definition name="accessDeny" extends="base_layout2">
+			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
+			<put-attribute name="body" value="/WEB-INF/views/common/access_denied.jsp"/>
 		</definition>
+		<definition name="login" extends="base_layout2" >
+			<put-attribute name="title" value="로그인"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<!-- 주영 -->
 		<definition name="join" extends="base_layout" >
 			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/join.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/join.jsp"/>
 		</definition>
 		<definition name="join2" extends="base_layout" >
 			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/join2.jsp"/>
-			<put-attribute name="script" value="/WEB-INF/views/main/join2Script.jsp" />
+			<put-attribute name="body" value="/WEB-INF/views/common/join2.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/common/join2Script.jsp" />
 		</definition>
 		<definition name="profile" extends="base_layout" >
 			<put-attribute name="title" value="프로필 수정"/>
@@ -34,7 +44,7 @@
 		<definition name="password" extends="base_layout" >
 			<put-attribute name="title" value="비밀번호 변경"/>
 			<put-attribute name="body" value="/WEB-INF/views/mypage/password.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/passwordScript.jsp" />
 		</definition>
 		<definition name="adminMember" extends="base_layout" >
 			<put-attribute name="title" value="회원 관리"/>
@@ -49,12 +59,12 @@
 		<definition name="noticeForm" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/noticeWriteForm.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/admin/noticeWriteFormScript.jsp" />
 		</definition>
 		<definition name="noticeUpdateForm" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/noticeUpdateForm.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/admin/noticeWriteFormScript.jsp" />
 		</definition>
 		<definition name="noticeContent" extends="base_layout" >
 			<put-attribute name="title" value="공지사항"/>
@@ -62,12 +72,12 @@
 			<put-attribute name="script" value="" />
 		</definition>
 		<definition name="company" extends="base_layout" >
-			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="title" value="회사소개"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/company.jsp"/>
 			<put-attribute name="script" value="/WEB-INF/views/admin/companyScript.jsp" />
 		</definition>
 		<definition name="howitwork" extends="base_layout" >
-			<put-attribute name="title" value="공지사항"/>
+			<put-attribute name="title" value="메뉴얼"/>
 			<put-attribute name="body" value="/WEB-INF/views/admin/howitwork.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>

@@ -47,7 +47,7 @@
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data" id="form">
+				<form  action="changeProfile.do?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data" id="profile_Form">
 				<div class="col-md-9">
 					<div class="row">
 						<div class="col-md-12">
@@ -178,7 +178,7 @@
 														<label for="기타">기타</label>
 													</div>
 												</div>
-												<button class="btn big-btn color-bg flat-btn pull-right"  onClick="return Check();">변경하기</button>	
+												<button class="btn big-btn color-bg flat-btn pull-right"  onClick="return Check4();">변경하기</button>	
 											</div>
 										</div>
 									</div>

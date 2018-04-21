@@ -1,5 +1,7 @@
 package spacebook.favorite.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,21 @@ public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
 
 	@Override
 	public void insertFavorite(SpaceFavoriteDTO dto) {
-		favoriteDAO.insertSpaceFavorite(dto);
+		favoriteDAO.insertFavorite(dto);
+	}
+
+	@Override
+	public void deleteFavorite(SpaceFavoriteDTO dto) {
+		favoriteDAO.deleteFavorite(dto);
+	}
+
+	@Override
+	public SpaceFavoriteDTO selectFavorite(SpaceFavoriteDTO dto) {
+		return favoriteDAO.selectFavorite(dto);
+	}
+
+	@Override
+	public List<SpaceFavoriteDTO> favoriteList(SpaceFavoriteDTO dto) {
+		return favoriteDAO.favoriteList(dto);
 	}
 }

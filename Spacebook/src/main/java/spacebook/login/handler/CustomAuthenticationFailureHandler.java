@@ -21,7 +21,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     this.loginpasswdname = "passwd";
     this.loginredirectname = "/loginPage.do";
     this.exceptionmsgname = "securityexceptionmsg";
-    this.defaultFailureUrl = "/loginPage.do?fail=true";
+    this.defaultFailureUrl = "/main.do?fail=true";
   }
    
    
@@ -75,7 +75,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
   @Override
   public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
     // TODO Auto-generated method stub
-     System.out.println("하이하이");
     // Request 객체의 Attribute에 사용자가 실패시 입력했던 로그인 ID와 비밀번호를 저장해두어 로그인 페이지에서 이를 접근하도록 한다
     String loginid = request.getParameter(loginidname);
     String loginpasswd = request.getParameter(loginpasswdname);

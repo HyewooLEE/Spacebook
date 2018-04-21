@@ -23,7 +23,8 @@ $(document).ready( function() {
         });
 });
 $(document).ready( function() {
-	
+	$("#form1 > div:nth-child(4) > span > div.dropdown > ul > li.sel.selected").css("display","none");
+	$("#form1 > div:nth-child(5) > span > div.dropdown > ul > li.selected.sel").css("display","none");
 	 $(".customFilter").change(function (e) {
 	 	var filter = $(this).find('option:selected').attr('value');
 	 	var mem_Id = $(this).attr('id');

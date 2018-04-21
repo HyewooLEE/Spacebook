@@ -53,7 +53,7 @@
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
-							<c:if test="${login.mem_Id eq 'admin@admin.com' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>

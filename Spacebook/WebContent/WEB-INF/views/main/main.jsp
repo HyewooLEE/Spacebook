@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="intro-item fl-wrap">
 				<h2>너가 원하는 모든 장소를 찾아줄게</h2>
-				<h3>팔로 팔로미 ! 시팔로미</h3>
+				<h3>팔로 팔로미 ! 다 찾아줄게!</h3>
 			</div>
 			<div class="main-search-input-wrap">
 				<div class="main-search-input fl-wrap">
@@ -518,9 +518,8 @@
 						<div class="time-line-icon">
 							<i class="fa fa-map-o"></i>
 						</div>
-						<h4>Find Interesting Place</h4>
-						<p>Proin dapibus nisl ornare diam varius tempus. Aenean a quam
-							luctus, finibus tellus ut, convallis eros sollicitudin turpis.</p>
+						<h4>간단하게 회원 가입하세요!</h4>
+						<p>지금 가지고 계신 모바일이나 데스크탑으로 간편하게 회원가입을 하세요 !<br> 단 1분도 걸리지 않습니다.</p>
 					</div> <span class="pr-dec"></span>
 				</li>
 				<li>
@@ -529,9 +528,8 @@
 						<div class="time-line-icon">
 							<i class="fa fa-envelope-open-o"></i>
 						</div>
-						<h4>Contact a Few Owners</h4>
-						<p>Faucibus ante, in porttitor tellus blandit et. Phasellus
-							tincidunt metus lectus sollicitudin feugiat pharetra consectetur.</p>
+						<h4>만약 놀고 있는 공간이 있다면 공간 등록을 하세요 !</h4>
+						<p>자세한 정보를 입력할 수록 예약 수가 높아집니다!</p>
 					</div> <span class="pr-dec"></span>
 				</li>
 				<li>
@@ -540,9 +538,8 @@
 						<div class="time-line-icon">
 							<i class="fa fa-hand-peace-o"></i>
 						</div>
-						<h4>Make a Listing</h4>
-						<p>Maecenas pulvinar, risus in facilisis dignissim, quam nisi
-							hendrerit nulla, id vestibulum metus nullam viverra porta.</p>
+						<h4>나 또는 우리에게 필요한 공간이 있으면 예약하세요 !</h4>
+						<p>다양한 결제방식으로 간편하게 예약하세요.<br>어때요 진짜 쉽죠?</p>
 					</div>
 				</li>
 			</ul>

@@ -54,4 +54,7 @@
 	<bean id="spaceReviewDAO" class="spacebook.view.model.SpaceReviewDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="spaceFavoriteDAO" class="spacebook.favorite.model.SpaceFavoriteDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>

@@ -68,4 +68,12 @@ public class MemberDaoServiceImpl implements MemberDaoService {
 		return dao.updateAuth("Member.updateAuth", map);
 	}
 
+	@Override
+	public int updatePwd(String changePwd,String mem_Id) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("mem_Pwd", changePwd);
+		map.put("mem_Id", mem_Id);
+		return dao.updatePwd("Member.updatePwd",map);
+	}
+
 }

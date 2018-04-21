@@ -171,7 +171,7 @@ function nextReview(totalReview, space_no) {
 }
 
 function preReview(totalReview, space_no) {
-	if(reviewCurPage >= totalReview / 3) {
+	if(reviewCurPage >= totalReview / 3 && totalReview % 3 == 0) {
 		reviewCurPage--;
 		reviewPage -= 3;
 	} else {
@@ -220,12 +220,16 @@ function favorite(space_no, mem_no) {
 	var params = "space_no="+ space_no +"&mem_no="+ mem_no;
 	$.ajax({
 		type: "get",
-		url: "/Spacebook/insertFavorite.do",
+		url: "/Spacebook/selectFavorite.do",
 		data: params,
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			
+			if(result.data == 1) {
+				$("#heart").attr('class','fa fa-heart');
+			} else if(result.data == 0) {
+				$("#heart").attr('class','fa fa-heart-o');
+			}			
 		}
 	});
 }

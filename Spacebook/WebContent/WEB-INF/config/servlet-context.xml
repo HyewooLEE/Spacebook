@@ -25,6 +25,7 @@
 	<!-- 남현 -->
 	<context:component-scan base-package="spacebook.view.controller"/>	
 	<context:component-scan base-package="spacebook.reserve.controller"/>
+	<context:component-scan base-package="spacebook.favorite.controller"/>
 	
     
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />

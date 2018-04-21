@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <div class="loader-wrap">
             <div class="pin"></div>
             <div class="pulse"></div>
@@ -41,7 +42,7 @@
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>검색하기</span></div>
                     <a href="submitSpaceForm.do" class="add-list">공간 등록<span><i class="fa fa-plus"></i></span></a>
                     <c:if test="${ login.mem_Id eq null }">
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>로그인하기</div>
+                    <div class="show-reg-form modal-open" id="loginButton"><i class="fa fa-sign-in"></i>로그인하기</div>
                     </c:if>
                     <c:if test="${login.mem_Id ne null}">
                     <div class="header-user-menu">
@@ -67,22 +68,22 @@
                             <li><a href="inquireListHost.do">1:1문의관리</a></li>
                             <li><a href="#">공간 정산정보</a></li>
                             <li><a href="#"></a></li>
-                            <c:if test="${login.mem_Id eq 'admin@admin.com' }">
+                            <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
                             <li><a href="adminMember.do">회원 관리</a></li>
                             <li><a href="adminArticle.do">게시글 관리</a></li>
                             <li><a href="#"></a></li>
                             </c:if>
                             <c:set var="str1" value="${login.mem_Id }"/>
 							<c:set var="str2" value="@"/>
-                            <c:if test="${fn:contains(str1, str2)}">
-                            <li><a href="#" onclick="logout();"> 로그아웃</a></li>
+							<c:if test="${fn:contains(str1, str2)}">
+                           		<li><a href="#" onclick="logout();"> 로그아웃</a></li>
                             </c:if>
-                             <c:if test="${!fn:contains(str1, str2)}">
-                            <li><a href="kakaologout.do"> 로그아웃 </a></li>
-                            </c:if>
+                            <c:if test="${!fn:contains(str1, str2)}">
+                            	<li><a href="kakaologout.do"> 로그아웃 </a></li>
+                            </c:if> 
                         </ul>
                     </div>
-                    <form action="logout.do" method="POST" style="display: none;">
+                    <form action="logout.do" method="POST" style="display: none;" id="logoutForm">
                     	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type="submit" value="Logout"  id="logout"/>
 					</form>
@@ -99,18 +100,12 @@
                     <div class="nav-holder main-menu">
                         <nav>
                             <ul>
-                            	<li><a href="loginPage.do">테스트</a> </li>
                             	<li><a href="main.do">홈</a> </li>
+                                <li><a href="company.do">회사소개</a></li>
+                                <li><a href="howitwork.do">이용안내</a></li>
                             	<li><a href="notice.do">공지사항</a></li>
                             	<li><a href="listSpace.do">공간 리스트</a></li>
-                            	<li><a href="#">이용 안내 <i class="fa fa-caret-down"></i></a>
-                                    <!--second level -->   
-                                    <ul>
-                                        <li><a href="company.do">회사소개</a></li>
-                                        <li><a href="howitwork.do">메뉴얼</a></li>
-                                    </ul>
                                     <!--second level end-->                                
-                                </li>
                             </ul>
                         </nav>
                     </div>

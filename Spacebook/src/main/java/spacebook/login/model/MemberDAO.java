@@ -46,4 +46,9 @@ public class MemberDAO extends SqlSessionDaoSupport {
 		int check = getSqlSession().update(QueryId, map);
 		return check;
 	}
+	
+	public int updatePwd(String QueryId,  HashMap<String, String> map) {
+		int check = getSqlSession().update(QueryId,map);
+		return check;
+	}
 }
