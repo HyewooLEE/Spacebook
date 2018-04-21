@@ -24,12 +24,10 @@ public class MainController {
 	@RequestMapping("main.do")
 	public String main(Model model) {
 		List<SpaceDTO> categorySpace = mainService.categorySpace();
-		//List<SpaceDTO> countCate = mainService.countSpaceCategory();
 		List<MainDTO> review = mainService.reviewList();
 		
 		model.addAttribute("category", categorySpace);
 		model.addAttribute("review", review);
-		//model.addAttribute("countCate", countCate);
 	
 		return "main";
 	}

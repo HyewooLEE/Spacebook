@@ -4,6 +4,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="space">
+
+	<!-- <resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	    <result column="MEM_NO" property="mem_No"/>
+	    <result column="MEM_NAME" property="mem_Name"/>
+	</resultMap> 
+
+	<resultMap type="spacebook.submit.model.SpaceDTO" id="spaceDTO">
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
+	    <result column="SPACE_NAME" property="space_name"/>
+	    <result column="SPACE_CATEGORY" property="space_category"/>
+	    <result column="SPACE_INTRO1" property="space_intro1"/>
+	    <result column="SPACE_IMG1" property="space_img1"/>
+	    <result column="SPACE_OPEN" property="space_open"/>
+	    <result column="SPACE_CLOSE" property="space_close"/>
+	    <result column="SPACE_SITE" property="space_site"/>
+	    <result column="SPACE_ADDR1" property="space_addr1"/>
+	    <result column="SPACE_ADDR2" property="space_addr2"/>
+	    <collection property="memberVO" resultMap="MemberVO"/>
+	</resultMap> -->
 	
 	<insert id="insertSpace" parameterType="spacebook.submit.model.SpaceDTO" >
 		insert into space values(
@@ -44,13 +64,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from space_facility
 	</select>
 	
-	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO" >
+	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO">
 		select * from space s left outer join MEMBER m on s.mem_no = m.mem_no order by s.space_no
 	</select>
 	
 	<select id="spaceMap" resultType="spacebook.submit.model.SpaceDTO" >
-	select * from space NATURAL JOIN map
-</select>
+		select * from space NATURAL JOIN map
+	</select>
+	
+	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
+		delete from space where space_no = #{space_no}
+	</delete>
 	
 	
 </mapper>

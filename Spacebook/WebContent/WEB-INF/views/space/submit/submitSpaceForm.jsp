@@ -48,6 +48,15 @@
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
+                                <c:if test="${login.mem_Id eq 'admin@admin.com' }">
+								<div class="user-profile-menu">
+									<h3>관리자 메뉴</h3>
+									<ul>
+										<li><a href="adminMember.do" class="user-profile-act"><i class="fa fa-th-list"></i>회원 관리 </a></li>
+										<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
+									</ul>
+								</div>
+								</c:if>
                                 <!-- user-profile-menu end-->                                      
                             </div>
                         </div>

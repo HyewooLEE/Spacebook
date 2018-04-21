@@ -48,11 +48,8 @@ public class SpaceDTO {
 	private String map_latitude;
 	private String map_longitude;
 	
-	
 	private SpaceFacilityDTO spaceFacilityDTO;
-	
 	private SpaceReviewDTO spaceReviewDTO;
-	
 	private MemberVO memberVO;
 	
 

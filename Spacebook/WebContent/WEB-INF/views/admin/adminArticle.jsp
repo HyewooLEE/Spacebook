@@ -64,31 +64,12 @@
 					<div class="dashboard-list-box fl-wrap">
 						<div class="dashboard-header fl-wrap">
 							<form class="fl-wrap" method="POST" action="adminMember.do" id="form1">
-							<input type="hidden" name="pageNumber" value="${page.pageNumber }"/>
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-							<!-- <h3 style="display:inline; float:left;">회원 관리</h3> -->
 							<div class="box-widget-item fl-wrap pull-right" style="display: inline; width:300px; margin-bottom: 0px">
 		                        <div class="box-widget search-widget pull-right">
 		                                <input name="search" id="search" type="text" class="search" placeholder="검색하시오" value="">
 		                                <button class="search-submit" id="submit_btn"><i class="fa fa-search transition"></i> </button>
 		                        </div>
 		                    </div>
-							<div class="listsearch-input-item pull-left" style="width:110px;">
-	                            <select data-placeholder="Location" class="chosen-select" id="type1" name="type1">
-	                                <option value="" style="display:none;">권한</option>
-	                                <option value="ROLE_GUEST">게스트</option>
-	                                <option value="ROLE_USER">멤버</option>
-	                                <option value="ROLE_ADMIN">관리자</option>
-	                                <option value="N">정지계정</option>
-	                            </select>
-	                         </div>
-							<div class="listsearch-input-item pull-left" style="width:140px;">
-	                            <select data-placeholder="Location" class="chosen-select"  id="type2" name="type2">
-	                                <option value="" style="display:none;">유형</option>
-	                                <option value="E">일반계정</option>
-	                                <option value="K">카카오계정</option>
-	                            </select>
-	                         </div>
 		                    </form>
 						</div>
 						<c:if test="${page.articleCount == 0}">
@@ -98,87 +79,29 @@
 							</div>
 						</div>
 						</c:if>
-						<c:if test="${page.articleCount > 0}">
-						<c:forEach var="members" items="${members }">
+						<%-- <c:if test="${page.articleCount > 0}"> --%>
+						<div id="tableForm">
 						<!-- dashboard-list end-->
+						<c:forEach var="spaceAll" items="${spaceAll }">
 						<div class="dashboard-list " style="width:100%">
 							<div class="dashboard-message" >
 								<div class="dashboard-message-avatar">
-									<img src="${members.mem_Img}" alt="" style="object-fit: cover; width:50px; height: 50px;">
+									<img src="${spaceAll.space_img1}" alt="" style="object-fit: cover; width:50px; height: 50px;">
 								</div>
 								<div class="dashboard-message-text " style=" padding-top:15px;">
-									<div class="listsearch-input-item pull-right" style="width:125px;">
-			                            <select data-placeholder="Location" class="customFilter chosen-select" id="${members.mem_Id }" >
-			                                <option style="display:none;">권한</option>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_USER'}">
-			                                <option value="ROLE_GUEST">게스트</option>
-			                                <option value="ROLE_USER" selected="selected">멤버</option>
-			                                <option value="ROLE_ADMIN">관리자</option>
-			                                <option value="NONENABLED">정지계정</option>
-			                               </c:if>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_GUEST'}">
-			                                <option value="ROLE_GUEST" selected="selected">게스트</option>
-			                                <option value="ROLE_USER">멤버</option>
-			                                <option value="ROLE_ADMIN">관리자</option>
-			                                <option value="NONENABLED">정지계정</option>
-			                               </c:if>
-			                                <c:if test="${members.mem_Auth eq 'ROLE_ADMIN'}">
-			                                <option value="ROLE_GUEST">게스트</option>
-			                                <option value="ROLE_USER">멤버</option>
-			                                <option value="ROLE_ADMIN" selected="selected">관리자</option>
-			                                <option value="NONENABLED">정지계정</option>
-			                               </c:if>
-			                                <c:if test="${members.mem_Enabled ne '1'}">
-			                                <option value="ROLE_GUEST">게스트</option>
-			                                <option value="ROLE_USER">멤버</option>
-			                                <option value="ROLE_ADMIN">관리자</option>
-			                                <option value="NONENABLED" selected="selected">정지계정</option>
-			                               </c:if>
-			                            </select>
-		                         </div>
 									<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
-										${members.mem_Id }
-										<c:if test="${members.mem_Name eq null}">
-										(게스트 님) - 
-										</c:if>
-										<c:if test="${members.mem_Name ne null }">
-										(${members.mem_Name} 님) - 
-										</c:if>
-										<c:set var="str1" value="${members.mem_Id }"/>
-										<c:set var="str2" value="@"/>
-			                            <c:if test="${fn:contains(str1, str2)}">
-										<span style="color:#4DB7FE; font-size:12px;">이메일 계정</span>
-			                            </c:if>
-			                            <c:if test="${!fn:contains(str1, str2)}">
-			                            <span style="color:#4DB7FE; font-size:12px;">카카오 계정</span>
-			                            </c:if>
+										${spaceAll.space_name}
+										&nbsp;&nbsp;&nbsp;<span style="color:#4DB7FE; font-size:12px;">${spaceAll.space_category}</span>
+										&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;<%-- ${spaceAll.memberVO.mem_Name} --%>
 									</a>
-									<div class="accordion-inner">
-									<div class="booking-details fl-wrap">
-										<span class="booking-title">전화번호</span> : 
-										<span class="booking-text"><a href="#">${members.mem_Phone }</a></span>
-									</div>
-									<div class="booking-details fl-wrap">
-										<span class="booking-title">주소</span> : 
-										<span class="booking-text"><a href="#">${members.mem_Addr2 }${members.mem_Addr3 }</a></span>
-									</div>
-									<div class="booking-details fl-wrap">
-										<span class="booking-title">선호 장소</span> : 
-										<span class="booking-text">
-											<a href="#">
-											<c:forTokens var="favor" items="${members.mem_Favor}" delims=",">
-											${favor }
-											</c:forTokens>
-											</a>
-										</span>
-									</div> 
-									</div>
  								</div>
+ 								<button class="btn color-bg flat-btn" id="deleteArticle" onClick="return deleteArticle(${spaceAll.space_no});">삭제</button>
 							</div>
 						</div>
-						<!-- dashboard-list end-->
 						</c:forEach>
-						</c:if>
+						</div>
+						<!-- dashboard-list end-->
+						<%-- </c:if> --%>
 					</div>
 					<!-- pagination-->
 					<c:if test="${page.articleCount > 0}">

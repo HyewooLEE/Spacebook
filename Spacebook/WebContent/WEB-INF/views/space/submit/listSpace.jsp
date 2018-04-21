@@ -98,11 +98,11 @@
                     <div class="listing-item">
                         <article class="geodir-category-listing fl-wrap">
 	                            <div class="geodir-category-img">
-	                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:350px;height:210px;"></a>
+	                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:420px;height:210px;"></a>
 	                                <div class="overlay"></div>
 	                                <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div>
 	                            </div>
-                            <div class="geodir-category-content fl-wrap" style="width:370px;height:230px;">
+                            <div class="geodir-category-content fl-wrap" style="width:420px;height:230px;">
                                 <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
                                 <div class="listing-avatar"><a href="author-single.html"><img src="${login.mem_Img }" alt=""></a>
                                     <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>

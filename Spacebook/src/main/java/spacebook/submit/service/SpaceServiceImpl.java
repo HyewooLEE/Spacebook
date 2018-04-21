@@ -40,4 +40,9 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceDTO> selectMapList(){
 		return spaceDao.selectMapList();
 	}
+
+	@Override
+	public void deleteSpace(SpaceDTO spaceDto) {
+		spaceDao.deleteSpace(spaceDto);
+	}
 }

@@ -8,8 +8,6 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 	
 	//편의시설 list
 	public List<SpaceFacilityDTO> selectFacility(){
-		/*Map<String, String> map = new HashMap<String, String>();
-		map.put("SPACE_FACILITY", "SPACE_FACILITY");*/
 		return getSqlSession().selectList("space.selectFacility");
 	}
 	
@@ -24,6 +22,10 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 	
 	public List<SpaceDTO> selectMapList(){
 		return getSqlSession().selectList("space.spaceMap");
+	}
+	
+	public void deleteSpace(SpaceDTO spaceDto) {
+		getSqlSession().delete("space.deleteSpace");
 	}
 	
 	
