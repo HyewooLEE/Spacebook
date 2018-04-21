@@ -171,7 +171,7 @@ function nextReview(totalReview, space_no) {
 }
 
 function preReview(totalReview, space_no) {
-	if(reviewCurPage >= totalReview / 3) {
+	if(reviewCurPage >= totalReview / 3 && totalReview % 3 == 0) {
 		reviewCurPage--;
 		reviewPage -= 3;
 	} else {

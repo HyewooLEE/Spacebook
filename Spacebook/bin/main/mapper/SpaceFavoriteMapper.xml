@@ -13,4 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectFavorite" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
 		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
 	</select>
+	<select id="favoriteList" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
+		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no}
+	</select>
 </mapper>

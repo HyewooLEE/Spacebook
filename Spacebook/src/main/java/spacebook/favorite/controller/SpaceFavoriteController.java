@@ -1,6 +1,7 @@
 package spacebook.favorite.controller;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,5 +42,14 @@ public class SpaceFavoriteController {
 		PrintWriter out = response.getWriter();
 		out.println(jso.toString());
 		
+	}
+	
+	@RequestMapping("favoriteList.do")
+	public String favoriteList(SpaceFavoriteDTO favoriteDTO, Model model) {
+		List<SpaceFavoriteDTO> favoriteList = sfs.favoriteList(favoriteDTO);
+		
+		model.addAttribute("favoriteList", favoriteList);
+		
+		return "favoriteList";
 	}
 }
