@@ -36,17 +36,16 @@ public class AdminArticleController {
 	
 	@RequestMapping(value = "/adminArticleDelete.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void delete(HttpServletResponse response,SpaceDTO spaceDto,Model model)throws Exception {
-		
 		List<SpaceDTO> spaceAll = spaceService.selectSpaceAll();
 		
 		JSONObject json = new JSONObject();
 		json.put("data", spaceAll);
-		
-		response.setContentType("text/html;charset=utf-8"); 
+		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(json.toString());
         
-        //spaceService.deleteSpace(spaceDto);
+        spaceService.deleteSpace(spaceDto);
+        
 	}
 	
 	

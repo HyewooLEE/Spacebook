@@ -92,7 +92,7 @@
 									<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
 										${spaceAll.space_name}
 										&nbsp;&nbsp;&nbsp;<span style="color:#4DB7FE; font-size:12px;">${spaceAll.space_category}</span>
-										&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;<%-- ${spaceAll.memberVO.mem_Name} --%>
+										&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;${spaceAll.memberVO.mem_Name}
 									</a>
  								</div>
  								<button class="btn color-bg flat-btn" id="deleteArticle" onClick="return deleteArticle(${spaceAll.space_no});">삭제</button>

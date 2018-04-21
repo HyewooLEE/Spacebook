@@ -25,7 +25,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 	}
 	
 	public void deleteSpace(SpaceDTO spaceDto) {
-		getSqlSession().delete("space.deleteSpace");
+		getSqlSession().delete("space.deleteMap",spaceDto);
+		getSqlSession().delete("space.deleteSpace",spaceDto);
 	}
 	
 	

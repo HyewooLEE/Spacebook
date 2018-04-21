@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="space">
 
-	<!-- <resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
 	    <result column="MEM_NO" property="mem_No"/>
 	    <result column="MEM_NAME" property="mem_Name"/>
 	</resultMap> 
@@ -23,8 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_ADDR1" property="space_addr1"/>
 	    <result column="SPACE_ADDR2" property="space_addr2"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
-	</resultMap> -->
-	
+	</resultMap> 
+
 	<insert id="insertSpace" parameterType="spacebook.submit.model.SpaceDTO" >
 		insert into space values(
 		space_seq.nextval,
@@ -64,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from space_facility
 	</select>
 	
-	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO">
+	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO" resultMap="spaceDTO">
 		select * from space s left outer join MEMBER m on s.mem_no = m.mem_no order by s.space_no
 	</select>
 	
@@ -74,6 +74,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
 		delete from space where space_no = #{space_no}
+	</delete>
+	
+	<delete id="deleteMap" parameterType="spacebook.submit.model.SpaceDTO">
+		delete from map where space_no = #{space_no}
 	</delete>
 	
 	
