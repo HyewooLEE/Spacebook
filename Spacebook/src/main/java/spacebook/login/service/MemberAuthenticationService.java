@@ -30,7 +30,6 @@ public class MemberAuthenticationService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		System.out.println("ㅎㅇㅎㅇ");
 		Map<String, Object> user = sqlSession.selectOne("Member.auth", username);
 		if (user == null)
 			throw new UsernameNotFoundException(username);

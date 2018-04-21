@@ -19,8 +19,7 @@
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
-	<tiles:insertAttribute name="header" />
-<div id="wrapper">
+<div id="wrapper" style="padding-top: 0px;">
 <!-- Content-->   
 <div class="content">
 	<tiles:insertAttribute name="body" />
@@ -28,23 +27,11 @@
 <!-- Content end -->
 </div>
 <!-- wrapper end -->
-	<tiles:insertAttribute name="footer" />
 <!--=============== scripts  ===============-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/scripts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/main/main.js"></script>
-<tiles:insertAttribute name="script" />
 </body>
-<c:if test="${param.fail ne null  }">
-<script>
-swal.getState();
-swal("실패", "아이디와 비밀번호를 확인해주세요.", "warning", {
-	buttons : "닫기"
-}).then(function(){
-	$(".main-register-wrap").css("display","block");
-});
-</script>
-</c:if>
 </html>

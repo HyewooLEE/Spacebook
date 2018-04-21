@@ -81,7 +81,6 @@
                             <c:if test="${!fn:contains(str1, str2)}">
                             	<li><a href="kakaologout.do"> 로그아웃 </a></li>
                             </c:if> 
-                            	<li><a onclick="test()">죄송해요..</a></li>
                         </ul>
                     </div>
                     <form action="logout.do" method="POST" style="display: none;" id="logoutForm">
@@ -101,30 +100,15 @@
                     <div class="nav-holder main-menu">
                         <nav>
                             <ul>
-                            	<li><a href="loginPage.do">테스트</a> </li>
                             	<li><a href="main.do">홈</a> </li>
+                                <li><a href="company.do">회사소개</a></li>
+                                <li><a href="howitwork.do">이용안내</a></li>
                             	<li><a href="notice.do">공지사항</a></li>
                             	<li><a href="listSpace.do">공간 리스트</a></li>
-                            	<li><a href="#">이용 안내 <i class="fa fa-caret-down"></i></a>
-                                    <!--second level -->   
-                                    <ul>
-                                        <li><a href="company.do">회사소개</a></li>
-                                        <li><a href="howitwork.do">메뉴얼</a></li>
-                                    </ul>
                                     <!--second level end-->                                
-                                </li>
                             </ul>
                         </nav>
                     </div>
                     <!-- navigation  end -->
                 </div>
             </header>
-            <script>
-            	var test = function(){
-            	    Kakao.init('899499d6220daee9a08638718e824675');
-            	    if('${login.mem_Id}' != null){
-            	    	 Kakao.Auth.loginForm(function(){
-            	         });
-            	    }
-            	};
-            </script>

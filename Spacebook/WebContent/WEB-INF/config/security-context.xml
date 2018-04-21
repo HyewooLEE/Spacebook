@@ -30,9 +30,15 @@
 			logout-success-url="/main.do"
 			delete-cookies="JSESSIONID,NID,SPRING_SECURITY_REMEMBER_ME_COOKIE"   
 			invalidate-session="true" />
+		 <logout 
+			logout-url="/kakaologout.do"
+			logout-success-url="/main.do"
+			delete-cookies="JSESSIONID,NID,SPRING_SECURITY_REMEMBER_ME_COOKIE"   
+			invalidate-session="true" />
 		<remember-me token-validity-seconds="2419200" remember-me-parameter="remember-me"/>
-		<session-management invalid-session-url="/user/loginPage">
-			<concurrency-control max-sessions="1" expired-url="/main.do" error-if-maximum-exceeded="true" />
+		
+		<session-management invalid-session-url="/main.do">
+			<concurrency-control max-sessions="2" expired-url="/main.do" error-if-maximum-exceeded="true" />
 		</session-management> 
 		<csrf/>
 	</http>

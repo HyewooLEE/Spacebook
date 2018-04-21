@@ -5,9 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Member">
 	<insert id="insertKakao" parameterType="spacebook.login.model.MemberVO">
 		insert into MEMBER
-		(MEM_NO,MEM_ID,MEM_IMG,MEM_ENABLED,MEM_AUTH) values (
+		(MEM_NO,MEM_ID,MEM_PWD,MEM_IMG,MEM_ENABLED,MEM_AUTH) values (
 		MEMBER_SEQ.NEXTVAL ,
 		#{mem_Id},
+		#{mem_Pwd},
 		'/Spacebook/PROFILE/profile_default.jpg',
 		1,
 		'ROLE_GUEST'

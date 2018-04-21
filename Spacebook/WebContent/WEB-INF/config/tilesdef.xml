@@ -8,27 +8,33 @@
 			<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>
+		<definition name ="base_layout2" template="/WEB-INF/views/tiles/layout2.jsp" >
+			<put-attribute name="header" value=""/>
+			<put-attribute name="footer" value=""/>
+			<put-attribute name="script" value="" />
+		</definition>
 		<definition name="main" extends="base_layout" >
 			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
 			<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
 		</definition>
-		<definition name="accessDeny" extends="base_layout" >
+		<definition name="accessDeny" extends="base_layout2">
 			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
-			<put-attribute name="body" value="/WEB-INF/views/main/access_denied.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/access_denied.jsp"/>
+		</definition>
+		<definition name="login" extends="base_layout2" >
+			<put-attribute name="title" value="로그인"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
+			<put-attribute name="script" value="" />
 		</definition>
 		<!-- 주영 -->
-		<definition name="login" extends="base_layout" >
-			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/login.jsp"/>
-		</definition>
 		<definition name="join" extends="base_layout" >
 			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/join.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/join.jsp"/>
 		</definition>
 		<definition name="join2" extends="base_layout" >
 			<put-attribute name="title" value="정보 등록"/>
-			<put-attribute name="body" value="/WEB-INF/views/main/join2.jsp"/>
-			<put-attribute name="script" value="/WEB-INF/views/main/join2Script.jsp" />
+			<put-attribute name="body" value="/WEB-INF/views/common/join2.jsp"/>
+			<put-attribute name="script" value="/WEB-INF/views/common/join2Script.jsp" />
 		</definition>
 		<definition name="profile" extends="base_layout" >
 			<put-attribute name="title" value="프로필 수정"/>

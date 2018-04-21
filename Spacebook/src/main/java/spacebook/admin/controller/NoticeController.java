@@ -35,6 +35,7 @@ public class NoticeController {
 		mv.addObject("page", page);
 		return mv;
 	}
+	
 	@RequestMapping(value="noticeWriteForm.do",method=RequestMethod.GET)
 	public String noticeForm() {
 		
@@ -48,6 +49,7 @@ public class NoticeController {
 		mv.addObject("check", "writeSuccess");
 		return mv;
 	}
+	
 	@RequestMapping(value="noticeContent.do",method=RequestMethod.GET)
 	public ModelAndView writeNotice(@RequestParam("notice_No") String notice_No, @RequestParam("pageNumber") String pageNumber) {
 		ModelAndView	mv = new ModelAndView("noticeContent");
@@ -56,6 +58,7 @@ public class NoticeController {
 		mv.addObject("pageNumber", pageNumber);
 		return mv;
 	}
+	
 	@RequestMapping(value="noticeDelete.do",method=RequestMethod.GET)
 	public ModelAndView deleteNotice(@RequestParam("notice_No") String notice_No) {
 		ModelAndView mv = new ModelAndView("redirect:/notice.do");
@@ -63,6 +66,7 @@ public class NoticeController {
 		mv.addObject("check", check);
 		return mv;
 	}
+	
 	@RequestMapping(value="noticeUpdateForm.do",method=RequestMethod.GET)
 	public ModelAndView updateNotice(@RequestParam("notice_No") String notice_No) {
 		ModelAndView mv = new ModelAndView("noticeUpdateForm");
@@ -70,6 +74,7 @@ public class NoticeController {
 		mv.addObject("article", article);
 		return mv;
 	}
+	
 	@RequestMapping(value="updateNotice.do",method=RequestMethod.POST)
 	public ModelAndView updateNotice(NoticeDTO dto) {
 		ModelAndView mv = new ModelAndView("redirect:/notice.do");

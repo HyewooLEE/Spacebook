@@ -128,7 +128,8 @@
 			</h3>
 			<div class="soc-log fl-wrap" style="margin-bottom:25px;">
 				<p>SNS 계정을 이용하여 로그인하기</p>
-					<a href="https://kauth.kakao.com/oauth/authorize?client_id=899499d6220daee9a08638718e824675&redirect_uri=http://localhost:8328/Spacebook/kakaologin.do&response_type=code "  style="height:60px;"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/kakao.jpg" height="60px;"></a> 
+					<%-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=899499d6220daee9a08638718e824675&redirect_uri=http://localhost:8328/Spacebook/kakaologin.do&response_type=code "  style="height:60px;"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/kakao.jpg" height="60px;"></a> --%>
+					 <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3D899499d6220daee9a08638718e824675%26redirect_uri%3Dhttp%3A%2F%2Flocalhost%3A8328%2FSpacebook%2Fkakaologin.do%26response_type%3Dcode "  style="height:60px;"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/kakao.jpg" height="60px;"></a> 
 			</div>
 			<div class="log-separator fl-wrap">
 				<span>or</span>
@@ -141,7 +142,7 @@
 				<div class="tab">
 					<div id="tab-1" class="tab-content">
 						<div class="custom-form">
-							<form method="post" action="login.do">
+							<form method="post" action="login.do" id="main-login-form">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								<label>이메일 </label>
 								<input name="email" type="text" onClick="this.select()" value=""> 
