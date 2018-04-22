@@ -1,11 +1,28 @@
 package spacebook.favorite.model;
 
+import spacebook.login.model.MemberVO;
+import spacebook.submit.model.SpaceDTO;
+
 public class SpaceFavoriteDTO {
 	private int fav_no;
 	private String fav_div;
 	private int mem_no;
 	private int space_no;
+	private SpaceDTO spaceDTO;
+	private MemberVO memberVO;
 	
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
+	public SpaceDTO getSpaceDTO() {
+		return spaceDTO;
+	}
+	public void setSpaceDTO(SpaceDTO spaceDTO) {
+		this.spaceDTO = spaceDTO;
+	}
 	public int getFav_no() {
 		return fav_no;
 	}

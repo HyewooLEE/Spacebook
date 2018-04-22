@@ -9,9 +9,9 @@
 		<!-- profile-edit-wrap -->
 		<div class="profile-edit-wrap">
 			<div class="profile-edit-page-header">
-				<h2>나의 1:1문의</h2>
+				<h2>나의 찜공간</h2>
 				<div class="breadcrumbs">
-					<a href=main.do>홈</a><span>1:1문의</span>
+					<a href=main.do>홈</a><span>나의 찜공간</span>
 				</div>
 			</div>
 			<div class="row">
@@ -32,8 +32,8 @@
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
                                         <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
-                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
+                                        <li><a href="favoriteList.do" class="user-profile-act"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
+                                        <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  
@@ -58,7 +58,6 @@
 								</ul>
 							</div>
 							</c:if>
-				
 						</div>
 					</div>
 				</div>
@@ -68,35 +67,35 @@
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
-									<h4>나의 1:1문의</h4>
+									<h4>나의 찜공간</h4>
 								</div>
 							</div>
-							<div >
-							  <!-- list-main-wrap-->
-				           		<div class="list-main-wrap fl-wrap card-listing">
-				                <a class="custom-scroll-link back-to-filters btf-r" href="#lisfw"><i class="fa fa-angle-double-up"></i><span>Back to Filters</span></a> 
+						 	<!-- list-main-wrap-->
+				            <c:if test="${countMyFavorite > 0}">
+				            <div class="list-main-wrap fl-wrap card-listing">
 				                <div class="container" class="col-md-3">
 				                    <!-- listing-item -->
-				                    <c:forEach var="spaceAll" items="${spaceAll}" varStatus="status">
+				                    <c:forEach var="favoriteList" items="${favoriteList}">
 				                    <div class="listing-item">
 				                        <article class="geodir-category-listing fl-wrap">
 					                            <div class="geodir-category-img">
-					                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:350px;height:210px;"></a>
+					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" style="width:320px;height:210px;"></a>
 					                                <div class="overlay"></div>
-					                                <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div>
+					                                <%-- <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div> --%>
 					                            </div>
-				                            <div class="geodir-category-content fl-wrap" style="width:370px;height:230px;">
-				                                <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
-				                                <div class="listing-avatar"><a href="author-single.html"><img src="${login.mem_Img }" alt=""></a>
-				                                    <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>
+				                            <div class="geodir-category-content fl-wrap" style="width:320px;height:280px;">
+				                                <a class="listing-geodir-category" href="listing.html">${favoriteList.spaceDTO.space_category}</a>
+				                                <div class="listing-avatar"><a href="author-single.html"><img src="${favoriteList.memberVO.mem_Img}" alt=""></a>
+				                                    <span class="avatar-tooltip">Added By  <strong> ${favoriteList.memberVO.mem_Name }</strong></span>
 				                                </div>
-				                                <h3><a href="spaceView.do?space_no=${spaceAll.space_no }">${spaceAll.space_name }</a></h3>
-				                                <p>${spaceAll.space_intro1 }</p>
+				                                <h3><a href="spaceView.do?space_no=${favoriteList.space_no}">${favoriteList.spaceDTO.space_name}</a></h3>
+				                                <p>${favoriteList.spaceDTO.space_intro1 }</p>
 				                                <div class="geodir-category-options fl-wrap">
+				                                    <div class="opening-hours-day" style="text-align: left;"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;평일 ${favoriteList.spaceDTO.space_open} - ${favoriteList.spaceDTO.space_close}</div>
 				                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
 				                                        <span>(7 reviews)</span>
 				                                    </div>
-				                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>${spaceAll.space_addr2}</div>
+				                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${favoriteList.spaceDTO.space_addr1}&nbsp;&nbsp;&nbsp;${favoriteList.spaceDTO.space_addr2}</div>
 				                                </div>
 				                            </div>
 				                        </article>
@@ -106,9 +105,9 @@
 				                    <div class="clearfix"></div>
 				                </div>
 				                <a class="load-more-button" href="#">Load more <i class="fa fa-circle-o-notch"></i> </a>  
-					        </div>
-					        <!-- list-main-wrap end-->
-							</div>
+				            </div>
+				            </c:if>
+				            <!-- list-main-wrap end-->
 						</div>
 					</div>
 				</div>

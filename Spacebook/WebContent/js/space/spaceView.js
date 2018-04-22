@@ -150,10 +150,10 @@ function nextReview(totalReview, space_no) {
 				$('#review').append(
 						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
-							"<img src='"+ result.data[i].mem_img +"'>" +
+							"<img src='"+ result.data[i].memberVO.mem_Img +"'>" +
 						"</div>" +
 						"<div class='reviews-comments-item-text'>" + 
-							"<h4><a href='#'>"+ result.data[i].mem_name + "</a></h4>" +
+							"<h4><a href='#'>"+ result.data[i].memberVO.mem_Name + "</a></h4>" +
 							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'>"+
 								star + 
 							"</div>" +
@@ -196,10 +196,10 @@ function preReview(totalReview, space_no) {
 				$('#review').append(
 						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
-							"<img src='images/avatar/1.jpg'>" +
+							"<img src='"+ result.data[i].memberVO.mem_Img +"'>" +
 						"</div>" +
 						"<div class='reviews-comments-item-text'>" + 
-							"<h4><a href='#'>"+ result.data[i].mem_name + "</a></h4>" +
+							"<h4><a href='#'>"+ result.data[i].memberVO.mem_Name + "</a></h4>" +
 							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'>"+
 								star + 
 							"</div>" +

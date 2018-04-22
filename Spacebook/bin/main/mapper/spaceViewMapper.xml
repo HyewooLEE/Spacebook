@@ -13,8 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<resultMap type="spacebook.submit.model.SpaceDTO" id="SpaceDTO">
 	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
 	    <result column="SPACE_NAME" property="space_name"/>
 	    <result column="SPACE_CATEGORY" property="space_category"/>
+	    <result column="SPACE_ADDR1" property="space_addr1"/>
+	    <result column="SPACE_ADDR2" property="space_addr2"/>
 	    <result column="SPACE_TAG" property="space_tag"/>
 	    <result column="SPACE_PHONE" property="space_phone"/>
 	    <result column="FAC_NO" property="fac_no"/>
@@ -25,6 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_IMG5" property="space_img5"/>
 	    <result column="SPACE_IMG6" property="space_img6"/>
 	    <result column="SPACE_IMG7" property="space_img7"/>
+	    <result column="SPACE_INTRO1" property="space_intro1"/>
 	    <result column="SPACE_INTRO2" property="space_intro2"/>
 	    <result column="SPACE_SITE" property="space_site"/>
 	    <result column="SPACE_CAU" property="space_cau"/>

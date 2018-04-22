@@ -4,6 +4,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spaceFavorite">
+	<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	    <result column="MEM_NAME" property="mem_Name"/>
+	    <result column="MEM_IMG" property="mem_Img"/>
+	</resultMap>
+	<resultMap type="spacebook.submit.model.SpaceDTO" id="SpaceDTO">
+	    <result column="SPACE_NAME" property="space_name"/>
+	    <result column="SPACE_CATEGORY" property="space_category"/>
+	    <result column="SPACE_ADDR1" property="space_addr1"/>
+	    <result column="SPACE_ADDR2" property="space_addr2"/>
+	    <result column="SPACE_INTRO1" property="space_intro1"/>
+	    <result column="SPACE_IMG1" property="space_img1"/>
+	    <result column="SPACE_OPEN" property="space_open"/>
+	    <result column="SPACE_CLOSE" property="space_close"/>
+	    <result column="SPACE_SUM" property="space_sum"/>
+	</resultMap> 
+	<resultMap type="spacebook.favorite.model.SpaceFavoriteDTO" id="SpaceFavoriteDTO">
+	    <result column="REV_NO" property="fav_no"/>
+	    <result column="SPACE_NO" property="space_no"/>
+	    <collection property="spaceDTO" resultMap="SpaceDTO"/>
+	    <collection property="memberVO" resultMap="MemberVO"/>
+	</resultMap>
 	<insert id="insertFavorite" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
 		INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.NEXTVAL, 'Y', #{mem_no}, #{space_no})
 	</insert>
@@ -13,7 +34,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectFavorite" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
 		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
 	</select>
-	<select id="favoriteList" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
-		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no}
+	<select id="favoriteList" resultMap="SpaceFavoriteDTO">
+		select fav.fav_no, fav.space_no, s.space_name, s.space_category, s.space_addr1, s.space_addr2, s.space_intro1, s.space_img1, s.space_open, s.space_close, s.space_sum, m.mem_name, m.mem_img
+          from favorite fav inner join space s on fav.space_no = s.space_no inner join member m on s.mem_no = m.mem_no
+         where fav.mem_no = #{mem_no}
+	</select>
+	<select id="countSpaceFavorite" resultType="int">
+		SELECT COUNT(*) FROM FAVORITE WHERE SPACE_NO = #{space_no}
+	</select>
+	<select id="countMemFavorite" resultType="int">
+		SELECT COUNT(*) FROM FAVORITE WHERE SPACE_NO = #{space_no} AND MEM_NO = #{mem_no}
+	</select>
+	<select id="countMyFavorite" resultType="int">
+		SELECT COUNT(*) FROM FAVORITE WHERE MEM_NO = #{mem_no}
 	</select>
 </mapper>

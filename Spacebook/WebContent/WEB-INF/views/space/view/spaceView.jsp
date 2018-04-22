@@ -16,10 +16,10 @@
                        </div>
                        <h2>${spaceDetail.space_name}<br/><span>Hosted By </span><a href="author-single.html">${spaceDetail.memberVO.mem_Name}</a> </h2>
                        <span class="section-separator"></span>
-                       <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
+                       <div class="listing-rating card-popup-rainingvis" data-starrating2="${avrageReview}">
                            <span>(${countReview} 리뷰)</span>
                        </div>
-                       <div class="list-post-counter single-list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
+                       <div class="list-post-counter single-list-post-counter"><span>${countFavorite}</span><i class="fa fa-heart"></i></div>
                        <div class="clearfix"></div>
                        <div class="row">
                            <div class="col-md-6">
@@ -56,7 +56,11 @@
 					<li><a href="#sec4">리뷰</a></li>
 				</ul>
 			</nav>
-			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No})" class="save-btn"><i class="fa fa-heart-o" id="heart"></i> 찜하기 </a>
+			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No})" class="save-btn">
+				<%-- <c:if test="${ }"> --%>
+				<i class="fa fa-heart-o" id="heart"></i>
+				<%-- </c:if> --%>
+				 찜하기 </a>
 		</div>
 	</div>
 	<!--  section   -->
@@ -143,10 +147,10 @@
 								<c:forEach var="reviewList" items="${reviewList}">
 								<div class="reviews-comments-item">
 									<div class="review-comments-avatar">
-										<img src="images/avatar/1.jpg">
+										<img src="${reviewList.memberVO.mem_Img}">
 									</div>
 									<div class="reviews-comments-item-text">
-										<h4><a href="#">${reviewList.mem_name}</a></h4>
+										<h4><a href="#">${reviewList.memberVO.mem_Name}</a></h4>
 										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}">
 										</div>
 										<div class="clearfix"></div>
@@ -175,7 +179,7 @@
 								<div id="add-review" class="add-review-box">
 									<!-- Review Comment -->
 									<form class="add-comment custom-form" action="spaceReview.do" method="post" id="spaceReviewForm">
-									<input type="hidden" name="mem_img" id="mem_img" value="${login.mem_Img}">
+									<input type="hidden" name="mem_no" id="mem_no" value="${login.mem_No}">
 									<input type="hidden" name="space_no" id="space_no" value="${spaceDetail.space_no}">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 									<div class="leave-rating-wrap">

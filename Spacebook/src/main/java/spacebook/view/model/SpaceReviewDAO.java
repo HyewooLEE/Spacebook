@@ -16,7 +16,7 @@ public class SpaceReviewDAO extends SqlSessionDaoSupport {
 		map.put("space_no", space_no);
 		map.put("startReview", startReview);
 		map.put("endReview", endReview);
-		System.out.println("space_no:::::::"+ space_no);
+		
 		return getSqlSession().selectList("spaceReview.reviewDetails", map);
 	}
 	
@@ -25,5 +25,11 @@ public class SpaceReviewDAO extends SqlSessionDaoSupport {
 		map.put("space_no", space_no);
 		
 		return getSqlSession().selectOne("spaceReview.countReview", map);
+	}
+	public int averageReview(int space_no) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("space_no", space_no);
+		
+		return getSqlSession().selectOne("spaceReview.averageReview", map);
 	}
 }
