@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import spacebook.admin.model.Email;
 
 public class EmailSender {
-	
+	    
 	   @Autowired
        protected JavaMailSender  mailSender;
        public void SendEmail(Email email) throws Exception {
