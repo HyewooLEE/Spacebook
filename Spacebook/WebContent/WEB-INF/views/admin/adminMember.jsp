@@ -154,6 +154,7 @@
 			                            <span style="color:#4DB7FE; font-size:12px;">카카오 계정</span>
 			                            </c:if>
 									</a>
+									<c:if test="${members.mem_Auth eq 'ROLE_USER' || members.mem_Auth eq 'ROLE_ADMIN' }">
 									<div class="accordion-inner">
 									<div class="booking-details fl-wrap">
 										<span class="booking-title">전화번호</span> : 
@@ -174,6 +175,7 @@
 										</span>
 									</div> 
 									</div>
+									</c:if>
  								</div>
 							</div>
 						</div>

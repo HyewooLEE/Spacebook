@@ -14,6 +14,8 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,8 @@ import spacebook.login.util.kakaologin;
 
 @Controller
 public class KakaoController {
+	
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Autowired
 	private MemberDaoService service;
@@ -73,7 +77,12 @@ public class KakaoController {
 		    securityContext.setAuthentication(authentication);
 		    session = request.getSession(true);
 		    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-		  return "redirect:/main.do";
+		    
+		    /*String targetUrl = request.getHeader("REFERER");
+		    System.out.println(targetUrl);
+			redirectStrategy.sendRedirect(request, response, targetUrl);*/
+			
+		 return "redirect:/main.do";
 		}
 	@RequestMapping(value="kakaologout.do",method= {RequestMethod.GET} )
 	public String logout(@RequestHeader HttpHeaders headers ,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{

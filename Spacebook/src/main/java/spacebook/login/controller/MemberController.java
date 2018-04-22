@@ -1,9 +1,11 @@
 package spacebook.login.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.sf.json.JSONObject;
 import spacebook.login.model.MemberVO;
 import spacebook.login.service.MemberDaoService;
 import spacebook.login.service.ShaEncoder;
@@ -91,6 +94,43 @@ public class MemberController {
 		}
 		mv.addObject("check", check);
 		return mv;
+	}
+	
+	@RequestMapping(value="loginCheck.do",method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	public void loginCheck(HttpServletResponse response, @RequestParam("id") String id, @RequestParam("pwd") String pwd) throws Exception{
+		JSONObject jso = new JSONObject();
+		String check = "";
+		MemberVO vo = null;
+		vo = service.selectMember(id);
+		if (vo == null) {
+			check = "-1";
+		}else {
+			if(vo.getMem_Pwd().equals(encoder.saltEncoding(pwd, id))) {
+				check ="1";
+			}else{
+				check="0";
+			};
+		}
+		jso.put("check",check);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(jso.toString());
+	}
+	@RequestMapping(value="registCheck.do",method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	public void registCheck(HttpServletResponse response, @RequestParam("id") String id) throws Exception{
+		JSONObject jso = new JSONObject();
+		String check = "";
+		MemberVO vo = null;
+		vo = service.selectMember(id);
+		if (vo == null) {
+			check = "1";
+		}else {
+			check ="-1";
+		}
+		jso.put("check",check);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(jso.toString());
 	}
 
 }

@@ -145,12 +145,12 @@
 							<form method="post" action="login.do" id="main-login-form">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								<label>이메일 </label>
-								<input name="email" type="text" onClick="this.select()" value=""> 
+								<input name="email" type="text" onClick="this.select()" value="" id="login_id"> 
 								<label>비밀번호 </label> 
-								<input name="passwd" type="password" onClick="this.select()" value="">
-								<button type="submit" class="log-submit-btn">
+								<input name="passwd" type="password" onClick="this.select()" value="" id="login_pwd">
+								<a href="#" class="log-submit-btn" onClick="return CheckLogin();">
 									<span>로그인 하기</span>
-								</button>
+								</a>
 								<div class="clearfix"></div>
 								<div class="filter-tags">
 									<input id="remember_me" type="checkbox" name="remember-me"> <label for="remember_me">자동 로그인</label>
@@ -167,9 +167,12 @@
 								<form method="post" class="main-register-form" id="main-register-form2" action="regist.do">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<input type="hidden" name="authority" value="ROLE_USER">
-									<label>이메일 </label> <input name="email" type="email" onClick="this.select()" value="" id="regist_id"> 
-									<label>비밀번호</label> <input name="password" id="regist_pwd_1" type="password" onClick="this.select()" value="">
-									<label>비밀번호 확인</label> <input name="password2" type="password" id="regist_pwd_2" onClick="this.select()" value="">
+									<label>이메일 <span id="registCheck"></span> </label> 
+									<input name="email" type="email" onClick="this.select()" value="" id="regist_id"> 
+									<label>비밀번호</label> 
+									<input name="password" id="regist_pwd_1" type="password" onClick="this.select()" value="">
+									<label>비밀번호 확인</label> 
+									<input name="password2" type="password" id="regist_pwd_2" onClick="this.select()" value="">
 									<button type="button" class="log-submit-btn" onClick="return Check()">
 										<span>가입하기</span>
 									</button>
