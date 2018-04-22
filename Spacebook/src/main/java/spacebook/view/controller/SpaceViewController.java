@@ -42,6 +42,7 @@ public class SpaceViewController {
 	@RequestMapping(value="/spaceView.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public String view(@RequestParam(value = "space_no", defaultValue="1") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview, Model model) {
 		SpaceDTO dto = svs.spaceDetail(space_no);
+		
 		String space_tag = dto.getSpace_tag().trim();
 		StringTokenizer stst = new StringTokenizer(space_tag, ",");
 		ArrayList<String> tag_list = new ArrayList<String>();
@@ -56,7 +57,7 @@ public class SpaceViewController {
 			fac_list.add(svs.facilityList(stfn.nextToken()));
 		}
 		
-		List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
+		//List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
 		int review_count = srs.countSpaceReview(space_no);
 		
 		List<EtcSpaceDTO> etc_dto = svs.etcSpaceList(dto.getMem_no());
@@ -65,9 +66,10 @@ public class SpaceViewController {
 		model.addAttribute("etcSpaceList", etc_dto);
 		model.addAttribute("countReview", review_count);
 		
-		model.addAttribute("reviewList", review_list);
+		//model.addAttribute("reviewList", review_list);
 		model.addAttribute("spaceDetail", dto);
 		model.addAttribute("space_tag", tag_list);
+		
 		
 		return "spaceView";
 	}

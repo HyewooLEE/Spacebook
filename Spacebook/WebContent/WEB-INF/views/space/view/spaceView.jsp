@@ -14,7 +14,7 @@
                                <a href="#">${spaceDetail.space_category}</a>
                            </div>
                        </div>
-                       <h2>${spaceDetail.space_name}<br/><span>Hosted By </span><a href="author-single.html">김남현</a> </h2>
+                       <h2>${spaceDetail.space_name}<br/><span>Hosted By </span><a href="author-single.html">${spaceDetail.memberVO.mem_Name}</a> </h2>
                        <span class="section-separator"></span>
                        <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
                            <span>(${countReview} 리뷰)</span>
@@ -27,7 +27,7 @@
                                    <ul>
                                        <li><i class="fa fa-phone"></i><a  href="#"> +82 ${spaceDetail.space_phone} </a></li>
                                        <li><i class="fa fa-map-marker"></i><a href="#"> ${spaceDetail.space_addr1} ${spaceDetail.space_addr2} </a></li>
-                                       <li><i class="fa fa-envelope-o"></i><a href="#"> destiny8548@gmail.com </a></li>
+                                       <li><i class="fa fa-envelope-o"></i><a href="#"> ${spaceDetail.memberVO.mem_Id} </a></li>
                                    </ul>
                                </div>
                            </div>
@@ -175,6 +175,7 @@
 								<div id="add-review" class="add-review-box">
 									<!-- Review Comment -->
 									<form class="add-comment custom-form" action="spaceReview.do" method="post" id="spaceReviewForm">
+									<input type="hidden" name="mem_img" id="mem_img" value="${login.mem_Img}">
 									<input type="hidden" name="space_no" id="space_no" value="${spaceDetail.space_no}">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 									<div class="leave-rating-wrap">
@@ -312,7 +313,7 @@
 											<li><span><i class="fa fa-phone"></i> 전화번호 :</span> 
 												<a href="#">+82 ${spaceDetail.space_phone}</a></li>
 											<li><span><i class="fa fa-envelope-o"></i> 이메일 : </span>
-												<a href="#">destiny8548@gmail.com</a></li>
+												<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
 											<li><span><i class="fa fa-globe"></i> 사이트 : </span>
 												<a href="${spaceDetail.space_site}">${spaceDetail.space_site}</a></li>
 										</ul>
@@ -338,18 +339,18 @@
 								<div
 									class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
 									<span class="list-author-widget-link"><a href="author-single.html">김남현</a></span>
-									<img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg">
+									<img src="${spaceDetail.memberVO.mem_Img}">
 								</div>
 								<div class="box-widget-content">
 									<div class="list-author-widget-text">
 										<div class="list-author-widget-contacts">
 											<ul>
 												<li><span><i class="fa fa-phone"></i> 휴대폰 : </span>
-													<a href="#">+82(010)28418548</a></li>
+													<a href="#">+82 ${spaceDetail.memberVO.mem_Phone}</a></li>
 												<li><span><i class="fa fa-envelope-o"></i> 이메일 : </span>
-													<a href="#">destiny8548@gmail.com</a></li>
+													<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
 												<li><span><i class="fa fa-globe"></i> 카카오톡ID : </span>
-													<a href="#">destiny8548</a></li>
+													<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
 											</ul>
 										</div>
 										<a href="javascript:;" onclick="openInquire()" class="btn transparent-btn"> 1:1 문의 </a>

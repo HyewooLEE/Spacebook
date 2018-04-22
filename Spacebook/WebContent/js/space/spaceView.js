@@ -150,7 +150,7 @@ function nextReview(totalReview, space_no) {
 				$('#review').append(
 						"<div class='reviews-comments-item'>" +
 						"<div class='review-comments-avatar'>" +
-							"<img src='images/avatar/1.jpg'>" +
+							"<img src='"+ result.data[i].mem_img +"'>" +
 						"</div>" +
 						"<div class='reviews-comments-item-text'>" + 
 							"<h4><a href='#'>"+ result.data[i].mem_name + "</a></h4>" +
