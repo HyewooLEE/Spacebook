@@ -55,6 +55,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    where inq_no=#{inqNo} 
 	</select>
 	
+	<update id="modifyInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
+		update inquire set inq_title = #{inq_title}, inq_note = #{inq_note} where inq_no = #{inq_no}
+	</update>
+	
+	<!-- 원글의 댓글들은 모두 +1 해주고 inq_step 자리 비워둠 -->
+	<update id="updateInqStep" parameterType="spacebook.inquire.model.SpaceInquireDTO">
+		update inquire set inq_step=inq_step+1 where inq_ref=#{inq_ref} and inq_step &gt; #{inq_step}
+	</update>
+	
+	<!-- 가장 최근댓글 번호 -->
+	<select id="selectMaxInqRef" resultType="int">
+		select max(inq_ref) from inquire
+	</select>
+	
 	<delete id="deleteInquire">
 		DELETE INQUIRE WHERE INQ_NO = #{inq_no}
 	</delete>

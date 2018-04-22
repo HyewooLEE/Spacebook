@@ -30,6 +30,27 @@ public class InquireController {
 	public void setInquireService(SpaceInquireService inquireService) {
 		this.inquireService = inquireService;
 	}
+	
+	//상세-1:1문의
+	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public String insertInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum, int space_no, SpaceInquireDTO inquireDTO, Model model) {
+		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
+		inquireService.insertSpaceInquire(inquireDTO);
+		model.addAttribute("spaceDetail", spaceDTO);
+		
+		return "redirect:spaceView.do?space_no="+space_no;
+	}
+	
+	//마이페이지-1:1문의 호스트 답변
+	/*@RequestMapping(value="/insertInquireHost.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public String insertInquireHost(@RequestParam(value = "space_no") int space_no, SpaceInquireDTO inquireDTO, Model model) {
+		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
+		inquireService.insertSpaceInquire(inquireDTO);
+		model.addAttribute("spaceDetail", spaceDTO);
+		
+		return "redirect:inquireContentHost.do?inq_no="+inq_no+"&pageNum="+pageNum;
+		//inquireContentHost.do?inq_no=5&pageNum=1
+	}*/
 
 	@RequestMapping("inquireList.do")
 	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
@@ -67,13 +88,6 @@ public class InquireController {
 		return "inquireContentHost";
 	}
 	
-	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String insertInquire(@RequestParam(value = "space_no") int space_no, SpaceInquireDTO inquireDTO, Model model) {
-		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
-		inquireService.insertSpaceInquire(inquireDTO);
-		model.addAttribute("spaceDetail", spaceDTO);
-		
-		return "redirect:spaceView.do";
-	}
+	
 	
 }

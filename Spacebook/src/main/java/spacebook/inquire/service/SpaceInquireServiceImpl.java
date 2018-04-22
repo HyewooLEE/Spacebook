@@ -29,7 +29,54 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		inquireDTO.setInq_writeDate(sdf.format(dt));
 		
-		inquireDAO.spaceInquireInsert(inquireDTO);
+		int inq_no=inquireDTO.getInq_no(); //원글번호
+		int inq_ref=0;  //원글+답변의 그룹번호. (원글과 원글에 딸린 답변이 번호가 같음) 
+		int inq_step=0; //그룹 내 순서
+		int inq_level=0; //레벨(원글은 0, 원글의 답변은 1, 원글 답변의 답변은 2, ..)
+		
+		//int maxNum = bDao.selectMaxNum(); //최신글 번호
+		int maxInqRef = inquireDAO.selectMaxInqRef(); //최신답변글 번호
+		
+		if(maxInqRef == 0) { //게시글이 없을때
+			maxInqRef = 1; 
+		}
+		
+		/*새글 작성*/
+		if(inq_no == 0) {
+			inquireDTO.setInq_ref(maxInqRef + 1);
+			
+			inquireDAO.spaceInquireInsert(inquireDTO);
+		}
+		
+		/*답글 작성*/
+		else {
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("inq_no", inq_no);
+			
+			inquireDTO = inquireDAO.inquireContent(map);
+			
+			inq_ref = inquireDTO.getInq_ref();
+			inq_step = inquireDTO.getInq_step();
+			inq_level = inquireDTO.getInq_level();
+			
+			inquireDTO.setInq_ref(inq_ref);
+			inquireDTO.setInq_step(inq_step);
+			inquireDTO.setInq_level(inq_level);
+			
+			inquireDAO.updateInqStep(inquireDTO);
+			
+			inq_step=inq_step+1;
+			inq_level=inq_level+1;
+        	
+        	inquireDTO.setInq_step(inq_step);
+        	inquireDTO.setInq_level(inq_level);
+			
+			System.out.println(inq_step);
+			System.out.println(inq_level);
+				
+			inquireDAO.spaceInquireInsert(inquireDTO);
+		}
+		
 	}
 	
 	@Override

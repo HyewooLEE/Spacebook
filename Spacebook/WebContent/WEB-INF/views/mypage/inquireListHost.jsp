@@ -72,13 +72,14 @@
 								</div>
 							</div>
 							<div >
-							  <table class="table table-hover">
+							  <table class="table table-bordred table-striped table-hover">
 							    <thead>
 							      <tr > 
 							        <th style="text-align:center">나의 공간명</th>
 							        <th style="text-align:center">작성자</th>
 							        <th style="text-align:center">제목</th>
 							        <th style="text-align:center">작성일</th>
+							        <th style="text-align:center">호스트<br />답변</th>
 							      </tr>
 							    </thead>
 							    <tbody>
@@ -86,9 +87,10 @@
 								    <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}">
 								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 								        <td width="20%" >${inquireList.spaceDTO.space_name}</td>
-								        <td width="20%" >${inquireList.memberVO.mem_Name}</td>
+								        <td width="10%" >${inquireList.memberVO.mem_Name}</td>
 								        <td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 								        <td width="20%">${inquireList.inq_writeDate }</td>
+								        <td width="10%" onclick="event.cancelBubble = true;"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 								      </tr>
 								    </c:if>
 							    </c:forEach>

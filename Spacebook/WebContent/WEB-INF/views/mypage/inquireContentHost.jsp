@@ -3,6 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <style>
 .centerBold {font-weight: bold;text-align:center;}
 .center{text-align:center;}
@@ -81,7 +83,7 @@
 								</a>
 							</div>
 							<div>
-							  <table class="table table-bordered">
+							  <table class="table table-bordred table-striped">
 							    <tbody>
 							      <tr>
 							        <th class="centerBold">제목</th>
@@ -100,19 +102,23 @@
 							    </tbody>
 							  </table>
 							</div>
-							<form action=""> 
+							<form action="spaceInquire.do" method="post"> 
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<input type="hidden" name="mem_no" value="${login.mem_No}">
+								<input type="hidden" name="space_no" value="${spaceDetail.space_no}">
+								<input type="hidden" name="pageNum" value="${pageNum}">
 								<div id="inquireForm" style="display:none;" class="custom-form list-single-main-item fl-wrap">
 									<div>
 										<div class="col-md-12">
-											<label>제목</label> <input type="text" />
-											<label>내용</label> <textarea cols="40" rows="3"></textarea>
+											<label>제목</label> <input type="text" name="inq_title" id="inq_title"/>
+											<label>내용</label> <textarea cols="40" rows="3" name="inq_note" id="inq_note"></textarea>
 										</div>
 									</div>
 									<div class="col-md-12">
 									    <button class="btn color-bg flat-btn"  type="submit">
 											답변 등록<i class="fa fa-angle-right"></i>
 										</button>
-									    <button type="button" class="btn color-bg flat-btn"  onclick="return sendInquire(1);" class="cancelButton">
+									    <button type="button" class="btn color-bg flat-btn" onclick="return sendInquire(1);" class="cancelButton">
 											취소<i class="fa fa-angle-up"></i>
 										</button>
 									</div>

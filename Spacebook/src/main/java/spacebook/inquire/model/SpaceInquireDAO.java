@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+
 public class SpaceInquireDAO extends SqlSessionDaoSupport {
 
 	public void spaceInquireInsert(SpaceInquireDTO inquireDTO) {
@@ -17,6 +18,15 @@ public class SpaceInquireDAO extends SqlSessionDaoSupport {
 	
 	public SpaceInquireDTO inquireContent(Map<String, Integer> inq_no) {
 		return getSqlSession().selectOne("spaceInquire.selectInqContent", inq_no);
+	}
+	
+	public void updateInqStep(SpaceInquireDTO inquireDTO) {
+		getSqlSession().update("spaceInquire.updateInqStep", inquireDTO);
+	}
+	
+	public int selectMaxInqRef() {
+		int maxInqRef = getSqlSession().selectOne("spaceInquire.selectMaxInqRef");
+		return maxInqRef;
 	}
 
 	public void spaceInquireDelete(SpaceInquireDTO inquireDTO) {

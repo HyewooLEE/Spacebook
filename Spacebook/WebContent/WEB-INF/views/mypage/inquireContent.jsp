@@ -76,7 +76,7 @@
 								</div>
 							</div>
 							<div >
-							  <table class="table table-bordered">
+							  <table class="table table-bordred table-striped">
 							    <tbody>
 							      <tr>
 							        <th class="centerBold">제목</th>
