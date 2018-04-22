@@ -54,7 +54,7 @@
 								<h3>관리자 메뉴</h3>
 								<ul>
 									<li><a href="adminMember.do"><i class="fa fa-th-list"></i>회원 관리 </a></li>
-									<li><a href="admin/article.do"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
+									<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
 								</ul>
 							</div>
 							</c:if>

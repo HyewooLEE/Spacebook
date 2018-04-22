@@ -14,4 +14,6 @@ public interface SpaceService {
 	public List<SpaceDTO> selectSpaceAll();
 
 	public List<SpaceDTO> selectMapList();
+	
+	public void deleteSpace(SpaceDTO spaceDto);
 }

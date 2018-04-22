@@ -6,16 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="main">
 
 	<select id="selectSpaceCategory" parameterType="List" resultType="spacebook.submit.model.SpaceDTO">
-		<!-- select * from (select * from space where space_category='#{space_category}' order by space_no desc) where rownum = 1 -->
 		select * from space
 		where (space_category, space_no) in (
     		select space_category, max (space_no) from space group by space_category
 		)
 		order by space_no desc
-	</select>
-	
-	<select id="countSpaceCategory" parameterType="List" resultType="spacebook.submit.model.SpaceDTO">
-		<!-- select count(*) count, space_category from space group by space_category -->
 	</select>
 	
 	<select id="reviewList" resultType="spacebook.main.model.MainDTO">
