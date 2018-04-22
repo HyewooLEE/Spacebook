@@ -2,6 +2,7 @@
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <section>
 	<!-- container -->
 	<div class="container">
@@ -52,8 +53,8 @@
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
-									<li><a href="adminMember.do" class="user-profile-act"><i class="fa fa-th-list"></i>회원 관리 </a></li>
-									<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
+									<li><a href="adminMember.do"><i class="fa fa-th-list"></i>회원 관리 </a></li>
+									<li><a href="adminArticle.do" class="user-profile-act"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
 								</ul>
 							</div>
 							</c:if>
@@ -63,7 +64,7 @@
 				<div class="col-md-9">
 					<div class="dashboard-list-box fl-wrap">
 						<div class="dashboard-header fl-wrap">
-							<form class="fl-wrap" method="POST" action="adminMember.do" id="form1">
+							<form class="fl-wrap">
 							<div class="box-widget-item fl-wrap pull-right" style="display: inline; width:300px; margin-bottom: 0px">
 		                        <div class="box-widget search-widget pull-right">
 		                                <input name="search" id="search" type="text" class="search" placeholder="검색하시오" value="">
@@ -72,21 +73,21 @@
 		                    </div>
 		                    </form>
 						</div>
-						<c:if test="${page.articleCount == 0}">
+						<%-- <c:if test="${page.articleCount == 0}"> --%>
 						<div class="dashboard-list " style="width:100%">
 							<div class="dashboard-message"  align="center">
 										<h2>해당 결과물이 없습니다.</h2>
 							</div>
 						</div>
-						</c:if>
+						<%-- </c:if> --%>
 						<%-- <c:if test="${page.articleCount > 0}"> --%>
-						<div id="tableForm">
 						<!-- dashboard-list end-->
+						<div id="tableForm" class="dashboard-list-box fl-wrap">
 						<c:forEach var="spaceAll" items="${spaceAll }">
 						<div class="dashboard-list " style="width:100%">
 							<div class="dashboard-message" >
 								<div class="dashboard-message-avatar">
-									<img src="${spaceAll.space_img1}" alt="" style="object-fit: cover; width:50px; height: 50px;">
+									<img src="${spaceAll.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
 								</div>
 								<div class="dashboard-message-text " style=" padding-top:15px;">
 									<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
@@ -103,25 +104,6 @@
 						<!-- dashboard-list end-->
 						<%-- </c:if> --%>
 					</div>
-					<!-- pagination-->
-					<c:if test="${page.articleCount > 0}">
-					<div class="pagination">
-						<c:if test="${page.pageNumber > 10}">
-						<a href="adminMember.do?pageNumber=${page.startPage-10 }&type1=${type1}&type2=${type2}&search=${search}" class="prevposts-link">&lt;</a> 
-						</c:if>
-						<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
-							<c:if test="${page.pageNumber == i }">
-							<a href="adminMember.do?pageNumber=${i}&type1=${type1}&type2=${type2}&search=${search}" class="current-page">${i}</a>
-							</c:if>
-							<c:if test="${page.pageNumber != i }">
-							<a href="adminMember.do?pageNumber=${i}&type1=${type1}&type2=${type2}&search=${search}">${i}</a>
-							</c:if>
-						</c:forEach>
-						<c:if test="${page.endPage < page.pageCount}">
-						<a href="adminMember.do?pageNumber=${page.startPage+10 }&type1=${type1}&type2=${type2}&search=${search}" class="nextposts-link">&gt;</a>
-						</c:if>
-					</div>
-					</c:if>
 				</div>
 			</div>
 		</div>

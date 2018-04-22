@@ -5,10 +5,17 @@ public class SpaceReviewDTO {
 	int space_no;
 	int mem_no;
 	String mem_name;
+	String mem_img;
 	String rev_writeDate;
 	String rev_note;
 	String rev_rate;
 	
+	public String getMem_img() {
+		return mem_img;
+	}
+	public void setMem_img(String mem_img) {
+		this.mem_img = mem_img;
+	}
 	public int getRev_no() {
 		return rev_no;
 	}

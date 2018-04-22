@@ -195,7 +195,7 @@ public class SpaceController {
 			String saveFileName7 = getUuid() + ext7;
 			MultipartFile report7 = spaceDto.getReport7();
 			String realPath7 = saveDir + fileName7;
-			File file7 = new File(conRealPath+saveFileName7 + File.separator + saveFileName7);
+			File file7 = new File(conRealPath+saveDir + File.separator + saveFileName7);
 			
 			spaceDto.setSpace_img7(realPath7);
 			
