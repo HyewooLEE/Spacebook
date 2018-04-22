@@ -55,7 +55,7 @@ function noticeDelete(){
 		  text: "글이 삭제되면 복구가 되지 않습니다.",
 		  icon: "warning",
 		  buttons: ["취소","삭제"]
-		}).then((willDelete) =>{
+		}).then((willDelete) => {
 		  if (willDelete) {
 			  swal("성공 적으로 삭제 되었습니다.", {
 			      icon: "success",

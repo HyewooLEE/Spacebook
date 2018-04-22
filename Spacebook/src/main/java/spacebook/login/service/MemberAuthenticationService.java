@@ -30,11 +30,18 @@ public class MemberAuthenticationService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
+		boolean enable;
 		Map<String, Object> user = sqlSession.selectOne("Member.auth", username);
 		if (user == null)
 			throw new UsernameNotFoundException(username);
 		List<GrantedAuthority> gas = new ArrayList<GrantedAuthority>();
 		gas.add(new SimpleGrantedAuthority(user.get("AUTHORITY").toString()));
-		return new MemberDTO(user.get("USERNAME").toString(), user.get("PASSWORD").toString(), gas);
+		String userEnable = String.valueOf(user.get("ENABLED"));
+		if(userEnable.equals("1") || userEnable =="1"){
+			enable = true;
+		}else {
+			enable = false;
+		}
+		return new MemberDTO(user.get("USERNAME").toString(), user.get("PASSWORD").toString(),enable, true, true, true, gas);
 	}
 }
