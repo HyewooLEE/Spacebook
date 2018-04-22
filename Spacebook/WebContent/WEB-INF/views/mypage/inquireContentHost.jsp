@@ -75,7 +75,12 @@
 									<h4>1:1문의 관리</h4>
 								</div>
 							</div>
-							<div >
+							<div align="right">
+								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
+									목록으로<i class="fa fa-angle-left"></i>
+								</a>
+							</div>
+							<div>
 							  <table class="table table-bordered">
 							    <tbody>
 							      <tr>
@@ -95,14 +100,29 @@
 							    </tbody>
 							  </table>
 							</div>
-							<div align="right">
-								<!-- <button class="btn color-bg flat-btn" onclick="">
-									삭제<i class="fa fa-angle-left"></i>
-								</button> -->
-								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
-									목록으로<i class="fa fa-angle-left"></i>
-								</a>
-							</div>
+							<form action="">
+								<div id="inquireForm" style="display:none;" class="custom-form list-single-main-item fl-wrap">
+									<div>
+										<div class="col-md-12">
+											<label>제목</label> <input type="text" />
+											<label>내용</label> <textarea cols="40" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+									    <button class="btn color-bg flat-btn"  type="submit">
+											답변 등록<i class="fa fa-angle-right"></i>
+										</button>
+									    <button class="btn color-bg flat-btn"  onclick="return sendInquire(1);" id="cancelButton">
+											취소<i class="fa fa-angle-up"></i>
+										</button>
+									</div>
+								</div>
+								<div align="right">
+									<button class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);" id="sendInquire">
+										답변하기<i class="fa fa-angle-down"></i>
+									</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

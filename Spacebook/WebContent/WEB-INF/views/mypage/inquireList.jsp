@@ -86,7 +86,7 @@
 								    회원 : ${inquireList.memberVO.mem_No} 
 								    작성자 : ${inquireList.mem_no}  --%>
 								    <c:if test="${inquireList.mem_no==login.mem_No }">
-								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+								      <tr style ="text-align:center;cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 								        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
 								        <td width="50%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 								        <td width="20%">${inquireList.inq_writeDate }</td>

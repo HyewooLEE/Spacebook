@@ -111,6 +111,7 @@
 		<definition name="inquireContentHost" extends="base_layout">
 			<put-attribute name="title" value="1:1문의 관리 (호스트)"  />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireContentHost.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/inquireContentHostScript.jsp" />
 		</definition>
 		<definition name="adminArticle" extends="base_layout">
 			<put-attribute name="title" value="게시글관리 리스트"  />
