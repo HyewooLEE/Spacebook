@@ -4,9 +4,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spaceView">
-	<select id="spaceDetails" resultType="spacebook.submit.model.SpaceDTO">
-		SELECT S.SPACE_NO, S.MEM_NO, S.SPACE_NAME, S.SPACE_SUM, S.SPACE_CATEGORY, S.SPACE_ADDR1, S.SPACE_ADDR2, S.SPACE_INTRO1, S.SPACE_INTRO2, S.SPACE_TAG, S.FAC_NO, S.SPACE_SITE, S.SPACE_IMG1, S.SPACE_IMG2, S.SPACE_IMG3, S.SPACE_IMG4, S.SPACE_IMG5, S.SPACE_IMG6, S.SPACE_IMG7, S.SPACE_PHONE, S.SPACE_CAU, S.SPACE_PEO_COUNT, S.SPACE_OPEN, S.SPACE_CLOSE, S.SPACE_BANK, S.SPACE_ACCOUNT, S.SPACE_DEPOSITOR, M.MAP_LATITUDE, M.MAP_LONGITUDE FROM SPACE S, MAP M WHERE S.SPACE_NO = #{space_no} AND S.SPACE_NO = M.SPACE_NO
-		<!-- SELECT * FROM SPACE S, MAP M WHERE SPACE_NO = #{space_no} AND S.SPACE_NO = M.SPACE_NO -->
+	<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	    <result column="MEM_ID" property="mem_Id"/>
+	    <result column="MEM_NAME" property="mem_Name"/>
+	    <result column="MEM_PHONE" property="mem_Phone"/>
+	    <result column="MEM_IMG" property="mem_Img"/>
+	</resultMap> 
+
+	<resultMap type="spacebook.submit.model.SpaceDTO" id="SpaceDTO">
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
+	    <result column="SPACE_NAME" property="space_name"/>
+	    <result column="SPACE_CATEGORY" property="space_category"/>
+	    <result column="SPACE_ADDR1" property="space_addr1"/>
+	    <result column="SPACE_ADDR2" property="space_addr2"/>
+	    <result column="SPACE_TAG" property="space_tag"/>
+	    <result column="SPACE_PHONE" property="space_phone"/>
+	    <result column="FAC_NO" property="fac_no"/>
+	    <result column="SPACE_IMG1" property="space_img1"/>
+	    <result column="SPACE_IMG2" property="space_img2"/>
+	    <result column="SPACE_IMG3" property="space_img3"/>
+	    <result column="SPACE_IMG4" property="space_img4"/>
+	    <result column="SPACE_IMG5" property="space_img5"/>
+	    <result column="SPACE_IMG6" property="space_img6"/>
+	    <result column="SPACE_IMG7" property="space_img7"/>
+	    <result column="SPACE_INTRO1" property="space_intro1"/>
+	    <result column="SPACE_INTRO2" property="space_intro2"/>
+	    <result column="SPACE_SITE" property="space_site"/>
+	    <result column="SPACE_CAU" property="space_cau"/>
+	    <result column="SPACE_OPEN" property="space_open"/>
+	    <result column="SPACE_CLOSE" property="space_close"/>
+	    <result column="SPACE_SUM" property="space_sum"/>
+	    <result column="MAP_LATITUDE" property="map_latitude"/>
+	    <result column="MAP_LONGITUDE" property="map_longitude"/>
+	    <collection property="memberVO" resultMap="MemberVO"/>
+	</resultMap>
+
+	<select id="spaceDetails" resultMap="SpaceDTO">
+		SELECT * FROM SPACE S INNER JOIN MAP M ON S.SPACE_NO = M.SPACE_NO INNER JOIN MEMBER MEM ON S.MEM_NO = MEM.MEM_NO WHERE S.SPACE_NO = #{space_no}
+		<!-- SELECT S.SPACE_NO, S.MEM_NO, S.SPACE_NAME, S.SPACE_SUM, S.SPACE_CATEGORY, S.SPACE_ADDR1, S.SPACE_ADDR2, S.SPACE_INTRO1, S.SPACE_INTRO2, S.SPACE_TAG, S.FAC_NO, S.SPACE_SITE, S.SPACE_IMG1, S.SPACE_IMG2, S.SPACE_IMG3, S.SPACE_IMG4, S.SPACE_IMG5, S.SPACE_IMG6, S.SPACE_IMG7, S.SPACE_PHONE, S.SPACE_CAU, S.SPACE_PEO_COUNT, S.SPACE_OPEN, S.SPACE_CLOSE, S.SPACE_BANK, S.SPACE_ACCOUNT, S.SPACE_DEPOSITOR, M.MAP_LATITUDE, M.MAP_LONGITUDE FROM SPACE S, MAP M WHERE S.SPACE_NO = #{space_no} AND S.SPACE_NO = M.SPACE_NO
+		SELECT * FROM SPACE S, MAP M WHERE SPACE_NO = #{space_no} AND S.SPACE_NO = M.SPACE_NO -->
 	</select>
 	<select id="etcSpaceList" resultType="spacebook.view.model.EtcSpaceDTO">
 		SELECT SPACE_NO, SPACE_NAME, MEM_NO, SPACE_OPEN, SPACE_CLOSE FROM SPACE WHERE MEM_NO = #{mem_no} AND ROWNUM BETWEEN 1 AND 3

@@ -1,14 +1,22 @@
 package spacebook.view.model;
 
+import spacebook.login.model.MemberVO;
+
 public class SpaceReviewDTO {
-	int rev_no;
-	int space_no;
-	int mem_no;
-	String mem_name;
-	String rev_writeDate;
-	String rev_note;
-	String rev_rate;
+	private int rev_no;
+	private int space_no;
+	private int mem_no;
+	private String rev_writeDate;
+	private String rev_note;
+	private String rev_rate;
+	private MemberVO memberVO;
 	
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
 	public int getRev_no() {
 		return rev_no;
 	}
@@ -26,12 +34,6 @@ public class SpaceReviewDTO {
 	}
 	public void setMem_no(int mem_no) {
 		this.mem_no = mem_no;
-	}
-	public String getMem_name() {
-		return mem_name;
-	}
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
 	}
 	public String getRev_writeDate() {
 		return rev_writeDate;

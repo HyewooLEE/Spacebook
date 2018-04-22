@@ -34,7 +34,22 @@ public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
 	}
 
 	@Override
-	public List<SpaceFavoriteDTO> favoriteList(SpaceFavoriteDTO dto) {
-		return favoriteDAO.favoriteList(dto);
+	public List<SpaceFavoriteDTO> favoriteList(int mem_no) {
+		return favoriteDAO.favoriteList(mem_no);
+	}
+
+	@Override
+	public int countSpaceFavorite(int space_no) {
+		return favoriteDAO.countSpaceFavorite(space_no);
+	}
+
+	@Override
+	public int countMemFavorite(int space_no, int mem_no) {
+		return favoriteDAO.countMemFavorite(space_no, mem_no);
+	}
+
+	@Override
+	public int countMyFavorite(int mem_no) {
+		return favoriteDAO.countMyFavorite(mem_no);
 	}
 }

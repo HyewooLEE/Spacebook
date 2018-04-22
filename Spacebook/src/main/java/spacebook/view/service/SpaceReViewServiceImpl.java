@@ -37,4 +37,9 @@ public class SpaceReViewServiceImpl implements SpaceReviewService{
 	public int countSpaceReview(int space_no) {
 		return dao.countSpaceReview(space_no);
 	}
+
+	@Override
+	public int averageReview(int space_no) {
+		return dao.averageReview(space_no);
+	}
 }

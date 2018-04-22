@@ -10,4 +10,6 @@ public interface SpaceReviewService {
 	public List<SpaceReviewDTO> selectSpaceReview(int space_no, int startReview, int endReview);
 	
 	public int countSpaceReview(int space_no);
+	
+	public int averageReview(int space_no);
 }

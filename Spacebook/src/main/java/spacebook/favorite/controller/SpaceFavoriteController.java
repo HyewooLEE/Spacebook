@@ -44,10 +44,11 @@ public class SpaceFavoriteController {
 		
 	}
 	
-	@RequestMapping("favoriteList.do")
+	@RequestMapping("/favoriteList.do")
 	public String favoriteList(SpaceFavoriteDTO favoriteDTO, Model model) {
-		List<SpaceFavoriteDTO> favoriteList = sfs.favoriteList(favoriteDTO);
-		
+		int countMyFavorite = sfs.countMyFavorite(1);
+		List<SpaceFavoriteDTO> favoriteList = sfs.favoriteList(1);
+		model.addAttribute("countMyFavorite", countMyFavorite);
 		model.addAttribute("favoriteList", favoriteList);
 		
 		return "favoriteList";

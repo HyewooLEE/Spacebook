@@ -128,6 +128,10 @@
 			<put-attribute name="title" value="공간예약상세페이지" />
 			<put-attribute name="body" value="/WEB-INF/views/space/reserve/spaceReserve.jsp" />
 		</definition>
+		<definition name="favoriteList" extends="base_layout">
+			<put-attribute name="title" value="찜목록페이지" />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/favoriteList.jsp" />
+		</definition>
 		<!-- 병현 -->
 		
 		

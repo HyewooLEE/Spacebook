@@ -100,6 +100,17 @@ function Check(){
 $(document).ready(function() {
 	$('#regist_id').blur(function(){
 		var id = $("#regist_id").val();
+		if(id ==''){
+			 $("#registCheck").html("아이디를 입력해주세요")
+			 $("#registCheck").css("color","red")
+			 $("#regist_id").css("border","1px solid #CC3D3D")
+			 return false;
+		}else if(id.indexOf('@') == -1 || id.indexOf('.') == -1) {
+			 $("#registCheck").html("이메일 형식으로 으로 입력해주세요")
+			 $("#registCheck").css("color","red")
+			 $("#regist_id").css("border","1px solid #CC3D3D")
+			 return false;
+		}
 		$.ajax({
 			type:"GET",
 			url:"/Spacebook/registCheck.do",

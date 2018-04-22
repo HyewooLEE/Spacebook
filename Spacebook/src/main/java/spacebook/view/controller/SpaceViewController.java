@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.sf.json.JSONObject;
+import spacebook.favorite.service.SpaceFavoriteService;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.view.model.EtcSpaceDTO;
 import spacebook.view.model.SpaceFacilityDTO;
@@ -30,6 +31,13 @@ public class SpaceViewController {
 
 	public void setSvs(SpaceViewService svs) {
 		this.svs = svs;
+	}
+
+	@Autowired
+	SpaceFavoriteService sfs;
+
+	public void setSfs(SpaceFavoriteService sfs) {
+		this.sfs = sfs;
 	}
 
 	@Autowired
@@ -58,13 +66,15 @@ public class SpaceViewController {
 		
 		List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
 		int review_count = srs.countSpaceReview(space_no);
-		
 		List<EtcSpaceDTO> etc_dto = svs.etcSpaceList(dto.getMem_no());
-		
+		int review_avg = srs.averageReview(space_no);
+		int favorite_totalCount = sfs.countSpaceFavorite(space_no);
+		//int favorite_MemCount = sfs.countFavorite(space_no, mem_no);
 		model.addAttribute("fac_list", fac_list);
 		model.addAttribute("etcSpaceList", etc_dto);
 		model.addAttribute("countReview", review_count);
-		
+		model.addAttribute("avrageReview", review_avg);
+		model.addAttribute("countFavorite", favorite_totalCount);
 		model.addAttribute("reviewList", review_list);
 		model.addAttribute("spaceDetail", dto);
 		model.addAttribute("space_tag", tag_list);
