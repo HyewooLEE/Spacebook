@@ -100,7 +100,7 @@
 							    </tbody>
 							  </table>
 							</div>
-							<form action="">
+							<form action=""> 
 								<div id="inquireForm" style="display:none;" class="custom-form list-single-main-item fl-wrap">
 									<div>
 										<div class="col-md-12">
@@ -112,13 +112,13 @@
 									    <button class="btn color-bg flat-btn"  type="submit">
 											답변 등록<i class="fa fa-angle-right"></i>
 										</button>
-									    <button class="btn color-bg flat-btn"  onclick="return sendInquire(1);" id="cancelButton">
+									    <button type="button" class="btn color-bg flat-btn"  onclick="return sendInquire(1);" class="cancelButton">
 											취소<i class="fa fa-angle-up"></i>
 										</button>
 									</div>
 								</div>
-								<div align="right">
-									<button class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);" id="sendInquire">
+								<div align="right" id="sendInquire">
+									<button type="button" class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);">
 										답변하기<i class="fa fa-angle-down"></i>
 									</button>
 								</div>

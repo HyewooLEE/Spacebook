@@ -6,8 +6,8 @@ function sendInquire(i){
 	if(i==0){
 		$("#sendInquire").attr('style','display:none');
 	}
-	if(i==1){
-		$("#sendInquire").attr('style','display:show;background-color:#F29661;');
+	else if(i==1){
+		$("#sendInquire").attr('style','display:show');
 	}
 } 
 
