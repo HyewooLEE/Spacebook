@@ -39,23 +39,26 @@
 			</div>
 			<div class="col-md-6">
 				<div class="footer-widget fl-wrap">
-					<h3>Our Last News</h3>
+					<h3>INSTAGRAM NEWS</h3>
 					<div class="widget-posts fl-wrap">
-						<ul>
-							<li class="clearfix"><a href="#" class="widget-posts-img"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-									class="respimg" alt=""></a>
-								<div class="widget-posts-descr">
-									<a href="#" title="">Vivamus dapibus rutrum</a> <span
-										class="widget-posts-date"> 21 Mar 09.05 </span>
-								</div></li>
-							<li class="clearfix"><a href="#" class="widget-posts-img"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-									class="respimg" alt=""></a>
-								<div class="widget-posts-descr">
-									<a href="#" title=""> In hac habitasse platea</a> <span
-										class="widget-posts-date"> 7 Mar 18.21 </span>
-								</div></li>
+			<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/instafeed.min.js"></script> <!-- js 파일 로드 -->
+			<script type="text/javascript">    
+			var userFeed = new Instafeed({
+			    get: 'user',
+			    userId: 7568363138,
+			    sortBy: "most-recent",
+			    limit: 2,
+			    template: 
+			    	'<li class="clearfix">'+
+			    	'<a href="{{link}}" class="widget-posts-img" target="_blank" style="width:20%">'+
+			    	'<img src="{{image}}" class="respimg" alt="">'+
+			    	'</a><div class="widget-posts-descr">'+
+			    	'<a href="{{link}}" title="">{{caption}}</a></div></li>',
+			    accessToken: '7568363138.1f86452.b076a43c14dd4f9b8b4ef5ac4946732a'
+			});
+			userFeed.run();
+			</script>
+						<ul id="instafeed">
 						</ul>
 					</div>
 				</div>
@@ -136,8 +139,8 @@
 			</div>
 			<div id="tabs-container">
 				<ul class="tabs-menu">
-					<li class="current"><a href="#tab-1">로그인</a></li>
-					<li><a href="#tab-2">회원가입</a></li>
+					<li class="current"><a href="#tab-1" >로그인</a></li>
+					<li><a href="#tab-2" >회원가입</a></li>
 				</ul>
 				<div class="tab">
 					<div id="tab-1" class="tab-content">
@@ -156,9 +159,6 @@
 									<input id="remember_me" type="checkbox" name="remember-me"> <label for="remember_me">자동 로그인</label>
 								</div>
 							</form>
-							<div class="lost_password">
-								<a href="#">비밀번호를 잃어버리셨나요?</a>
-							</div>
 						</div>
 					</div>
 					<div class="tab">
@@ -180,8 +180,8 @@
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>
