@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <collection property="memberVO" resultMap="MemberVO"/>
 	</resultMap>
 	<insert id="insertFavorite" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
-		INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.NEXTVAL, 'Y', #{mem_no}, #{space_no})
+		INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.NEXTVAL, #{mem_no}, #{space_no})
 	</insert>
 	<delete id="deleteFavorite">
 		DELETE FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
