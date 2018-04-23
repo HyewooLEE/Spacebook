@@ -234,6 +234,18 @@ public class SpaceController {
 		return "listSpace";
 	}
 	
+	//search
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public String search( SpaceDTO spaceDto) {
+		System.out.println("편의시설::"+spaceDto.getFac_no());
+		System.out.println("타입::"+spaceDto.getSpace_category());
+		System.out.println("지역::"+spaceDto.getSpace_addr1());
+		
+		
+		return "listSpace";
+	}
+	
+	
 	//map
 	@RequestMapping(value = "/MapList.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void startMap(HttpServletResponse response)throws Exception{
