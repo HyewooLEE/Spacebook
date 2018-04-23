@@ -27,7 +27,7 @@
                             </select>
 						</li>
 					</ul>
-					<button class="btn color-bg flat-btn" onclick="payment()">결제</button>
+					<button class="btn color-bg flat-btn" onclick="payment(${spaceDetail.space_category}, ${spaceDetail.space_name}, ${spaceDetail.space_no}, ${login.mem_No})">결제</button>
 					<button class="btn flat-btn" style="background-color: gray;" onclick="cancel()">취소</button>
 				</div>
 			</div>

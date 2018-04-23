@@ -50,9 +50,7 @@ function subQuantity() {
 	}
 }
 
-function payment() {
-	var pay_category = $('#pay_category').text();
-	var pay_spaceName = $('#pay_spaceName').text();
+function payment(pay_category, pay_spaceName, space_no, mem_no) {
 	var pay_sum = $('#pay_sum').text();
 	var pay_name = $('#pay_name').val();
 	var pay_email = $('#pay_email').val();
@@ -61,6 +59,8 @@ function payment() {
 	var pay_endDate = $('#pay_endDate').val();
 	var pay_quantity = $('#pay_quantity').val();
 	var pay_message = $('#pay_message').val();
+    var pay_method = $('#pay_method').val();
+	
     if(pay_method == "") {
     	swal("결제 방식을 선택해주세요.","");
     } else {
@@ -81,11 +81,21 @@ function payment() {
             if ( rsp.success ) {
             	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
             	jQuery.ajax({
-            		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
-            		type: 'POST',
+            		url: "/Spacebook/showReview.do", //cross-domain error가 발생하지 않도록 주의해주세요
+            		type: 'GET',
             		dataType: 'json',
             		data: {
-        	    		imp_uid : rsp.imp_uid
+        	    		imp_uid : rsp.imp_uid,
+        	    		space_no : space_no,
+        	    		mem_no : mem_no,
+        	    		rent_name : pay_name,
+        	    		rent_email : pay_email,
+        	    		rent_phone : pay_phone,
+        	    		pay_name : pay_name,
+        	    		rent_note : pay_message,
+        	    		rent_pay_method : pay_method
+        	    		
+        	    		
         	    		//기타 필요한 데이터가 있으면 추가 전달
             		}
             	}).done(function(data) {
