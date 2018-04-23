@@ -77,14 +77,14 @@
 				                    <!-- listing-item -->
 				                    <c:forEach var="favoriteList" items="${favoriteList}">
 				                    <div class="listing-item">
-				                        <article class="geodir-category-listing fl-wrap">
+				                        <article class="geodir-category-listing fl-wrap" style="width:320px;">
 					                            <div class="geodir-category-img">
 					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" style="width:320px;height:210px;"></a>
 					                                <div class="overlay"></div>
 					                                <%-- <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div> --%>
 					                            </div>
 				                            <div class="geodir-category-content fl-wrap" style="width:320px;height:280px;">
-				                                <a class="listing-geodir-category" href="listing.html">${favoriteList.spaceDTO.space_category}</a>
+				                                <a class="listing-geodir-category" href="spaceView.do?space_no=${favoriteList.space_no}">${favoriteList.spaceDTO.space_category}</a>
 				                                <div class="listing-avatar"><a href="author-single.html"><img src="${favoriteList.memberVO.mem_Img}" alt=""></a>
 				                                    <span class="avatar-tooltip">Added By  <strong> ${favoriteList.memberVO.mem_Name }</strong></span>
 				                                </div>
@@ -92,8 +92,8 @@
 				                                <p>${favoriteList.spaceDTO.space_intro1 }</p>
 				                                <div class="geodir-category-options fl-wrap">
 				                                    <div class="opening-hours-day" style="text-align: left;"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;평일 ${favoriteList.spaceDTO.space_open} - ${favoriteList.spaceDTO.space_close}</div>
-				                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
-				                                        <span>(7 reviews)</span>
+				                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="${favoriteList.review_avg}">
+				                                        <span>(${favoriteList.review_count} 리뷰)</span>
 				                                    </div>
 				                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${favoriteList.spaceDTO.space_addr1}&nbsp;&nbsp;&nbsp;${favoriteList.spaceDTO.space_addr2}</div>
 				                                </div>

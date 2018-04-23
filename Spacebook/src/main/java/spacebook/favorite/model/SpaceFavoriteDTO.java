@@ -8,9 +8,24 @@ public class SpaceFavoriteDTO {
 	private String fav_div;
 	private int mem_no;
 	private int space_no;
+	private int review_count;
+	private int review_avg;
+	
 	private SpaceDTO spaceDTO;
 	private MemberVO memberVO;
 	
+	public int getReview_avg() {
+		return review_avg;
+	}
+	public void setReview_avg(int review_avg) {
+		this.review_avg = review_avg;
+	}
+	public int getReview_count() {
+		return review_count;
+	}
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
+	}
 	public MemberVO getMemberVO() {
 		return memberVO;
 	}
