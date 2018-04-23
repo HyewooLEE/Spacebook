@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<resultMap type="spacebook.inquire.model.SpaceInquireDTO" id="spaceInquireDTO">
+		<result column="INQ_STEP" property="inq_step"/>
 	    <result column="INQ_NO" property="inq_no"/>
 	    <result column="MEM_NO" property="mem_no"/>
 	    <result column="SPACE_NO" property="space_no"/>
@@ -35,12 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectInquire" resultMap="spaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		select *
 	    from 
-	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_REF,i.INQ_WRITEDATE,i.INQ_STEP,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
 	            from INQUIRE i inner join SPACE s
 	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
-	                    on i.mem_no =m.mem_no ) k
+	                    on i.mem_no =m.mem_no) k
 	    inner join member m1 
-	        on k.HOST = m1.mem_no  
+	        on k.HOST = m1.mem_no order by INQ_REF DESC,INQ_STEP ASC 
 	</select>
 	
 	<select id="selectInqContent" resultMap="spaceInquireDTO" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
