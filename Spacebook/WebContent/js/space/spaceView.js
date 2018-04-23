@@ -128,7 +128,6 @@ function nextReview(totalReview, space_no) {
 		reviewCurPage ++;
 		reviewPage += 3;
 	}
-	//{startReview:reviewPage, endReview:reviewPage+2}
 	var params = "space_no="+ space_no +"&startReview="+ reviewPage +"&endReview="+ (reviewPage+2);
 	
 	$.ajax({
@@ -138,8 +137,6 @@ function nextReview(totalReview, space_no) {
 		cache: false,
 		dataType:"json",
 		success:function(result) {
-			
-			/*$('#review').children().remove();*/
 			$('#review').html('');
 			for(var i=0; i<result.data.length; i++) {
 				var star = "";
