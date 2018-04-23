@@ -16,11 +16,16 @@
                        </div>
                        <h2>${spaceDetail.space_name}<br/><span>Hosted By </span><a href="author-single.html">${spaceDetail.memberVO.mem_Name}</a> </h2>
                        <span class="section-separator"></span>
-                       <div class="listing-rating card-popup-rainingvis" data-starrating2="${avrageReview}">
-                           <span>(${countReview} 리뷰)</span>
-                       </div>
-                       <div class="list-post-counter single-list-post-counter"><span>${countFavorite}</span><i class="fa fa-heart"></i></div>
-                       <div class="clearfix"></div>
+                       <c:if test="${countReview != null}">
+	                       <div class="listing-rating card-popup-rainingvis" data-starrating2="${avrageReview}">
+	                           <span>(${countReview} 리뷰)</span>
+	                       </div>
+                       </c:if>
+                       <c:if test="${totalFavoriteCount != null}">
+	                       <div class="list-post-counter single-list-post-counter"><span>${totalFavoriteCount}</span><i class="fa fa-heart"></i></div>
+	                   </c:if>
+	                   <div class="clearfix"></div>
+                       
                        <div class="row">
                            <div class="col-md-6">
                                <div class="list-single-header-contacts fl-wrap">
@@ -57,9 +62,12 @@
 				</ul>
 			</nav>
 			<a href="javascript:;" onclick="favorite(${spaceDetail.space_no}, ${login.mem_No})" class="save-btn">
-				<%-- <c:if test="${ }"> --%>
-				<i class="fa fa-heart-o" id="heart"></i>
-				<%-- </c:if> --%>
+				<c:if test="${favoriteMemCount == null}">
+					<i class="fa fa-heart-o" id="heart"></i>
+				</c:if>
+				<c:if test="${favoriteMemCount != null}">
+					<i class="fa fa-heart" id="heart"></i>
+				</c:if>
 				 찜하기 </a>
 		</div>
 	</div>

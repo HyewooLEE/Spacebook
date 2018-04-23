@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import net.sf.json.JSONObject;
 import spacebook.favorite.service.SpaceFavoriteService;
+import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.view.model.EtcSpaceDTO;
 import spacebook.view.model.SpaceFacilityDTO;
@@ -48,7 +50,8 @@ public class SpaceViewController {
 	}
 	
 	@RequestMapping(value="/spaceView.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
-	public String view(@RequestParam(value = "space_no", defaultValue="1") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview, Model model) {
+	public String view(@RequestParam(value = "space_no", defaultValue="1") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview, HttpSession session, Model model) {
+		MemberVO member = (MemberVO)session.getAttribute("login");
 		SpaceDTO dto = svs.spaceDetail(space_no);
 		String space_tag = dto.getSpace_tag().trim();
 		StringTokenizer stst = new StringTokenizer(space_tag, ",");
@@ -74,11 +77,18 @@ public class SpaceViewController {
 		}
 		
 		int favorite_totalCount = sfs.countSpaceFavorite(space_no);
-		//int favorite_MemCount = sfs.countFavorite(space_no, mem_no);
+		if(favorite_totalCount > 0) {
+			model.addAttribute("totalFavoriteCount", favorite_totalCount);
+		}
+		
+		int favorite_MemCount = sfs.countMemFavorite(space_no, member.getMem_No());
+		if(favorite_MemCount > 0) {
+			model.addAttribute("favoriteMemCount", favorite_MemCount);
+		}
+		
 		model.addAttribute("fac_list", fac_list);
 		model.addAttribute("etcSpaceList", etc_dto);
 		model.addAttribute("countReview", review_count);
-		model.addAttribute("countFavorite", favorite_totalCount);
 		model.addAttribute("reviewList", review_list);
 		model.addAttribute("spaceDetail", dto);
 		model.addAttribute("space_tag", tag_list);
