@@ -25,11 +25,13 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- 검색 -->
+                    <form action="search.do">
                     <!-- listsearch-input-wrap  -->  
                     <div class="listsearch-input-wrap fl-wrap">
                         <div class="listsearch-input-item">
                             <i class="mbri-key single-i"></i>
-                            <input type="text" placeholder="검색키워드" value=""/>
+                            <input type="text" placeholder="검색키워드" value="" id="search" name="search"/>
                         </div>
                         <div class="listsearch-input-item">
                             <select data-placeholder="Location" class="chosen-select" >
@@ -43,7 +45,7 @@
                         </div>
                         <div class="listsearch-input-item">
                             <select  id="space_category" name="space_category" class="chosen-select">
-                            	<option>공간유형</option>
+                            	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
                            		<option value="연습실">연습실</option>
                            		<option value="세미나실">세미나실</option>
@@ -55,12 +57,12 @@
                            		<option value="워크숍장소">워크숍장소</option>
                            		<option value="레저시설">레저시설</option>
                            		<option value="카페">카페</option>
-                           		<option value="기타">기타</option>
+                           		<option value="">기타</option>
                            	</select>
                         </div>
                         <div class="listsearch-input-text">
                             <!-- <label><i class="mbri-map-pin"></i> 주소검색 입력 </label> -->
-                            <input type="text" placeholder="주소 검색" value=""/>
+                            <input type="text" placeholder="주소 검색" value="" id="space_addr1" name="space_addr1"/>
                             <span class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></span>
                         </div>
                         <!-- hidden-listing-filter -->
@@ -76,17 +78,18 @@
                                 <h4>편의시설</h4>
                                 <c:forEach var="facility" items="${facility}">
                                 <div class="col-md-3">
-                               		<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
+                               		<input type="checkbox" id="${facility.fac_no}" name="fac_no" value="${facility.fac_no}"/>
 	                         		<label for="${facility.fac_no}">${facility.fac_name }</label>
                                	</div>
                                	</c:forEach>
                             </div>
                         </div>
                         <!-- hidden-listing-filter end -->
-                        <button class="button fs-map-btn">검색!</button>
+                        <button class="button fs-map-btn" type="submit">검색!</button>
                         <div class="more-filter-option">더 자세한 검색를 원하신다면? <span></span></div>
                     </div>
                     <!-- listsearch-input-wrap end -->
+                    </form>
                 </div>
             </div>
             <!-- list-main-wrap-->

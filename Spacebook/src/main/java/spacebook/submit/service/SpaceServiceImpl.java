@@ -45,4 +45,9 @@ public class SpaceServiceImpl implements SpaceService{
 	public void deleteSpace(SpaceDTO spaceDto) {
 		spaceDao.deleteSpace(spaceDto);
 	}
+	
+	@Override
+	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search){
+		return spaceDao.searchSpace(spaceDto, search);
+	}
 }
