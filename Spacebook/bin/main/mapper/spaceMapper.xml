@@ -81,4 +81,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
+	<!-- search -->
+<select id="search" resultType="spacebook.submit.model.SpaceDTO" parameterType="map">
+	select * from(
+	select * from 
+	
+	(select * from 
+	
+		(select * from space 
+		<where>
+			<if test="SpaceDTO.space_addr1 != null">
+			space_addr1 like '%'||#{SpaceDTO.space_addr1}||'%'
+			</if>
+			<if test="search != null" >
+			<foreach collection="search" item="search" >
+			or space_addr1 like '%'||#{search}||'%'
+			</foreach>
+			</if>
+		</where>
+		)
+
+	<where>
+		<if test="SpaceDTO.space_category != null">
+			space_category = #{SpaceDTO.space_category}
+		</if>
+	</where>
+	)
+
+	<where>
+		<if test="Fac != null">
+ 		<foreach collection="Fac" item="item" index="index">
+		<!-- <if test='index.equals("")'> -->
+		<if test="index eq 0">
+			fac_no like '%'||#{item}||',%'
+		</if>
+		<if test="index != 0">
+			and fac_no like '%,'||#{item}||'%'
+		</if>
+		</foreach>
+		</if>
+	</where>
+	)
+	
+	<where>
+	 	<if test="search != null" >
+	 	<foreach collection="search" item="search" >
+			or space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%'
+		</foreach>
+		</if>
+	</where>
+	
+</select>
+	
+	
 </mapper>
