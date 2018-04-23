@@ -93,11 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="SpaceDTO.space_addr1 != null">
 			space_addr1 like '%'||#{SpaceDTO.space_addr1}||'%'
 			</if>
-			<if test="search != null" >
-			<foreach collection="search" item="search" >
-			or space_addr1 like '%'||#{search}||'%'
-			</foreach>
-			</if>
+			
 		</where>
 		)
 

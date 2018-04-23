@@ -45,7 +45,7 @@
                         </div>
                         <div class="listsearch-input-item">
                             <select  id="space_category" name="space_category" class="chosen-select">
-                            	<option>공간유형</option>
+                            	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
                            		<option value="연습실">연습실</option>
                            		<option value="세미나실">세미나실</option>
@@ -57,7 +57,7 @@
                            		<option value="워크숍장소">워크숍장소</option>
                            		<option value="레저시설">레저시설</option>
                            		<option value="카페">카페</option>
-                           		<option value="기타">기타</option>
+                           		<option value="">기타</option>
                            	</select>
                         </div>
                         <div class="listsearch-input-text">
@@ -78,7 +78,7 @@
                                 <h4>편의시설</h4>
                                 <c:forEach var="facility" items="${facility}">
                                 <div class="col-md-3">
-                               		<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
+                               		<input type="checkbox" id="${facility.fac_no}" name="fac_no" value="${facility.fac_no}"/>
 	                         		<label for="${facility.fac_no}">${facility.fac_name }</label>
                                	</div>
                                	</c:forEach>
