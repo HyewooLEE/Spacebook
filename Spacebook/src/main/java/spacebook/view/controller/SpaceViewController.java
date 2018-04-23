@@ -67,13 +67,17 @@ public class SpaceViewController {
 		List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
 		int review_count = srs.countSpaceReview(space_no);
 		List<EtcSpaceDTO> etc_dto = svs.etcSpaceList(dto.getMem_no());
-		int review_avg = srs.averageReview(space_no);
+		
+		if(review_count > 0) {
+			int review_avg = srs.averageReview(space_no);
+			model.addAttribute("avrageReview", review_avg);
+		}
+		
 		int favorite_totalCount = sfs.countSpaceFavorite(space_no);
 		//int favorite_MemCount = sfs.countFavorite(space_no, mem_no);
 		model.addAttribute("fac_list", fac_list);
 		model.addAttribute("etcSpaceList", etc_dto);
 		model.addAttribute("countReview", review_count);
-		model.addAttribute("avrageReview", review_avg);
 		model.addAttribute("countFavorite", favorite_totalCount);
 		model.addAttribute("reviewList", review_list);
 		model.addAttribute("spaceDetail", dto);
