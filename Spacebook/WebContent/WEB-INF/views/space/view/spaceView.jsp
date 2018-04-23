@@ -266,17 +266,14 @@
 							<div class="box-widget opening-hours">
 								<div class="box-widget-content">
 									<form class="add-comment custom-form">
-									<input type="hidden" name="space_name" id="space_name" value="${spaceDetail.space_name}">
-									<input type="hidden" name="space_category" id="space_category" value="${spaceDetail.space_category}">
-									<input type="hidden" name="space_sum" id="space_sum" value="${spaceDetail.space_sum}">
 										<fieldset>
 											<label><i class="fa fa-user-o"></i></label>
-											<input type="text" name="reserve_name" id="reserve_name" placeholder="Your Name *"/>
+											<input type="text" name="reserve_name" id="reserve_name" placeholder="이름을 입력해주세요.."/>
 											<div class="clearfix"></div>
 											<label><i class="fa fa-envelope-o"></i></label> 
-											<input type="text" name="reserve_email" id="reserve_email" placeholder="Email Address*"/>
+											<input type="text" name="reserve_email" id="reserve_email" placeholder="이메일을 입력해주세요.."/>
 											<label><i class="fa fa-phone"></i></label> 
-											<input type="text" name="reserve_phone" id="reserve_phone" placeholder="Your Phone number *"/>
+											<input type="text" name="reserve_phone" id="reserve_phone" placeholder="휴대폰  번호를 입력해주세요.."/>
 											<div class="quantity fl-wrap">
 												<span><i class="fa fa-user-plus"></i>사람 수 : </span>
 												<div class="quantity-item">
@@ -402,43 +399,8 @@
 	<!--  section  end-->
 	<div class="limit-box fl-wrap"></div>
 	<!--  section  end-->
-	<!-- modal start-->
-	<div class="main-register-wrap modal2" style="align-items: center;">
-	<!-- price-item-->
-		<div class="main-overlay"></div>
-		<div class="main-register-holder">
-			<div class="price-head op2">
-				<h3>호텔</h3> <h2>넓은 댄스 연습실</h2>
-			</div>
-			<div class="price-content fl-wrap">
-				<div class="price-num fl-wrap">
-					<span class="curen">&#8361;</span> <span class="price-num-item">30,000</span>
-				</div>
-				<div class="price-desc fl-wrap">
-					<ul>
-						<li><span id="payment_name"></span></li>
-						<li><span id="payment_email"></span></li>
-						<li><span id="payment_phone"></span></li>
-						<li><span id="payment_Date"></span></li>
-						<li><span id="payment_quantity"></span></li>
-						<li><span id="payment_message"></span></li>
-						<li style="padding-left: 100px; padding-right: 100px">
-                            <select data-placeholder="All Categories" class="chosen-select" name="pay_method" id="pay_method">
-                                <option value="card">카드</option>
-                                <option value="trans">계좌이체</option>
-                                <option value="phone">휴대폰</option>
-                            </select>
-						</li>
-					</ul>
-					<button class="btn color-bg flat-btn" onclick="payment()">결제</button>
-					<button class="btn flat-btn" style="background-color: gray;" onclick="cancel()">취소</button>
-				</div>
-			</div>
-		</div>
-	<!-- price-item end-->
-	</div>
-	<!-- modal end -->
-<jsp:include page="inquireModal.jsp" flush="false" />  
+	<jsp:include page="paymentModal.jsp" flush="false" />  
+	<jsp:include page="inquireModal.jsp" flush="false" />  
 <!-- javascript start -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/space/spaceView.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
