@@ -88,7 +88,12 @@
 								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 								        <td width="20%" >${inquireList.spaceDTO.space_name}</td>
 								        <td width="10%" >${inquireList.memberVO.mem_Name}</td>
-								        <td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								        <c:if test="${inquireList.inq_step == 0 }">
+								        	<td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								        </c:if>
+								        <c:if test="${inquireList.inq_step > 0 }">
+								        	<td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">  ㄴ[답변] ${inquireList.inq_title }</a></td>
+								        </c:if>
 								        <td width="20%">${inquireList.inq_writeDate }</td>
 								        <td width="10%" onclick="event.cancelBubble = true;"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 								      </tr>
@@ -107,4 +112,5 @@
 	<!--container end -->
 </section>
 <!-- section end -->
+
 <div class="limit-box fl-wrap"></div>

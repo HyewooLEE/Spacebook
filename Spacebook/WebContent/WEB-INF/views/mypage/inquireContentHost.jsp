@@ -102,20 +102,18 @@
 							    </tbody>
 							  </table>
 							</div>
-							<form action="spaceInquire.do" method="post"> 
+							<form action="submitInquire.do" method="post" id="inquireForm"> 
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 								<input type="hidden" name="mem_no" value="${login.mem_No}">
-								<input type="hidden" name="space_no" value="${spaceDetail.space_no}">
+								<input type="hidden" name="inq_no" value="${inquireList.inq_no}">
 								<input type="hidden" name="pageNum" value="${pageNum}">
-								<div id="inquireForm" style="display:none;" class="custom-form list-single-main-item fl-wrap">
-									<div>
-										<div class="col-md-12">
-											<label>제목</label> <input type="text" name="inq_title" id="inq_title"/>
-											<label>내용</label> <textarea cols="40" rows="3" name="inq_note" id="inq_note"></textarea>
-										</div>
+								<div id="inquireDiv" style="display:none;" class="custom-form list-single-main-item fl-wrap">
+									<div class="col-md-12">
+										<label>제목</label> <input type="text" name="inq_title" id="inq_title"/>
+										<label>내용</label> <textarea cols="40" rows="3" name="inq_note" id="inq_note"></textarea>
 									</div>
 									<div class="col-md-12">
-									    <button class="btn color-bg flat-btn"  type="submit">
+									    <button class="btn color-bg flat-btn" onClick="submitInquire();">
 											답변 등록<i class="fa fa-angle-right"></i>
 										</button>
 									    <button type="button" class="btn color-bg flat-btn" onclick="return sendInquire(1);" class="cancelButton">
@@ -123,12 +121,12 @@
 										</button>
 									</div>
 								</div>
+							</form>
 								<div align="right" id="sendInquire">
 									<button type="button" class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);">
 										답변하기<i class="fa fa-angle-down"></i>
 									</button>
 								</div>
-							</form>
 						</div>
 					</div>
 				</div>

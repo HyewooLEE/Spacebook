@@ -33,12 +33,19 @@ public class InquireController {
 	
 	//상세-1:1문의
 	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String insertInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum, int space_no, SpaceInquireDTO inquireDTO, Model model) {
+	public String insertInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value="space_no") int space_no, SpaceInquireDTO inquireDTO, Model model) {
 		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
 		inquireService.insertSpaceInquire(inquireDTO);
 		model.addAttribute("spaceDetail", spaceDTO);
 		
 		return "redirect:spaceView.do?space_no="+space_no;
+	}
+	
+	@RequestMapping(value="/submitInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public String tea123(@RequestParam(value="pageNum", defaultValue="1") int pageNum , SpaceInquireDTO inquireDTO, Model model) {
+		inquireService.insertSpaceInquire(inquireDTO);
+		
+		return "redirect:inquireContentHost.do?inq_no="+inquireDTO.getInq_no()+"&pageNum="+pageNum;
 	}
 	
 	//마이페이지-1:1문의 호스트 답변
