@@ -1,54 +1,46 @@
 package spacebook.rent.model;
 
-import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 
 public class SpaceRentDTO {
-	private int fav_no;
-	private String fav_div;
-	private int mem_no;
+	private int rent_no;
 	private int space_no;
-	private int review_count;
-	private int review_avg;
+	private int mem_no;
+	private String rent_name;
+	private String rent_email;
+	private String rent_phone;
+	private String rent_note;
+	private String rent_pay_method;
+	private String rent_writedate;
+	private String rent_start;
+	private String rent_end;
+	private String rent_sum;
 	
 	private SpaceDTO spaceDTO;
-	private MemberVO memberVO;
-	
-	public int getReview_avg() {
-		return review_avg;
-	}
-	public void setReview_avg(int review_avg) {
-		this.review_avg = review_avg;
-	}
-	public int getReview_count() {
-		return review_count;
-	}
-	public void setReview_count(int review_count) {
-		this.review_count = review_count;
-	}
-	public MemberVO getMemberVO() {
-		return memberVO;
-	}
-	public void setMemberVO(MemberVO memberVO) {
-		this.memberVO = memberVO;
-	}
+
 	public SpaceDTO getSpaceDTO() {
 		return spaceDTO;
 	}
 	public void setSpaceDTO(SpaceDTO spaceDTO) {
 		this.spaceDTO = spaceDTO;
 	}
-	public int getFav_no() {
-		return fav_no;
+	public String getRent_pay_method() {
+		return rent_pay_method;
 	}
-	public void setFav_no(int fav_no) {
-		this.fav_no = fav_no;
+	public void setRent_pay_method(String rent_pay_method) {
+		this.rent_pay_method = rent_pay_method;
 	}
-	public String getFav_div() {
-		return fav_div;
+	public int getRent_no() {
+		return rent_no;
 	}
-	public void setFav_div(String fav_div) {
-		this.fav_div = fav_div;
+	public void setRent_no(int rent_no) {
+		this.rent_no = rent_no;
+	}
+	public int getSpace_no() {
+		return space_no;
+	}
+	public void setSpace_no(int space_no) {
+		this.space_no = space_no;
 	}
 	public int getMem_no() {
 		return mem_no;
@@ -56,10 +48,52 @@ public class SpaceRentDTO {
 	public void setMem_no(int mem_no) {
 		this.mem_no = mem_no;
 	}
-	public int getSpace_no() {
-		return space_no;
+	public String getRent_name() {
+		return rent_name;
 	}
-	public void setSpace_no(int space_no) {
-		this.space_no = space_no;
+	public void setRent_name(String rent_name) {
+		this.rent_name = rent_name;
+	}
+	public String getRent_email() {
+		return rent_email;
+	}
+	public void setRent_email(String rent_email) {
+		this.rent_email = rent_email;
+	}
+	public String getRent_phone() {
+		return rent_phone;
+	}
+	public void setRent_phone(String rent_phone) {
+		this.rent_phone = rent_phone;
+	}
+	public String getRent_note() {
+		return rent_note;
+	}
+	public void setRent_note(String rent_note) {
+		this.rent_note = rent_note;
+	}
+	public String getRent_writedate() {
+		return rent_writedate;
+	}
+	public void setRent_writedate(String rent_writedate) {
+		this.rent_writedate = rent_writedate;
+	}
+	public String getRent_start() {
+		return rent_start;
+	}
+	public void setRent_start(String rent_start) {
+		this.rent_start = rent_start;
+	}
+	public String getRent_end() {
+		return rent_end;
+	}
+	public void setRent_end(String rent_end) {
+		this.rent_end = rent_end;
+	}
+	public String getRent_sum() {
+		return rent_sum;
+	}
+	public void setRent_sum(String rent_sum) {
+		this.rent_sum = rent_sum;
 	}
 }

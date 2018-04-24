@@ -5,11 +5,12 @@
 		<div class="main-overlay"></div>
 		<div class="main-register-holder">
 			<div class="price-head op2">
+				<input type="hidden" id="price" value="${spaceDetail.space_sum}">
 				<h3 id="pay_category">${spaceDetail.space_category}</h3> <h2 id="pay_spaceName">${spaceDetail.space_name}</h2>
 			</div>
 			<div class="price-content fl-wrap">
 				<div class="price-num fl-wrap">
-					<span class="curen">&#8361;</span> <span class="price-num-item" id="pay_sum">${spaceDetail.space_sum}</span>
+					<span class="curen">&#8361;</span> <span class="price-num-item" id="pay_sum"></span>
 				</div>
 				<div class="price-desc fl-wrap">
 					<ul>
@@ -27,7 +28,7 @@
                             </select>
 						</li>
 					</ul>
-					<button class="btn color-bg flat-btn" onclick="payment(${spaceDetail.space_category}, ${spaceDetail.space_name}, ${spaceDetail.space_no}, ${login.mem_No})">결제</button>
+					<button class="btn color-bg flat-btn" onclick="payment('${spaceDetail.space_category}', '${spaceDetail.space_name}', '${spaceDetail.space_no}', '${login.mem_No}', '${spaceDetail.space_sum}')">결제</button>
 					<button class="btn flat-btn" style="background-color: gray;" onclick="cancel()">취소</button>
 				</div>
 			</div>

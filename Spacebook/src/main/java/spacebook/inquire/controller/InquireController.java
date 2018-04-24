@@ -58,7 +58,7 @@ public class InquireController {
 	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
 		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
 		int countInquire = inquireService.countSpaceInquire();
-		
+		System.out.println(countInquire);
 		model.addAttribute("countInquire", countInquire);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spaceRent">
+	<resultMap type="spacebook.submit.model.SpaceDTO" id="spaceDTO">
+		<result column="SPACE_NAME" property="space_name"/>
+	</resultMap>
+	<resultMap type="spacebook.rent.model.SpaceRentDTO" id="rentDTO">
+		<result column="SPACE_NO" property="space_no"/>
+		<result column="RENT_NAME" property="rent_name"/>
+		<result column="RENT_START" property="rent_start"/>
+		<result column="RENT_END" property="rent_end"/>
+		<result column="RENT_PAY_METHOD" property="rent_pay_method"/>
+		<result column="RENT_WRITEDATE" property="rent_writedate"/>
+		<result column="RENT_NOTE" property="rent_note"/>
+		<result column="RENT_SUM" property="rent_sum"/>
+		
+		<collection property="spaceDTO" resultMap="spaceDTO"/>
+	</resultMap>
+	<insert id="insertSpaceRent" parameterType="spacebook.rent.model.SpaceRentDTO">
+		INSERT INTO SPACE_RENT 
+			VALUES(
+					SPACE_RENT_SEQ.NEXTVAL, #{space_no}, 
+					#{mem_no}, #{rent_name}, #{rent_email}, #{rent_phone}, 
+					#{rent_note}, #{rent_pay_method}, #{rent_writedate}, 
+					#{rent_start}, #{rent_end}, #{rent_sum}
+				   )
+	</insert>
+	<select id="myRentList" resultMap="rentDTO" parameterType="map">
+		SELECT SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
+		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+		 WHERE SR.MEM_NO = ${mem_no} AND TRUNC(TO_DATE('rent_start', 'YYYY-MM-DD') - SYSDATE) >= 0
+	</select>
+</mapper>

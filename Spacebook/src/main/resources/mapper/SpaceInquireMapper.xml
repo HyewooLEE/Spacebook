@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    order by inq_ref DESC, inq_step ASC 
 	</select>
 	
-	<select id="countInquire" resultMap="spaceInquireDTO" parameterType="spacebook.inquire.model.SpaceInquireDTO" resultType="int">
+	<select id="countInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO" resultType="int">
 		select count(*) 
 	    from 
 	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_REF,i.INQ_WRITEDATE,i.INQ_STEP,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
