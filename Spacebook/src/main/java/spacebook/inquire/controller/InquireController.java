@@ -57,6 +57,9 @@ public class InquireController {
 	@RequestMapping("inquireList.do")
 	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
 		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+		int countInquire = inquireService.countSpaceInquire();
+		
+		model.addAttribute("countInquire", countInquire);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);
 		
@@ -76,7 +79,7 @@ public class InquireController {
 	//나의 1:1문의 삭제
 	@RequestMapping(value = "deleteInquire.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,SpaceInquireDTO inquireDTO,Model model)throws Exception {
-		//inquireService.deleteSpaceInquire(inquireDTO);
+		inquireService.deleteSpaceInquire(inquireDTO);
 		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
 		
 		JSONObject json = new JSONObject();

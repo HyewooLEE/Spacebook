@@ -36,4 +36,12 @@ function deleteInquire(inq_no){
 		}
 	});
 }
+
+function showInquire(){
+	$('.showModal').fadeIn();
+}
+
+function closeInquire(){
+	$('.showModal').fadeOut();
+}
 </script>

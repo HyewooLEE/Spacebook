@@ -79,23 +79,24 @@
 							        <th style="text-align:center">작성자</th>
 							        <th style="text-align:center">제목</th>
 							        <th style="text-align:center">작성일</th>
-							        <th style="text-align:center">호스트<br />답변</th>
+							        <th style="text-align:center">삭제</th>
 							      </tr>
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
 								    <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}">
-								      <tr style = "text-align:center;cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-								        <td width="20%" >${inquireList.spaceDTO.space_name}</td>
-								        <td width="10%" >${inquireList.memberVO.mem_Name}</td>
+								      <tr style = "cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+								        <td width="25%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
 								        <c:if test="${inquireList.inq_step == 0 }">
-								        	<td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+								        	<td width="10%" style="text-align:center;">${inquireList.memberVO.mem_Name}</td>
+								        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 								        </c:if>
 								        <c:if test="${inquireList.inq_step > 0 }">
-								        	<td width="40%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">  ㄴ[답변] ${inquireList.inq_title }</a></td>
+								        	<td width="10%" style="text-align:center;">관리자</td>
+								        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font> ${inquireList.inq_title }</a></td>
 								        </c:if>
-								        <td width="20%">${inquireList.inq_writeDate }</td>
-								        <td width="10%" onclick="event.cancelBubble = true;"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+								        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
+								        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 								      </tr>
 								    </c:if>
 							    </c:forEach>
