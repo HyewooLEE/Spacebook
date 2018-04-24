@@ -39,7 +39,6 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		Map map = new HashMap<String, List>();
 		
 		String str = spaceDto.getFac_no();
-		
 		String str2 = search;
 		
 		if(str!=null && str !="") {
@@ -60,12 +59,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 			map.put("search", searchList);
 		}
 		map.put("SpaceDTO", spaceDto);
-		
-		List<SpaceDTO> test = getSqlSession().selectList("space.test12", map);
+		List<SpaceDTO> test = getSqlSession().selectList("space.search", map);
 		
 		return getSqlSession().selectList("space.search", map);
 	}
-	
-	
-
 }

@@ -239,10 +239,14 @@ public class SpaceController {
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
 		
 		String contextPath = session.getServletContext().getRealPath("/");
-		List<SpaceDTO> spaceAll = spaceService.searchSpace(spaceDto, search);
+		if(spaceService.searchSpace(spaceDto, search).size() != 0) {
+			List<SpaceDTO> spaceAll = spaceService.searchSpace(spaceDto, search);
+			model.addAttribute("spaceAll", spaceAll);
+		}else {
+			model.addAttribute("counet", 0);
+		}
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
 		
-		model.addAttribute("spaceAll", spaceAll);
 		model.addAttribute("facility", facility);
 		model.addAttribute("realPath", contextPath);
 		

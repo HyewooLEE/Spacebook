@@ -89,7 +89,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	(select * from 
 	(select * from 
 	
-		(select * from space 
+		(select * from 
+			<if test="search == null">
+				space
+			</if>
+			<if test="search != null" >
+				<foreach collection="search" item="search" index="index">
+					<if test="index eq 0">
+						(select * from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%') 
+					</if>
+				<if test="index &gt; 0">
+  					NATURAL JOIN(select space_no from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%')
+			</if>
+			</foreach>
+			</if>
 		<where>
 			<if test="SpaceDTO.space_addr1 != '' &amp;&amp; SpaceDTO.space_addr1 != null">
 			space_addr1 like '%'||#{SpaceDTO.space_addr1}||'%'
@@ -116,28 +129,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</foreach>
 		</if>
 	</where>
-	)space
-	<where>
-	 	<if test="search != null" >
-	 	<foreach collection="search" item="search" >
-			or space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%'
-		</foreach>
-		</if>
-	</where>
-	
+	)
 </select>
 
 
 <select id="test12" resultType="spacebook.submit.model.SpaceDTO" parameterType="map">
-select * from space
-	<where>
-	 	<if test="search != null" >
-	 	<foreach collection="search" item="search" >
-			or space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%'
-		</foreach>
-		</if>
-	</where>
-
+select * from 
+	<if test="search == null">
+		space
+	</if>
+<if test="search != null" >
+<foreach collection="search" item="search" index="index">
+<if test="index eq 0">
+(select * from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%') 
+</if>
+<if test="index &gt; 0">
+  NATURAL JOIN(select space_no from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%')
+</if>
+</foreach>
+</if>
 </select>
 
 </mapper>
