@@ -26,24 +26,15 @@
                         </div>
                     </div>
                     <!-- 검색 -->
-                    <form action="search.do">
+                    <form action="search.do" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <!-- listsearch-input-wrap  -->  
                     <div class="listsearch-input-wrap fl-wrap">
-                        <div class="listsearch-input-item">
+                        <div class="listsearch-input-item" style="width:60%;">
                             <i class="mbri-key single-i"></i>
                             <input type="text" placeholder="검색키워드" value="" id="search" name="search"/>
                         </div>
-                        <div class="listsearch-input-item">
-                            <select data-placeholder="Location" class="chosen-select" >
-                                <option>All Locations</option>
-                                <option>Bronx</option>
-                                <option>Brooklyn</option>
-                                <option>Manhattan</option>
-                                <option>Queens</option>
-                                <option>Staten Island</option>
-                            </select>
-                        </div>
-                        <div class="listsearch-input-item">
+                        <div class="listsearch-input-item" style="width:40%;">
                             <select  id="space_category" name="space_category" class="chosen-select">
                             	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
@@ -59,7 +50,7 @@
                            		<option value="카페">카페</option>
                            		<option value="">기타</option>
                            	</select>
-                        </div>
+                     	</div>
                         <div class="listsearch-input-text">
                             <!-- <label><i class="mbri-map-pin"></i> 주소검색 입력 </label> -->
                             <input type="text" placeholder="주소 검색" value="" id="space_addr1" name="space_addr1"/>
