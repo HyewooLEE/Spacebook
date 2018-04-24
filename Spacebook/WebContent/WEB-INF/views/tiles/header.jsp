@@ -60,7 +60,7 @@
                             <li><a href="password.do">비밀번호 변경</a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 예약리스트</a></li>
-                            <li><a href="#">나의 찜공간</a></li>
+                            <li><a href="favoriteList.do">나의 찜공간</a></li>
                             <li><a href="inquireList.do">나의 1:1문의</a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 공간관리</a></li>

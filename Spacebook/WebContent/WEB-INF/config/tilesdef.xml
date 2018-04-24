@@ -118,6 +118,7 @@
 		<definition name="inquireList" extends="base_layout">
 			<put-attribute name="title" value="나의 1:1문의 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireList.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/inquireListScript.jsp" />
 		</definition>
 		<definition name="inquireContent" extends="base_layout">
 			<put-attribute name="title" value="나의 1:1문의 상세" />

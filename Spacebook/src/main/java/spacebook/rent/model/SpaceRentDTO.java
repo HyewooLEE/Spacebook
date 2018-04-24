@@ -1,9 +1,9 @@
-package spacebook.favorite.model;
+package spacebook.rent.model;
 
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 
-public class SpaceFavoriteDTO {
+public class SpaceRentDTO {
 	private int fav_no;
 	private String fav_div;
 	private int mem_no;

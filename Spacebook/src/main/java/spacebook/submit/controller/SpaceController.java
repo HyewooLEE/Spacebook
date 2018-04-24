@@ -234,6 +234,29 @@ public class SpaceController {
 		return "listSpace";
 	}
 	
+	//search
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public String search(@RequestParam(value="search") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
+		System.out.println("검색::"+search);
+		System.out.println("편의시설::"+spaceDto.getFac_no());
+		System.out.println("타입::"+spaceDto.getSpace_category());
+		System.out.println("지역::"+spaceDto.getSpace_addr1());
+		
+		String contextPath = session.getServletContext().getRealPath("/");
+		List<SpaceDTO> spaceAll = spaceService.searchSpace(spaceDto, search);
+		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
+		
+		System.out.println("있어?"+spaceAll.size());
+		System.out.println("있으면::"+spaceAll.get(0).getSpace_name());
+		
+		model.addAttribute("spaceAll", spaceAll);
+		model.addAttribute("facility", facility);
+		model.addAttribute("realPath", contextPath);
+		
+		return "listSpace";
+	}
+	
+	
 	//map
 	@RequestMapping(value = "/MapList.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void startMap(HttpServletResponse response)throws Exception{
