@@ -83,27 +83,36 @@
 							      </tr>
 							    </thead>
 							    <tbody id="inquireTbody">
-							    <c:if test=${countInquire==0 }>
-							    	<tr>
-								        <td colspan="4"><h2>해당 결과물이 없습니다.</h2></td>
-								    </tr>
-							    </c:if>
-							    <c:forEach var="inquireList" items="${inquireList }">
-							        <%-- 호스트 : ${inquireList.spaceDTO.mem_no}  
-								    회원 : ${inquireList.memberVO.mem_No} 
-								    작성자 : ${inquireList.mem_no}  --%>
-								    <c:if test="${inquireList.mem_no==login.mem_No }">
-								    <c:if test="${inquireList.inq_step == 0 }">
-								      <tr style ="text-align:center;cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-								        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
-								        <td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-								        <td width="20%">${inquireList.inq_writeDate }</td>
-								      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-								      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
-								      </tr>
+								    <c:if test="${countInquire==0 }">
+								    	<tr>
+									        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
+									    </tr>
 								    </c:if>
-								    </c:if>
-							    </c:forEach>
+								    <%-- 호스트 : ${inquireList.spaceDTO.mem_no}  
+									    회원 : ${inquireList.memberVO.mem_No} 
+									    작성자 : ${inquireList.mem_no}  --%>
+								    <c:forEach var="inquireList" items="${inquireList }" varStatus="status">
+									    <c:if test="${inquireList.mem_no==login.mem_No }">
+									    <c:set var="countVal" property="countVal" value="1"/>
+										    <c:if test="${inquireList.inq_step == 0 }">
+										      <tr style ="text-align:center;cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+										        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
+										        <td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+										        <td width="20%">${inquireList.inq_writeDate }</td>
+										      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+										      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+										      </tr>
+										    </c:if>
+									    </c:if>
+									    
+									    <c:if test="${status.last}" >
+									    	<c:if test="${countVal != 1}">
+											    <tr>
+											        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
+											    </tr>
+										    </c:if>
+									    </c:if>
+								    </c:forEach>
 							    </tbody>
 							  </table>
 							</div>
