@@ -21,7 +21,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     this.loginpasswdname = "passwd";
     this.loginredirectname = "/loginPage.do";
     this.exceptionmsgname = "securityexceptionmsg";
-    this.defaultFailureUrl = "/main.do?fail=true";
+    this.defaultFailureUrl = "/errorPage.do";
   }
    
    

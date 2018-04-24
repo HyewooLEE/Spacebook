@@ -18,12 +18,31 @@
 			<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
 		</definition>
 		<definition name="accessDeny" extends="base_layout2">
-			<put-attribute name="title" value="스페이스북에 오신것을 환영합니다 "/>
+			<put-attribute name="title" value="스페이스북 접근 거부 페이지"/>
 			<put-attribute name="body" value="/WEB-INF/views/common/access_denied.jsp"/>
 		</definition>
+		<definition name="errorPage" extends="base_layout2">
+			<put-attribute name="title" value="스페이스북 에러페이지 "/>
+			<put-attribute name="body" value="/WEB-INF/views/common/errorPage.jsp"/>
+		</definition>
 		<definition name="login" extends="base_layout2" >
-			<put-attribute name="title" value="로그인"/>
+			<put-attribute name="title" value="스페이스북 로그인 페이지"/>
 			<put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="passwordFind" extends="base_layout2" >
+			<put-attribute name="title" value="비밀번호 찾기"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/passwordFindForm.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="passwordFindError" extends="base_layout2" >
+			<put-attribute name="title" value="비밀번호 찾기"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/passwordFindError.jsp"/>
+			<put-attribute name="script" value="" />
+		</definition>
+		<definition name="passwordFindSuccess" extends="base_layout2" >
+			<put-attribute name="title" value="비밀번호 찾기"/>
+			<put-attribute name="body" value="/WEB-INF/views/common/passwordFindSuccess.jsp"/>
 			<put-attribute name="script" value="" />
 		</definition>
 		<!-- 주영 -->
@@ -99,6 +118,7 @@
 		<definition name="inquireList" extends="base_layout">
 			<put-attribute name="title" value="나의 1:1문의 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireList.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/inquireListScript.jsp" />
 		</definition>
 		<definition name="inquireContent" extends="base_layout">
 			<put-attribute name="title" value="나의 1:1문의 상세" />

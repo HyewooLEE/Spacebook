@@ -159,6 +159,9 @@
 									<input id="remember_me" type="checkbox" name="remember-me"> <label for="remember_me">자동 로그인</label>
 								</div>
 							</form>
+							<div class="lost_password">
+								<a href="#"  onclick="window.open('passwordFind.do','w', 'location=no,directories=no,resizable=no,status=no,toolbar=no,menubar=no,width=600, height=330,scrollbars=no, top=50,left=200');return false">비밀번호를 잃어버리셨나요?</a>
+							</div>
 						</div>
 					</div>
 					<div class="tab">
