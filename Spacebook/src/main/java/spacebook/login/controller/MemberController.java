@@ -3,6 +3,7 @@ package spacebook.login.controller;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,13 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONObject;
+import spacebook.login.model.Email;
 import spacebook.login.model.MemberVO;
+import spacebook.login.service.EmailSender;
 import spacebook.login.service.MemberDaoService;
 import spacebook.login.service.ShaEncoder;
 
 @Controller
 public class MemberController {
-
+	Random random = new Random(); 
+	
 	@Autowired
 	private ShaEncoder encoder;
 	public void setEncoder(ShaEncoder encoder) {
@@ -35,12 +39,45 @@ public class MemberController {
 	public void setService(@Qualifier("UserDaoServiceImpl") MemberDaoService service) {
 		this.service = service;
 	}
+	@Autowired
+    private EmailSender emailSender;
 
 	@RequestMapping("loginPage.do")
 	public String loginPage() {
 		return "login";
 	}
+	@RequestMapping("passwordFind.do")
+	public String passwordFind() {
+		return "passwordFind";
+	}
 
+	@RequestMapping(value= "passwordFindSubmit.do", method = RequestMethod.GET)
+	public ModelAndView passwordFind(@RequestParam("EMAIL") String email) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO vo = service.selectMember(email);
+		if (vo ==null) {
+			mv.setViewName("passwordFindError");
+		}else {
+			long currentTime = System.currentTimeMillis();
+			int randomValue = random.nextInt(50);
+			String temporary = Long.toString(currentTime)+ Integer.toString(randomValue);
+            String reciver = email;
+            String subject = "임시 비밀번호 발급 되었습니다.";
+            String content = "임시 비밀 번호는 " + temporary + " 입니다.";
+             
+            Email mail = new Email();
+            mail.setReciver(reciver);
+            mail.setSubject(subject);
+            mail.setContent(content);
+            emailSender.SendEmail(mail);
+            
+            String tempPwd = encoder.saltEncoding(temporary, email);
+            service.updatePwd(tempPwd,email);
+			mv.setViewName("passwordFindSuccess" );
+		}
+		return mv;
+	}
+	
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String insertUser(@RequestParam("email") String email, @RequestParam("password") String passwd,@RequestParam("authority") String authority) {
 		String dbpw = encoder.saltEncoding(passwd, email);
@@ -132,5 +169,7 @@ public class MemberController {
 		PrintWriter out = response.getWriter();
 		out.print(jso.toString());
 	}
+	
+	
 
 }
