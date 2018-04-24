@@ -13,26 +13,18 @@ function deleteInquire(inq_no){
 		success:function(result){
 			swal("삭제 완료되었습니다.");
 			$('#inquireTbody').html('');
-			 $('#inquireTbody').append('append 테스트');
 			 for (var i=0; i<result.data.length; i++){
-				 $('#inquireTbody').append('append 테스트2');
-				 $('#inquireTbody').append(
-						 '<tbody id="inquireTbody">'+
-					/* '<c:forEach var="inquireList" items="'+result.data[i]+'">'+ */
-					/* '<c:if test="'+result.data[i].mem_no==result.data[i].login.mem_No+' ">'+ */
-						'<tr style ="text-align:center;cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.data[i].pageNum+' \' ">'+
-					        '<td width="30%" >'+result.data[i].spaceDTO.space_name+'</td>'+
-					        '<td width="40%"><a href="inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.data[i].pageNum+'">'+result.data[i].inq_title+' </a></td>'+
-					        '<td width="20%">'+result.data[i].inq_writeDate+' </td>'+
-					      	'<td width="10%" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
-					    '</tr>'+
-					/* '</c:if>'+ */
-					/* '</c:forEach>'+ */
-						'</tbody>'
-					
-				);
-			}
-			
+				if(${login.mem_No}==result.data[i].mem_no){
+				 	$('#inquireTbody').append(
+						 '<tr style ="text-align:center;cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+' \' ">'+
+								'<td width="30%" >'+result.data[i].spaceDTO.space_name+'</td>'+
+								'<td width="40%"><a href="inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+'">'+result.data[i].inq_title+' </a></td>'+
+								'<td width="20%">'+result.data[i].inq_writeDate+'</td>'+
+								'<td width="10%" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+						 '</tr>'
+					 );
+				}
+			 }
 		}
 		,error:function(e){
 			alert(params);
