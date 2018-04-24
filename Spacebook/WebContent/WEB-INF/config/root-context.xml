@@ -19,6 +19,7 @@
 	<!-- 남현 -->
 	<context:component-scan base-package="spacebook.view.service"/>
 	<context:component-scan base-package="spacebook.favorite.service"/>
+	<context:component-scan base-package="spacebook.rent.service"/>
 	
 	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="100000000" />
