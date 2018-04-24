@@ -28,7 +28,6 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 		Date dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		inquireDTO.setInq_writeDate(sdf.format(dt));
-		System.out.println("controller");
 		
 		int inq_no=inquireDTO.getInq_no(); //원글번호
 		int inq_ref=0;  //원글+답변의 그룹번호. (원글과 원글에 딸린 답변이 번호가 같음) 
@@ -46,15 +45,13 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 		
 		/*새글 작성*/
 		if(inq_no == 0) {
-			inquireDTO.setInq_ref(maxInqRef + 1);
+			inquireDTO.setInq_ref(maxInqRef+1);
 			
 			inquireDAO.spaceInquireInsert(inquireDTO);
-			System.out.println("inq_no=0");
 		}
 		
 		/*답글 작성*/
 		else {
-			System.out.println("inq_no!=0");
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("inqNo", inq_no);
 			
@@ -78,12 +75,7 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
         	inquireDTO.setInq_level(inq_level);
         	inquireDTO.setInq_writeDate(sdf.format(dt));
 			
-			System.out.println(inq_step);
-			System.out.println(inq_level);
-			System.out.println("제목"+inquireDTO.getInq_title());
-			
 			inquireDAO.spaceInquireInsert(inquireDTO);
-			System.out.println("~~~~");
 		}
 		
 	}
@@ -95,6 +87,12 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 		map.put("end", pageNum*10);
 		
 		return inquireDAO.spaceInquireSelect(map);
+	}
+	
+	@Override
+	public int countSpaceInquire() {
+		int countInquire = inquireDAO.spaceInquireCount();
+		return countInquire;
 	}
 	
 	@Override

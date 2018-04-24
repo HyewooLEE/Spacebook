@@ -73,33 +73,49 @@
 		                    </div>
 		                    </form>
 						</div>
-						<%-- <c:if test="${page.articleCount == 0}"> --%>
-						<div class="dashboard-list " style="width:100%">
-							<div class="dashboard-message"  align="center">
-										<h2>해당 결과물이 없습니다.</h2>
-							</div>
-						</div>
-						<%-- </c:if> --%>
 						<%-- <c:if test="${page.articleCount > 0}"> --%>
-						<!-- dashboard-list end-->
 						<div id="tableForm" class="dashboard-list-box fl-wrap">
-						<c:forEach var="spaceAll" items="${spaceAll }">
-						<div class="dashboard-list " style="width:100%">
-							<div class="dashboard-message" >
-								<div class="dashboard-message-avatar">
-									<img src="${spaceAll.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
+							<c:forEach var="spaceAll" items="${spaceAll }">
+							<div class="dashboard-list " style="width:100%">
+								<div class="dashboard-message" >
+									<div class="dashboard-message-avatar">
+										<img src="${spaceAll.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
+									</div>
+									<div class="dashboard-message-text md-9" style=" padding-top:15px;" >
+										<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
+											${spaceAll.space_name}
+											&nbsp;&nbsp;&nbsp;<span style="color:#4DB7FE; font-size:12px;">${spaceAll.space_category}</span>
+											&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;${spaceAll.memberVO.mem_Name}
+										</a>
+										<div class="accordion-inner">
+											<div class="booking-details fl-wrap">
+												<span class="booking-title">주소</span> : 
+												<span class="booking-text"><a href="#">${spaceAll.space_addr1} ${spaceAll.space_addr2}</a></span>
+											</div>
+											<div class="booking-details fl-wrap">
+												<span class="booking-title">웹사이트</span> : 
+												<span class="booking-text"><a href="#">${spaceAll.space_site}</a></span>
+											</div>
+											<div class="booking-details fl-wrap">
+												<span class="booking-title">전화번호</span> : 
+												<span class="booking-text"><a href="#">${spaceAll.space_phone}</a></span>
+											</div>
+											<div class="booking-details fl-wrap">
+												<span class="booking-title">운영시간</span> : 
+												<span class="booking-text"><a href="#">${spaceAll.space_open} ~ ${spaceAll.space_close}</a></span>
+											</div>
+											<div class="booking-details fl-wrap">
+												<span class="booking-title">금액</span> : 
+												<span class="booking-text"><a href="#">${spaceAll.space_sum}</a></span>
+											</div>
+										</div>
+	 								</div>
+	 								<div class="listsearch-input-item pull-right " style="width:125px;">
+	 									<button class="btn color-bg flat-btn pull-right" id="deleteArticle" onClick="return deleteArticle(${spaceAll.space_no});">삭제</button>
+	 								</div>
 								</div>
-								<div class="dashboard-message-text " style=" padding-top:15px;">
-									<a style="cursor:pointer; color:#000; font-size: 16px; font-weight: 600;" class="toggle"  href="#">
-										${spaceAll.space_name}
-										&nbsp;&nbsp;&nbsp;<span style="color:#4DB7FE; font-size:12px;">${spaceAll.space_category}</span>
-										&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;${spaceAll.memberVO.mem_Name}
-									</a>
- 								</div>
- 								<button class="btn color-bg flat-btn" id="deleteArticle" onClick="return deleteArticle(${spaceAll.space_no});">삭제</button>
 							</div>
-						</div>
-						</c:forEach>
+							</c:forEach>
 						</div>
 						<!-- dashboard-list end-->
 						<%-- </c:if> --%>

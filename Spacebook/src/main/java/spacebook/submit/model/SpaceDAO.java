@@ -40,6 +40,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		
 		String str = spaceDto.getFac_no();
 		
+		String str2 = search;
+		
 		if(str!=null && str !="") {
 		StringTokenizer token = new StringTokenizer(str,",");
 		
@@ -50,17 +52,16 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		}
 		
 		
-		if(search!=null && search !="") {
-		StringTokenizer token = new StringTokenizer(search," ");
+		if(str2!=null && str2 !="") {
+		StringTokenizer token = new StringTokenizer(str2," ");
 		while(token.hasMoreTokens()){
 			searchList.add(token.nextToken());
 		}
 			map.put("search", searchList);
 		}
-		
-		
 		map.put("SpaceDTO", spaceDto);
 		
+		List<SpaceDTO> test = getSqlSession().selectList("space.test12", map);
 		
 		return getSqlSession().selectList("space.search", map);
 	}

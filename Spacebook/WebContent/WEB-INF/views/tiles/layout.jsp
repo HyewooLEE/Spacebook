@@ -37,14 +37,4 @@
 <script src="${pageContext.request.contextPath}/js/main/main.js"></script>
 <tiles:insertAttribute name="script" />
 </body>
-<c:if test="${param.fail ne null  }">
-<script>
-swal.getState();
-swal("실패", "아이디와 비밀번호를 확인해주세요.", "warning", {
-	buttons : "닫기"
-}).then(function(){
-	$(".main-register-wrap").css("display","block");
-});
-</script>
-</c:if>
 </html>

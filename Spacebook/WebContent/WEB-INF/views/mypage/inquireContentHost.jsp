@@ -122,11 +122,13 @@
 									</div>
 								</div>
 							</form>
-								<div align="right" id="sendInquire">
-									<button type="button" class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);">
-										답변하기<i class="fa fa-angle-down"></i>
-									</button>
-								</div>
+								<c:if test="${inquireList.inq_step == 0 }">
+									<div align="right" id="sendInquire">
+										<button type="button" class="btn color-bg flat-btn" style="background-color:#F29661;" onclick="return sendInquire(0);">
+											답변하기<i class="fa fa-angle-down"></i>
+										</button>
+									</div>
+								</c:if>
 						</div>
 					</div>
 				</div>

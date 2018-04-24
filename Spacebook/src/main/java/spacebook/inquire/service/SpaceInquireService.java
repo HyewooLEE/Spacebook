@@ -10,6 +10,8 @@ public interface SpaceInquireService {
 	
 	public List<SpaceInquireDTO> selectSpaceInquire(int pageNum);
 	
+	public int countSpaceInquire();
+	
 	public SpaceInquireDTO selectInqContent(int inq_no);
 	
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO);

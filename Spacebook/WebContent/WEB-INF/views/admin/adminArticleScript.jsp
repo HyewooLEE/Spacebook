@@ -44,4 +44,16 @@ function deleteArticle(space_no){
 	});
 }
 
+$(".dashboard-message-text a.toggle").on("click", function (a) {
+    a.preventDefault();
+    $(".dashboard-message-text a.toggle").removeClass("act-accordion");
+    $(this).addClass("act-accordion");
+    if ($(this).next('div.accordion-inner').is(':visible')) {
+        $(this).next('div.accordion-inner').slideUp();
+    } else {
+        $(".accordion a.toggle").next('div.accordion-inner').slideUp();
+        $(this).next('div.accordion-inner').slideToggle();
+    }
+});
+
 </script>

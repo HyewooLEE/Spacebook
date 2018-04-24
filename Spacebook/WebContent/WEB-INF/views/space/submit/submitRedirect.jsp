@@ -10,7 +10,7 @@ $(document).ready(function(){
  	var message = '${msg}';
 	var returnUrl = '${url}';
 	
-	alert(message);
+	swal(message);
 	document.location.href = returnUrl; 
 });
 </script>
