@@ -285,11 +285,11 @@
 											<div class="row">
 												<div class="col-md-6">
 													<label><i class="fa fa-calendar-check-o"></i></label>
-													<input type="text" name="reserve_startDate" id="reserve_startDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" value="" />
+													<input type="text" name="reserve_startDate" id="reserve_startDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
 												</div>
 												<div class="col-md-6">
 													<label><i class="fa fa-calendar-check-o"></i></label>
-													<input type="text" name="reserve_endDate" id="reserve_endDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" value="" />
+													<input type="text" name="reserve_endDate" id="reserve_endDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
 												</div>
 											</div>
 											<textarea cols="40" rows="3" id="reserve_message" name="reserve_message" placeholder="Additional Information"></textarea>

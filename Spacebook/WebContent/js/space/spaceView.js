@@ -22,13 +22,23 @@ function reserve() {
 	$('.modal2').fadeIn();
     $("html, body").addClass("hid-body");
     
+    var msecPerMinute = 1000 * 60; //분
+	var msecPerHour = msecPerMinute * 60; //시간
+	var msecPerDay = msecPerHour * 24; //날
+    
+	var pay_startDate = new Date($('#reserve_startDate').val());
+	var pay_endDate = new Date($('#reserve_endDate').val());
+	var minDate = pay_endDate - pay_startDate + 1;
+	var totalDate = Math.floor(minDate/ msecPerDay) + 1;
+	
     document.getElementById("pay_name").value = $('#reserve_name').val();
     document.getElementById("pay_email").value = $('#reserve_email').val();
     document.getElementById("pay_phone").value = $('#reserve_phone').val();
     document.getElementById("pay_startDate").value = $('#reserve_startDate').val();
     document.getElementById("pay_endDate").value = $('#reserve_endDate').val();
     document.getElementById("pay_quantity").value = $('#reserve_quantity').val();
-    document.getElementById("pay_message").value = $('#reserve_name').val();
+    document.getElementById("pay_message").value = $('#reserve_message').val();
+    document.getElementById("pay_sum").innerHTML = $('#price').val() * totalDate;
 }
 
 function cancel() {
@@ -51,41 +61,42 @@ function subQuantity() {
 }
 
 function payment(pay_category, pay_spaceName, space_no, mem_no) {
+	var msecPerMinute = 1000 * 60; //분
+	var msecPerHour = msecPerMinute * 60; //시간
+	var msecPerDay = msecPerHour * 24; //날
 	var pay_sum = $('#pay_sum').text();
 	var pay_name = $('#pay_name').val();
 	var pay_email = $('#pay_email').val();
 	var pay_phone = $('#pay_phone').val();
-	var pay_startDate = $('#pay_startDate').val();
-	var pay_endDate = $('#pay_endDate').val();
 	var pay_quantity = $('#pay_quantity').val();
 	var pay_message = $('#pay_message').val();
     var pay_method = $('#pay_method').val();
+    var pay_startDate = $('#pay_startDate').val();
+	var pay_endDate = $('#pay_endDate').val();
 	
-    if(pay_method == "") {
+	var minDate = new Date($('#pay_endDate').val()) - new Date($('#pay_startDate').val()) + 1;
+	var totalDate = Math.floor(minDate/ msecPerDay);
+	
+	if(pay_method == "") {
     	swal("결제 방식을 선택해주세요.","");
     } else {
     	IMP.init('imp78921561');
     	 
     	IMP.request_pay({
-            pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
-            pay_method : pay_method, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-            merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
-            name : '('+ pay_category +')'+ pay_spaceName,
-            amount : pay_sum,
-            buyer_email : pay_email,
-            buyer_name : pay_name,
-            buyer_tel : pay_phone, //누락되면 이니시스 결제창에서 오류
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456'
-        }, function(rsp) {
-            if ( rsp.success ) {
-            	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-            	jQuery.ajax({
-            		url: "/Spacebook/showReview.do", //cross-domain error가 발생하지 않도록 주의해주세요
-            		type: 'GET',
-            		dataType: 'json',
+    	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+    	    pay_method : pay_method, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+    	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
+    	    name : (pay_category) + pay_spaceName,
+    	    amount : pay_sum,
+    	    buyer_email : pay_email,
+    	    buyer_name : pay_name,
+    	    buyer_tel : pay_phone //누락되면 이니시스 결제창에서 오류
+    	},  function(rsp) {
+    	    if ( rsp.success ) {
+    	        $.ajax({
+            		type: "get",
+            		url: "/Spacebook/insertRent.do",
             		data: {
-        	    		imp_uid : rsp.imp_uid,
         	    		space_no : space_no,
         	    		mem_no : mem_no,
         	    		rent_name : pay_name,
@@ -93,33 +104,22 @@ function payment(pay_category, pay_spaceName, space_no, mem_no) {
         	    		rent_phone : pay_phone,
         	    		pay_name : pay_name,
         	    		rent_note : pay_message,
-        	    		rent_pay_method : pay_method
-        	    		
-        	    		
-        	    		//기타 필요한 데이터가 있으면 추가 전달
-            		}
-            	}).done(function(data) {
-            		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-            		if ( everythings_fine ) {
-            			var msg = '결제가 완료되었습니다.';
-            			msg += '\n고유ID : ' + rsp.imp_uid;
-            			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-            			msg += '\n결제 금액 : ' + rsp.paid_amount;
-            			msg += '카드 승인번호 : ' + rsp.apply_num;
-            			
-            			alert(msg);
-            		} else {
-            			//[3] 아직 제대로 결제가 되지 않았습니다.
-            			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-            		}
+        	    		rent_pay_method : pay_method,
+        	    		rent_start : pay_startDate,
+        	    		rent_end : pay_endDate,
+            			rent_sum : pay_sum
+            		},
+            		cache: false,
+            		dataType:"json"
             	});
-            } else {
-                var msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
-                
-                alert(msg);
-            }
-        });
+        		swal("결제가 완료 되었습니다.","");
+        		cancel();
+    	    } else {
+    	    	swal("결제가 실패 하였습니다. 관리자에게 문의 부탁드립니다.","");
+    	    }
+
+    	    
+    	});
     }
 }
 

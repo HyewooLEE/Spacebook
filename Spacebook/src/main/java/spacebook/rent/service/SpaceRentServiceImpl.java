@@ -1,55 +1,37 @@
 package spacebook.rent.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import spacebook.favorite.model.SpaceFavoriteDAO;
-import spacebook.favorite.model.SpaceFavoriteDTO;
+import spacebook.rent.model.SpaceRentDAO;
+import spacebook.rent.model.SpaceRentDTO;
 
 @Service
 public class SpaceRentServiceImpl implements SpaceRentService{
 	
 	@Autowired
-	SpaceFavoriteDAO favoriteDAO;
+	SpaceRentDAO dao;
 	
-	public void setDao(SpaceFavoriteDAO favoriteDAO) {
-		this.favoriteDAO = favoriteDAO;
+	public void setRentDAO(SpaceRentDAO rentDAO) {
+		this.dao = rentDAO;
 	}
 
 	@Override
-	public void insertFavorite(SpaceFavoriteDTO dto) {
-		favoriteDAO.insertFavorite(dto);
+	public void insertSpaceRent(SpaceRentDTO dto) {
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		dto.setRent_writedate(sdf.format(dt));
+		
+		dao.insertSpaceRent(dto);		
 	}
 
 	@Override
-	public void deleteFavorite(SpaceFavoriteDTO dto) {
-		favoriteDAO.deleteFavorite(dto);
-	}
-
-	@Override
-	public SpaceFavoriteDTO selectFavorite(SpaceFavoriteDTO dto) {
-		return favoriteDAO.selectFavorite(dto);
-	}
-
-	@Override
-	public List<SpaceFavoriteDTO> favoriteList(int mem_no) {
-		return favoriteDAO.favoriteList(mem_no);
-	}
-
-	@Override
-	public int countSpaceFavorite(int space_no) {
-		return favoriteDAO.countSpaceFavorite(space_no);
-	}
-
-	@Override
-	public int countMemFavorite(int space_no, int mem_no) {
-		return favoriteDAO.countMemFavorite(space_no, mem_no);
-	}
-
-	@Override
-	public int countMyFavorite(int mem_no) {
-		return favoriteDAO.countMyFavorite(mem_no);
+	public List<SpaceRentDTO> myRentList(int mem_no) {
+		return dao.myRentList(mem_no);
+		
 	}
 }
