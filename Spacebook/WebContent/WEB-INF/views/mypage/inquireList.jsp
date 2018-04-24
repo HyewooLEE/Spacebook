@@ -81,7 +81,7 @@
 							        <th style="text-align:center">삭제</th>
 							      </tr>
 							    </thead>
-							    <tbody>
+							    <tbody id="inquireTbody">
 							    <c:forEach var="inquireList" items="${inquireList }">
 							        <%-- 호스트 : ${inquireList.spaceDTO.mem_no}  
 								    회원 : ${inquireList.memberVO.mem_No} 
@@ -91,7 +91,7 @@
 								        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
 								        <td width="40%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 								        <td width="20%">${inquireList.inq_writeDate }</td>
-								      	<td width="10%" onclick="event.cancelBubble = true;"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+								      	<td width="10%" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 								      </tr>
 								    </c:if>
 							    </c:forEach>
