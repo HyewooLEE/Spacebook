@@ -74,6 +74,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from space NATURAL JOIN map
 	</select>
 	
+	<select id="selectMySpace" resultType="spacebook.submit.model.SpaceDTO" >
+		select * from space
+	</select>
+	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
 		delete from space where space_no = #{space_no}
 	</delete>

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import net.sf.json.JSONObject;
+import spacebook.inquire.model.SpaceInquireDTO;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.submit.model.SpaceFacilityDTO;
@@ -28,13 +29,6 @@ import spacebook.view.model.SpaceReviewDTO;
 
 @Controller
 public class SpaceController {
-	
-	//private static final Logger logger = LoggerFactory.getLogger(SpaceController.class);
-	
-	// xml에 설정된 리소스 참조
-    // bean의 id가 uploadPath인 태그를 참조
-   /* @Resource(name="uploadPath")
-    String uploadPath;*/
 	
 	@Autowired
 	private SpaceService spaceService;
@@ -234,6 +228,15 @@ public class SpaceController {
 		return "listSpace";
 	}
 	
+	
+	@RequestMapping("/mySpaceList.do")
+	public String mySpaceList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceDTO spaceDto, Model model) {
+		List<SpaceDTO> mySpace = spaceService.selectMySpace(spaceDto);
+		model.addAttribute("mySpace", mySpace);
+		
+		return "mySpaceList";
+	}
+	
 	//search
 	@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
@@ -266,5 +269,8 @@ public class SpaceController {
 		PrintWriter out = response.getWriter();
 		out.print(jso.toString());
 	}
+	
+	
+	
 
 }

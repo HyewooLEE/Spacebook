@@ -40,6 +40,11 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceDTO> selectMapList(){
 		return spaceDao.selectMapList();
 	}
+	
+	@Override
+	public List<SpaceDTO> selectMySpace(SpaceDTO spaceDto) {
+		return spaceDao.selectMySpace(spaceDto);
+	}
 
 	@Override
 	public void deleteSpace(SpaceDTO spaceDto) {
@@ -50,4 +55,6 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search){
 		return spaceDao.searchSpace(spaceDto, search);
 	}
+
+	
 }
