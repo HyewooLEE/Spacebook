@@ -18,4 +18,15 @@ public class SpaceRentDAO extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("spaceRent.myRentList", map);
 	}
 	
+	public void deleteMyRent(int rent_no) {
+		getSqlSession().delete("spaceRent.deleteMyRent", rent_no);
+	}
+	
+	public List<SpaceRentDTO> rentList(int mem_no) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("mem_no", mem_no);
+		
+		return getSqlSession().selectList("spaceRent.rentList", map);
+	}
+	
 }

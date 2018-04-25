@@ -42,7 +42,7 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>${countMySpace }</span> </a></li>
+                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 공간</a></li>
                                         <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황</a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리</a></li>
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
@@ -74,28 +74,22 @@
 							<div >
 							  <table class="table table-bordred table-striped table-hover">
 							    <thead>
-							      <tr > 
+							      <tr> 
 							        <th style="text-align:center">공간명</th>
 							        <th style="text-align:center">예약자</th>
-							        <th style="text-align:center">예약 시작일</th>
-							        <th style="text-align:center">예약 종료일</th>
 							        <th style="text-align:center">결제방법</th>
 							        <th style="text-align:center">남긴말</th>
 							        <th style="text-align:center">작성일</th>
-							        <th style="text-align:center">삭제</th>
 							      </tr>
 							    </thead>
 							    <tbody>
-							    <c:forEach var="myRentList" items="${myRentList}">
-							         <tr style ="text-align:center;cursor:pointer;" onClick =" location.href='spaceView.do?space_no=${myRentList.space_no}' ">
-								        <td width="10%" >${myRentList.spaceDTO.space_name}</td>
-								        <td width="10%">${myRentList.rent_name}</td>
-								        <td width="10%">${myRentList.rent_start}</td>
-								        <td width="10%">${myRentList.rent_end}</td>
-								        <td width="10%">${myRentList.rent_pay_method}</td>
-								        <td width="20%">${myRentList.rent_note}</td>
-								        <td width="10%">${myRentList.rent_writedate}</td>
-								      	<td width="10%" onclick="event.cancelBubble = true;"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick="checkDeleteRent(${myRentList.rent_no})"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+							    <c:forEach var="rentList" items="${rentList}">
+							         <tr style ="text-align:center;cursor:pointer;">
+								        <td width="10%" >${rentList.spaceDTO.space_name}</td>
+								        <td width="10%">${rentList.rent_name}</td>
+								        <td width="10%">${rentList.rent_pay_method}</td>
+								        <td width="20%">${rentList.rent_note}</td>
+								        <td width="10%">${rentList.rent_writedate}</td>
 								     </tr>
 							    </c:forEach>
 							    </tbody>

@@ -67,9 +67,10 @@
                             <li><a href="inquireList.do">나의 1:1문의</a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#">나의 공간관리</a></li>
+                            <li><a href="rentList.do">공간 예약현황</a></li>
+                            <li><a href="mySpaceList.do">나의 공간관리</a></li>
                             <li><a href="#">공간 예약현황</a></li>
                             <li><a href="inquireListHost.do">1:1문의관리</a></li>
-                            <li><a href="#">공간 정산정보</a></li>
                             <li><a href="#"></a></li>
                             <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
                             <li><a href="adminMember.do">회원 관리</a></li>
