@@ -2,6 +2,34 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+$(function(){
+	alert("시작");
+	var test1 = document.getElementById("space_category");
+	//var test2 = document.getElementById("category").value;
+	//alert(test2);
+	/*  for(int i = 0; i < 13; i++){
+		if(test1[i].value == test2){
+			test1[i].checked
+		} */
+	} 
+	alert(test1[3].value);
+	/* if()
+	test1[${selectFacility}].checked=true; */
+})
+</script>
+
+
+<c:forEach var="selectFacility" items="${selectFacility}" >
+<script>
+$(function(){
+	 var test = document.getElementsByName("fac_array");
+	 test[${selectFacility}].checked=true;
+ });
+</script>
+</c:forEach>
+
     <!--section --> 
     <section id="sec1">
         <!-- container -->
@@ -45,7 +73,6 @@
                                         <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>${countMySpace }</span> </a></li>
                                         <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
-                                        <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
                                 </div>
                                 <c:if test="${login.mem_Id eq 'admin@admin.com' }">
@@ -74,7 +101,10 @@
                             	<div class="row">
 	                            	<div class="col-md-6">
 		                            	<label>공간유형명</label>
+		                            	<input type="hidden" id="category" value="${spaceDetail.space_category}" />
 		                            	<select  id="space_category" name="space_category" class="chosen-select" data-placeholder="공간유형을 선택하세요">
+		                            	<!-- $('#space_category').val(); -->
+		                            		<option>${spaceDetail.space_category}</option>
 		                            		<option value="작업실">작업실</option>
 		                            		<option value="연습실">연습실</option>
 		                            		<option value="세미나실">세미나실</option>
@@ -91,12 +121,12 @@
 	                            	</div>
                             	</div>
                                 <label>공간명 <i class="fa fa-briefcase"></i></label>
-                                <input type="text" id="space_name" name="space_name" placeholder="공간명을 입력하세요" value="${space_name }"/>
+                                <input type="text" id="space_name" name="space_name" placeholder="공간명을 입력하세요" value="${spaceDetail.space_name }"/>
                                 
                                 <div class="row">
                                  <div class="col-md-8">
                                  <label>공간 주소<i class="fa fa-map-marker"></i></label>
-                                 <input type="text" id="space_addr1" placeholder="주소를 검색하세요" name="space_addr1" onClick="return findaddress();" readonly value="${space_addr1 }"/>
+                                 <input type="text" id="space_addr1" placeholder="주소를 검색하세요" name="space_addr1" onClick="return findaddress();" readonly value="${spaceDetail.space_addr1 }"/>
                                  </div>
                                  <div class="col-md-3">
                                  <button class="btn color-bg flat-btn" type="button" onClick="return findaddress();">주소검색</button>
@@ -106,7 +136,7 @@
                                 </div>
                                 
                                 <label>상세주소<i class="fa fa-map-marker"></i></label>
-                              	<input type="text" id="space_addr2" placeholder="상세주소를 입력하세요" name="space_addr2" value="${space_addr2 }"/>
+                              	<input type="text" id="space_addr2" placeholder="상세주소를 입력하세요" name="space_addr2" value="${spaceDetail.space_addr2 }"/>
                               	
                               	<div class="map-container">
 									<div id="singleMap" data-latitude="37.5678912"
@@ -120,9 +150,9 @@
                         <div class="profile-edit-container add-list-container">
                             <div class="custom-form">
                                 <label>공간 한줄소개<i class="fa fa-th-list"></i></label>
-                                <input type="text" id="space_intro1" name="space_intro1" value="${space_intro1 }"/>
+                                <input type="text" id="space_intro1" name="space_intro1" value="${spaceDetail.space_intro1 }"/>
                                 <label>공간 상세소개<i class="fa fa-comments-o"></i></label>
-                                <textarea cols="40" rows="3" id="space_intro2" name="space_intro2" value="${space_intro2 }"></textarea>
+                                <textarea cols="40" rows="3" id="space_intro2" name="space_intro2">${spaceDetail.space_intro2 }</textarea>
                             </div>
                         </div>
                         <!-- profile-edit-container end--> 
@@ -132,45 +162,60 @@
                             	<label>편의시설</label>
                             	<!-- Checkboxes -->
                                 <div class="filter-tags">
+                                <c:set var="doneLoop" value="false"/>
+                                 <%-- <c:forEach var="selectFacility" items="${selectFacility}" begin="1" varStatus="status1" end="13"> --%>
                                 	<c:forEach var="facility" items="${facility}" varStatus="status">
-				                        <div class="col-md-3">
-                                		<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
-		                         		<label for="${facility.fac_no}">${facility.fac_name }</label>
+				                       <div class="col-md-3">
+				                       <%--   <c:if test="${status.count == selectFacility}">
+				                        <c:set var="doneLoop" value="true"/>
+				                       		 	<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}" checked/>
+		                         				<label for="${facility.fac_no}">${facility.fac_name } </label>
+				                       	</c:if>
+				                       	 
+				                       	<c:if test="${status.count != selectFacility}">
+				                       	 	<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
+		                         			<label for="${facility.fac_no}">${facility.fac_name }</label>
+		                         			<c:set var="doneLoop" value="true"/>
+				                       	</c:if> --%>
+				                        
+                                			<input type="checkbox" id="${facility.fac_no}" name="fac_array" value="${facility.fac_no}"/>
+		                         			<label for="${facility.fac_no}">${facility.fac_name }</label>
 				                        </div>
-                                	</c:forEach>
+				                        </c:forEach>
+                                	<%-- </c:forEach> --%>
                                 </div>
                                 <label>공간태그 ( , 로 구분 해주세요 )<i class="fa fa-key"></i></label>
-                                <input type="text" id="space_tag" name="space_tag" value="${space_tag }"/>
+                                <input type="text" id="space_tag" name="space_tag" value="${spaceDetail.space_tag }"/>
                                 <label>웹사이트<i class="fa fa-globe"></i></label>
-                                <input type="text" id="space_site" name="space_site" value="${space_site }"/>
+                                <input type="text" id="space_site" name="space_site" value="${spaceDetail.space_site }"/>
                                 <div class="row">
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>운영 시작시간<i class="fa fa-calendar-o"></i></label>
-                                    	<input type="text" id="space_open" name="space_open" class="timepicker" value="${space_open }"/>
+                                    	<input type="text" id="space_open" name="space_open" class="timepicker" value="${spaceDetail.space_open }"/>
                                     </div>
                                     <div class="col-md-6">
                                     	<label>운영 종료시간<i class="fa fa-calendar-o"></i></label>
-                                    	<input type="text" id="space_close" name="space_close" class="timepicker" value="${space_close }"/>
+                                    	<input type="text" id="space_close" name="space_close" class="timepicker" value="${spaceDetail.space_close }"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>전화번호<i class="fa fa-phone"></i></label>
-                                    	<input type="text" id="space_phone" name="space_phone" value="${space_phone }"/>
+                                    	<input type="text" id="space_phone" name="space_phone" value="${spaceDetail.space_phone }"/>
                                     </div>
                                     <div class="col-md-6">
                                     	<label>최대수용인원</label>
                                     	<div class="quantity fl-wrap">
                                         	<input type="button" value="-" class="minus" onclick="subQuantity()" />
-                                           	<input type="text" id="space_peo_count" name="space_peo_count" value="${space_peo_count }" title="Qty" class="qty" size="4" placeholder="1"/>
+                                           	<input type="text" id="space_peo_count" name="space_peo_count" value="${spaceDetail.space_peo_count }" title="Qty" class="qty" size="4" placeholder="1"/>
                                            	<input type="button" value="+" class="plus" onclick="addQuantity()" />
                                       </div>
                                     </div>
                                 </div>
                                 <label>주의사항<i class="fa fa-comments-o"></i></label>
-                                <textarea cols="40" rows="3" id="space_cau" name="space_cau" value="${space_cau }"></textarea><p>
+                                <textarea cols="40" rows="3" id="space_cau" name="space_cau">${spaceDetail.space_cau }</textarea><p>
                             </div>
                         </div>
                         <!-- profile-edit-container end-->      
@@ -183,11 +228,11 @@
                                     <label>대표 이미지</label>
                                         <div class="add-list-media-wrap">
                                             <div class="fuzone" ><%-- style="src:${space_img1 }" id="space_img1_src" --%>
-                                            	<div id="img1" style="display:none;"><img src="${space_img1 }" id="space_img1_src" style="width:271px;height:179px;" ></div>
+                                            	<div id="img1" style="display:none;"><img src="${space_img1 }" id="space_img1_src" style="width:271px;height:179px;"></div>
                                                 <div class="fu-text" id="text1">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img1" name="report1" value="${space_img1 }" accept="image/*">
+                                                <input type="file" class="upload" id="space_img1" name="report1" value="${spaceDetail.space_img1 }" accept="image/*">
                                             </div>
                                         </div>
                                     </div>
@@ -207,7 +252,7 @@
                                                 <div class="fu-text" id="text2">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img2" name="report2" value="${space_img2 }">
+                                                <input type="file" class="upload" id="space_img2" name="report2" value="${spaceDetail.space_img2 }">
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +263,7 @@
                                                 <div class="fu-text" id="text3">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img3" name="report3" value="${space_img3 }">
+                                                <input type="file" class="upload" id="space_img3" name="report3" value="${spaceDetail.space_img3 }">
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +274,7 @@
                                                 <div class="fu-text" id="text4">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img4" name="report4" value="${space_img4 }">
+                                                <input type="file" class="upload" id="space_img4" name="report4" value="${spaceDetail.space_img4 }">
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +290,7 @@
                                                 <div class="fu-text" id="text5">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img5" name="report5" value="${space_img5 }">
+                                                <input type="file" class="upload" id="space_img5" name="report5" value="${spaceDetail.space_img5 }">
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +302,7 @@
                                                 <div class="fu-text" id="text6">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img6" name="report6" value="${space_img6 }">
+                                                <input type="file" class="upload" id="space_img6" name="report6" value="${spaceDetail.space_img6 }">
                                             </div>
                                         </div>
                                     </div>
@@ -269,7 +314,7 @@
                                                 <div class="fu-text" id="text7">
                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                 </div>
-                                                <input type="file" class="upload" id="space_img7" name="report7" value="${space_img7 }">
+                                                <input type="file" class="upload" id="space_img7" name="report7" value="${spaceDetail.space_img7 }">
                                             </div>
                                         </div>
                                     </div>
@@ -288,14 +333,14 @@
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>일일 대여비용</label>
-                                    	<input type="text" id="space_sum" name="space_sum" value="${space_sum }"/>
+                                    	<input type="text" id="space_sum" name="space_sum" value="${spaceDetail.space_sum }"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>입금은행</label>
-                                    	<select data-placeholder="은행을 선택하세요" class="chosen-select" id="space_bank" name="space_bank">
+                                    	<select data-placeholder="은행을 선택하세요" class="chosen-select" id="space_bank" name="space_bank" >
                                             <option value="SC제일은행">SC제일은행</option>
                                             <option value="전북은행">전북은행</option>
                                             <option value="제주은행">제주은행</option>
@@ -322,11 +367,11 @@
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>계좌번호<i class="fa fa-key"></i></label>
-                                    	<input type="text" id="space_account" name="space_account" value="${space_account }"/>
+                                    	<input type="text" id="space_account" name="space_account" value="${spaceDetail.space_account }"/>
                                     </div>
                                     <div class="col-md-6">
                                     	<label>예금주<i class="fa fa-user-o"></i></label>
-                                    	<input type="text" id="space_depositor" name="space_depositor" value="${space_depositor }"/>
+                                    	<input type="text" id="space_depositor" name="space_depositor" value="${spaceDetail.space_depositor }"/>
                                     </div>
                                 </div>
                                 <button class="btn color-bg flat-btn" type="submit" onClick="return fileSubmit()">등록<i class="fa fa-angle-right"></i></button>

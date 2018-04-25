@@ -3,7 +3,9 @@ package spacebook.submit.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import net.sf.json.JSONObject;
-import spacebook.login.model.MemberDTO;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.submit.model.SpaceFacilityDTO;
 import spacebook.submit.service.SpaceService;
 import spacebook.view.model.SpaceReviewDTO;
+import spacebook.view.service.SpaceViewService;
 
 @Controller
 public class SpaceController {
@@ -37,6 +39,13 @@ public class SpaceController {
 		this.spaceService = spaceService;
 	}
 	
+	@Autowired
+	public SpaceViewService spaceViewService;
+	
+	public void setSpaceViewService(SpaceViewService spaceViewService) {
+		this.spaceViewService = spaceViewService;
+	}
+
 	@ModelAttribute("SpaceDTO")
 	public SpaceDTO formBacking() {
 		return new SpaceDTO(); 
@@ -240,6 +249,47 @@ public class SpaceController {
 		model.addAttribute("countMySpace", countMySpace);
 		
 		return "mySpaceList";
+	}
+	
+	@RequestMapping(value = "/updateSpaceForm.do", method = RequestMethod.GET)
+	public String updateSpace(@RequestParam(value="space_no") int space_no, HttpSession session, SpaceDTO spaceDto, Model model) {
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		spaceDto.setMem_no(memdto.getMem_No());
+		
+		List listtest = new ArrayList();
+		
+		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
+		SpaceDTO spaceDetail = spaceViewService.spaceDetail(space_no);
+		String space_fac_no = spaceDetail.getFac_no();
+		
+	     StringTokenizer token = new StringTokenizer(space_fac_no,",");
+	      
+	     while(token.hasMoreTokens()){
+	        listtest.add(token.nextToken());
+	     }
+		
+		
+	 	model.addAttribute("selectFacility", listtest);
+		model.addAttribute("facility", facility);
+		model.addAttribute("spaceDetail", spaceDetail);
+		
+		return "submitSpaceForm";
+	}
+	
+	@RequestMapping(value = "deleteSpace.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public void deleteSpace(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpSession session,HttpServletResponse response,SpaceDTO spaceDto,Model model)throws Exception {
+		spaceService.deleteSpace(spaceDto);
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		spaceDto.setMem_no(memdto.getMem_No());
+		List<SpaceDTO> mySpace = spaceService.selectMySpace(spaceDto);
+		
+		JSONObject json = new JSONObject();
+		json.put("data", mySpace);
+		json.put("page", pageNum);
+		response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.print(json.toString());
+        
 	}
 	
 	//search
