@@ -88,6 +88,10 @@
                 <a class="custom-scroll-link back-to-filters btf-r" href="#lisfw"><i class="fa fa-angle-double-up"></i><span>Back to Filters</span></a> 
                 <div class="container" class="col-md-3">
                     <!-- listing-item -->
+                    <c:if test="${counet == 0}">
+                    		예약 가능한 공간이 없습니다.<br>
+						   다른 검색조건으로 공간을 찾아보세요.
+                    </c:if>
                     <c:forEach var="spaceAll" items="${spaceAll}" varStatus="status">
                     <div class="listing-item">
                         <article class="geodir-category-listing fl-wrap">
@@ -116,7 +120,9 @@
                     <!-- listing-item end-->                           
                     <div class="clearfix"></div>
                 </div>
+                  <c:if test="${counet != 0}">
                 <a class="load-more-button" href="#">Load more <i class="fa fa-circle-o-notch"></i> </a>  
+                </c:if>
             </div>
             <!-- list-main-wrap end-->
         </div>
