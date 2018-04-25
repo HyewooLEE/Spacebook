@@ -153,8 +153,12 @@
 			<put-attribute name="body" value="/WEB-INF/views/mypage/favoriteList.jsp" />
 		</definition>
 		<definition name="myRentList" extends="base_layout">
-			<put-attribute name="title" value="공간 예약 리스트" />
+			<put-attribute name="title" value="나의 공간 예약 리스트" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/myRentList.jsp" />
+		</definition>
+		<definition name="rentList" extends="base_layout">
+			<put-attribute name="title" value="공간 예약 리스트" />
+			<put-attribute name="body" value="/WEB-INF/views/mypage/rentList.jsp" />
 		</definition>
 		<!-- 병현 -->
 		

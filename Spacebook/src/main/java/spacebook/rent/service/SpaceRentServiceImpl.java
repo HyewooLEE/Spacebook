@@ -34,4 +34,14 @@ public class SpaceRentServiceImpl implements SpaceRentService{
 		return dao.myRentList(mem_no);
 		
 	}
+
+	@Override
+	public void deleteMyRent(int rent_no) {
+		dao.deleteMyRent(rent_no);
+	}
+
+	@Override
+	public List<SpaceRentDTO> rentList(int mem_no) {
+		return dao.rentList(mem_no);
+	}
 }
