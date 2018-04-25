@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import net.sf.json.JSONObject;
-import spacebook.inquire.model.SpaceInquireDTO;
+import spacebook.login.model.MemberDTO;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.submit.model.SpaceFacilityDTO;
@@ -230,9 +230,14 @@ public class SpaceController {
 	
 	
 	@RequestMapping("/mySpaceList.do")
-	public String mySpaceList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceDTO spaceDto, Model model) {
+	public String mySpaceList(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpSession session, SpaceDTO spaceDto, Model model) {
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		spaceDto.setMem_no(memdto.getMem_No());
+		
 		List<SpaceDTO> mySpace = spaceService.selectMySpace(spaceDto);
+		int countMySpace = spaceService.countMySpace(spaceDto);
 		model.addAttribute("mySpace", mySpace);
+		model.addAttribute("countMySpace", countMySpace);
 		
 		return "mySpaceList";
 	}

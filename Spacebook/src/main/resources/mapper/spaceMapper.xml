@@ -75,7 +75,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectMySpace" resultType="spacebook.submit.model.SpaceDTO" >
-		select * from space
+		select * from space where mem_no = #{mem_no}
+	</select>
+	
+	<select id="countMySpace" resultType="int" parameterType="spacebook.submit.model.SpaceDTO">
+		select count(*) from space where mem_no = #{mem_no}
 	</select>
 	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">

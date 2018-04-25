@@ -31,8 +31,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
+                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 </a></li>
+                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 </a></li>
                                         <li><a href="inquireList.do" ><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
@@ -42,8 +42,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
+                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>${countMySpace }</span> </a></li>
+                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                     </ul>
                                 </div>
@@ -80,13 +80,11 @@
 							    </thead>
 							    <tbody>
 							    <c:forEach var="mySpace" items="${mySpace }">
-								    <c:if test="${mySpace.mem_no == login.mem_No}">
 								      <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
-								        <td width="60%" style="text-align:center;">${mySpace.space_name}</td>
-								        <td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-								        <td width="20%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+								        <td width="80%" style="text-align:center;">${mySpace.space_name}</td>
+								        <td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+								        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 								      </tr>
-								    </c:if>
 							    </c:forEach>
 							    </tbody>
 							  </table>

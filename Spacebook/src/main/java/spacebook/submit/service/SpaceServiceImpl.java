@@ -45,6 +45,11 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceDTO> selectMySpace(SpaceDTO spaceDto) {
 		return spaceDao.selectMySpace(spaceDto);
 	}
+	
+	@Override
+	public int countMySpace(SpaceDTO spaceDto) {
+		return spaceDao.countMySpace(spaceDto);
+	}
 
 	@Override
 	public void deleteSpace(SpaceDTO spaceDto) {

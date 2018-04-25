@@ -32,6 +32,10 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("space.selectMySpace",spaceDto);
 	}
 	
+	public int countMySpace(SpaceDTO spaceDto) {
+		return getSqlSession().selectOne("space.countMySpace",spaceDto);
+	}
+	
 	public void deleteSpace(SpaceDTO spaceDto) {
 		getSqlSession().delete("space.deleteMap",spaceDto);
 		getSqlSession().delete("space.deleteSpace",spaceDto);
