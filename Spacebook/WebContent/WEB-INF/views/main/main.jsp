@@ -18,27 +18,36 @@
 				<h3>팔로 팔로미 ! 다 찾아줄게!</h3>
 			</div>
 			<div class="main-search-input-wrap">
+			<form action="search.do" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="main-search-input fl-wrap">
 					<div class="main-search-input-item">
-						<input type="text" placeholder="어떤 공간을 찾으시나요?" value="" />
+						<input type="text" placeholder="어떤 공간을 찾으시나요?" value="" id="search" name="search"/>
 					</div>
 					<div class="main-search-input-item location">
-						<input type="text" placeholder="위치" value="" /> <a href="#"><i
-							class="fa fa-dot-circle-o"></i></a>
+						<input type="text" placeholder="위치" value="" id="space_addr1" name="space_addr1"/>
+						<a href="#"><i class="fa fa-dot-circle-o"></i></a>
 					</div>
 					<div class="main-search-input-item">
-						<select data-placeholder="All Categories" class="chosen-select">
-							<option>종류</option>
-							<option>Shops</option>
-							<option>Hotels</option>
-							<option>Restaurants</option>
-							<option>Fitness</option>
-							<option>Events</option>
-						</select>
+						<select  id="space_category" name="space_category" class="chosen-select">
+                            	<option value="">공간유형</option>
+                           		<option value="작업실">작업실</option>
+                           		<option value="연습실">연습실</option>
+                           		<option value="세미나실">세미나실</option>
+                           		<option value="스터디룸">스터디룸</option>
+                           		<option value="파티룸">파티룸</option>
+                           		<option value="공연장">공연장</option>
+                           		<option value="다목적홀">다목적홀</option>
+                           		<option value="엠티장소">엠티장소</option>
+                           		<option value="워크숍장소">워크숍장소</option>
+                           		<option value="레저시설">레저시설</option>
+                           		<option value="카페">카페</option>
+                           		<option value="">기타</option>
+                           	</select>
 					</div>
-					<button class="main-search-button"
-						onclick="window.location.href='listings-half-screen-map-list.html'">검색</button>
+					<button class="main-search-button" type="submit">검색</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

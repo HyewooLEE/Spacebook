@@ -309,8 +309,8 @@
 							</div>
 							<div class="box-widget">
 								<div class="map-container">
-									<div id="singleMap" data-latitude="${spaceDetail.map_latitude}"
-										data-longitude="${spaceDetail.map_longitude}"
+									<div id="singleMap" data-latitude="37.5678912"
+										data-longitude="126.98308969999994"
 										data-mapTitle="Our Location"></div>
 								</div>
 								<div class="box-widget-content">
