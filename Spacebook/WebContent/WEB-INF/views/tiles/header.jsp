@@ -17,12 +17,14 @@
                         <a href="main.do"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/logo.png" alt=""></a>
                     </div>
                     <div class="header-search vis-header-search">
+                    	<form action="search.do" method="post">
+                    	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="header-search-input-item">
-                            <input type="text" placeholder="키워드" value="" />
+                            <input type="text" placeholder="검색키워드" value="" id="search" name="search"/>
                         </div>
                         <div class="header-search-select-item">
-                        	<select  class="chosen-select">
-                            	<option>공간유형</option>
+                        	<select  id="space_category" name="space_category" class="chosen-select">
+                            	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
                            		<option value="연습실">연습실</option>
                            		<option value="세미나실">세미나실</option>
@@ -34,10 +36,11 @@
                            		<option value="워크숍장소">워크숍장소</option>
                            		<option value="레저시설">레저시설</option>
                            		<option value="카페">카페</option>
-                           		<option value="기타">기타</option>
+                           		<option value="">기타</option>
                            	</select>
                         </div>
-                        <button class="header-search-button" onclick="window.location.href='listing.html'">검색하기</button>
+                        <button class="header-search-button" type="submit">검색하기</button>
+                        </form>
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>검색하기</span></div>
                     <a href="submitSpaceForm.do" class="add-list">공간 등록<span><i class="fa fa-plus"></i></span></a>
