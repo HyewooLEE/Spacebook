@@ -46,7 +46,7 @@
                                         <div class="list-single-main-item-title fl-wrap">
                                             <h3>위치</h3>
                                         </div>
-                                        <div class="map-container">
+                                        <div class="map-container" >
                                             <div id="singleMap" data-latitude="37.5678912" data-longitude="126.98308969999994"></div>
                                         </div>
                                         <div class="list-single-main-item-title fl-wrap">

@@ -108,7 +108,7 @@
                                 <label>상세주소<i class="fa fa-map-marker"></i></label>
                               	<input type="text" id="space_addr2" placeholder="상세주소를 입력하세요" name="space_addr2" value="${space_addr2 }"/>
                               	
-                              	<div class="map-container">
+                              	<div class="map-container" id="mylocation">
 									<div id="singleMap" data-latitude="37.5678912"
 										data-longitude="126.98308969999994"
 										data-mapTitle="Our Location"></div>
