@@ -27,9 +27,9 @@ function addAddressToMap(response) {
 	// 위도, 경도 입력
 	 document.getElementById('map_latitude').value = place.Point.coordinates[1];
 	 document.getElementById('map_longitude').value =  place.Point.coordinates[0];
-	 
-	 
-
+		alert('test');
+		alert(place.Point.coordinates[1]);
+		
 }
 
 
@@ -84,6 +84,7 @@ function findaddress() {
 
 // 주소 가지고 위도 경도 가져오기
 function findMapAdd(address) {
+	alert('test2');
 	initialize();
 	geocoder.getLocations(address, addAddressToMap);
 }

@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="SPACE_NAME" property="space_name"/>
 	</resultMap>
 	<resultMap type="spacebook.rent.model.SpaceRentDTO" id="rentDTO">
+		<result column="RENT_NO" property="rent_no"/>
 		<result column="SPACE_NO" property="space_no"/>
 		<result column="RENT_NAME" property="rent_name"/>
 		<result column="RENT_START" property="rent_start"/>
@@ -29,8 +30,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				   )
 	</insert>
 	<select id="myRentList" resultMap="rentDTO" parameterType="map">
-		SELECT SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
+		<!-- SELECT SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
 		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
-		 WHERE SR.MEM_NO = ${mem_no} AND TRUNC(TO_DATE('rent_start', 'YYYY-MM-DD') - SYSDATE) >= 0
+		 WHERE SR.MEM_NO = #{mem_no} AND TRUNC(TO_DATE(#{rent_start}, 'YYYY-MM-DD') - SYSDATE) >= 0 -->
+		 SELECT SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
+		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+		 WHERE SR.MEM_NO = #{mem_no} AND SR.RENT_START >= SYSDATE
+	</select>
+	<delete id="deleteMyRent">
+		DELETE FROM SPACE_RENT WHERE RENT_NO = #{rent_no}
+	</delete>
+	<select id="rentList" resultMap="rentDTO" parameterType="map">
+		SELECT SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_SUM, S.SPACE_NAME
+		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+		 WHERE S.MEM_NO = #{mem_no}
 	</select>
 </mapper>
