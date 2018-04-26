@@ -100,6 +100,19 @@
 							    </c:forEach>
 							    </tbody>
 							  </table>
+							  <!-- Pagination -->
+								<div class="pagination">
+									<c:if test='${paging.previous != ""}'>
+                                    	<a href="/Spacebook/myRentList.do?pageNum=${paging.previous}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                    </c:if>
+                                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i">
+                                   		<a href="/Spacebook/myRentList.do?pageNum=${i}" class="current-page">${i}</a>
+                                    </c:forEach>
+                                    <c:if test='${paging.nextPage != ""}'>
+                                    	<a href="/Spacebook/myRentList.do?pageNum=${paging.nextPage}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                    </c:if>
+                                </div>
+								<!-- END Pagination -->
 							</div>
 						</div>
 					</div>
