@@ -20,7 +20,11 @@ public interface SpaceService {
 	public int countMySpace(SpaceDTO spaceDto);
 	
 	public void deleteSpace(SpaceDTO spaceDto);
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);
 	
 	public List<SpaceDTO> etcSpaceList(int mem_no);

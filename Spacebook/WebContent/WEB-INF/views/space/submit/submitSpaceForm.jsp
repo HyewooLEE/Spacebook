@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script>
-	alert("시작");
+$(function(){
 	var test1 = document.getElementById("space_category");
 	//var test2 = document.getElementById("category").value;
 	//alert(test2);
@@ -12,10 +12,10 @@
 		if(test1[i].value == test2){
 			test1[i].checked
 		} 
-	} */
+	} 
 	//alert(test1[3].value);
-	/* if()
-	test1[${selectFacility}].checked=true; */
+	if()*/
+	test1[${selectFacility}].checked=true; 
 });
 </script>
 
