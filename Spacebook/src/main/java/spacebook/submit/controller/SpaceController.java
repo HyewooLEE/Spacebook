@@ -197,7 +197,7 @@ public class SpaceController {
 			String ext7 = fileName7.substring(fileName7.lastIndexOf('.'));
 			String saveFileName7 = getUuid() + ext7;
 			MultipartFile report7 = spaceDto.getReport7();
-			String realPath7 = saveDir + fileName7;
+			String realPath7 = saveDir + saveFileName7;
 			File file7 = new File(conRealPath+saveDir + File.separator + saveFileName7);
 			
 			spaceDto.setSpace_img7(realPath7);
@@ -256,7 +256,7 @@ public class SpaceController {
 		MemberVO memdto =  (MemberVO)session.getAttribute("login");
 		spaceDto.setMem_no(memdto.getMem_No());
 		
-		List listtest = new ArrayList();
+		List<String> listtest = new ArrayList<String>();
 		
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
 		SpaceDTO spaceDetail = spaceViewService.spaceDetail(space_no);
@@ -292,7 +292,7 @@ public class SpaceController {
 	}
 	
 	//search
-	/*@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
+	@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
 		
 		String contextPath = session.getServletContext().getRealPath("/");
@@ -308,10 +308,10 @@ public class SpaceController {
 		model.addAttribute("realPath", contextPath);
 		
 		return "listSpace";
-	}*/
+	}
 	
 	//etcSpaceList
-	/*@RequestMapping(value = "/etcSpaceList.do")
+	@RequestMapping(value = "/etcSpaceList.do")
 	public String etcSpaceList(@RequestParam(value="mem_no") int mem_no,HttpSession session, Model model) {
 		String contextPath = session.getServletContext().getRealPath("/");
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
@@ -321,7 +321,7 @@ public class SpaceController {
 		model.addAttribute("spaceAll", spaceAll);
 		model.addAttribute("realPath", contextPath);
 		return "listSpace";
-	}*/
+	}
 	
 	
 	//map

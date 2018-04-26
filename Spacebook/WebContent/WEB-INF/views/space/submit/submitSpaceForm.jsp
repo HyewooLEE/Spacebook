@@ -5,17 +5,18 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script>
 $(function(){
+	alert("111");
 	var test1 = document.getElementById("space_category");
-	//var test2 = document.getElementById("category").value;
-	//alert(test2);
-	/*  for(int i = 0; i < 13; i++){
+	var test2 = document.getElementById("category").value;
+	alert(test2);
+	for(int i = 0; i < 13; i++){
 		if(test1[i].value == test2){
 			test1[i].checked
 		} 
 	} 
-	//alert(test1[3].value);
-	if()*/
-	test1[${selectFacility}].checked=true; 
+	
+	alert(test1[3].value);
+
 });
 </script>
 
@@ -24,7 +25,7 @@ $(function(){
 <script>
 $(function(){
 	 var test = document.getElementsByName("fac_array");
-	 test[${selectFacility}].checked=true;
+	 test[${selectFacility} -1].checked=true;
  });
 </script>
 </c:forEach>
@@ -102,7 +103,7 @@ $(function(){
 		                            	<label>공간유형명</label>
 		                            	<input type="hidden" id="category" value="${spaceDetail.space_category}" />
 		                            	<select  id="space_category" name="space_category" class="chosen-select" data-placeholder="공간유형을 선택하세요">
-		                            		<option>${spaceDetail.space_category}</option>
+		                            		<%-- <option>${spaceDetail.space_category}</option> --%>
 		                            		<option value="작업실">작업실</option>
 		                            		<option value="연습실">연습실</option>
 		                            		<option value="세미나실">세미나실</option>
@@ -338,7 +339,9 @@ $(function(){
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>입금은행</label>
+                                    	<input type="hidden" id="bank" value="${spaceDetail.space_bank}" />
                                     	<select data-placeholder="은행을 선택하세요" class="chosen-select" id="space_bank" name="space_bank" >
+                                    		<option>${spaceDetail.space_bank}</option>
                                             <option value="SC제일은행">SC제일은행</option>
                                             <option value="전북은행">전북은행</option>
                                             <option value="제주은행">제주은행</option>

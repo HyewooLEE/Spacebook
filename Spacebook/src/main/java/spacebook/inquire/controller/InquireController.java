@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.sf.json.JSONObject;
 import spacebook.inquire.model.SpaceInquireDTO;
 import spacebook.inquire.service.SpaceInquireService;
+import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.view.service.SpaceViewService;
 
@@ -55,10 +57,11 @@ public class InquireController {
 
 	//나의 1:1문의 리스트
 	@RequestMapping("inquireList.do")
-	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
-		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpSession session, SpaceInquireDTO inquireDTO, Model model) {
+		//List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(memVO.getMem_No());
 		int countInquire = inquireService.countSpaceInquire();
-		System.out.println(countInquire);
 		model.addAttribute("countInquire", countInquire);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);
