@@ -314,9 +314,13 @@ public class SpaceController {
 	//etcSpaceList
 	@RequestMapping(value = "/etcSpaceList.do")
 	public String etcSpaceList(@RequestParam(value="mem_no") int mem_no,HttpSession session, Model model) {
+		String contextPath = session.getServletContext().getRealPath("/");
+		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
+		List<SpaceDTO> spaceAll = spaceService.etcSpaceList(mem_no);
 		
-		
-		
+		model.addAttribute("facility", facility);
+		model.addAttribute("spaceAll", spaceAll);
+		model.addAttribute("realPath", contextPath);
 		return "listSpace";
 	}
 	

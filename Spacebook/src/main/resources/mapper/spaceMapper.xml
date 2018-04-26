@@ -141,21 +141,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 
-<select id="test12" resultType="spacebook.submit.model.SpaceDTO" parameterType="map">
-select * from 
-	<if test="search == null">
-		space
-	</if>
-<if test="search != null" >
-<foreach collection="search" item="search" index="index">
-<if test="index eq 0">
-(select * from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%') 
-</if>
-<if test="index &gt; 0">
-  NATURAL JOIN(select space_no from space where space_name like '%'||#{search}||'%' or space_tag like '%'||#{search}||'%' or space_addr1 like '%'||#{search}||'%' or space_category like '%'||#{search}||'%')
-</if>
-</foreach>
-</if>
+<select id="etcSpace" resultType="spacebook.submit.model.SpaceDTO">
+	select * from space where mem_no = #{mem_no}
 </select>
 
 </mapper>

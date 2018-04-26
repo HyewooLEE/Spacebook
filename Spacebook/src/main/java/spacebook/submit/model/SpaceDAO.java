@@ -75,6 +75,6 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 	}
 	
 	public List<SpaceDTO> etcSpaceList(int mem_no) {
-		return getSqlSession().selectList("space.search", mem_no);
+		return getSqlSession().selectList("space.etcSpace", mem_no);
 	}
 }
