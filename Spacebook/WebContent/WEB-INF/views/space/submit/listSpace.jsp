@@ -16,7 +16,9 @@
                     <div class="listsearch-header fl-wrap">
                     
                     	<!------ 검색어가 있을경우 출력 ------>
-                        <h3>Results For : <span>Food and Drink</span></h3>
+                    	<c:if test=""></c:if>
+                    	<h3>Results For : <span></span></h3>
+                        <h3>Results For 검색결과 : <span>Food and Drink</span></h3>
                         
                         <div class="listing-view-layout">
                             <ul>

@@ -385,7 +385,7 @@
 										</li>
 										</c:forEach>
 									</ul>
-									<a class="widget-posts-link" href="${pageContext.request.contextPath}/etcSpaceList.do?mem_no="${spaceDetail.mem_no}> 다른 공간 보기 <span><i class="fa fa-angle-right"></i></span></a>
+									<a class="widget-posts-link" href="${pageContext.request.contextPath}/etcSpaceList.do?mem_no=${spaceDetail.mem_no}">다른 공간 보기 <span><i class="fa fa-angle-right"></i></span></a>
 								</div>
 							</div>
 						</div>

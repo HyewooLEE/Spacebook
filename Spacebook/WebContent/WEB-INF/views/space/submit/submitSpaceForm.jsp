@@ -36,6 +36,21 @@ $(function(){
             <!-- profile-edit-wrap -->
             <div class="profile-edit-wrap">
                 <div class="profile-edit-page-header">
+                <!-- 시작 -->
+<body onload="initialize()">
+<form action="#" onsubmit="showLocation(); return false;">
+      <p>
+        <b>주소입력:</b>
+        <input type="text" name="q" value="" class="address_input" size="40"  method=post />
+        <input type="submit" name="find" value="Search" />
+      </p>
+    </form>
+		<div id="map_canvas" style="width: 680px; height: 380px">
+			<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
+			<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
+		</div>
+                <!-- 끝 -->
+                
                     <h2>나의 공간등록하기</h2>
                     <div class="breadcrumbs"><a href="main.do">Home</a><span>나의 공간등록하기</span></div>
                 </div>
@@ -141,6 +156,20 @@ $(function(){
 										data-longitude="126.98308969999994"
 										data-mapTitle="Our Location"></div>
 								</div>
+								<!-- 시작 -->
+								<form action="#" onsubmit="showLocation(); return false;">
+      <p>
+        <b>주소입력:</b>
+        <input type="text" name="q" value="" class="address_input" size="40"  method=post />
+        <input type="submit" name="find" value="Search" />
+      </p>
+    </form>
+		<div id="map_canvas" style="width: 680px; height: 380px">
+			<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
+			<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
+		</div>
+
+								<!-- 끝 -->
                             </div>
                         </div>
                         <!-- profile-edit-container end--> 
