@@ -90,6 +90,11 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	}
 	
 	@Override
+	public List<SpaceInquireDTO> myInquireList(int mem_no) {
+		return inquireDAO.myInquireList(mem_no);
+	}
+	
+	@Override
 	public int countSpaceInquire() {
 		int countInquire = inquireDAO.spaceInquireCount();
 		return countInquire;
@@ -107,5 +112,6 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO) {
 		inquireDAO.spaceInquireDelete(inquireDTO);
 	}
+
 
 }

@@ -31,8 +31,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 <span>2</span></a></li>
+                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 </a></li>
+                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 </a></li>
                                         <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
@@ -42,8 +42,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>${countMySpace }</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
+                                        <li><a href="mySpaceList.do"><i class="fa fa-th-list"></i>나의 공간 </a></li>
+                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                         <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
                                     </ul>
@@ -78,7 +78,6 @@
 							        <th style="text-align:center">공간명</th>
 							        <th style="text-align:center">제목</th>
 							        <th style="text-align:center">작성일</th>
-							        <th style="text-align:center">답변</th>
 							        <th style="text-align:center">삭제</th>
 							      </tr>
 							    </thead>
@@ -92,18 +91,18 @@
 									    회원 : ${inquireList.memberVO.mem_No} 
 									    작성자 : ${inquireList.mem_no}  --%>
 								    <c:forEach var="inquireList" items="${inquireList }" varStatus="status">
-									    <c:if test="${inquireList.mem_no==login.mem_No }">
 									    <c:set var="countVal" property="countVal" value="1"/>
-										    <c:if test="${inquireList.inq_step == 0 }">
-										      <tr style ="text-align:center;cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-										        <td width="30%" >${inquireList.spaceDTO.space_name}</td>
-										        <td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-										        <td width="20%">${inquireList.inq_writeDate }</td>
-										      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-										      	<td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+										      <tr style ="cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+										        <td width="30%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
+										        <c:if test="${inquireList.inq_step == 0 }">
+										        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+										        </c:if>
+										        <c:if test="${inquireList.inq_step != 0 }">
+										        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>${inquireList.inq_title }</a></td>
+										        </c:if>
+										        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
+										      	<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 										      </tr>
-										    </c:if>
-									    </c:if>
 									    
 									    <c:if test="${status.last}" >
 									    	<c:if test="${countVal != 1}">

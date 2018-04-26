@@ -65,6 +65,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    where inq_no=#{inqNo}
 	</select>
 	
+	<select id="myInquireList" resultMap="spaceInquireDTO"  parameterType="int" resultType="spacebook.inquire.model.SpaceInquireDTO">
+		select *
+	    from 
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO WRITER,s.MEM_NO HOST
+	            from INQUIRE i inner join SPACE s
+	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC )natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)
+	</select>
+	
 	<update id="modifyInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		update inquire set inq_title = #{inq_title}, inq_note = #{inq_note} where inq_no = #{inq_no}
 	</update>

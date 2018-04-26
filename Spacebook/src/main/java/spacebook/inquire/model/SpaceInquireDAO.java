@@ -16,6 +16,10 @@ public class SpaceInquireDAO extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("spaceInquire.selectInquire",map);
 	}
 	
+	public List<SpaceInquireDTO> myInquireList(int mem_no){
+		return getSqlSession().selectList("spaceInquire.myInquireList",mem_no);
+	}
+	
 	public int spaceInquireCount() {
 		int countInquire = getSqlSession().selectOne("spaceInquire.countInquire");
 		return countInquire;

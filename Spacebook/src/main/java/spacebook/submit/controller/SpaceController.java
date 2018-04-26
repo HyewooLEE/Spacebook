@@ -197,7 +197,7 @@ public class SpaceController {
 			String ext7 = fileName7.substring(fileName7.lastIndexOf('.'));
 			String saveFileName7 = getUuid() + ext7;
 			MultipartFile report7 = spaceDto.getReport7();
-			String realPath7 = saveDir + fileName7;
+			String realPath7 = saveDir + saveFileName7;
 			File file7 = new File(conRealPath+saveDir + File.separator + saveFileName7);
 			
 			spaceDto.setSpace_img7(realPath7);
@@ -256,7 +256,7 @@ public class SpaceController {
 		MemberVO memdto =  (MemberVO)session.getAttribute("login");
 		spaceDto.setMem_no(memdto.getMem_No());
 		
-		List listtest = new ArrayList();
+		List<String> listtest = new ArrayList<String>();
 		
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
 		SpaceDTO spaceDetail = spaceViewService.spaceDetail(space_no);
