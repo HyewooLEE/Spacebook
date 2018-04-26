@@ -21,11 +21,7 @@ public interface SpaceService {
 	
 	public void deleteSpace(SpaceDTO spaceDto);
 	
-<<<<<<< HEAD
-	//public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);
-=======
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);
 	
 	public List<SpaceDTO> etcSpaceList(int mem_no);
->>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 }

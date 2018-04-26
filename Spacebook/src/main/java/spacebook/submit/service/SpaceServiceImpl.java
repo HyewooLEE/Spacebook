@@ -56,10 +56,10 @@ public class SpaceServiceImpl implements SpaceService{
 		spaceDao.deleteSpace(spaceDto);
 	}
 	
-	/*@Override
+	@Override
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search){
 		return spaceDao.searchSpace(spaceDto, search);
-	}*/
+	}
 
 	@Override
 	public List<SpaceDTO> etcSpaceList(int mem_no){

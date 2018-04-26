@@ -268,7 +268,6 @@ public class SpaceController {
 	        listtest.add(token.nextToken());
 	     }
 		
-		
 	 	model.addAttribute("selectFacility", listtest);
 		model.addAttribute("facility", facility);
 		model.addAttribute("spaceDetail", spaceDetail);
