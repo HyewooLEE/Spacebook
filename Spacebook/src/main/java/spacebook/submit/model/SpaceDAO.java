@@ -43,10 +43,23 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		getSqlSession().delete("space.deleteSpace",spaceDto);
 	}
 	
-	/*public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search) {
-
-
-		
+	
+	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search) {
+		List listtest = new ArrayList();
+		List searchList = new ArrayList();
+		Map map = new HashMap<String, List>();
+		      
+		String str = spaceDto.getFac_no();
+		String str2 = search;
+		      
+		if(str!=null && str !="") {
+		StringTokenizer token = new StringTokenizer(str,",");
+		    
+		while(token.hasMoreTokens()){
+		     listtest.add(token.nextToken());
+		}
+		    map.put("Fac", listtest);
+		}
 		
 		if(str2!=null && str2 !="") {
 		StringTokenizer token = new StringTokenizer(str2," ");
@@ -59,5 +72,9 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		List<SpaceDTO> test = getSqlSession().selectList("space.search", map);
 		
 		return getSqlSession().selectList("space.search", map);
-	}*/
+	}
+	
+	public List<SpaceDTO> etcSpaceList(int mem_no) {
+		return getSqlSession().selectList("space.search", mem_no);
+	}
 }

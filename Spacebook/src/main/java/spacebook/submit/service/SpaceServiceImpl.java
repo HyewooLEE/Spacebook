@@ -61,5 +61,9 @@ public class SpaceServiceImpl implements SpaceService{
 		return spaceDao.searchSpace(spaceDto, search);
 	}*/
 
+	@Override
+	public List<SpaceDTO> etcSpaceList(int mem_no){
+		return spaceDao.etcSpaceList(mem_no);
+	}
 	
 }
