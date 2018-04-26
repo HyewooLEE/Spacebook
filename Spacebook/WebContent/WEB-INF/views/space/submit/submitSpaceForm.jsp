@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script>
-$(function(){
 	alert("시작");
 	var test1 = document.getElementById("space_category");
 	//var test2 = document.getElementById("category").value;
@@ -12,12 +11,12 @@ $(function(){
 	/*  for(int i = 0; i < 13; i++){
 		if(test1[i].value == test2){
 			test1[i].checked
-		} */
-	} 
-	alert(test1[3].value);
+		} 
+	} */
+	//alert(test1[3].value);
 	/* if()
 	test1[${selectFacility}].checked=true; */
-})
+});
 </script>
 
 
@@ -103,7 +102,6 @@ $(function(){
 		                            	<label>공간유형명</label>
 		                            	<input type="hidden" id="category" value="${spaceDetail.space_category}" />
 		                            	<select  id="space_category" name="space_category" class="chosen-select" data-placeholder="공간유형을 선택하세요">
-		                            	<!-- $('#space_category').val(); -->
 		                            		<option>${spaceDetail.space_category}</option>
 		                            		<option value="작업실">작업실</option>
 		                            		<option value="연습실">연습실</option>

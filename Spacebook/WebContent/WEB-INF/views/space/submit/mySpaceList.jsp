@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <section>
@@ -74,16 +75,32 @@
 							  <table class="table table-bordred table-striped table-hover">
 							    <thead>
 							      <tr > 
-							        <th style="text-align:center">나의 공간명</th>
+							        <th style="text-align:center" colspan="2">나의 공간명</th>
+							        <th style="text-align:center">공간유형</th>
+							        <th style="text-align:center">주소</th>
+							        <th style="text-align:center">금액</th>
 							        <th style="text-align:center" colspan="2">관리</th>
 							      </tr>
 							    </thead>
 							    <tbody id="spaceTbody">
 							    <c:forEach var="mySpace" items="${mySpace }">
 							       <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
-							          <td width="80%" style="text-align:center;">${mySpace.space_name}</td>
-							          <td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="return updateSpace(${mySpace.space_no });" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-							          <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+							          <%-- <td width="30%">
+							       	  	<div class="dashboard-message-avatar" align="center">
+											<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
+									  	</div>
+									  </td> --%>
+									  <td width="10%" style="text-align:center;">
+									  	<div class="dashboard-message-avatar" align="center">
+									  		<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
+									  	</div>
+									  </td>
+							          <td width="30%" style="text-align:center;">${mySpace.space_name}</td>
+							          <td width="10%" style="text-align:center;">${mySpace.space_category}</td>
+							          <td width="30%" >${mySpace.space_addr1} ...</td>
+							          <td width="10%" style="text-align:right;"><fmt:formatNumber value="${mySpace.space_sum}" type="number"/>원</td>
+							          <td width="5%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="return updateSpace(${mySpace.space_no });" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+							          <td width="5%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 							       </tr>
 							    </c:forEach>
 							    </tbody>
