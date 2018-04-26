@@ -78,13 +78,13 @@
 							        <th style="text-align:center" colspan="2">관리</th>
 							      </tr>
 							    </thead>
-							    <tbody>
+							    <tbody id="spaceTbody">
 							    <c:forEach var="mySpace" items="${mySpace }">
-								      <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
-								        <td width="80%" style="text-align:center;">${mySpace.space_name}</td>
-								        <td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="showInquire();" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-								        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
-								      </tr>
+							       <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
+							          <td width="80%" style="text-align:center;">${mySpace.space_name}</td>
+							          <td width="10%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="return updateSpace(${mySpace.space_no });" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+							          <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+							       </tr>
 							    </c:forEach>
 							    </tbody>
 							  </table>
@@ -99,5 +99,5 @@
 	<!--container end -->
 </section>
 <!-- section end -->
-
+<%-- <jsp:include page="updateModal.jsp" flush="false" /> --%>
 <div class="limit-box fl-wrap"></div>

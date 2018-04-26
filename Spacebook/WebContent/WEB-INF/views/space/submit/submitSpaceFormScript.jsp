@@ -103,35 +103,6 @@ file7.onchange = function () {
 }; 
 </script>
 
-<script>
-/* var upload = document.getElementById('space_img1');
-var holder = document.getElementById('space_img1_src');
-	 
-upload.onchange = function (e) {
-e.preventDefault();
-
-var file = upload.files[0];
-var reader = new FileReader();
-
-reader.onload = function (event) {
-//  var img = new Image();
-//  img.src = event.target.result;
-  
-//  if (img.width > 200) { 
-//    img.width = 200;
-//  }
-//  holder.innerHTML = '';
-//  holder.appendChild(img); 
-  
-  $('#space_img1_src').attr('src',event.target.result);
-  $('#text1').remove();
-  
-} 
-reader.readAsDataURL(file);
-
-return false;
-}; */
-</script>
 
 <script>
 function addQuantity() {

@@ -26,7 +26,9 @@ function deleteArticle(space_no){
 								'&nbsp;&nbsp;&nbsp; host by &nbsp;&nbsp;'+result.data[i].memberVO.mem_Name+
 							'</a>'+
 						'</div>'+
-						'<button class="btn color-bg flat-btn" id="deleteArticle" onClick="return deleteArticle("'+result.data[i].space_no+'");">삭제</button>'+
+						'<div class="listsearch-input-item pull-right " style="width:125px;">'+
+							'<button class="btn color-bg flat-btn" id="deleteArticle" onClick="return deleteArticle("'+result.data[i].space_no+'");">삭제</button>'+
+						'</div>'+
 					'</div>'+
 					'</div>'
 				);

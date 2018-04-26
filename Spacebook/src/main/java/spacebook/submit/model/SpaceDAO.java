@@ -24,6 +24,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("space.selectSpaceAll");
 	}
 	
+
+	
 	public List<SpaceDTO> selectMapList(){
 		return getSqlSession().selectList("space.spaceMap");
 	}
