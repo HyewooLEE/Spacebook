@@ -22,4 +22,6 @@ public interface SpaceService {
 	public void deleteSpace(SpaceDTO spaceDto);
 	
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);
+	
+	public List<SpaceDTO> etcSpaceList(int mem_no);
 }
