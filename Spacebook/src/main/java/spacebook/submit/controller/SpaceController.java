@@ -293,7 +293,7 @@ public class SpaceController {
 	}
 	
 	//search
-	@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
+	/*@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
 		
 		String contextPath = session.getServletContext().getRealPath("/");
@@ -309,10 +309,10 @@ public class SpaceController {
 		model.addAttribute("realPath", contextPath);
 		
 		return "listSpace";
-	}
+	}*/
 	
 	//etcSpaceList
-	@RequestMapping(value = "/etcSpaceList.do")
+	/*@RequestMapping(value = "/etcSpaceList.do")
 	public String etcSpaceList(@RequestParam(value="mem_no") int mem_no,HttpSession session, Model model) {
 		String contextPath = session.getServletContext().getRealPath("/");
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
@@ -322,7 +322,7 @@ public class SpaceController {
 		model.addAttribute("spaceAll", spaceAll);
 		model.addAttribute("realPath", contextPath);
 		return "listSpace";
-	}
+	}*/
 	
 	
 	//map
