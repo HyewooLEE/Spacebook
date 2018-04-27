@@ -85,11 +85,6 @@
 							    <tbody id="spaceTbody">
 							    <c:forEach var="mySpace" items="${mySpace }">
 							       <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
-							          <%-- <td width="30%">
-							       	  	<div class="dashboard-message-avatar" align="center">
-											<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
-									  	</div>
-									  </td> --%>
 									  <td width="10%" style="text-align:center;">
 									  	<div class="dashboard-message-avatar" align="center">
 									  		<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">

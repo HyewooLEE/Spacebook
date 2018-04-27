@@ -101,8 +101,8 @@
                                  </div>
                                  <div class="col-md-3">
                                  <button class="btn color-bg flat-btn" type="button" onClick="return findaddress();">주소검색</button>
-                                 <input type="hidden" id="map_latitude"  name="map_latitude" value="${map_latitude }"/> 
-        						 <input type="hidden" id="map_longitude"  name="map_longitude" value="${map_longitude }"/>
+                                 <input type="hidden" id="map_latitude"  name="map_latitude" value="${spaceDetail.map_latitude }"/> 
+        						 <input type="hidden" id="map_longitude"  name="map_longitude" value="${spaceDetail.map_longitude }"/>
                                  </div>	
                                 </div>
                                 
@@ -355,7 +355,14 @@
                                     	<input type="text" id="space_depositor" name="space_depositor" value="${spaceDetail.space_depositor }"/>
                                     </div>
                                 </div>
+                                 <c:if test="${update == 1}">
+                                 <button class="btn color-bg flat-btn" type="submit" onClick="return spaceSubmit()">수정<i class="fa fa-angle-right"></i></button>
+                                 <input type="hidden" value="${update}" id="update" name="update" />
+                                 <input type="hidden" value="${spaceDetail.space_no}" id="space_no" name="space_no" />
+                                </c:if>
+                                <c:if test="${update != 1}">
                                 <button class="btn color-bg flat-btn" type="submit" onClick="return spaceSubmit()">등록<i class="fa fa-angle-right"></i></button>
+                                </c:if>
                             </div>
                         </div>
                         <!-- profile-edit-container end-->     

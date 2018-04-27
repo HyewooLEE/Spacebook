@@ -37,7 +37,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 	}
 	
 	public void updateSpace(SpaceDTO spaceDto) {
-		getSqlSession().selectList("space.updateSpace", spaceDto);
+		getSqlSession().update("space.updateSpace", spaceDto);
+		getSqlSession().update("space.updateMap", spaceDto);
 	}
 	
 	public void deleteSpace(SpaceDTO spaceDto) {

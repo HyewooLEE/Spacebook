@@ -60,9 +60,9 @@ public class SpaceController {
 	}
 	
 	@RequestMapping(value="/submitSpace.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String insert(@RequestParam("fac_array") String fac_array, SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, MultipartHttpServletRequest multi, Model model) throws IOException, IllegalStateException{ 
+	public String insert(@RequestParam(value="update", defaultValue="") String update,@RequestParam("fac_array") String fac_array, SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, MultipartHttpServletRequest multi, Model model) throws IOException, IllegalStateException{ 
 		spaceDto.setFac_no(fac_array);
-		
+		System.out.println("test::"+spaceDto.getMap_latitude());
 		String conRealPath = multi.getSession().getServletContext().getRealPath("/");
 		String saveDir = "resources/images/";
 		String realSaveDir=conRealPath+saveDir;
@@ -206,8 +206,12 @@ public class SpaceController {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("66666");
-		spaceService.insertSpace(spaceDto, spaceFacilityDto);
+
+		if(update.equals("1")) {
+			spaceService.updateSpace(spaceDto);
+		}else {
+			spaceService.insertSpace(spaceDto, spaceFacilityDto);
+		}
 		
 		model.addAttribute("msg", "등록완료되었습니다. 메인화면으로 이동합니다.");
 		model.addAttribute("url", "main.do");
@@ -255,18 +259,18 @@ public class SpaceController {
 		spaceDto.setMem_no(memdto.getMem_No());
 		
 		List<String> listtest = new ArrayList<String>();
-		
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
 		SpaceDTO spaceDetail = spaceViewService.spaceDetail(space_no);
-		spaceService.updateSpace(spaceDto);
-		String space_fac_no = spaceDetail.getFac_no();
 		
+		String space_fac_no = spaceDetail.getFac_no();
 	    StringTokenizer token = new StringTokenizer(space_fac_no,",");
-	      
 	    while(token.hasMoreTokens()){
 	    	listtest.add(token.nextToken());
 	    }
-		
+	    
+	    int update =1;
+	    
+		model.addAttribute("update", update);
 	 	model.addAttribute("selectFacility", listtest);
 		model.addAttribute("facility", facility);
 		model.addAttribute("spaceDetail", spaceDetail);

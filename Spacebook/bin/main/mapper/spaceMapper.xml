@@ -95,12 +95,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FAC_NO=#{fac_no},
 			SPACE_SITE=#{space_site},
 			SPACE_IMG1=#{space_img1},
-			SPACE_IMG2=#{space_img2},
-			SPACE_IMG3=#{space_img3},
-			SPACE_IMG4=#{space_img4},
-			SPACE_IMG5=#{space_img5},
-			SPACE_IMG6=#{space_img6},
-			SPACE_IMG7=#{space_img7},
+			SPACE_IMG2=#{space_img2,jdbcType=VARCHAR},
+			SPACE_IMG3=#{space_img3,jdbcType=VARCHAR},
+			SPACE_IMG4=#{space_img4,jdbcType=VARCHAR},
+			SPACE_IMG5=#{space_img5,jdbcType=VARCHAR},
+			SPACE_IMG6=#{space_img6,jdbcType=VARCHAR},
+			SPACE_IMG7=#{space_img7,jdbcType=VARCHAR},
 			SPACE_PHONE=#{space_phone},
 			SPACE_CAU=#{space_cau},
 			SPACE_PEO_COUNT=#{space_peo_count},
@@ -112,6 +112,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SPACE_DEPOSITOR=#{space_depositor}
 			WHERE SPACE_NO=#{space_no}
 	</update>
+	
+	<update id="updateMap" parameterType="spacebook.submit.model.SpaceDTO"> 
+		UPDATE MAP
+			SET
+			map_latitude = #{map_latitude},
+			map_longitude = #{map_longitude}
+			WHERE SPACE_NO=#{space_no}
+	</update>
+	
+	
 	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
 		delete from space where space_no = #{space_no}
