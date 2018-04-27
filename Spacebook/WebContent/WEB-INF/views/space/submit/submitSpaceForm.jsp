@@ -2,6 +2,19 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< HEAD
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<c:forEach var="selectFacility" items="${selectFacility}" >
+<script>
+$(function(){
+	 var test = document.getElementsByName("fac_array");
+	 test[${selectFacility} -1].checked=true;
+ });
+</script>
+</c:forEach>
+=======
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 
     <!--section --> 
     <section id="sec1">
