@@ -1,14 +1,17 @@
 var map;
 var geocoder;
 
-function initialize() {
-	/*map = new GMap2(document.getElementById('map_canvas'));
-	map.setCenter(new GLatLng(37.566535, 126.9779692), 15);*/
-	geocoder = new GClientGeocoder();
-	/*map.disableDoubleClickZoom();
-	map.addControl(new GNavLabelControl());
-	map.addControl(new GSmallMapControl());*/
-}
+$(document).ready(function(){
+	initialize();
+});
+    function initialize() {
+      map = new GMap2(document.getElementById('map_canvas'));
+      map.setCenter(new GLatLng(37.566535,126.9779692), 15);
+      geocoder = new GClientGeocoder();
+      map.disableDoubleClickZoom();
+	  map.addControl(new GNavLabelControl());
+	  map.addControl(new GSmallMapControl());
+    }
 
 // 맵정보
 function addAddressToMap(response) {
@@ -17,12 +20,25 @@ function addAddressToMap(response) {
 	place = response.Placemark[0];
 	point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]);
 	marker = new GMarker(point);
-	/*map.addOverlay(marker);*/
-	/*	marker.openInfoWindowHtml(
+	
+	var markerIcon = {
+	        anchor: new google.maps.Point(22, 16),
+	        url: '/Spacebook/resources/bootstrap/images/marker.png',
+	}
+	
+/*	var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: single_map,
+        icon: markerIcon,
+        title: 'Our Location'
+    });
+	*/
+	
+	map.addOverlay(marker);
+		marker.openInfoWindowHtml(
 	// place.address + '<br>' +
-	'<b>위도,경도:</b>' + place.Point.coordinates[1] + ","
-			+ place.Point.coordinates[0] + '<br>' + '<b>주소:</b>'
-			+ place.address);*/
+	  '<b>주소:</b>'
+			+ place.address);
 
 	// 위도, 경도 입력
 	 document.getElementById('map_latitude').value = place.Point.coordinates[1];
@@ -91,7 +107,7 @@ function findMapAdd(address) {
 (function ($) {
 	
     "use strict";
-    initialize();
+    /*initialize();*/
     var markerIcon = {
         anchor: new google.maps.Point(22, 16),
         url: '/Spacebook/resources/bootstrap/images/marker.png',
@@ -129,8 +145,7 @@ function findMapAdd(address) {
         alert("test1");
         alert(zoomControlDiv)
         var zoomControl = new ZoomControl(zoomControlDiv, single_map);
-        function ZoomControl(controlDiv, single_map) {
-            zoomControlDiv.index = 1;
+       /* function ZoomControl(controlDiv, single_map) {
             single_map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
             controlDiv.style.padding = '5px';
             var controlWrapper = document.createElement('div');
@@ -147,7 +162,7 @@ function findMapAdd(address) {
             google.maps.event.addDomListener(zoomOutButton, 'click', function () {
                 single_map.setZoom(single_map.getZoom() - 1);
             });
-        }
+        }*/
     }
     var single_map = document.getElementById('singleMap');
     if (typeof (single_map) != 'undefined' && single_map != null) {

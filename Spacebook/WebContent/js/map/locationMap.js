@@ -1,6 +1,11 @@
     var map;
     var geocoder;
-
+/*(function ($){
+	initialize()
+});*/
+$(document).ready(function(){
+	initialize();
+});
     function initialize() {
       map = new GMap2(document.getElementById('map_canvas'));
       map.setCenter(new GLatLng(37.566535,126.9779692), 15);

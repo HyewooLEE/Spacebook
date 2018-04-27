@@ -4,12 +4,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script>
-$(function(){
+/* $(function(){
 	alert("111");
 	var test1 = document.getElementById("space_category");
 	var test2 = document.getElementById("category").value;
 	alert(test2);
-	for(int i = 0; i < 13; i++){
+	for(var i = 0; i < 13; i++){
 		if(test1[i].value == test2){
 			test1[i].checked
 		} 
@@ -17,9 +17,8 @@ $(function(){
 	
 	alert(test1[3].value);
 
-});
+}); */
 </script>
-
 
 <c:forEach var="selectFacility" items="${selectFacility}" >
 <script>
@@ -37,21 +36,6 @@ $(function(){
             <!-- profile-edit-wrap -->
             <div class="profile-edit-wrap">
                 <div class="profile-edit-page-header">
-                <!-- 시작 -->
-<body onload="initialize()">
-<form action="#" onsubmit="showLocation(); return false;">
-      <p>
-        <b>주소입력:</b>
-        <input type="text" name="q" value="" class="address_input" size="40"  method=post />
-        <input type="submit" name="find" value="Search" />
-      </p>
-    </form>
-		<div id="map_canvas" style="width: 680px; height: 380px">
-			<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
-			<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
-		</div>
-                <!-- 끝 -->
-                
                     <h2>나의 공간등록하기</h2>
                     <div class="breadcrumbs"><a href="main.do">Home</a><span>나의 공간등록하기</span></div>
                 </div>
@@ -157,20 +141,15 @@ $(function(){
 										data-longitude="126.98308969999994"
 										data-mapTitle="Our Location"></div>
 								</div>
-								<!-- 시작 -->
-								<form action="#" onsubmit="showLocation(); return false;">
-      <p>
-        <b>주소입력:</b>
-        <input type="text" name="q" value="" class="address_input" size="40"  method=post />
-        <input type="submit" name="find" value="Search" />
-      </p>
-    </form>
-		<div id="map_canvas" style="width: 680px; height: 380px">
+								
+                <!-- 시작 -->
+      
+		<div id="map_canvas" style="width: 910.5px; height: 380px">
 			<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
 			<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
 		</div>
+                <!-- 끝 -->
 
-								<!-- 끝 -->
                             </div>
                         </div>
                         <!-- profile-edit-container end--> 
