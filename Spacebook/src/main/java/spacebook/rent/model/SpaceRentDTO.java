@@ -1,7 +1,12 @@
 package spacebook.rent.model;
 
-import spacebook.submit.model.SpaceDTO;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
+import spacebook.submit.model.SpaceDTO;
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name="",propOrder= {"space_name","rent_name","rent_pay_method", "rent_note", "rent_writedate"})
 public class SpaceRentDTO {
 	private int rent_no;
 	private int space_no;

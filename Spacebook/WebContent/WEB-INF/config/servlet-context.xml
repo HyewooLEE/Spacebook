@@ -27,7 +27,8 @@
 	<context:component-scan base-package="spacebook.favorite.controller"/>
 	<context:component-scan base-package="spacebook.rent.controller"/>
 	
-    
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+    <bean id="exportRentList" class="spacebook.rent.view.ExportExcelRent"></bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<mvc:interceptors>

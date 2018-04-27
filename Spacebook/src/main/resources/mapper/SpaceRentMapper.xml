@@ -29,20 +29,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{rent_start}, #{rent_end}, #{rent_sum}
 				   )
 	</insert>
-	<select id="myRentList" resultMap="rentDTO" parameterType="map">
+	<select id="myRentList" resultMap="rentDTO" parameterType="spacebook.rent.model.SpaceRentVO">
 		<!-- SELECT SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
 		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
 		 WHERE SR.MEM_NO = #{mem_no} AND TRUNC(TO_DATE(#{rent_start}, 'YYYY-MM-DD') - SYSDATE) >= 0 -->
-		 SELECT SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
-		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
-		 WHERE SR.MEM_NO = #{mem_no} AND SR.RENT_START >= SYSDATE
+		 SELECT * FROM (
+		 	SELECT * FROM (
+				 SELECT ROWNUM R, SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_START, SR.RENT_END, SR.RENT_SUM, S.SPACE_NAME
+				   FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+				  WHERE SR.MEM_NO = #{mem_no} AND SR.RENT_START >= SYSDATE ORDER BY SR.RENT_WRITEDATE DESC) 
+		  WHERE R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<delete id="deleteMyRent">
 		DELETE FROM SPACE_RENT WHERE RENT_NO = #{rent_no}
 	</delete>
-	<select id="rentList" resultMap="rentDTO" parameterType="map">
-		SELECT SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_SUM, S.SPACE_NAME
+	<select id="rentList" resultMap="rentDTO" parameterType="spacebook.rent.model.SpaceRentVO">
+	    SELECT * FROM(
+	   		SELECT * FROM (
+			    SELECT ROWNUM R ,SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_SUM, S.SPACE_NAME
+				  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+				 WHERE S.MEM_NO = #{mem_no} ORDER BY RENT_WRITEDATE DESC) ORDER BY RENT_WRITEDATE DESC) 
+		 WHERE R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="excelRentList" resultMap="rentDTO" parameterType="Integer">
+    SELECT SR.RENT_NO, SR.SPACE_NO, SR.RENT_NAME, SR.RENT_PAY_METHOD, SR.RENT_NOTE, SR.RENT_WRITEDATE, SR.RENT_SUM, S.SPACE_NAME
+		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
+		 WHERE S.MEM_NO = #{mem_no} order by RENT_WRITEDATE DESC
+	</select>
+	
+	<select id="getRentListSize" parameterType="Integer" resultType="Integer">
+         	SELECT count(*)
 		  FROM SPACE_RENT SR INNER JOIN SPACE S ON SR.SPACE_NO = S.SPACE_NO
 		 WHERE S.MEM_NO = #{mem_no}
 	</select>
+	
 </mapper>

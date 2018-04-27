@@ -10,18 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import spacebook.login.model.MemberVO;
 import spacebook.rent.model.SpaceRentDTO;
+import spacebook.rent.model.SpaceRentVO;
 import spacebook.rent.service.SpaceRentService;
 
-
 @Controller
-public class SpaceRentController {
+public class SpaceRentController{
 	@Autowired
 	SpaceRentService srs;
 	
-	public void setSrs(SpaceRentService srs) {
+	public void setSrs(SpaceRentService srs){
 		this.srs = srs;
 	}
 
@@ -40,15 +41,22 @@ public class SpaceRentController {
 		System.out.println("writdDate:::"+spaceRentDTO.getRent_writedate());
 		System.out.println("space_no:::"+spaceRentDTO.getSpace_no());*/
 
+		
 		srs.insertSpaceRent(spaceRentDTO);
 	}
 	
 	@RequestMapping("/myRentList.do")
-	public String myRentList(SpaceRentDTO spaceRentDTO, HttpSession session, Model model) {
+	public String myRentList(SpaceRentDTO spaceRentDTO, HttpSession session, Model model, @RequestParam(value = "pageNum", defaultValue="1") String pageNum) throws Exception{
 		MemberVO member = (MemberVO)session.getAttribute("login");
-		List<SpaceRentDTO> myRentList = srs.myRentList(member.getMem_No());
+		
+	    SpaceRentVO pageNation = new SpaceRentVO(pageNum, 10, 5, srs.getRentListSize(member.getMem_No()));
+	    pageNation.setMem_no(member.getMem_No());
+	 
+		List<SpaceRentDTO> myRentList = srs.rentList(pageNation);
 
 		model.addAttribute("myRentList", myRentList);
+		model.addAttribute("paging", pageNation);
+		model.addAttribute("pageNum", pageNum);
 		
 		return "myRentList";
 	}
@@ -58,14 +66,30 @@ public class SpaceRentController {
 		srs.deleteMyRent(rent_no);
 	}
 	
+	
+	/*http://localhost:8328/Spacebook/rentList.do*/
+	/*pageNation*/
 	@RequestMapping("/rentList.do")
-	public String rentList(SpaceRentDTO spaceRentDTO, HttpSession session, Model model) {
+	public String rentList(SpaceRentDTO spaceRentDTO, HttpSession session, Model model , @RequestParam(value = "pageNum", defaultValue="1") String pageNum) throws Exception{
 		MemberVO member = (MemberVO)session.getAttribute("login");
-		List<SpaceRentDTO> rentList = srs.rentList(member.getMem_No());
-		
+			
+	    SpaceRentVO pageNation = new SpaceRentVO(pageNum, 10, 5, srs.getRentListSize(member.getMem_No()));
+	    pageNation.setMem_no(member.getMem_No());
+	 
+		List<SpaceRentDTO> rentList = srs.rentList(pageNation);
+
 		model.addAttribute("rentList", rentList);
+		model.addAttribute("paging", pageNation);
+		model.addAttribute("pageNum", pageNum);
 		
 		return "rentList";
 	}
-
+	
+	@RequestMapping("/exportRentList.do")
+	public ModelAndView exportRentList(HttpSession session)  {
+		MemberVO member = (MemberVO)session.getAttribute("login");
+		List<SpaceRentDTO> rentList = srs.rentList(member.getMem_No());
+		
+		return new ModelAndView("exportRentList", "rentList", rentList);
+	}
 }
