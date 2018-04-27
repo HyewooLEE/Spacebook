@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <c:forEach var="selectFacility" items="${selectFacility}" >
@@ -12,6 +13,8 @@ $(function(){
  });
 </script>
 </c:forEach>
+=======
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 
     <!--section --> 
     <section id="sec1">
@@ -330,7 +333,7 @@ $(function(){
                                     <!--col --> 
                                     <div class="col-md-6">
                                     	<label>입금은행${spaceDetail.space_bank}</label>
-                                    	<input type="hidden" id="space_bank2" value="${spaceDetail.space_bank}" />
+                                    	<input type="hidden" id="bank" value="${spaceDetail.space_bank}" />
                                     	<select data-placeholder="은행을 선택하세요" class="chosen-select" id="space_bank" name="space_bank" >
                                             <option value="SC제일은행">SC제일은행</option>
                                             <option value="전북은행">전북은행</option>

@@ -31,13 +31,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteFavorite">
 		DELETE FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
 	</delete>
-	<select id="selectFavorite" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteDTO">
+	<select id="selectFavorite" resultType="spacebook.favorite.model.SpaceFavoriteDTO" parameterType="spacebook.favorite.model.SpaceFavoriteVO">
 		SELECT * FROM FAVORITE WHERE MEM_NO = #{mem_no} AND SPACE_NO = #{space_no}
 	</select>
 	<select id="favoriteList" resultMap="SpaceFavoriteDTO">
-		select fav.fav_no, fav.space_no, s.space_name, s.space_category, s.space_addr1, s.space_addr2, s.space_intro1, s.space_img1, s.space_open, s.space_close, s.space_sum, m.mem_name, m.mem_img
-          from favorite fav inner join space s on fav.space_no = s.space_no inner join member m on s.mem_no = m.mem_no
-         where fav.mem_no = #{mem_no}
+		SELECT * FROM (
+			 select ROWNUM R, fav.fav_no, fav.space_no, s.space_name, s.space_category, s.space_addr1, s.space_addr2, s.space_intro1, s.space_img1, s.space_open, s.space_close, s.space_sum, m.mem_name, m.mem_img
+	           from favorite fav inner join space s on fav.space_no = s.space_no inner join member m on s.mem_no = m.mem_no
+	          where fav.mem_no = #{mem_no} ORDER BY FAV.FAV_NO DESC)
+         WHERE R BETWEEN #{startRow} AND #{endRow} ORDER BY FAV_NO DESC         
 	</select>
 	<select id="countSpaceFavorite" resultType="int">
 		SELECT COUNT(*) FROM FAVORITE WHERE SPACE_NO = #{space_no}

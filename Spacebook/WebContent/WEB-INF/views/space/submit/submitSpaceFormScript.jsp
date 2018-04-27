@@ -200,9 +200,10 @@ function spaceSubmit(){
    var text =$("option[value=${spaceDetail.space_category}]").html();
    $("option[value=${spaceDetail.space_category}]").attr("selected","selected")
    $("#submitSpaceForm > div:nth-child(2) > div.custom-form > div:nth-child(1) > div > span > div.select > div").html(text);
-}); 
+});
 </script>
 </c:if> 	
+
 <c:if test="${spaceDetail.space_bank !='' && spaceDetail.space_bank != null && spaceDetail.space_bank ne null}">
 <script>
  $(document).ready(function(){
@@ -213,3 +214,12 @@ function spaceSubmit(){
 }); 
 </script>
 </c:if> 	
+
+<c:forEach var="selectFacility" items="${selectFacility}" >
+<script>
+$(function(){
+	 var test = document.getElementsByName("fac_array");
+	 test[${selectFacility} -1].checked=true;
+ });
+</script>
+</c:forEach>

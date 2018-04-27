@@ -73,17 +73,17 @@
 						 	<!-- list-main-wrap-->
 				            <c:if test="${countMyFavorite > 0}">
 				            <div class="list-main-wrap fl-wrap card-listing">
-				                <div class="container" class="col-md-3">
+				                <div class="container" style="width:100%">
 				                    <!-- listing-item -->
 				                    <c:forEach var="favoriteList" items="${favoriteList}">
 				                    <div class="listing-item">
-				                        <article class="geodir-category-listing fl-wrap" style="width:320px;">
+				                        <article class="geodir-category-listing fl-wrap">
 					                            <div class="geodir-category-img">
-					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" style="width:320px;height:210px;"></a>
+					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" width="100%" style="height: 250px;" ></a>
 					                                <div class="overlay"></div>
 					                                <%-- <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div> --%>
 					                            </div>
-				                            <div class="geodir-category-content fl-wrap" style="width:320px;height:280px;">
+				                            <div class="geodir-category-content fl-wrap" >
 				                                <a class="listing-geodir-category" href="spaceView.do?space_no=${favoriteList.space_no}">${favoriteList.spaceDTO.space_category}</a>
 				                                <div class="listing-avatar"><a href="author-single.html"><img src="${favoriteList.memberVO.mem_Img}" alt=""></a>
 				                                    <span class="avatar-tooltip">Added By  <strong> ${favoriteList.memberVO.mem_Name }</strong></span>
@@ -104,7 +104,19 @@
 				                    <!-- listing-item end-->                           
 				                    <div class="clearfix"></div>
 				                </div>
-				                <a class="load-more-button" href="#">Load more <i class="fa fa-circle-o-notch"></i> </a>  
+				                <!-- Pagination -->
+								<div class="pagination">
+									<c:if test='${paging.previous != ""}'>
+                                    	<a href="/Spacebook/favoriteList.do?pageNum=${paging.previous}" class="prevposts-link">&lt;</a>
+                                    </c:if>
+                                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i">
+                                   		<a href="/Spacebook/favoriteList.do?pageNum=${i}" class="current-page">${i}</a>
+                                    </c:forEach>
+                                    <c:if test='${paging.nextPage != ""}'>
+                                    	<a href="/Spacebook/favoriteList.do?pageNum=${paging.nextPage}" class="nextposts-link">&gt;</a>
+                                    </c:if>
+                                </div>
+								<!-- END Pagination -->
 				            </div>
 				            </c:if>
 				            <!-- list-main-wrap end-->

@@ -50,9 +50,9 @@
 			    limit: 2,
 			    template: 
 			    	'<li class="clearfix">'+
-			    	'<a href="{{link}}" class="widget-posts-img" target="_blank" style="width:20%">'+
+			    	'<a href="{{link}}" class="widget-posts-img" target="_blank" style="width:20%;">'+
 			    	'<img src="{{image}}" class="respimg" alt="">'+
-			    	'</a><div class="widget-posts-descr">'+
+			    	'</a><div class="widget-posts-descr" style="height: 120px;white-space: pre-line; overflow:hidden">'+
 			    	'<a href="{{link}}" title="">{{caption}}</a></div></li>',
 			    accessToken: '7568363138.1f86452.b076a43c14dd4f9b8b4ef5ac4946732a'
 			});

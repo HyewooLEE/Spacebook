@@ -357,9 +357,15 @@
 												<li><span><i class="fa fa-phone"></i> 휴대폰 : </span>
 													<a href="#">+82 ${spaceDetail.memberVO.mem_Phone}</a></li>
 												<li><span><i class="fa fa-envelope-o"></i> 이메일 : </span>
-													<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
-												<li><span><i class="fa fa-globe"></i> 카카오톡ID : </span>
-													<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
+													<c:set var="str1" value="${login.mem_Id }"/>
+													<c:set var="str2" value="@"/>
+													 <c:if test="${!fn:contains(str1, str2)}">
+													<a href="#">${spaceDetail.memberVO.mem_KakaoEmail}</a>
+													</c:if>
+													 <c:if test="${fn:contains(str1, str2)}">
+													<a href="#">${spaceDetail.memberVO.mem_Id}</a>
+													</c:if>
+												</li>
 											</ul>
 										</div>
 										<a href="javascript:;" onclick="openInquire()" class="btn transparent-btn"> 1:1 문의 </a>

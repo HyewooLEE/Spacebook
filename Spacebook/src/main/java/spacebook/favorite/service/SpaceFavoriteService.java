@@ -3,6 +3,7 @@ package spacebook.favorite.service;
 import java.util.List;
 
 import spacebook.favorite.model.SpaceFavoriteDTO;
+import spacebook.favorite.model.SpaceFavoriteVO;
 
 public interface SpaceFavoriteService {  
 	
@@ -12,7 +13,7 @@ public interface SpaceFavoriteService {
 	
 	public SpaceFavoriteDTO selectFavorite(SpaceFavoriteDTO dto);
 	
-	public List<SpaceFavoriteDTO> favoriteList(int mem_no);
+	public List<SpaceFavoriteDTO> favoriteList(SpaceFavoriteVO pageNation);
 	
 	public int countSpaceFavorite(int space_no);
 	
