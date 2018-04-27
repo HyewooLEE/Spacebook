@@ -114,10 +114,29 @@
 								    </c:forEach>
 							    </tbody>
 							  </table>
+							  <c:if test="${page.articleCount > 0}">
+					<div class="pagination">
+						<c:if test="${page.pageNumber > 10}">
+						<a href="notice.do?pageNumber=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
+						</c:if>
+						<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
+							<c:if test="${page.pageNumber == i }">
+							<a href="notice.do?pageNumber=${i}" class="current-page">${i}</a>
+							</c:if>
+							<c:if test="${page.pageNumber != i }">
+							<a href="notice.do?pageNumber=${i}">${i}</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${page.endPage < page.pageCount}">
+						<a href="notice.do?pageNumber=${page.startPage+10 }" class="nextposts-link">&gt;</a>
+						</c:if>
+					</div>
+					</c:if>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 		<!--profile-edit-wrap end -->

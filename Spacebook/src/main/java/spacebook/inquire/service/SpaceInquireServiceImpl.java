@@ -90,13 +90,16 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	}
 	
 	@Override
-	public List<SpaceInquireDTO> myInquireList(int mem_no) {
-		return inquireDAO.myInquireList(mem_no);
+	public List<SpaceInquireDTO> myInquireList(int pageNum, int mem_no) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("pageNumber", pageNum);
+		map.put("mem_no", mem_no);
+		return inquireDAO.myInquireList(map);
 	}
 	
 	@Override
-	public int countSpaceInquire() {
-		int countInquire = inquireDAO.spaceInquireCount();
+	public int countSpaceInquire(int mem_no) {
+		int countInquire = inquireDAO.spaceInquireCount(mem_no);
 		return countInquire;
 	}
 	

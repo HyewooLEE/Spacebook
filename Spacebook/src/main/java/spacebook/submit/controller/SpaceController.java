@@ -252,7 +252,7 @@ public class SpaceController {
 	}
 	
 	@RequestMapping(value = "/updateSpaceForm.do", method = RequestMethod.GET)
-	public String updateSpace(@RequestParam(value="space_no") int space_no, HttpSession session, SpaceDTO spaceDto, Model model) {
+	public String updateSpaceForm(@RequestParam(value="space_no") int space_no, HttpSession session, SpaceDTO spaceDto, Model model) {
 		MemberVO memdto =  (MemberVO)session.getAttribute("login");
 		spaceDto.setMem_no(memdto.getMem_No());
 		
