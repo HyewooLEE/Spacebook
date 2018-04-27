@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_ADDR1" property="space_addr1"/>
 	    <result column="SPACE_ADDR2" property="space_addr2"/>
 	    <result column="SPACE_SUM" property="space_sum"/>
+	    <result column="SPACE_BANK" property="space_bank"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
 	</resultMap> 
 

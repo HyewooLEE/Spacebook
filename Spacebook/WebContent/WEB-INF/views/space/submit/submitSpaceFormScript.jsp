@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 다음지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 구글지도 -->
@@ -119,7 +120,7 @@ function subQuantity() {
 	}
 }
 
-function fileSubmit(){
+function spaceSubmit(){
 
 	//필수항목 체크 alert
     space_name = document.getElementById("space_name").value;
@@ -191,3 +192,24 @@ function fileSubmit(){
 	
 }
 </script>
+
+<c:if test="${spaceDetail.space_category !='' && spaceDetail.space_category != null && spaceDetail.space_category ne null}">
+<script>
+ $(document).ready(function(){
+   var filter = "${spaceDetail.space_category }";
+   var text =$("option[value=${spaceDetail.space_category}]").html();
+   $("option[value=${spaceDetail.space_category}]").attr("selected","selected")
+   $("#submitSpaceForm > div:nth-child(2) > div.custom-form > div:nth-child(1) > div > span > div.select > div").html(text);
+}); 
+</script>
+</c:if> 	
+<c:if test="${spaceDetail.space_bank !='' && spaceDetail.space_bank != null && spaceDetail.space_bank ne null}">
+<script>
+ $(document).ready(function(){
+   var filter = "${spaceDetail.space_bank }";
+   var text =$("option[value=${spaceDetail.space_bank}]").html();
+   $("option[value=${spaceDetail.space_bank}]").attr("selected","selected")
+   $("#submitSpaceForm > div:nth-child(6) > div.custom-form > div:nth-child(2) > div > span > div.select > div").html(text);   
+}); 
+</script>
+</c:if> 	

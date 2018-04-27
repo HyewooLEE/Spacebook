@@ -1,5 +1,6 @@
 package spacebook.inquire.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import spacebook.inquire.model.SpaceInquireDTO;
@@ -10,9 +11,9 @@ public interface SpaceInquireService {
 	
 	public List<SpaceInquireDTO> selectSpaceInquire(int pageNum);
 	
-	public List<SpaceInquireDTO> myInquireList(int mem_no);
+	public List<SpaceInquireDTO> myInquireList(int pageNum, int mem_no);
 	
-	public int countSpaceInquire();
+	public int countSpaceInquire(int mem_no);
 	
 	public SpaceInquireDTO selectInqContent(int inq_no);
 	

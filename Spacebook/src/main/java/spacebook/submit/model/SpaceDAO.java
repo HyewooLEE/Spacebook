@@ -36,12 +36,15 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("space.countMySpace",spaceDto);
 	}
 	
+	public void updateSpace(SpaceDTO spaceDto) {
+		getSqlSession().selectList("space.updateSpace", spaceDto);
+	}
+	
 	public void deleteSpace(SpaceDTO spaceDto) {
 		getSqlSession().delete("space.deleteMap",spaceDto);
 		getSqlSession().delete("space.deleteSpace",spaceDto);
 		getSqlSession().delete("space.deleteReview",spaceDto);
 	}
-	
 	
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search) {
 		List listtest = new ArrayList();

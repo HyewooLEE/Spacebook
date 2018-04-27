@@ -19,6 +19,8 @@ public interface SpaceService {
 	
 	public int countMySpace(SpaceDTO spaceDto);
 	
+	public void updateSpace(SpaceDTO spaceDto);
+	
 	public void deleteSpace(SpaceDTO spaceDto);
 
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);

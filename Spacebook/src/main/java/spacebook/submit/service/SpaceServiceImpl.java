@@ -18,7 +18,6 @@ public class SpaceServiceImpl implements SpaceService{
 	public void setSpaceDao(SpaceDAO spaceDao) {
 		this.spaceDao = spaceDao;
 	}
-
 	@Override
 	public List<SpaceFacilityDTO> selectFacility() {
 		List<SpaceFacilityDTO> facility = spaceDao.selectFacility();
@@ -49,6 +48,11 @@ public class SpaceServiceImpl implements SpaceService{
 	@Override
 	public int countMySpace(SpaceDTO spaceDto) {
 		return spaceDao.countMySpace(spaceDto);
+	}
+	
+	@Override
+	public void updateSpace(SpaceDTO spaceDto) {
+		spaceDao.updateSpace(spaceDto);
 	}
 
 	@Override

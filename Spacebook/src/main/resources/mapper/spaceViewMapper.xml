@@ -35,6 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_OPEN" property="space_open"/>
 	    <result column="SPACE_CLOSE" property="space_close"/>
 	    <result column="SPACE_SUM" property="space_sum"/>
+	    <result column="SPACE_BANK" property="space_bank"/>
+	    <result column="SPACE_ACCOUNT" property="space_account"/>
+	    <result column="SPACE_DEPOSITOR" property="space_depositor"/>
 	    <result column="MAP_LATITUDE" property="map_latitude"/>
 	    <result column="MAP_LONGITUDE" property="map_longitude"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
