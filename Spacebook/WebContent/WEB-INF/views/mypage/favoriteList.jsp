@@ -79,7 +79,7 @@
 				                    <div class="listing-item">
 				                        <article class="geodir-category-listing fl-wrap">
 					                            <div class="geodir-category-img">
-					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" width="100%" height="210px" style=""></a>
+					                                <a href="spaceView.do?space_no=${favoriteList.space_no}"><img src="${favoriteList.spaceDTO.space_img1}" width="100%" style="height: 250px;" ></a>
 					                                <div class="overlay"></div>
 					                                <%-- <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div> --%>
 					                            </div>
