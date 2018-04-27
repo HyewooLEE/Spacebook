@@ -61,11 +61,9 @@ public class SpaceController {
 	
 	@RequestMapping(value="/submitSpace.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String insert(@RequestParam("fac_array") String fac_array, SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, MultipartHttpServletRequest multi, Model model) throws IOException, IllegalStateException{ 
-		
 		spaceDto.setFac_no(fac_array);
 		
 		String conRealPath = multi.getSession().getServletContext().getRealPath("/");
-		//String conRealPath = "C://Users/LeeHyewoo/git/Spacebook/Spacebook/WebContent/resources";
 		String saveDir = "resources/images/";
 		String realSaveDir=conRealPath+saveDir;
 		
@@ -208,7 +206,7 @@ public class SpaceController {
 				e.printStackTrace();
 			}
 		}
-		
+		System.out.println("66666");
 		spaceService.insertSpace(spaceDto, spaceFacilityDto);
 		
 		model.addAttribute("msg", "등록완료되었습니다. 메인화면으로 이동합니다.");
@@ -260,13 +258,14 @@ public class SpaceController {
 		
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
 		SpaceDTO spaceDetail = spaceViewService.spaceDetail(space_no);
+		spaceService.updateSpace(spaceDto);
 		String space_fac_no = spaceDetail.getFac_no();
 		
-	     StringTokenizer token = new StringTokenizer(space_fac_no,",");
+	    StringTokenizer token = new StringTokenizer(space_fac_no,",");
 	      
-	     while(token.hasMoreTokens()){
-	        listtest.add(token.nextToken());
-	     }
+	    while(token.hasMoreTokens()){
+	    	listtest.add(token.nextToken());
+	    }
 		
 	 	model.addAttribute("selectFacility", listtest);
 		model.addAttribute("facility", facility);
