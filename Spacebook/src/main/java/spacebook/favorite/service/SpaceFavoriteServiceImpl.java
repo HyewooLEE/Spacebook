@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import spacebook.favorite.model.SpaceFavoriteDAO;
 import spacebook.favorite.model.SpaceFavoriteDTO;
+import spacebook.favorite.model.SpaceFavoriteVO;
 
 @Service
 public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
@@ -33,10 +34,10 @@ public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
 		return favoriteDAO.selectFavorite(dto);
 	}
 
-	@Override
-	public List<SpaceFavoriteDTO> favoriteList(int mem_no) {
-		return favoriteDAO.favoriteList(mem_no);
-	}
+	/*@Override
+	public List<SpaceFavoriteDTO> favoriteList(SpaceFavoriteVO pageNation) {
+		return favoriteDAO.favoriteList(pageNation);
+	}*/
 
 	@Override
 	public int countSpaceFavorite(int space_no) {
@@ -52,4 +53,11 @@ public class SpaceFavoriteServiceImpl implements SpaceFavoriteService{
 	public int countMyFavorite(int mem_no) {
 		return favoriteDAO.countMyFavorite(mem_no);
 	}
+
+	@Override
+	public List<SpaceFavoriteDTO> favoriteList(SpaceFavoriteVO pageNation) {
+		return favoriteDAO.favoriteList(pageNation);
+	}
+
+	
 }

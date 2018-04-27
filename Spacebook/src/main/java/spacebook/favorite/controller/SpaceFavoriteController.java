@@ -3,7 +3,6 @@ package spacebook.favorite.controller;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -12,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import net.sf.json.JSONObject;
 import spacebook.favorite.model.SpaceFavoriteDTO;
+import spacebook.favorite.model.SpaceFavoriteVO;
 import spacebook.favorite.service.SpaceFavoriteService;
 import spacebook.login.model.MemberVO;
 import spacebook.view.service.SpaceReviewService;
@@ -56,11 +57,14 @@ public class SpaceFavoriteController {
 	}
 	
 	@RequestMapping("/favoriteList.do")
-	public String favoriteList(SpaceFavoriteDTO favoriteDTO, HttpSession session, Model model) {
+	public String favoriteList(SpaceFavoriteDTO favoriteDTO, HttpSession session, @RequestParam(value = "pageNum", defaultValue="1") String pageNum, Model model) {
 		MemberVO member = (MemberVO)session.getAttribute("login");
 		int countMyFavorite = sfs.countMyFavorite(member.getMem_No());
 		
-		List<SpaceFavoriteDTO> favoriteList = sfs.favoriteList(member.getMem_No());
+		SpaceFavoriteVO pageNation = new SpaceFavoriteVO(pageNum, 4, 5, sfs.countMyFavorite(member.getMem_No()));
+		pageNation.setMem_no(member.getMem_No());
+	 			
+		List<SpaceFavoriteDTO> favoriteList = sfs.favoriteList(pageNation);
 
 		for(int i=0; i<favoriteList.size(); i++) {
 			favoriteList.get(i).setReview_count(srs.countSpaceReview(favoriteList.get(i).getSpace_no()));
@@ -71,6 +75,8 @@ public class SpaceFavoriteController {
 		 
 		model.addAttribute("countMyFavorite", countMyFavorite);
 		model.addAttribute("favoriteList", favoriteList);
+		model.addAttribute("paging", pageNation);
+		model.addAttribute("pageNum", pageNum);
 		
 		return "favoriteList";
 	}
