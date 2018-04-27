@@ -61,9 +61,7 @@ public class SpaceController {
 	
 	@RequestMapping(value="/submitSpace.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String insert(@RequestParam("fac_array") String fac_array, SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, MultipartHttpServletRequest multi, Model model) throws IOException, IllegalStateException{ 
-		
 		spaceDto.setFac_no(fac_array);
-		
 		String conRealPath = multi.getSession().getServletContext().getRealPath("/");
 		//String conRealPath = "C://Users/LeeHyewoo/git/Spacebook/Spacebook/WebContent/resources";
 		String saveDir = "resources/images/";

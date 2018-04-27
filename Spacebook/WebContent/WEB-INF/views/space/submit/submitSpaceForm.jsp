@@ -3,28 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<<<<<<< HEAD
-<script>
-/* $(function(){
-	alert("111");
-	var test1 = document.getElementById("space_category");
-	var test2 = document.getElementById("category").value;
-	alert(test2);
-	for(var i = 0; i < 13; i++){
-		if(test1[i].value == test2){
-			test1[i].checked
-		} 
-	} 
-	
-	alert(test1[3].value);
-=======
->>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
-
-<<<<<<< HEAD
-}); */
-</script>
-=======
->>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 
 <c:forEach var="selectFacility" items="${selectFacility}" >
 <script>
@@ -107,7 +85,7 @@ $(function(){
 	                            	<div class="col-md-6">
 		                            	<label>공간유형명</label>
 		                            	<input type="hidden" id="category" value="${spaceDetail.space_category}" />
-		                            	<select  id="space_category2" name="space_category2" class="chosen-select" data-placeholder="공간유형을 선택하세요">
+		                            	<select  id="space_category" name="space_category" class="chosen-select" data-placeholder="공간유형을 선택하세요">
 		                            		<option value="작업실">작업실</option>
 		                            		<option value="연습실">연습실</option>
 		                            		<option value="세미나실">세미나실</option>
