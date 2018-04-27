@@ -85,11 +85,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateSpace" parameterType="spacebook.submit.model.SpaceDTO"> 
 		UPDATE SPACE
-			SET SPACE_NAME=#{space_name},SPACE_CATEGORY=#{space_category},SPACE_ADDR1=#{space_addr1},SPACE_ADDR2=#{space_addr2},SPACE_INTRO1=#{space_intro1},SPACE_INTRO2=#{space_intro2},
-			SPACE_TAG=#{space_tag},FAC_NO=#{fac_no},SPACE_SITE=#{space_site},
-			SPACE_IMG1=#{space_img1},SPACE_IMG2=#{space_img2},SPACE_IMG3=#{space_img3},SPACE_IMG4=#{space_img4},SPACE_IMG5=#{space_img5},SPACE_IMG6=#{space_img6},SPACE_IMG7=#{space_img7},
-			SPACE_PHONE=#{space_phone},SPACE_CAU=#{space_cau},SPACE_PEO_COUNT=#{space_peo_count},SPACE_OPEN=#{space_open},SPACE_CLOSE=#{space_close},SPACE_SUM=#{space_sum},SPACE_BANK=#{space_bank},SPACE_ACCOUNT=#{space_account},SPACE_DEPOSITOR=#{space_depositor}
-			WHERE SPACE_NO=25
+			SET SPACE_NAME=#{space_name},
+			SPACE_CATEGORY=#{space_category},
+			SPACE_ADDR1=#{space_addr1},
+			SPACE_ADDR2=#{space_addr2},
+			SPACE_INTRO1=#{space_intro1},
+			SPACE_INTRO2=#{space_intro2},
+			SPACE_TAG=#{space_tag},
+			FAC_NO=#{fac_no},
+			SPACE_SITE=#{space_site},
+			SPACE_IMG1=#{space_img1},
+			SPACE_IMG2=#{space_img2},
+			SPACE_IMG3=#{space_img3},
+			SPACE_IMG4=#{space_img4},
+			SPACE_IMG5=#{space_img5},
+			SPACE_IMG6=#{space_img6},
+			SPACE_IMG7=#{space_img7},
+			SPACE_PHONE=#{space_phone},
+			SPACE_CAU=#{space_cau},
+			SPACE_PEO_COUNT=#{space_peo_count},
+			SPACE_OPEN=#{space_open},
+			SPACE_CLOSE=#{space_close},
+			SPACE_SUM=#{space_sum},
+			SPACE_BANK=#{space_bank},
+			SPACE_ACCOUNT=#{space_account},
+			SPACE_DEPOSITOR=#{space_depositor}
+			WHERE SPACE_NO=#{space_no}
 	</update>
 	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
