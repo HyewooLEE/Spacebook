@@ -84,7 +84,7 @@
 							    </thead>
 							    <tbody>
 							    <c:forEach var="inquireList" items="${inquireList }">
-								    <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}">
+								    <%-- <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}"> --%>
 								      <tr style = "cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 								        <td width="25%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
 								        <c:if test="${inquireList.inq_step == 0 }">
@@ -98,7 +98,7 @@
 								        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
 								        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
 								      </tr>
-								    </c:if>
+								    <%-- </c:if> --%>
 							    </c:forEach>
 							    </tbody>
 							  </table>
