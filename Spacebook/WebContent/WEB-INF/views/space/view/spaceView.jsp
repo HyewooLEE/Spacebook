@@ -347,7 +347,7 @@
 							<div class="box-widget list-author-widget">
 								<div
 									class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
-									<span class="list-author-widget-link"><a href="author-single.html">김남현</a></span>
+									<span class="list-author-widget-link"><a href="/Spacebook/hostView.do?space_no=${spaceDetail.space_no}" >${spaceDetail.memberVO.mem_Name}</a></span>
 									<img src="${spaceDetail.memberVO.mem_Img}">
 								</div>
 								<div class="box-widget-content">
