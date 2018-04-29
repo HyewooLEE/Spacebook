@@ -148,7 +148,7 @@
 						<div class="list-single-main-item fl-wrap" id="sec4">
 							<div class="list-single-main-item-title fl-wrap">
 								<h3>
-									리뷰 - <span> ${countReview} </span>
+									리뷰 - <span id="countReview"> ${countReview} </span>
 								</h3>
 							</div>
 							<div class="reviews-comments-wrap" id="review" style="width:100%;">
@@ -158,13 +158,15 @@
 										<img src="${reviewList.memberVO.mem_Img}">
 									</div>
 									<div class="reviews-comments-item-text">
-										<h4><a href="#">${reviewList.memberVO.mem_Name}</a></h4>
-										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}">
-										</div>
+										<h4>${reviewList.memberVO.mem_Name}</h4>
+										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
 										<div class="clearfix"></div>
+										<c:if test="${reviewList.mem_no == login.mem_No}">
+											<div align="right"><a href="javascript:;" onclick="deleteReview(${reviewList.rev_no}, ${spaceDetail.space_no});">삭제</a></div>
+										</c:if>
 										<p>${reviewList.rev_note}</p>
 										<span class="reviews-comments-item-date">
-											<i class="fa fa-calendar-check-o"></i>${reviewList.rev_writeDate}
+											<i class="fa fa-calendar-check-o"></i>${reviewList.rev_writeDate} 
 										</span>
 									</div>
 								</div>
@@ -325,14 +327,6 @@
 												<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
 											<li><span><i class="fa fa-globe"></i> 사이트 : </span>
 												<a href="${spaceDetail.space_site}">${spaceDetail.space_site}</a></li>
-										</ul>
-									</div>
-									<div class="list-widget-social">
-										<ul>
-											<li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 										</ul>
 									</div>
 								</div>

@@ -42,4 +42,9 @@ public class SpaceReViewServiceImpl implements SpaceReviewService{
 	public int averageReview(int space_no) {
 		return dao.averageReview(space_no);
 	}
+
+	@Override
+	public void deleteReview(int rev_no) {
+		dao.deleteReview(rev_no);
+	}
 }

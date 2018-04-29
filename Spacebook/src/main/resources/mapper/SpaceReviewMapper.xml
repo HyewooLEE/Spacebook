@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="reviewDetails" resultMap="SpaceReviewDTO">
 		SELECT *
 		  FROM 
-	           (SELECT ROWNUM R, REV_NO, SPACE_NO, M.MEM_NAME, M.MEM_IMG, REV_WRITEDATE, REV_NOTE, REV_RATE 
+	           (SELECT ROWNUM R, REV_NO, SPACE_NO, RE.MEM_NO, M.MEM_NAME, M.MEM_IMG, REV_WRITEDATE, REV_NOTE, REV_RATE 
 	              FROM REVIEW RE INNER JOIN MEMBER M ON RE.MEM_NO = M.MEM_NO 
 	             WHERE SPACE_NO = #{space_no} ORDER BY REV_NO DESC) 
 	     WHERE R BETWEEN #{startReview} AND #{endReview} ORDER BY REV_NO DESC
@@ -37,4 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertReview" parameterType="spacebook.view.model.SpaceReviewDTO">
 		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{space_no}, #{mem_no}, #{rev_writeDate}, #{rev_note}, #{rev_rate})
 	</insert>
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW WHERE REV_NO = #{rev_no}
+	</delete>
 </mapper>
