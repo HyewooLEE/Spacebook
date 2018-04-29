@@ -81,15 +81,6 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	}
 	
 	@Override
-	public List<SpaceInquireDTO> selectSpaceInquire(int pageNum) {
-		Map<String ,Integer> map = new HashMap<String, Integer>();
-		map.put("start", (pageNum - 1) * 10 + 1);
-		map.put("end", pageNum*10);
-		
-		return inquireDAO.spaceInquireSelect(map);
-	}
-	
-	@Override
 	public List<SpaceInquireDTO> myInquireList(int pageNum, int mem_no) {
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("pageNumber", pageNum);
@@ -98,8 +89,27 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	}
 	
 	@Override
-	public int countSpaceInquire(int mem_no) {
-		int countInquire = inquireDAO.spaceInquireCount(mem_no);
+	public int myInquireCount(int mem_no) {
+		int countInquire = inquireDAO.myInquireCount(mem_no);
+		return countInquire;
+	}
+	
+	@Override
+	public List<SpaceInquireDTO> myInquireListHost(int pageNum, int mem_no) {
+		/*Map<String ,Integer> map = new HashMap<String, Integer>();
+		map.put("start", (pageNum - 1) * 10 + 1);
+		map.put("end", pageNum*10);*/
+		
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("pageNumber", pageNum);
+		map.put("mem_no", mem_no);
+		System.out.println("DAO전:::"+pageNum);
+		return inquireDAO.myInquireListHost(map);
+	}
+	
+	@Override
+	public int myInquireHostCount(int mem_no) {
+		int countInquire = inquireDAO.myInquireHostCount(mem_no);
 		return countInquire;
 	}
 	
@@ -115,6 +125,5 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO) {
 		inquireDAO.spaceInquireDelete(inquireDTO);
 	}
-
 
 }
