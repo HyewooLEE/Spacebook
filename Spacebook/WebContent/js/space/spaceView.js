@@ -142,6 +142,64 @@ function reviewSubmit() {
 	}
 	spaceReviewForm.submit();
 }
+
+function deleteReview(rev_no, space_no) {
+	/*$.ajax({
+		type: "get",
+		url: "/Spacebook/deleteReview.do",
+		data: {
+			rev_no   : rev_no,
+			space_no : space_no
+		},
+		cache: false,
+		success:function(result) {
+			alert("리뷰 삭제 완료");
+		}
+	});*/
+	$.ajax({
+		type: "get",
+		url: "/Spacebook/deleteReview.do",
+		data: {
+			rev_no   : rev_no,
+			space_no : space_no
+		},
+		cache: false,
+		dataType:"json",
+		success:function(result) {
+			$('#countReview').html('');
+			$('#review').html('');
+			
+			$('#countReview').append(result.count);			
+			for(var i=0; i<result.data.length; i++) {
+				var star = "";
+				for(var j=0; j<result.data[i].rev_rate; j++) {
+					star += "<i class='fa fa-star'></i>";
+				}
+				
+				$('#review').append(
+						"<div class='reviews-comments-item'>" +
+						"<div class='review-comments-avatar'>" +
+							"<img src='"+ result.data[i].memberVO.mem_Img +"'>" +
+						"</div>" +
+						"<div class='reviews-comments-item-text'>" + 
+							"<h4><a href='#'>"+ result.data[i].memberVO.mem_Name + "</a></h4>" +
+							"<div class='listing-rating card-popup-rainingvis' data-starrating2='"+ result.data[i].rev_rate +"'>"+
+								star + 
+							"</div>" +
+							"<div class='clearfix'></div>" +
+							"<div align='right'><a href='javascript:;' onclick='deleteReview("+ result.data[i].rev_no +","+ space_no +");'>삭제</a></div>"+
+							"<p>"+ result.data[i].rev_note +"</p>" +
+							"<span class='reviews-comments-item-date'>" +
+								"<i class='fa fa-calendar-check-o'></i>"+ result.data[i].rev_writeDate +
+							"</span>" +
+						"</div>"+
+						"</div>"
+				);
+			}
+		}
+	});	
+}
+
 var reviewPage = 1;
 var reviewCurPage = 1;
 
@@ -177,6 +235,7 @@ function nextReview(totalReview, space_no) {
 								star + 
 							"</div>" +
 							"<div class='clearfix'></div>" +
+							"<div align='right'><a href='javascript:;' onclick='deleteReview("+ result.data[i].rev_no +","+ space_no +");'>삭제</a></div>"+
 							"<p>"+ result.data[i].rev_note +"</p>" +
 							"<span class='reviews-comments-item-date'>" +
 								"<i class='fa fa-calendar-check-o'></i>"+ result.data[i].rev_writeDate +
@@ -223,6 +282,7 @@ function preReview(totalReview, space_no) {
 								star + 
 							"</div>" +
 							"<div class='clearfix'></div>" +
+							"<div align='right'><a href='javascript:;' onclick='deleteReview("+ result.data[i].rev_no +","+ space_no +");'>삭제</a></div>"+
 							"<p>"+ result.data[i].rev_note +"</p>" +
 							"<span class='reviews-comments-item-date'>" +
 								"<i class='fa fa-calendar-check-o'></i>"+ result.data[i].rev_writeDate +
@@ -237,8 +297,6 @@ function preReview(totalReview, space_no) {
 
 function favorite(space_no, mem_no) {
 	var params = "space_no="+ space_no +"&mem_no="+ mem_no;
-	alert("space_no::"+ space_no);
-	alert("mem_no:::"+ mem_no);
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/selectFavorite.do",
