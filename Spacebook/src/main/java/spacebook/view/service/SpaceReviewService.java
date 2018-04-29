@@ -12,4 +12,6 @@ public interface SpaceReviewService {
 	public int countSpaceReview(int space_no);
 	
 	public int averageReview(int space_no);
+	
+	public void deleteReview(int rev_no);
 }

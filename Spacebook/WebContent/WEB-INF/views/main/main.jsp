@@ -74,7 +74,7 @@
 			<c:if test="${status.index=='0' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
-					<div class="listing-item-grid">
+					<div class="listing-item-grid" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
 							<span>${category.space_category }</span>
@@ -94,7 +94,7 @@
 			<c:if test="${status.index=='1' }">
 			<div class="gallery-item gallery-item-second">
 				<div class="grid-item-holder">
-					<div class="listing-item-grid">
+					<div class="listing-item-grid" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'">
 						<img src="${category.space_img1}" style="width:795px;height:424px;">
 						<div class="listing-counter">
 							<span>${category.space_category }</span>
@@ -114,7 +114,7 @@
 			<c:if test="${status.index=='2' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
-					<div class="listing-item-grid">
+					<div class="listing-item-grid" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
 							<span>${category.space_category }</span>
@@ -134,7 +134,7 @@
 			<c:if test="${status.index=='3' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
-					<div class="listing-item-grid">
+					<div class="listing-item-grid" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
 							<span>${category.space_category }</span>
@@ -154,7 +154,7 @@
 			<c:if test="${status.index=='4' }">
 			<div class="gallery-item">
 				<div class="grid-item-holder">
-					<div class="listing-item-grid">
+					<div class="listing-item-grid" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'">
 						<img src="${category.space_img1}" style="width:387px;height:256px;">
 						<div class="listing-counter">
 							<span>${category.space_category }</span>

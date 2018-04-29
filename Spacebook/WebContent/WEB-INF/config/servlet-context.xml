@@ -26,6 +26,7 @@
 	<context:component-scan base-package="spacebook.view.controller"/>	
 	<context:component-scan base-package="spacebook.favorite.controller"/>
 	<context:component-scan base-package="spacebook.rent.controller"/>
+	<context:component-scan base-package="spacebook.tiles.controller"/>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
     <bean id="exportRentList" class="spacebook.rent.view.ExportExcelRent"></bean>

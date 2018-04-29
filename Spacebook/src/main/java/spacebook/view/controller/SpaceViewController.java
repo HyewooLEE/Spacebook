@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ import spacebook.view.service.SpaceViewService;
 
 @Controller
 public class SpaceViewController {
+
+	@Autowired 
+	JavaMailSender sender; 
 
 	@Autowired
 	SpaceViewService svs;
@@ -98,19 +102,27 @@ public class SpaceViewController {
 	}
 
 	@RequestMapping(value="/spaceReview.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String insertReview(@RequestParam(value = "space_no", defaultValue="1") int space_no, SpaceReviewDTO dto, Model model) {
+	public String insertReview(@RequestParam("space_no") int space_no, SpaceReviewDTO dto, Model model) {
 		srs.insertSpaceReview(dto);
 		
 		return "redirect:spaceView.do?space_no="+ space_no;
 	}
 	
 	@RequestMapping(value="/showReview.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
-	public void showReview(HttpServletResponse response, @RequestParam(value = "space_no", defaultValue="1") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview)throws Exception {
+	public void showReview(HttpServletResponse response, @RequestParam("space_no") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview)throws Exception {
 		List<SpaceReviewDTO> review_list = srs.selectSpaceReview(space_no, startReview, endReview);
-		
+		int review_count = srs.countSpaceReview(space_no);
 		JSONObject jso = new JSONObject();
 		jso.put("data", review_list);
+		jso.put("count", review_count);
 		PrintWriter out = response.getWriter();
 		out.println(jso.toString());
+	}
+	
+	@RequestMapping(value="/deleteReview.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public void deleteReview(@RequestParam("rev_no") int rev_no, @RequestParam("space_no") int space_no, Model model, HttpServletResponse response) throws Exception {
+		srs.deleteReview(rev_no);
+		
+		showReview(response, space_no, 1, 3);
 	}
 }

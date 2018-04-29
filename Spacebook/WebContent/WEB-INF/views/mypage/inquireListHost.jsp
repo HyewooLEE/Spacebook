@@ -82,26 +82,49 @@
 							        <th style="text-align:center">삭제</th>
 							      </tr>
 							    </thead>
-							    <tbody>
-							    <c:forEach var="inquireList" items="${inquireList }">
-								    <%-- <c:if test="${inquireList.spaceDTO.mem_no == login.mem_No}"> --%>
-								      <tr style = "cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-								        <td width="25%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
-								        <c:if test="${inquireList.inq_step == 0 }">
-								        	<td width="10%" style="text-align:center;">${inquireList.memberVO.mem_Name}</td>
-								        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-								        </c:if>
-								        <c:if test="${inquireList.inq_step > 0 }">
-								        	<td width="10%" style="text-align:center;">관리자</td>
-								        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font> ${inquireList.inq_title }</a></td>
-								        </c:if>
-								        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
-								        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
-								      </tr>
-								    <%-- </c:if> --%>
-							    </c:forEach>
+							    <tbody id="inquireTbody">
+							    	<c:if test="${page.articleCount == 0}">
+								    	<tr>
+									        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
+									    </tr>
+								    </c:if>
+									<c:if test="${page.articleCount > 0}">
+								    <c:forEach var="inquireList" items="${inquireList }">
+									      <tr style = "cursor:pointer;" onClick = " location.href='inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+									        <td width="25%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
+									        <c:if test="${inquireList.inq_step == 0 }">
+									        	<td width="10%" style="text-align:center;">${inquireList.memberVO.mem_Name}</td>
+									        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+									        </c:if>
+									        <c:if test="${inquireList.inq_step > 0 }">
+									        	<td width="10%" style="text-align:center;">관리자</td>
+									        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font> ${inquireList.inq_title }</a></td>
+									        </c:if>
+									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
+									        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+									      </tr>
+								    </c:forEach>
+								    </c:if>
 							    </tbody>
 							  </table>
+							  <c:if test="${page.articleCount > 0}">
+								<div class="pagination">
+									<c:if test="${page.pageNumber > 10}">
+									<a href="inquireListHost.do?pageNum=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
+									</c:if>
+									<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
+										<c:if test="${page.pageNumber == i }">
+										<a href="inquireListHost.do?pageNum=${i}" class="current-page">${i}</a>
+										</c:if>
+										<c:if test="${page.pageNumber != i }">
+										<a href="inquireListHost.do?pageNum=${i}">${i}</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${page.endPage < page.pageCount}">
+									<a href="inquireListHost.do?pageNum=${page.startPage+10 }" class="nextposts-link">&gt;</a>
+									</c:if>
+								</div>
+							</c:if>
 							</div>
 						</div>
 					</div>

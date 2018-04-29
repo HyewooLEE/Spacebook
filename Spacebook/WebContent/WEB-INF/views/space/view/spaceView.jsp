@@ -148,7 +148,7 @@
 						<div class="list-single-main-item fl-wrap" id="sec4">
 							<div class="list-single-main-item-title fl-wrap">
 								<h3>
-									리뷰 - <span> ${countReview} </span>
+									리뷰 - <span id="countReview"> ${countReview} </span>
 								</h3>
 							</div>
 							<div class="reviews-comments-wrap" id="review" style="width:100%;">
@@ -158,20 +158,22 @@
 										<img src="${reviewList.memberVO.mem_Img}">
 									</div>
 									<div class="reviews-comments-item-text">
-										<h4><a href="#">${reviewList.memberVO.mem_Name}</a></h4>
-										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}">
-										</div>
+										<h4>${reviewList.memberVO.mem_Name}</h4>
+										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
 										<div class="clearfix"></div>
+										<c:if test="${reviewList.mem_no == login.mem_No}">
+											<div align="right"><a href="javascript:;" onclick="deleteReview(${reviewList.rev_no}, ${spaceDetail.space_no});">삭제</a></div>
+										</c:if>
 										<p>${reviewList.rev_note}</p>
 										<span class="reviews-comments-item-date">
-											<i class="fa fa-calendar-check-o"></i>${reviewList.rev_writeDate}
+											<i class="fa fa-calendar-check-o"></i>${reviewList.rev_writeDate} 
 										</span>
 									</div>
 								</div>
 								</c:forEach>
 								<!--reviews-comments-item end-->
 							</div>
-								<c:if test="${countReview > 0}">
+								<c:if test="${countReview > 3}">
 									<a href="javascript:;" onclick="preReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
 									<a href="javascript:;" onclick="nextReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
@@ -209,20 +211,20 @@
 										<div class="row">
 											<div class="col-md-6">
 												<label><i class="fa fa-user-o"></i></label>
-												<input type="text" name="mem_name" id="mem_name" placeholder="Your Name *" value="${login.mem_Name}" />
+												<input type="text" name="mem_name" id="mem_name" value="${login.mem_Name}" readonly="readonly" />
 											</div>
 											<div class="col-md-6">
 												<label><i class="fa fa-envelope-o"></i> </label><c:set var="str1" value="${login.mem_Id }"/>
 													<c:set var="str2" value="@"/>
 						                            <c:if test="${fn:contains(str1, str2)}">
-						                            <input type="text" name="mem_email" id="mem_email" placeholder="Email Address*" value="${login.mem_Id}" />
+						                            <input type="text" name="mem_email" id="mem_email" value="${login.mem_Id}" readonly="readonly"/>
 						                            </c:if>
 						                             <c:if test="${!fn:contains(str1, str2)}">
-						                            <input type="text" name="mem_email" id="mem_email" placeholder="Email Address*" value="${login.mem_KakaoEmail}" />
+						                            <input type="text" name="mem_email" id="mem_email" value="${login.mem_KakaoEmail}" readonly="readonly"/>
 						                            </c:if>
 											</div>
 										</div>
-										<textarea cols="40" rows="3" name="rev_note" id="rev_note" placeholder="Your Review:"></textarea>
+										<textarea cols="40" rows="3" name="rev_note" id="rev_note" placeholder="리뷰를 작성해주세요.."></textarea>
 									</fieldset>
 									</form>
 									<button class="btn  big-btn  color-bg flat-btn" onclick="reviewSubmit()" style="margin-top: 10px">
@@ -289,10 +291,10 @@
 												</div>
 												<div class="col-md-6">
 													<label><i class="fa fa-calendar-check-o"></i></label>
-													<input type="text" name="reserve_endDate" id="reserve_endDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
+													<input type="text" name="reserve_endDate" id="reserve_endDate" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
 												</div>
 											</div>
-											<textarea cols="40" rows="3" id="reserve_message" name="reserve_message" placeholder="Additional Information"></textarea>
+											<textarea cols="40" rows="3" id="reserve_message" name="reserve_message" placeholder="호스트에게 남길 말을 작성해주세요."></textarea>
 										</fieldset>
 										<button type="button" class="btn  big-btn color-bg flat-btn modal-open2" onclick="checkReserve()">
 											예약 하기<i class="fa fa-angle-right"></i>
@@ -325,14 +327,6 @@
 												<a href="#">${spaceDetail.memberVO.mem_Id}</a></li>
 											<li><span><i class="fa fa-globe"></i> 사이트 : </span>
 												<a href="${spaceDetail.space_site}">${spaceDetail.space_site}</a></li>
-										</ul>
-									</div>
-									<div class="list-widget-social">
-										<ul>
-											<li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 										</ul>
 									</div>
 								</div>

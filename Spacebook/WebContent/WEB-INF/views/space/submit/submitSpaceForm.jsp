@@ -2,19 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-
-<c:forEach var="selectFacility" items="${selectFacility}" >
-<script>
-$(function(){
-	 var test = document.getElementsByName("fac_array");
-	 test[${selectFacility} -1].checked=true;
- });
-</script>
-</c:forEach>
-=======
->>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 
     <!--section --> 
     <section id="sec1">
@@ -34,30 +22,28 @@ $(function(){
 								<div class="user-profile-menu">
 									<h3>마이 페이지</h3>
 									<ul>
-										<li><a href="dashboard-myprofile.html" class="user-profile-act"><i class="fa fa-user-o"></i>프로필
+										<li><a href="dashboard-myprofile.html"><i class="fa fa-user-o"></i>프로필
 												수정</a></li>
 										<li><a href="dashboard-password.html"><i class="fa fa-unlock-alt"></i>비밀번호 변경</a></li>
 									</ul>
 								</div>
 								<!-- user-profile-menu end-->
-				<!-- 일반 -->
                                 <!-- user-profile-menu-->
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 <span>1</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>나의 찜공간 <span>2</span></a></li>
+                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>나의 예약리스트</a></li>
+                                        <li><a href="favoriteList.do"> <i class="fa fa-calendar-check-o"></i>나의 찜공간</a></li>
                                         <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
                                 <!-- user-profile-menu end-->  
-                 <!-- 호스트 -->
                                 <!-- user-profile-menu-->
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 <span>${countMySpace }</span> </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 <span>2</span></a></li>
+                                        <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 </a></li>
+                                        <li><a href="rentList.do"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                     </ul>
                                 </div>
@@ -122,19 +108,18 @@ $(function(){
                                 <label>상세주소<i class="fa fa-map-marker"></i></label>
                               	<input type="text" id="space_addr2" placeholder="상세주소를 입력하세요" name="space_addr2" value="${spaceDetail.space_addr2 }"/>
                               	
-                              	<div class="map-container" id="mylocation">
+                              	<!-- <div class="map-container" id="mylocation">
 									<div id="singleMap" data-latitude="37.5678912"
 										data-longitude="126.98308969999994"
 										data-mapTitle="Our Location"></div>
-								</div>
+								</div> -->
 								
-                <!-- 시작 -->
-      
-		<div id="map_canvas" style="width: 910.5px; height: 380px">
-			<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
-			<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
-		</div>
-                <!-- 끝 -->
+				                <!-- map 시작 -->
+								<div id="map_canvas" style="width: 910.5px; height: 380px">
+									<div class="" style='overflow:hidden;text-align:center;border:1px solid #e1e1e1;width:680px;height:380px;margin-top:10px;padding-top:10px;margin-bottom:10px; '>
+									<img src='http://maps.google.com/maps/api/staticmap?center=&zoom=5&size=640x360&markers=icon:http://www.iegate.net/maps/images/ruby_point.png|,&sensor=false'></div>	
+								</div>
+				                <!-- 끝 -->
 
                             </div>
                         </div>
@@ -336,21 +321,22 @@ $(function(){
                                     	<input type="hidden" id="bank" value="${spaceDetail.space_bank}" />
                                     	<select data-placeholder="은행을 선택하세요" class="chosen-select" id="space_bank" name="space_bank" >
                                             <option value="SC제일은행">SC제일은행</option>
-                                            <option value="전북은행">전북은행</option>
-                                            <option value="제주은행">제주은행</option>
                                             <option value="우체국">우체국</option>
-                                            <option value="BNK부산은행">BNK부산은행</option>
-                                            <option value="대구은행">대구은행</option>
                                             <option value="농협">농협</option>
-                                            <option value="새마을금고중앙회">새마을금고중앙회</option>
-                                            <option value="수협중앙회">수협중앙회</option>
+                                            <option value="국민은행">국민은행</option>
                                             <option value="신한은행">신한은행</option>
                                             <option value="기업은행">기업은행</option>
                                             <option value="하나은행">하나은행</option>
+                                            <option value="우리은행">우리은행</option>
                                             <option value="경남은행">경남은행</option>
                                             <option value="광주은행">광주은행</option>
+                                            <option value="전북은행">전북은행</option>
+                                            <option value="제주은행">제주은행</option>
+                                            <option value="BNK부산은행">BNK부산은행</option>
+                                            <option value="대구은행">대구은행</option>
+                                            <option value="새마을금고중앙회">새마을금고중앙회</option>
+                                            <option value="수협중앙회">수협중앙회</option>
                                             <option value="한국씨티은행">한국씨티은행</option>
-                                            <option value="우리은행">우리은행</option>
                                             <option value="광주은행">광주은행</option>
                                             <option value="도이치은행">도이치은행</option>
                                             <option value="카카오뱅크">카카오뱅크</option>

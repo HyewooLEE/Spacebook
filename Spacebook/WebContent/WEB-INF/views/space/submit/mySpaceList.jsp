@@ -70,6 +70,7 @@
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
 									<h4>나의 공간관리</h4>
 								</div>
+								<div align="left"> (총 ${countMySpace }개)</div>
 							</div>
 							<div >
 							  <table class="table table-bordred table-striped table-hover">
@@ -83,23 +84,49 @@
 							      </tr>
 							    </thead>
 							    <tbody id="spaceTbody">
-							    <c:forEach var="mySpace" items="${mySpace }">
-							       <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
-									  <td width="10%" style="text-align:center;">
-									  	<div class="dashboard-message-avatar" align="center">
-									  		<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
-									  	</div>
-									  </td>
-							          <td width="30%" style="text-align:center;">${mySpace.space_name}</td>
-							          <td width="10%" style="text-align:center;">${mySpace.space_category}</td>
-							          <td width="30%" >${mySpace.space_addr1} ...</td>
-							          <td width="10%" style="text-align:right;"><fmt:formatNumber value="${mySpace.space_sum}" type="number"/>원</td>
-							          <td width="5%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="return updateSpace(${mySpace.space_no });" ><span class="glyphicon glyphicon-pencil"></span></button></td>
-							          <td width="5%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
-							       </tr>
-							    </c:forEach>
+							    <c:if test="${page.articleCount == 0}">
+							    	<tr>
+								        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
+								    </tr>
+							    </c:if>
+							    <c:if test="${page.articleCount > 0}">
+								    <c:forEach var="mySpace" items="${mySpace }">
+								       <tr style = "cursor:pointer;" onClick = " location.href='spaceView.do?space_no=${mySpace.space_no }' ">
+										  <td width="10%" style="text-align:center;">
+										  	<div class="dashboard-message-avatar" align="center">
+										  		<img src="${mySpace.space_img1}" style="object-fit: cover; width:50px; height: 50px;">
+										  	</div>
+										  </td>
+								          <td width="30%" style="text-align:center;">${mySpace.space_name}</td>
+								          <td width="10%" style="text-align:center;">${mySpace.space_category}</td>
+								          <td width="30%" >${mySpace.space_addr1} ...</td>
+								          <td width="10%" style="text-align:right;"><fmt:formatNumber value="${mySpace.space_sum}" type="number"/>원</td>
+								          <td width="5%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-primary btn-xs" onClick="return updateSpace(${mySpace.space_no });" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+								          <td width="5%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteSpace(${mySpace.space_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+								       </tr>
+								    </c:forEach>
+								</c:if>
 							    </tbody>
 							  </table>
+							  <c:if test="${page.articleCount > 0}">
+								<div class="pagination">
+									<c:if test="${page.pageNumber > 10}">
+									<a href="mySpaceList.do?pageNum=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
+									</c:if>
+									<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
+										<c:if test="${page.pageNumber == i }">
+										<a href="mySpaceList.do?pageNum=${i}" class="current-page">${i}</a>
+										</c:if>
+										<c:if test="${page.pageNumber != i }">
+										<a href="mySpaceList.do?pageNum=${i}">${i}</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${page.endPage < page.pageCount}">
+									<a href="inquireList.do?pageNum=${page.startPage+10 }" class="nextposts-link">&gt;</a>
+									</c:if>
+								</div>
+							  </c:if>
+							  
 							</div>
 						</div>
 					</div>

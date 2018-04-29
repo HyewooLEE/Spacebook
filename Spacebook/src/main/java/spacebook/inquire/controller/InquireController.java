@@ -39,7 +39,7 @@ public class InquireController {
 		this.inquireService = inquireService;
 	}
 	
-	//상세-1:1문의
+	//나의 1:1문의(일반) 작성
 	@RequestMapping(value="/spaceInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String insertInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum, @RequestParam(value="space_no") int space_no, SpaceInquireDTO inquireDTO, Model model) {
 		SpaceDTO spaceDTO = svs.spaceDetail(space_no);
@@ -49,7 +49,7 @@ public class InquireController {
 		return "redirect:spaceView.do?space_no="+space_no;
 	}
 	
-	//마이페이지-1:1문의 관리 호스트 답변
+	//1:1문의 관리 (호스트) 답변
 	@RequestMapping(value="/submitInquire.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String submitInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum , SpaceInquireDTO inquireDTO, Model model) {
 		inquireService.insertSpaceInquire(inquireDTO);
@@ -57,15 +57,14 @@ public class InquireController {
 		return "redirect:inquireContentHost.do?inq_no="+inquireDTO.getInq_no()+"&pageNum="+pageNum;
 	}
 
-	//나의 1:1문의 리스트
+	//나의 1:1문의 (일반) 리스트
 	@RequestMapping("inquireList.do")
 	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpSession session, SpaceInquireDTO inquireDTO, Model model) {
 		//List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
 		
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum,memVO.getMem_No());
-		System.out.println(memVO.getMem_No());
-		int countInquire = inquireService.countSpaceInquire(memVO.getMem_No());
+		int countInquire = inquireService.myInquireCount(memVO.getMem_No());
 		Pagination page =new Pagination(pageNum, countInquire);
 		
 		model.addAttribute("countInquire", countInquire);
@@ -88,9 +87,26 @@ public class InquireController {
 	
 	//나의 1:1문의 삭제
 	@RequestMapping(value = "deleteInquire.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
-	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,SpaceInquireDTO inquireDTO,Model model)throws Exception {
+	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
 		inquireService.deleteSpaceInquire(inquireDTO);
-		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum, memVO.getMem_No());
+		
+		JSONObject json = new JSONObject();
+		json.put("data", inquireList);
+		json.put("page", pageNum);
+		response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.print(json.toString());
+        
+	}
+	
+	//1:1문의 관리 삭제
+	@RequestMapping(value = "deleteInquireHost.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public void deleteInquire2(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
+		inquireService.deleteSpaceInquire(inquireDTO);
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
 		
 		JSONObject json = new JSONObject();
 		json.put("data", inquireList);
@@ -103,10 +119,15 @@ public class InquireController {
 	
 	//1:1문의 관리(호스트) 리스트
 	@RequestMapping("inquireListHost.do")
-	public String inquireListHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum, SpaceInquireDTO inquireDTO, Model model) {
-		List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
+	public String inquireListHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpSession session, SpaceInquireDTO inquireDTO, Model model) {
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
+		int countInquireHost = inquireService.myInquireHostCount(memVO.getMem_No());
+		Pagination page =new Pagination(pageNum, countInquireHost);
+		model.addAttribute("countInquireHost",countInquireHost);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);
+		model.addAttribute("page", page);
 		
 		return "inquireListHost";
 	}

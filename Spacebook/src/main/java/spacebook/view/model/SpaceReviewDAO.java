@@ -32,4 +32,8 @@ public class SpaceReviewDAO extends SqlSessionDaoSupport {
 		
 		return getSqlSession().selectOne("spaceReview.averageReview", map);
 	}
+	
+	public void deleteReview(int rev_no) {
+		getSqlSession().delete("spaceReview.deleteReview", rev_no);
+	}
 }

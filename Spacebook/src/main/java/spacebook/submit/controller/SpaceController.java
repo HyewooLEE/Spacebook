@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import net.sf.json.JSONObject;
+import spacebook.admin.util.Pagination;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 import spacebook.submit.model.SpaceFacilityDTO;
@@ -212,9 +213,6 @@ public class SpaceController {
 			spaceService.insertSpace(spaceDto, spaceFacilityDto);
 		}
 		
-		model.addAttribute("msg", "등록완료되었습니다. 메인화면으로 이동합니다.");
-		model.addAttribute("url", "main.do");
-		
 		return "submitRedirect";
 
 	}
@@ -241,13 +239,17 @@ public class SpaceController {
 	
 	@RequestMapping("/mySpaceList.do")
 	public String mySpaceList(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpSession session, SpaceDTO spaceDto, Model model) {
-		MemberVO memdto =  (MemberVO)session.getAttribute("login");
-		spaceDto.setMem_no(memdto.getMem_No());
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		//spaceDto.setMem_no(memVO.getMem_No());
 		
-		List<SpaceDTO> mySpace = spaceService.selectMySpace(spaceDto);
-		int countMySpace = spaceService.countMySpace(spaceDto);
+		List<SpaceDTO> mySpace = spaceService.selectMySpace(pageNum,memVO.getMem_No());
+		int countMySpace = spaceService.countMySpace(memVO.getMem_No());
+		Pagination page =new Pagination(pageNum, countMySpace);
+		
 		model.addAttribute("mySpace", mySpace);
 		model.addAttribute("countMySpace", countMySpace);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("page", page);
 		
 		return "mySpaceList";
 	}
@@ -280,9 +282,9 @@ public class SpaceController {
 	@RequestMapping(value = "deleteSpace.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void deleteSpace(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpSession session,HttpServletResponse response,SpaceDTO spaceDto,Model model)throws Exception {
 		spaceService.deleteSpace(spaceDto);
-		MemberVO memdto =  (MemberVO)session.getAttribute("login");
-		spaceDto.setMem_no(memdto.getMem_No());
-		List<SpaceDTO> mySpace = spaceService.selectMySpace(spaceDto);
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		spaceDto.setMem_no(memVO.getMem_No());
+		List<SpaceDTO> mySpace = spaceService.selectMySpace(pageNum,memVO.getMem_No());
 		
 		JSONObject json = new JSONObject();
 		json.put("data", mySpace);

@@ -14,8 +14,7 @@ function deleteInquire(inq_no){
 			swal("삭제 완료되었습니다.");
 			$('#inquireTbody').html('');
 			 for (var i=0; i<result.data.length; i++){
-				 if(${login.mem_No}==result.data[i].mem_no){  
-					 countVal = 1;
+				 /* if(${login.mem_No}==result.data[i].mem_no){    */
 					 if(result.data[i].inq_step==0){
 						 	$('#inquireTbody').append(
 								 '<tr style ="cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+' \' ">'+
@@ -25,7 +24,7 @@ function deleteInquire(inq_no){
 										'<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 								 '</tr>'     
 							 ); 
-					}else if(result.data[i].inq_step!=0){
+					}else if(result.data[i].inq_step>0){
 					 	$('#inquireTbody').append(
 							 '<tr style ="cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+' \' ">'+
 									'<td width="30%" style="text-align:center;">'+result.data[i].spaceDTO.space_name+'</td>'+
@@ -35,15 +34,13 @@ function deleteInquire(inq_no){
 							 '</tr>'     
 						 );
 					}
-				}else if (i == result.data.length -1){
-						if(countVal != 1){
-							$('#inquireTbody').append(
-								'<tr>'+
-						        	'<td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>'+
-						    	'</tr>'
-							);
-						}
-				}
+					 /*} else if (i == result.data.length -1){
+						$('#inquireTbody').append(
+							'<tr>'+
+					        	'<td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>'+
+					    	'</tr>'
+						);
+				}  */
 				
 			 }
 		}

@@ -16,13 +16,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_NAME" property="space_name"/>
 	    <result column="SPACE_CATEGORY" property="space_category"/>
 	    <result column="SPACE_INTRO1" property="space_intro1"/>
+	    <result column="SPACE_INTRO2" property="space_intro2"/>
 	    <result column="SPACE_IMG1" property="space_img1"/>
+	    <result column="SPACE_IMG2" property="space_img2"/>
+	    <result column="SPACE_IMG3" property="space_img3"/>
+	    <result column="SPACE_IMG4" property="space_img4"/>
+	    <result column="SPACE_IMG5" property="space_img5"/>
+	    <result column="SPACE_IMG6" property="space_img6"/>
+	    <result column="SPACE_IMG7" property="space_img7"/>
 	    <result column="SPACE_OPEN" property="space_open"/>
 	    <result column="SPACE_CLOSE" property="space_close"/>
+	    <result column="SPACE_PEO_COUNT" property="space_peo_count"/>
 	    <result column="SPACE_SITE" property="space_site"/>
 	    <result column="SPACE_PHONE" property="space_phone"/>
 	    <result column="SPACE_ADDR1" property="space_addr1"/>
 	    <result column="SPACE_ADDR2" property="space_addr2"/>
+	    <result column="SPACE_CAU" property="space_cau"/>
 	    <result column="SPACE_SUM" property="space_sum"/>
 	    <result column="SPACE_BANK" property="space_bank"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
@@ -75,8 +84,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from space NATURAL JOIN map
 	</select>
 	
-	<select id="selectMySpace" resultType="spacebook.submit.model.SpaceDTO" >
-		select * from space where mem_no = #{mem_no}
+	<select id="selectMySpace"  parameterType="java.util.Map" resultType="spacebook.submit.model.SpaceDTO" >
+		<!-- select * from space where mem_no = #{mem_no} -->
+		select * from
+		(select rownum r,space_no,mem_no,space_name,space_category,space_addr1,space_addr2,space_intro1,space_intro2,space_tag,fac_no,space_site,space_img1,space_img2,space_img3,
+		    space_img4,space_img5,space_img6,space_img7,space_phone,space_cau,space_peo_count,space_open,space_close,space_sum,space_bank,space_account,space_depositor 
+			from
+		    (select space_no,mem_no,space_name,space_category,space_addr1,space_addr2,space_intro1,space_intro2,space_tag,fac_no,space_site,space_img1,space_img2,space_img3,
+		    space_img4,space_img5,space_img6,space_img7,space_phone,space_cau,space_peo_count,space_open,space_close,space_sum,space_bank,space_account,space_depositor
+		    from space where mem_no = #{mem_no} order by space_no desc ))
+		where  r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10																
 	</select>
 	
 	<select id="countMySpace" resultType="int" parameterType="spacebook.submit.model.SpaceDTO">
@@ -120,8 +137,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			map_longitude = #{map_longitude}
 			WHERE SPACE_NO=#{space_no}
 	</update>
-	
-	
 	
 	<delete id="deleteSpace" parameterType="spacebook.submit.model.SpaceDTO">
 		delete from space where space_no = #{space_no}

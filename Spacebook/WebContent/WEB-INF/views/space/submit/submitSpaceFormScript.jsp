@@ -189,7 +189,16 @@ function spaceSubmit(){
 		swal("결제정보를 입력해주세요.");
 		return false;
 	}
-	
+	else if(map_latitude == "" || map_longitude == "") {
+		swal({
+			  title: "map정보를 불러오는데 실패했습니다.",
+			  text: "다시 시도해주세요.",
+			  icon: "warning",
+			  buttons: "닫기",
+			  dangerMode: true,
+		});
+		return false;
+	}
 }
 </script>
 

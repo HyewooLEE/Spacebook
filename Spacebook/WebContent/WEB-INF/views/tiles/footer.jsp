@@ -12,7 +12,7 @@
 					<p>조금이라도 궁금하시거나 모르는 부분이 있으시면 바로 문의해주세요!</p>
 				</div>
 				<div class="col-md-4">
-					<a href="contacts.html" class="join-wrap-btn">문의 하기 <i class="fa fa-envelope-o"></i></a>
+					<a href="javascript:;" onclick="openContacts();" class="join-wrap-btn">문의 하기 <i class="fa fa-envelope-o"></i></a>
 				</div>
 			</div>
 		</div>
@@ -191,3 +191,7 @@
 <!--register form end -->
 <a class="to-top"><i class="fa fa-angle-up" style="margin-top: 10px;"></i></a>
 <!-- Main end -->
+<!-- include modal -->
+<jsp:include page="contactModal.jsp" flush="false" />
+<!-- javascript -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/tiles/contacts.js" ></script>

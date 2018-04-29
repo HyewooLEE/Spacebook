@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_INTRO1" property="space_intro1"/>
 	    <result column="SPACE_INTRO2" property="space_intro2"/>
 	    <result column="SPACE_SITE" property="space_site"/>
+	    <result column="SPACE_PEO_COUNT" property="space_peo_count"/>
 	    <result column="SPACE_CAU" property="space_cau"/>
 	    <result column="SPACE_OPEN" property="space_open"/>
 	    <result column="SPACE_CLOSE" property="space_close"/>

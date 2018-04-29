@@ -43,14 +43,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    order by inq_ref DESC, inq_step ASC 
 	</select>
 	
-	<select id="countInquire"  resultType="int" parameterType="int">
-		select count(*)  from 
-	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO,s.MEM_NO HOST
-	            from INQUIRE i inner join SPACE s
-	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
-	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC )natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)
-	</select>
-	
 	<select id="selectInqContent" resultMap="spaceInquireDTO" parameterType="map" resultType="spacebook.inquire.model.SpaceInquireDTO">
 		select *
         from 
@@ -64,19 +56,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="myInquireList" resultMap="spaceInquireDTO"  parameterType="java.util.Map" resultType="spacebook.inquire.model.SpaceInquireDTO">
-select * from
-(select rownum r, INQ_NO,INQ_TITLE,INQ_NOTE,INQ_WRITEDATE,INQ_REF,INQ_STEP,INQ_LEVEL,SPACE_NO,SPACE_NAME,WRITER_NAME,MEM_NO, HOST
-	    from(select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO,s.MEM_NO HOST
-	            from INQUIRE i inner join SPACE s on i.SPACE_NO = s.SPACE_NO inner join MEMBER m on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC ) natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)) where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
+		select * from
+			(select rownum r, INQ_NO,INQ_TITLE,INQ_NOTE,INQ_WRITEDATE,INQ_REF,INQ_STEP,INQ_LEVEL,SPACE_NO,SPACE_NAME,WRITER_NAME,MEM_NO, HOST	   		
+	   		 from(select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO,s.MEM_NO HOST
+	            from INQUIRE i inner join SPACE s on i.SPACE_NO = s.SPACE_NO inner join MEMBER m on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC ) natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)) 
+	            where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
 	</select>
 	
-	<select id="myInquireHostList" resultMap="spaceInquireDTO">
-		 select *
-	    from 
+	<select id="myInquireCount"  resultType="int" parameterType="int">
+		select count(*)  from 
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO,s.MEM_NO HOST
+	            from INQUIRE i inner join SPACE s
+	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC )natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)
+	</select>
+	
+	<select id="myInquireListHost" resultMap="spaceInquireDTO" parameterType="java.util.Map" resultType="spacebook.inquire.model.SpaceInquireDTO">
+		select * from                    
+		(select rownum r, INQ_NO,INQ_TITLE,INQ_NOTE,INQ_WRITEDATE,INQ_REF,INQ_STEP,INQ_LEVEL,SPACE_NO,SPACE_NAME,MEM_NAME,MEM_NO, HOST	from   	     
+		(select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
+	            from INQUIRE i inner join SPACE s
+	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC)natural join (select space_no from space where mem_no= #{mem_no}))
+	                    where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10	
+	</select>
+	
+	<select id="myInquireHostCount" resultType="int" parameterType="int">
+		select count(*) from 
 	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
 	            from INQUIRE i inner join SPACE s
 	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
 	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC )natural join (select space_no from space where mem_no= #{mem_no})
+		
 	</select>
 	
 	<update id="modifyInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
