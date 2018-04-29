@@ -289,10 +289,10 @@
 												</div>
 												<div class="col-md-6">
 													<label><i class="fa fa-calendar-check-o"></i></label>
-													<input type="text" name="reserve_endDate" id="reserve_endDate" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
+													<input type="text" name="reserve_endDate" id="reserve_endDate" class="datepicker" data-large-mode="true" data-large-default="true" size="10" data-format="Y-m-d" value="" />
 												</div>
 											</div>
-											<textarea cols="40" rows="3" id="reserve_message" name="reserve_message" placeholder="Additional Information"></textarea>
+											<textarea cols="40" rows="3" id="reserve_message" name="reserve_message" placeholder="호스트에게 남길 말을 작성해주세요."></textarea>
 										</fieldset>
 										<button type="button" class="btn  big-btn color-bg flat-btn modal-open2" onclick="checkReserve()">
 											예약 하기<i class="fa fa-angle-right"></i>

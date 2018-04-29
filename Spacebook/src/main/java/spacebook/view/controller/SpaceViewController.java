@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,9 @@ import spacebook.view.service.SpaceViewService;
 
 @Controller
 public class SpaceViewController {
+
+	@Autowired 
+	JavaMailSender sender; 
 
 	@Autowired
 	SpaceViewService svs;
