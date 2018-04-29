@@ -296,6 +296,9 @@ public class SpaceController {
 	//search
 	@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
+		List result = new ArrayList();
+		result.add(0, "검색결과");
+		result.add(1, search);
 		
 		String contextPath = session.getServletContext().getRealPath("/");
 		if(spaceService.searchSpace(spaceDto, search).size() != 0) {
@@ -308,6 +311,7 @@ public class SpaceController {
 		
 		model.addAttribute("facility", facility);
 		model.addAttribute("realPath", contextPath);
+		model.addAttribute("result", result);
 		
 		return "listSpace";
 	}
@@ -338,6 +342,59 @@ public class SpaceController {
 		PrintWriter out = response.getWriter();
 		out.print(jso.toString());
 	}
+	
+	@RequestMapping(value = "/location.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public void location(HttpServletResponse response)throws Exception{
+		int length = 1;
+		String startPointLon ="37.123";
+		String startPointLat ="127.123";
+		
+		List<SpaceDTO> spacedto = spaceService.selectMapList();
+		List<SpaceDTO> spaceAll = spaceService.selectSpaceAll();
+		List<SpaceDTO> locationSpace = new ArrayList();
+		
+		for(int i =0; i < spacedto.size(); i++) {
+			double distance = getDistance(startPointLon,startPointLat,spacedto.get(i).getMap_longitude(),spacedto.get(i).getMap_latitude());
+			if(distance <= length) {
+				locationSpace = spacedto;
+			}
+		}
+		
+		
+		JSONObject jso = new JSONObject();  //json형태 -> 데이터를 text형태로 바꿔 가변게 만듬
+		jso.put("data", locationSpace);
+		
+		response.setContentType("text/html;charset=utf-8"); 
+		PrintWriter out = response.getWriter();
+		out.print(jso.toString());
+	}
+	
+	
+	private static double d2r = Math.PI / 180;
+
+    public static double getDistance(String startPointLon, String startPointLat, String endPointLon, String endPointLat) throws Exception {
+    double dStartPointLon = Double.parseDouble(startPointLon);
+    double dStartPointLat = Double.parseDouble(startPointLat);
+    double dEndPointLon = Double.parseDouble(endPointLon);
+    double dEndPointLat = Double.parseDouble(endPointLat);
+    
+
+        double dLon = (dEndPointLon - dStartPointLon) * d2r;
+        double dLat = (dEndPointLat - dStartPointLat) * d2r;
+
+        double a = Math.pow(Math.sin(dLat / 2.0), 2)
+
+                       + Math.cos(dStartPointLat * d2r)
+
+                       * Math.cos(dEndPointLat * d2r)
+
+                       * Math.pow(Math.sin(dLon / 2.0), 2);
+
+        double c = Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * 2;
+        double distance = c * 6378;
+
+        return distance;
+    }
 	
 	
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import spacebook.login.model.MemberVO;
 import spacebook.main.model.MainDAO;
 import spacebook.main.model.MainDTO;
 import spacebook.submit.model.SpaceDTO;
@@ -29,9 +30,9 @@ public class MainServiceImpl implements MainService{
 		return mainDao.reviewList();
 	}
 
-	/*@Override
-	public List<SpaceDTO> countSpaceCategory() {
-		return mainDao.countSpaceCategory();
-	}*/
+	@Override
+	public List<SpaceDTO> recommendSpace(MemberVO vo) {
+		return mainDao.recommendSpace(vo);
+	}
 
 }
