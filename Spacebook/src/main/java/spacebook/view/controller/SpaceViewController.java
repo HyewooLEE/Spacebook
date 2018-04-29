@@ -53,7 +53,7 @@ public class SpaceViewController {
 	public String view(@RequestParam("space_no") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview, HttpSession session, Model model) {
 		MemberVO member = (MemberVO)session.getAttribute("login");
 		SpaceDTO dto = svs.spaceDetail(space_no);
-		System.out.println(dto.getSpace_tag());
+		
 		String space_tag = dto.getSpace_tag().trim();
 		StringTokenizer stst = new StringTokenizer(space_tag, ",");
 		ArrayList<String> tag_list = new ArrayList<String>();

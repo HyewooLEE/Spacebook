@@ -70,6 +70,15 @@ select * from
 	            from INQUIRE i inner join SPACE s on i.SPACE_NO = s.SPACE_NO inner join MEMBER m on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC ) natural join (select inq_ref from inquire where mem_no = #{mem_no} and inq_step = 0)) where r <![CDATA[>=]]> (#{pageNumber}-1)*10+1  and r <![CDATA[<=]]>  #{pageNumber}*10
 	</select>
 	
+	<select id="myInquireHostList" resultMap="spaceInquireDTO">
+		 select *
+	    from 
+	        (select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME,m.MEM_NO,s.MEM_NO HOST
+	            from INQUIRE i inner join SPACE s
+	                    on i.SPACE_NO = s.SPACE_NO inner join MEMBER m
+	                    on i.mem_no =m.mem_no order by inq_ref DESC, inq_step ASC )natural join (select space_no from space where mem_no= #{mem_no})
+	</select>
+	
 	<update id="modifyInquire" parameterType="spacebook.inquire.model.SpaceInquireDTO">
 		update inquire set inq_title = #{inq_title}, inq_note = #{inq_note} where inq_no = #{inq_no}
 	</update>
