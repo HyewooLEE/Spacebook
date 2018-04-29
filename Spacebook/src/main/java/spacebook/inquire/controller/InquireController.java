@@ -64,7 +64,6 @@ public class InquireController {
 		
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum,memVO.getMem_No());
-		System.out.println(memVO.getMem_No());
 		int countInquire = inquireService.myInquireCount(memVO.getMem_No());
 		Pagination page =new Pagination(pageNum, countInquire);
 		
@@ -108,7 +107,6 @@ public class InquireController {
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
-		System.out.println(memVO.getMem_No());
 		int countInquireHost = inquireService.myInquireHostCount(memVO.getMem_No());
 		Pagination page =new Pagination(pageNum, countInquireHost);
 		

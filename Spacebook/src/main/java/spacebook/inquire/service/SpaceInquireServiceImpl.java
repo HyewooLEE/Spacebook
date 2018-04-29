@@ -96,14 +96,9 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	
 	@Override
 	public List<SpaceInquireDTO> myInquireListHost(int pageNum, int mem_no) {
-		/*Map<String ,Integer> map = new HashMap<String, Integer>();
-		map.put("start", (pageNum - 1) * 10 + 1);
-		map.put("end", pageNum*10);*/
-		
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("pageNumber", pageNum);
 		map.put("mem_no", mem_no);
-		System.out.println("DAO전:::"+pageNum);
 		return inquireDAO.myInquireListHost(map);
 	}
 	
