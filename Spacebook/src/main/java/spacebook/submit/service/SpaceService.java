@@ -15,9 +15,9 @@ public interface SpaceService {
 
 	public List<SpaceDTO> selectMapList();
 	
-	public List<SpaceDTO> selectMySpace(SpaceDTO spaceDto);
+	public List<SpaceDTO> selectMySpace(int pageNum, int mem_no);
 	
-	public int countMySpace(SpaceDTO spaceDto);
+	public int countMySpace(int mem_no);
 	
 	public void updateSpace(SpaceDTO spaceDto);
 	

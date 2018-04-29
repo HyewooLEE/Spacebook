@@ -7,11 +7,14 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script  type="text/javascript">
 $(document).ready(function(){
- 	var message = '${msg}';
-	var returnUrl = '${url}';
+	swal("성공","공간등록이 완료되었습니다!","success",{
+		  buttons: "확인",
+	}).then(function(){
+		document.location.href = 'main.do';
+    });
 	
-	swal(message);
-	document.location.href = returnUrl; 
+	return false;
+
 });
 </script>
 </body>

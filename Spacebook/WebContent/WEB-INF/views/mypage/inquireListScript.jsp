@@ -24,7 +24,7 @@ function deleteInquire(inq_no){
 										'<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 								 '</tr>'     
 							 ); 
-					}else if(result.data[i].inq_step!=0){
+					}else if(result.data[i].inq_step>0){
 					 	$('#inquireTbody').append(
 							 '<tr style ="cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+' \' ">'+
 									'<td width="30%" style="text-align:center;">'+result.data[i].spaceDTO.space_name+'</td>'+

@@ -1,5 +1,6 @@
 package spacebook.submit.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +42,16 @@ public class SpaceServiceImpl implements SpaceService{
 	}
 	
 	@Override
-	public List<SpaceDTO> selectMySpace(SpaceDTO spaceDto) {
-		return spaceDao.selectMySpace(spaceDto);
+	public List<SpaceDTO> selectMySpace(int pageNum, int mem_no) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("pageNumber", pageNum);
+		map.put("mem_no", mem_no);
+		return spaceDao.selectMySpace(map);
 	}
 	
 	@Override
-	public int countMySpace(SpaceDTO spaceDto) {
-		return spaceDao.countMySpace(spaceDto);
+	public int countMySpace(int mem_no) {
+		return spaceDao.countMySpace(mem_no);
 	}
 	
 	@Override

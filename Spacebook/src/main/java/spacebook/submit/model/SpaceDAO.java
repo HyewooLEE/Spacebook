@@ -28,12 +28,12 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("space.spaceMap");
 	}
 	
-	public List<SpaceDTO> selectMySpace(SpaceDTO spaceDto){
-		return getSqlSession().selectList("space.selectMySpace",spaceDto);
+	public List<SpaceDTO> selectMySpace(HashMap<String, Integer> map){
+		return getSqlSession().selectList("space.selectMySpace",map);
 	}
 	
-	public int countMySpace(SpaceDTO spaceDto) {
-		return getSqlSession().selectOne("space.countMySpace",spaceDto);
+	public int countMySpace(int mem_no) {
+		return getSqlSession().selectOne("space.countMySpace",mem_no);
 	}
 	
 	public void updateSpace(SpaceDTO spaceDto) {

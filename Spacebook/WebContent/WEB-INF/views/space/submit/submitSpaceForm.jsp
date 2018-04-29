@@ -32,8 +32,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트</a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>나의 찜공간</a></li>
+                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>나의 예약리스트</a></li>
+                                        <li><a href="favoriteList.do"> <i class="fa fa-calendar-check-o"></i>나의 찜공간</a></li>
                                         <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
@@ -43,7 +43,7 @@
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
                                         <li><a href="mySpaceList.do" class="user-profile-act"><i class="fa fa-th-list"></i>나의 공간 </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
+                                        <li><a href="rentList.do"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                     </ul>
                                 </div>

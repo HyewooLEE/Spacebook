@@ -76,11 +76,11 @@
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
 									<h4>1:1문의 관리</h4>
 								</div>
-							</div>
-							<div align="right">
-								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
-									목록으로<i class="fa fa-angle-left"></i>
-								</a>
+								<div align="right">
+									<button class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
+										목록으로<i class="fa fa-angle-left"></i>
+									</button>
+								</div>
 							</div>
 							<div>
 							  <table class="table table-bordred table-striped">
