@@ -14,8 +14,7 @@ function deleteInquire(inq_no){
 			swal("삭제 완료되었습니다.");
 			$('#inquireTbody').html('');
 			 for (var i=0; i<result.data.length; i++){
-				 if(${login.mem_No}==result.data[i].mem_no){  
-					 countVal = 1;
+				 /* if(${login.mem_No}==result.data[i].mem_no){    */
 					 if(result.data[i].inq_step==0){
 						 	$('#inquireTbody').append(
 								 '<tr style ="cursor:pointer;" onClick =" location.href=\'inquireContent.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+' \' ">'+
@@ -35,15 +34,13 @@ function deleteInquire(inq_no){
 							 '</tr>'     
 						 );
 					}
-				}else if (i == result.data.length -1){
-						if(countVal != 1){
-							$('#inquireTbody').append(
-								'<tr>'+
-						        	'<td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>'+
-						    	'</tr>'
-							);
-						}
-				}
+					 /*} else if (i == result.data.length -1){
+						$('#inquireTbody').append(
+							'<tr>'+
+					        	'<td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>'+
+					    	'</tr>'
+						);
+				}  */
 				
 			 }
 		}

@@ -90,6 +90,22 @@ public class InquireController {
 	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
 		inquireService.deleteSpaceInquire(inquireDTO);
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
+		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum, memVO.getMem_No());
+		
+		JSONObject json = new JSONObject();
+		json.put("data", inquireList);
+		json.put("page", pageNum);
+		response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.print(json.toString());
+        
+	}
+	
+	//1:1문의 관리 삭제
+	@RequestMapping(value = "deleteInquireHost.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public void deleteInquire2(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
+		inquireService.deleteSpaceInquire(inquireDTO);
+		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
 		
 		JSONObject json = new JSONObject();
@@ -105,11 +121,9 @@ public class InquireController {
 	@RequestMapping("inquireListHost.do")
 	public String inquireListHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpSession session, SpaceInquireDTO inquireDTO, Model model) {
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
-		
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
 		int countInquireHost = inquireService.myInquireHostCount(memVO.getMem_No());
 		Pagination page =new Pagination(pageNum, countInquireHost);
-		
 		model.addAttribute("countInquireHost",countInquireHost);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);

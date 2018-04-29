@@ -82,53 +82,43 @@
 							      </tr>
 							    </thead>
 							    <tbody id="inquireTbody">
-								    <c:if test="${countInquire==0 }">
+							    	<c:if test="${page.articleCount == 0}">
 								    	<tr>
 									        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
 									    </tr>
 								    </c:if>
-								    <%-- 호스트 : ${inquireList.spaceDTO.mem_no}  
-									    회원 : ${inquireList.memberVO.mem_No} 
-									    작성자 : ${inquireList.mem_no}  --%>
-								    <c:forEach var="inquireList" items="${inquireList }" varStatus="status">
-									    <c:set var="countVal" property="countVal" value="1"/>
-										      <tr style ="cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
-										        <td width="30%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
-										        <c:if test="${inquireList.inq_step == 0 }">
-										        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
-										        </c:if>
-										        <c:if test="${inquireList.inq_step != 0 }">
-										        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>${inquireList.inq_title }</a></td>
-										        </c:if>
-										        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
-										      	<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
-										      </tr>
-									    
-									    <c:if test="${status.last}" >
-									    	<c:if test="${countVal != 1}">
-											    <tr>
-											        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
-											    </tr>
-										    </c:if>
-									    </c:if>
+									<c:if test="${page.articleCount > 0}">
+								    <c:forEach var="inquireList" items="${inquireList }">
+									      <tr style ="cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
+									        <td width="30%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
+									        <c:if test="${inquireList.inq_step == 0 }">
+									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
+									        </c:if>
+									        <c:if test="${inquireList.inq_step != 0 }">
+									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>${inquireList.inq_title }</a></td>
+									        </c:if>
+									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
+									      	<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+									      </tr>
 								    </c:forEach>
+								   	</c:if>
 							    </tbody>
 							  </table>
 							  <c:if test="${page.articleCount > 0}">
 								<div class="pagination">
 									<c:if test="${page.pageNumber > 10}">
-									<a href="inquireContent.do?pageNumber=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
+									<a href="inquireList.do?pageNum=${page.startPage-10 }" class="prevposts-link">&lt;</a> 
 									</c:if>
 									<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
 										<c:if test="${page.pageNumber == i }">
-										<a href="inquireContent.do?pageNumber=${i}" class="current-page">${i}</a>
+										<a href="inquireList.do?pageNum=${i}" class="current-page">${i}</a>
 										</c:if>
 										<c:if test="${page.pageNumber != i }">
-										<a href="inquireContent.do?pageNumber=${i}">${i}</a>
+										<a href="inquireList.do?pageNum=${i}">${i}</a>
 										</c:if>
 									</c:forEach>
 									<c:if test="${page.endPage < page.pageCount}">
-									<a href="inquireContent.do?pageNumber=${page.startPage+10 }" class="nextposts-link">&gt;</a>
+									<a href="inquireList.do?pageNum=${page.startPage+10 }" class="nextposts-link">&gt;</a>
 									</c:if>
 								</div>
 							</c:if>

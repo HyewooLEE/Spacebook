@@ -132,6 +132,7 @@
 		<definition name="inquireListHost" extends="base_layout">
 			<put-attribute name="title" value="1:1문의 관리 (호스트)" />
 			<put-attribute name="body" value="/WEB-INF/views/mypage/inquireListHost.jsp" />
+			<put-attribute name="script" value="/WEB-INF/views/mypage/inquireListHostScript.jsp" />
 		</definition>
 		<definition name="inquireContentHost" extends="base_layout">
 			<put-attribute name="title" value="1:1문의 관리 (호스트)"  />
