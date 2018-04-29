@@ -43,8 +43,6 @@ function addAddressToMap(response) {
 	// 위도, 경도 입력
 	 document.getElementById('map_latitude').value = place.Point.coordinates[1];
 	 document.getElementById('map_longitude').value =  place.Point.coordinates[0];
-		alert('test');
-		alert(place.Point.coordinates[1]);
 }
 
 
@@ -99,7 +97,6 @@ function findaddress() {
 
 // 주소 가지고 위도 경도 가져오기
 function findMapAdd(address) {
-	alert('test2');
 	//initialize();
 	geocoder.getLocations(address, addAddressToMap);
 }
@@ -142,8 +139,6 @@ function findMapAdd(address) {
             title: 'Our Location'
         });
         var zoomControlDiv = document.createElement('div');
-        alert("test1");
-        alert(zoomControlDiv)
         var zoomControl = new ZoomControl(zoomControlDiv, single_map);
        /* function ZoomControl(controlDiv, single_map) {
             single_map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);

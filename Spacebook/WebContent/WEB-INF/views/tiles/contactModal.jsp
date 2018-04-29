@@ -15,14 +15,15 @@
                      	<form class="add-comment custom-form" action="contacts.do" method="get" id="contacts">
                         <div class="row">
 	                        <div class="col-md-6">
-	                       		<input type="text" name="con_senderName" id="con_senderName" placeholder="보내실분 성함을 입력해주세요.">
+	                       		<input type="text" name="con_senderName" id="con_senderName" placeholder="보내실분 성함">
 	                       	</div>	
 	                       	<div class="col-md-6">
-	                       		<input type="text" name="con_senderEmail" id="con_senderEmail" placeholder="보내실분 이메일 주소를 입력해주세요.">
+	                       		<input type="text" name="con_senderEmail" id="con_senderEmail" placeholder="보내실분 이메일 주소">
 	                       	</div>	
-							<input type="text" name="con_title" id="con_title" placeholder="제목을 입력주세요.">
-                        	<textarea cols="40" rows="3" name="con_note" id="con_note" placeholder="문의 사항을 작성해주세요."></textarea>
-	                    </div>
+	                     </div>
+						<input type="text" name="con_title" id="con_title" placeholder="제목을 입력주세요.">
+                       	<textarea cols="40" rows="3" name="con_note" id="con_note" placeholder="문의 사항을 작성해주세요."></textarea>
+	                    
                         </form>
                    		<div class="row" style="padding-top: 20px">
                    			<button class="btn color-bg flat-btn" onclick="checkContacts();">등록 <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
