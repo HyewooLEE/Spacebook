@@ -1,7 +1,9 @@
 function checkContacts() {
 	con_title = document.getElementById("con_title").value;
 	con_note = document.getElementById("con_note").value;
-	    
+	con_senderName = document.getElementById("con_senderName").value;
+	con_senderEmail = document.getElementById("con_senderEmail").value;
+	
 	if(con_title == "") {
 		swal("문의 제목을 입력해주세요.");
 		return;
@@ -10,13 +12,24 @@ function checkContacts() {
 		swal("문의 할 내용을 입력해주세요.");
 		return;
 	}
+	if(con_senderName == "") {
+		swal("발송자 성함을 입력해주세요.");
+		return;
+	}
+	if(con_senderEmail == "") {
+		swal("발송자의 이메일을 입력해주세요.");
+		return;
+	}
+	
 	// 메일 발송 처리
 	$.ajax({
 		type: "GET",
 		url: "/Spacebook/contacts.do",
 		data: {
 			con_title: con_title,
-			con_note : con_note
+			con_note : con_note,
+			con_senderName : con_senderName,
+			con_senderEmail : con_senderEmail
 		},
 		cache: false,
 		dataType:"json",
