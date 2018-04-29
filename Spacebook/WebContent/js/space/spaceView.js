@@ -237,6 +237,8 @@ function preReview(totalReview, space_no) {
 
 function favorite(space_no, mem_no) {
 	var params = "space_no="+ space_no +"&mem_no="+ mem_no;
+	alert("space_no::"+ space_no);
+	alert("mem_no:::"+ mem_no);
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/selectFavorite.do",

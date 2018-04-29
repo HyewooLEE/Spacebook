@@ -15,10 +15,18 @@
                      	<form class="add-comment custom-form" action="contacts.do" method="get" id="contacts">
                         <div class="row">
 	                        <div class="col-md-6">
+<<<<<<< HEAD
 	                       		<input type="text" name="con_senderName" id="con_senderName" placeholder="보내실분 성함">
+=======
+	                       		<input type="text" name="con_senderName" id="con_senderName" value="${login.mem_Name}" placeholder="보내실분 성함을 입력해주세요.">
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 	                       	</div>	
 	                       	<div class="col-md-6">
+<<<<<<< HEAD
 	                       		<input type="text" name="con_senderEmail" id="con_senderEmail" placeholder="보내실분 이메일 주소">
+=======
+	                       		<input type="text" name="con_senderEmail" id="con_senderEmail" value="${login.mem_Id}" placeholder="보내실분 이메일 주소를 입력해주세요.">
+>>>>>>> branch 'master' of https://github.com/HyewooLEE/Spacebook
 	                       	</div>	
 	                     </div>
 						<input type="text" name="con_title" id="con_title" placeholder="제목을 입력주세요.">

@@ -171,7 +171,7 @@
 								</c:forEach>
 								<!--reviews-comments-item end-->
 							</div>
-								<c:if test="${countReview > 0}">
+								<c:if test="${countReview > 3}">
 									<a href="javascript:;" onclick="preReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/left_arrow.png" /></a>
 										&nbsp;&nbsp;
 									<a href="javascript:;" onclick="nextReview(${countReview}, ${spaceDetail.space_no})"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/view/right_arrow.png" /></a>
@@ -209,20 +209,20 @@
 										<div class="row">
 											<div class="col-md-6">
 												<label><i class="fa fa-user-o"></i></label>
-												<input type="text" name="mem_name" id="mem_name" placeholder="Your Name *" value="${login.mem_Name}" />
+												<input type="text" name="mem_name" id="mem_name" value="${login.mem_Name}" readonly="readonly" />
 											</div>
 											<div class="col-md-6">
 												<label><i class="fa fa-envelope-o"></i> </label><c:set var="str1" value="${login.mem_Id }"/>
 													<c:set var="str2" value="@"/>
 						                            <c:if test="${fn:contains(str1, str2)}">
-						                            <input type="text" name="mem_email" id="mem_email" placeholder="Email Address*" value="${login.mem_Id}" />
+						                            <input type="text" name="mem_email" id="mem_email" value="${login.mem_Id}" readonly="readonly"/>
 						                            </c:if>
 						                             <c:if test="${!fn:contains(str1, str2)}">
-						                            <input type="text" name="mem_email" id="mem_email" placeholder="Email Address*" value="${login.mem_KakaoEmail}" />
+						                            <input type="text" name="mem_email" id="mem_email" value="${login.mem_KakaoEmail}" readonly="readonly"/>
 						                            </c:if>
 											</div>
 										</div>
-										<textarea cols="40" rows="3" name="rev_note" id="rev_note" placeholder="Your Review:"></textarea>
+										<textarea cols="40" rows="3" name="rev_note" id="rev_note" placeholder="리뷰를 작성해주세요.."></textarea>
 									</fieldset>
 									</form>
 									<button class="btn  big-btn  color-bg flat-btn" onclick="reviewSubmit()" style="margin-top: 10px">
