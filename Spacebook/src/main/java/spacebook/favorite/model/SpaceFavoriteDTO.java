@@ -4,6 +4,7 @@ import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
 
 public class SpaceFavoriteDTO {
+	private int favorite;
 	private int fav_no;
 	private String fav_div;
 	private int mem_no;
@@ -14,6 +15,14 @@ public class SpaceFavoriteDTO {
 	private SpaceDTO spaceDTO;
 	private MemberVO memberVO;
 	
+	
+	
+	public int getFavorite() {
+		return favorite;
+	}
+	public void setFavorite(int favorite) {
+		this.favorite = favorite;
+	}
 	public int getReview_avg() {
 		return review_avg;
 	}

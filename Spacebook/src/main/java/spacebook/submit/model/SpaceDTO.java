@@ -2,6 +2,7 @@ package spacebook.submit.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import spacebook.favorite.model.SpaceFavoriteDTO;
 import spacebook.login.model.MemberVO;
 import spacebook.view.model.SpaceReviewDTO;
 
@@ -48,11 +49,17 @@ public class SpaceDTO {
 	private String map_latitude;
 	private String map_longitude;
 	
+	private SpaceFavoriteDTO spaceFavoriteDTO;
 	private SpaceFacilityDTO spaceFacilityDTO;
 	private SpaceReviewDTO spaceReviewDTO;
 	private MemberVO memberVO;
 	
-
+	public SpaceFavoriteDTO getSpaceFavoriteDTO() {
+		return spaceFavoriteDTO;
+	}
+	public void setSpaceFavoriteDTO(SpaceFavoriteDTO spaceFavoriteDTO) {
+		this.spaceFavoriteDTO = spaceFavoriteDTO;
+	}
 	public SpaceFacilityDTO getSpaceFacilityDTO() {
 		return spaceFacilityDTO;
 	}

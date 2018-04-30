@@ -73,11 +73,17 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		}
 		map.put("SpaceDTO", spaceDto);
 		List<SpaceDTO> test = getSqlSession().selectList("space.search", map);
-		
 		return getSqlSession().selectList("space.search", map);
 	}
 	
 	public List<SpaceDTO> etcSpaceList(int mem_no) {
 		return getSqlSession().selectList("space.etcSpace", mem_no);
+	}
+	
+	public SpaceDTO selectSpace(int space_no){
+		Map map = new HashMap<String, Integer>();
+		map.put("space_no", space_no);
+		
+		return getSqlSession().selectOne("space.selectSpace",map);
 	}
 }

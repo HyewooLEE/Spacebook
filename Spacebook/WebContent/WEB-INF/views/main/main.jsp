@@ -25,7 +25,7 @@
 						<input type="text" placeholder="어떤 공간을 찾으시나요?" value="" id="search" name="search"/>
 					</div>
 					<div class="main-search-input-item location">
-						<input type="text" placeholder="위치" value="" id="space_addr1" name="space_addr1"/>
+						<input type="text" placeholder="위치" value=""  name="space_addr1"/>
 						<a href="#"><i class="fa fa-dot-circle-o"></i></a>
 					</div>
 					<div class="main-search-input-item">
@@ -193,38 +193,39 @@
 		<!--listing-carousel-->
 		<div class="listing-carousel  fl-wrap ">
 			<!--slick-slide-item-->
+			<c:forEach var="recommend" items="${recommend }" begin="0" end="5">
 			<div class="slick-slide-item">
 				<!-- listing-item -->
 				<div class="listing-item">
 					<article class="geodir-category-listing fl-wrap">
 						<div class="geodir-category-img">
 							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
+								src="${recommend.space_img1}"
 								alt="">
 							<div class="overlay"></div>
 							<div class="list-post-counter">
-								<span>4</span><i class="fa fa-heart"></i>
+								<span>${recommend.spaceFavoriteDTO.favorite }</span><i class="fa fa-heart"></i>
 							</div>
 						</div>
 						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Retail</a>
+							<a class="listing-geodir-category" href="spaceView.do?space_no=${recommend.space_no }">${recommend.space_category}</a>
 							<div class="listing-avatar">
-								<a href="author-single.html"><img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+								<a href="spaceView.do?space_no=${recommend.space_no }"><img src="${recommend.memberVO.mem_Img}"
 									alt=""></a> <span class="avatar-tooltip">Added By <strong>Lisa
 										Smith</strong></span>
 							</div>
 							<h3>
-								<a href="listing-single.html">Event in City Mol</a>
+								<a href="spaceView.do?space_no=${recommend.space_no }">${recommend.space_name}</a>
 							</h3>
-							<p>Sed interdum metus at nisi tempor laoreet.</p>
+							<p>${recommend.space_intro1}</p>
 							<div class="geodir-category-options fl-wrap">
 								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="5">
-									<span>(7 reviews)</span>
+									data-starrating2="${recommend.spaceReviewDTO.rev_rate}">
+									<span>(${recommend.spaceReviewDTO.count} reviews)</span>
 								</div>
 								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
+									<a href="spaceView.do?space_no=${recommend.space_no }"><i class="fa fa-map-marker" aria-hidden="true"></i>
+										${recommend.space_addr1}</a>
 								</div>
 							</div>
 						</div>
@@ -232,216 +233,7 @@
 				</div>
 				<!-- listing-item end-->
 			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
-						<div class="geodir-category-img">
-							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-								alt="">
-							<div class="overlay"></div>
-							<div class="list-post-counter">
-								<span>15</span><i class="fa fa-heart"></i>
-							</div>
-						</div>
-						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Event</a>
-							<div class="listing-avatar">
-								<a href="author-single.html"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Mark
-										Rose</strong></span>
-							</div>
-							<h3>
-								<a href="listing-single.html">Cafe "Lollipop"</a>
-							</h3>
-							<p>Morbi suscipit erat in diam bibendum rutrum in nisl.</p>
-							<div class="geodir-category-options fl-wrap">
-								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="4">
-									<span>(17 reviews)</span>
-								</div>
-								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
-								</div>
-							</div>
-						</div>
-					</article>
-				</div>
-				<!-- listing-item end-->
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
-						<div class="geodir-category-img">
-							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-								alt="">
-							<div class="overlay"></div>
-							<div class="list-post-counter">
-								<span>13</span><i class="fa fa-heart"></i>
-							</div>
-						</div>
-						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Gym </a>
-							<div class="listing-avatar">
-								<a href="author-single.html"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Nasty
-										Wood</strong></span>
-							</div>
-							<h3>
-								<a href="listing-single.html">Gym In Brooklyn</a>
-							</h3>
-							<p>Morbiaccumsan ipsum velit tincidunt .</p>
-							<div class="geodir-category-options fl-wrap">
-								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="3">
-									<span>(16 reviews)</span>
-								</div>
-								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
-								</div>
-							</div>
-						</div>
-					</article>
-				</div>
-				<!-- listing-item end-->
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
-						<div class="geodir-category-img">
-							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-								alt="">
-							<div class="overlay"></div>
-							<div class="list-post-counter">
-								<span>3</span><i class="fa fa-heart"></i>
-							</div>
-						</div>
-						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Shops</a>
-							<div class="listing-avatar">
-								<a href="author-single.html"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Nasty
-										Wood</strong></span>
-							</div>
-							<h3>
-								<a href="listing-single.html">Shop in Boutique Zone</a>
-							</h3>
-							<p>Morbiaccumsan ipsum velit tincidunt .</p>
-							<div class="geodir-category-options fl-wrap">
-								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="4">
-									<span>(6 reviews)</span>
-								</div>
-								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
-								</div>
-							</div>
-						</div>
-					</article>
-				</div>
-				<!-- listing-item end-->
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
-						<div class="geodir-category-img">
-							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-								alt="">
-							<div class="overlay"></div>
-							<div class="list-post-counter">
-								<span>35</span><i class="fa fa-heart"></i>
-							</div>
-						</div>
-						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Cars</a>
-							<div class="listing-avatar">
-								<a href="author-single.html"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Kliff
-										Antony</strong></span>
-							</div>
-							<h3>
-								<a href="listing-single.html">Best deal For the Cars</a>
-							</h3>
-							<p>Lorem ipsum gravida nibh vel velit.</p>
-							<div class="geodir-category-options fl-wrap">
-								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="5">
-									<span>(11 reviews)</span>
-								</div>
-								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
-								</div>
-							</div>
-						</div>
-					</article>
-				</div>
-				<!-- listing-item end-->
-			</div>
-			<!--slick-slide-item end-->
-			<!--slick-slide-item-->
-			<div class="slick-slide-item">
-				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
-						<div class="geodir-category-img">
-							<img
-								src="${pageContext.request.contextPath}/resources/bootstrap/images/all/1.jpg"
-								alt="">
-							<div class="overlay"></div>
-							<div class="list-post-counter">
-								<span>553</span><i class="fa fa-heart"></i>
-							</div>
-						</div>
-						<div class="geodir-category-content fl-wrap">
-							<a class="listing-geodir-category" href="listing.html">Restourants</a>
-							<div class="listing-avatar">
-								<a href="author-single.html"><img
-									src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Adam
-										Koncy</strong></span>
-							</div>
-							<h3>
-								<a href="listing-single.html">Luxury Restourant</a>
-							</h3>
-							<p>Sed non neque elit. Sed ut imperdie.</p>
-							<div class="geodir-category-options fl-wrap">
-								<div class="listing-rating card-popup-rainingvis"
-									data-starrating2="5">
-									<span>(7 reviews)</span>
-								</div>
-								<div class="geodir-category-location">
-									<a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
-										27th Brooklyn New York, NY 10065</a>
-								</div>
-							</div>
-						</div>
-					</article>
-				</div>
-				<!-- listing-item end-->
-			</div>
+			</c:forEach>
 			<!--slick-slide-item end-->
 		</div>
 		<!--listing-carousel end-->
