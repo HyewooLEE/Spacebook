@@ -112,7 +112,7 @@
 							<div class="list-single-main-item-title fl-wrap">
 								<h3>상세 정보</h3>
 							</div>
-							<p>${spaceDetail.space_intro2}</p>
+							<p style="white-space: pre;">${spaceDetail.space_intro2}</p>
 							<a href="javascript:window.open('http://${spaceDetail.space_site}')" class="btn transparent-btn float-btn">홈페이지
 							<i class="fa fa-angle-right"></i>
 							</a> <span class="fw-separator"></span>
@@ -161,7 +161,7 @@
 										<h4>${reviewList.memberVO.mem_Name}</h4>
 										<div class="listing-rating card-popup-rainingvis" data-starrating2="${reviewList.rev_rate}"></div>
 										<div class="clearfix"></div>
-										<c:if test="${reviewList.mem_no == login.mem_No}">
+										<c:if test="${reviewList.mem_no == login.mem_No || spaceDetail.mem_no == login.mem_No}">
 											<div align="right"><a href="javascript:;" onclick="deleteReview(${reviewList.rev_no}, ${spaceDetail.space_no});">삭제</a></div>
 										</c:if>
 										<p>${reviewList.rev_note}</p>
