@@ -597,7 +597,7 @@
 				</div>
 				<div class="testimonilas-avatar-item">
 					<div class="testimonilas-avatar">
-						<img src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg">
+						<img src="${reviewList.mem_img}">
 					</div>
 					<h4>${reviewList.mem_name}</h4>
 					<span>${reviewList.space_name} 호스트</span>

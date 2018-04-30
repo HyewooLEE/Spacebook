@@ -112,7 +112,7 @@
 							<div class="list-single-main-item-title fl-wrap">
 								<h3>상세 정보</h3>
 							</div>
-							<p>${spaceDetail.space_intro2}</p>
+							<p style="white-space: pre;">${spaceDetail.space_intro2}</p>
 							<a href="javascript:window.open('http://${spaceDetail.space_site}')" class="btn transparent-btn float-btn">홈페이지
 							<i class="fa fa-angle-right"></i>
 							</a> <span class="fw-separator"></span>
