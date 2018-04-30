@@ -9,8 +9,17 @@ public class SpaceReviewDTO {
 	private String rev_writeDate;
 	private String rev_note;
 	private String rev_rate;
-	private MemberVO memberVO;
+	private int count;
 	
+	private MemberVO memberVO;
+
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public MemberVO getMemberVO() {
 		return memberVO;
 	}

@@ -5,10 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="main">
 
+	<resultMap type="spacebook.favorite.model.SpaceFavoriteDTO" id="SpaceFavoriteDTO">
+		<result column="FAVORITE" property="favorite"/>
+	</resultMap>
+
 <resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
 	    <result column="MEM_NO" property="mem_No"/>
 	    <result column="MEM_NAME" property="mem_Name"/>
+	    <result column="MEM_IMG" property="mem_Img"/>
 	</resultMap> 
+
+	<resultMap type="spacebook.view.model.SpaceReviewDTO" id="SpaceReviewDTO">
+	    <result column="REV_NO" property="rev_no"/>
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
+	    <result column="REV_WRITEDATE" property="rev_writeDate"/>
+	    <result column="REV_NOTE" property="rev_note"/>
+	    <result column="REV_RATE" property="rev_rate"/>
+	    <result column="COUNT" property="count"/>
+	</resultMap>
 
 	<resultMap type="spacebook.submit.model.SpaceDTO" id="spaceDTO">
 	    <result column="SPACE_NO" property="space_no"/>
@@ -26,6 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_SUM" property="space_sum"/>
 	    <result column="SPACE_BANK" property="space_bank"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
+	    <collection property="spaceReviewDTO" resultMap="SpaceReviewDTO"/>
+	    <collection property="spaceFavoriteDTO" resultMap="SpaceFavoriteDTO"/>
 	</resultMap> 
 
 	<select id="selectSpaceCategory" parameterType="List" resultType="spacebook.submit.model.SpaceDTO">
@@ -42,25 +59,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 ORDER BY REV_NO DESC) WHERE ROWNUM BETWEEN 1 AND 5
 	</select>
 	
-	<select id="recommendList" resultType="spacebook.submit.model.SpaceDTO">
-		select * from space
+	<select id="recommendList" resultMap="spaceDTO">
+		select * from
+(select s.space_no, avg(r.rev_rate) rev_rate,s.space_name, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,
+m.mem_img
+from review r FULL OUTER join SPACE s on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no
+GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name
+order by rev_rate asc)natural join 
+(select space_no from space 
 		<where>
 		<if test="Favor != null">
- 		<foreach collection="Favor" item="item" index="index">
-		<if test="item != 기타">
+ 		<foreach collection="Favor" item="item" >
+		<if test='item != "기타"'>
 			or space_category = #{item}
 		</if>
 		</foreach>
 		</if>
 	</where>
+	)
 	</select>
 	
 	<select id="recommendMain" resultMap="spaceDTO">
-	select s.space_no, avg(r.rev_rate) rev_rate, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
+	select s.space_no, avg(r.rev_rate) rev_rate,s.space_name, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
 from SPACE s FULL OUTER join review r on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no
-GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
+GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name
 having s.space_no is not null
-order by rev_rate desc
+order by rev_rate asc
 	</select>
 	
 </mapper>

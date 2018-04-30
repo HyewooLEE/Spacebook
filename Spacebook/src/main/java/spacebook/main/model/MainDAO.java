@@ -16,11 +16,6 @@ public class MainDAO extends SqlSessionDaoSupport{
 	public List<SpaceDTO> selectCategorySpace(){
 		return getSqlSession().selectList("main.selectSpaceCategory");
 	}
-	
-	/*public List<SpaceDTO> countSpaceCategory() {
-		
-		return getSqlSession().selectList("main.countSpaceCategory");
-	}*/
 
 	public List<MainDTO> reviewList() {
 		return getSqlSession().selectList("main.reviewList");
@@ -29,9 +24,9 @@ public class MainDAO extends SqlSessionDaoSupport{
 	public List<SpaceDTO> recommendSpace(MemberVO vo){
 		List listtest = new ArrayList();
 		Map map = new HashMap<String, List>();
-		List<SpaceDTO> recommendList;     
+		List<SpaceDTO> recommendList = new ArrayList();     
 		String str = vo.getMem_Favor();
-		      
+		
 		if(str!=null && str !="") {
 		StringTokenizer token = new StringTokenizer(str,",");
 		    
@@ -43,10 +38,11 @@ public class MainDAO extends SqlSessionDaoSupport{
 		}else {
 			recommendList = getSqlSession().selectList("main.recommendMain");
 		}
+		/*if(vo == null) {
+			System.out.println("test2");
+			recommendList = getSqlSession().selectList("main.recommendMain");
+		}*/
 		return recommendList;
 	}
-	
-	/*public List<SpaceDTO> recommendStart(){
-		return getSqlSession().selectList("main.recommendMain");
-	}*/
+
 }

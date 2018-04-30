@@ -3,15 +3,9 @@
 <!-- 다음지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 구글지도 -->
-<!-- <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDJW3_aez5Ahaxl88X9ZNR5QB2JMa1lcs0" type="text/javascript"></script> -->
-<!-- <script src="http://maps.google.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo" type="text/javascript"></script> -->
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo" type="text/javascript"></script>
 <!-- 주소찾기 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/map/findMap.js" ></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/map_infobox.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/markerclusterer.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/maps.js"></script> --%>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/map/locationMap.js" ></script> --%>
 
 <script>
 var file1 = document.querySelector('#space_img1'); 
