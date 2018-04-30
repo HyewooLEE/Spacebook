@@ -37,7 +37,6 @@ function locationList(){
                        "</div>"+
     				"</div>"+
                 "</article>"
-						
 				);
 			}
 		}
