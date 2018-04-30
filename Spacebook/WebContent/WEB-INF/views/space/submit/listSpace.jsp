@@ -16,10 +16,12 @@
                     <div class="listsearch-header fl-wrap">
                     
                     	<!------ 검색어가 있을경우 출력 ------>
-                    	<c:if test="${search != null }">
-                    		<h3>Results For 검색결과: <span>${search }</span></h3>
+                    	<c:if test="${result != null }">
+                    		<h3>검색결과: <span>${result}</span></h3>
                     	</c:if>
-                        <h3>Results For 검색결과 : <span>Food and Drink</span></h3>
+                    	<c:if test='${result == null || result==""}'>
+                        <h3><span>원하는 곳으로 이동해봐!!</span></h3>
+                        </c:if>
                         
                         <div class="listing-view-layout">
                             <ul>

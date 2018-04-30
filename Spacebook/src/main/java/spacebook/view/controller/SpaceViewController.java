@@ -68,7 +68,7 @@ public class SpaceViewController {
 		StringTokenizer stst = new StringTokenizer(space_tag, ",");
 		ArrayList<String> tag_list = new ArrayList<String>();
 		while(stst.hasMoreTokens()) {
-			tag_list.add("#"+ stst.nextToken());
+			tag_list.add(stst.nextToken());
 		}
 		
 		List<SpaceFacilityDTO> fac_list = new ArrayList<SpaceFacilityDTO>();

@@ -132,7 +132,7 @@
 							</div>
 							<div class="list-single-tags tags-stylwrap">
 								<c:forEach var="space_tag" items="${space_tag}">
-									<a href="#">${space_tag}</a>
+									<a href="search.do?search=${space_tag}">#${space_tag}</a>
 								</c:forEach>
 								<!-- <a href="#"># 연습실</a> <a href="#"># 댄스</a> <a href="#"># 신축건물</a>
 								<a href="#"># 청결</a> <a href="#"># 무료 Wifi</a> -->

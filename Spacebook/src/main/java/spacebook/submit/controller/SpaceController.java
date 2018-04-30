@@ -298,9 +298,6 @@ public class SpaceController {
 	//search
 	@RequestMapping(value = "/search.do", method = RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public String search(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
-		List result = new ArrayList();
-		result.add(0, "검색결과");
-		result.add(1, search);
 		
 		String contextPath = session.getServletContext().getRealPath("/");
 		if(spaceService.searchSpace(spaceDto, search).size() != 0) {
@@ -313,7 +310,27 @@ public class SpaceController {
 		
 		model.addAttribute("facility", facility);
 		model.addAttribute("realPath", contextPath);
-		model.addAttribute("result", result);
+		model.addAttribute("result", search);
+		
+		return "listSpace";
+	}
+	
+	//search
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public String searchGet(@RequestParam(value="search", defaultValue="") String search,HttpSession session,SpaceDTO spaceDto, Model model) {
+		
+		String contextPath = session.getServletContext().getRealPath("/");
+	if(spaceService.searchSpace(spaceDto, search).size() != 0) {
+			List<SpaceDTO> spaceAll = spaceService.searchSpace(spaceDto, search);
+			model.addAttribute("spaceAll", spaceAll);
+		}else {
+			model.addAttribute("counet", 0);
+		}
+		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
+		
+		model.addAttribute("facility", facility);
+		model.addAttribute("realPath", contextPath);
+		model.addAttribute("result", search);
 		
 		return "listSpace";
 	}
