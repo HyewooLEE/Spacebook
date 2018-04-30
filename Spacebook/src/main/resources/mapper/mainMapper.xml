@@ -60,7 +60,7 @@ ORDER BY REV_NO DESC) WHERE ROWNUM BETWEEN 1 AND 5
 from SPACE s FULL OUTER join review r on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no
 GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
 having s.space_no is not null
-order by rev_rate desc;
+order by rev_rate desc
 	</select>
 	
 </mapper>

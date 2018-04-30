@@ -385,11 +385,8 @@ public class SpaceController {
         double dLat = (dEndPointLat - dStartPointLat) * d2r;
 
         double a = Math.pow(Math.sin(dLat / 2.0), 2)
-
                        + Math.cos(dStartPointLat * d2r)
-
                        * Math.cos(dEndPointLat * d2r)
-
                        * Math.pow(Math.sin(dLon / 2.0), 2);
 
         double c = Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * 2;
