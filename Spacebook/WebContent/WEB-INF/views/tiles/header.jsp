@@ -68,7 +68,7 @@
                             <li><a href="password.do">비밀번호 변경</a></li>
                             </c:if>
                             <li><a href="#"></a></li>
-                            <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' || login.mem_Auth eq 'ROLE_USER'}">
+                            <c:if test="${ login.mem_Auth eq 'ROLE_USER'}">
                             <li><a href="myRentList.do">예약리스트</a></li>
                             </c:if>
                             <c:if test="${login.mem_Auth eq 'ROLE_GUEST' ||login.mem_Auth eq 'ROLE_USER' }">
