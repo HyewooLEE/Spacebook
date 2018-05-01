@@ -56,11 +56,13 @@ public class SpaceViewController {
 	@RequestMapping(value="/spaceView.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public String view(@RequestParam("space_no") int space_no, @RequestParam(value="startReview", defaultValue="1") int startReview, @RequestParam(value="endReview", defaultValue="3") int endReview, HttpSession session, Model model) {
 		MemberVO member = (MemberVO)session.getAttribute("login");
-		int favorite_totalCount = sfs.countSpaceFavorite(space_no);
+		
 		if (member != null) {
-			if(favorite_totalCount > 0) {
-				model.addAttribute("totalFavoriteCount", favorite_totalCount);
+			int favorite_MemCount = sfs.countMemFavorite(space_no, member.getMem_No());
+			if(favorite_MemCount > 0) {
+				model.addAttribute("favoriteMemCount", favorite_MemCount);
 			}
+			
 		}
 		SpaceDTO dto = svs.spaceDetail(space_no);
 		
@@ -87,11 +89,9 @@ public class SpaceViewController {
 			model.addAttribute("avrageReview", review_avg);
 		}
 		
-		
-		
-		int favorite_MemCount = sfs.countMemFavorite(space_no, member.getMem_No());
-		if(favorite_MemCount > 0) {
-			model.addAttribute("favoriteMemCount", favorite_MemCount);
+		int favorite_totalCount = sfs.countSpaceFavorite(space_no);
+		if(favorite_totalCount > 0) {
+			model.addAttribute("totalFavoriteCount", favorite_totalCount);
 		}
 		
 		model.addAttribute("fac_list", fac_list);

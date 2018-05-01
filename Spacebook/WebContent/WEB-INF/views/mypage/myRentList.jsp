@@ -31,7 +31,7 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="rentList.do" class="user-profile-act"><i class="fa fa-th-list"></i>예약리스트</a></li>
+                                        <li><a href="myRentList.do" class="user-profile-act"><i class="fa fa-th-list"></i>예약리스트</a></li>
                                         <li><a href="favoriteList.do"><i class="fa fa-heart"></i>나의 찜공간</a></li>
                                         <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의</a></li>
                                     </ul>
