@@ -60,7 +60,7 @@ public class SpaceRentController{
 	    SpaceRentVO pageNation = new SpaceRentVO(pageNum, 10, 5, srs.getRentListSize(member.getMem_No()));
 	    pageNation.setMem_no(member.getMem_No());
 	 
-		List<SpaceRentDTO> myRentList = srs.rentList(pageNation);
+		List<SpaceRentDTO> myRentList = srs.myRentList(pageNation);
 		MemberVO memdto =  (MemberVO)session.getAttribute("login");
 		int count = spaceService.mySpace(memdto.getMem_No());
 		
