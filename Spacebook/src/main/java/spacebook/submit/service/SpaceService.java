@@ -28,4 +28,6 @@ public interface SpaceService {
 	public List<SpaceDTO> etcSpaceList(int mem_no);
 	
 	public SpaceDTO selectSpace(int space_no);
+	
+	public int mySpace(int mem_no);
 }

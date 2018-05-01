@@ -53,8 +53,11 @@ public class SpaceController {
 	}
 
 	@RequestMapping("/submitSpaceForm.do")
-	public String write(SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, Model model) {
+	public String write(SpaceDTO spaceDto, SpaceFacilityDTO spaceFacilityDto, HttpSession session, Model model) {
 		List<SpaceFacilityDTO> facility = spaceService.selectFacility();
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
+		model.addAttribute("count", count);
 		model.addAttribute("facility", facility);
 		
 		return "submitSpaceForm";

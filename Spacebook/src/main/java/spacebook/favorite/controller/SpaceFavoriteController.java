@@ -18,6 +18,7 @@ import spacebook.favorite.model.SpaceFavoriteDTO;
 import spacebook.favorite.model.SpaceFavoriteVO;
 import spacebook.favorite.service.SpaceFavoriteService;
 import spacebook.login.model.MemberVO;
+import spacebook.submit.service.SpaceService;
 import spacebook.view.service.SpaceReviewService;
 
 @Controller
@@ -35,7 +36,14 @@ public class SpaceFavoriteController {
 	public void setSrs(SpaceReviewService srs) {
 		this.srs = srs;
 	}
-
+	
+	@Autowired
+	private SpaceService spaceService;
+	
+	public void setSpaceService(SpaceService spaceService) {
+		this.spaceService = spaceService;
+	}
+	
 	@RequestMapping(value="/selectFavorite.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void insertFavorite(HttpServletResponse response, SpaceFavoriteDTO favoriteDTO, Model model)throws Exception {
 		SpaceFavoriteDTO dto = sfs.selectFavorite(favoriteDTO);
@@ -72,7 +80,11 @@ public class SpaceFavoriteController {
 				favoriteList.get(i).setReview_avg(srs.averageReview(favoriteList.get(i).getSpace_no()));
 			}
 		}
-		 
+
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
+		
+		model.addAttribute("count", count);
 		model.addAttribute("countMyFavorite", countMyFavorite);
 		model.addAttribute("favoriteList", favoriteList);
 		model.addAttribute("paging", pageNation);

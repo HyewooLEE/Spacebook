@@ -36,6 +36,7 @@
                                 </div>
                                 <!-- user-profile-menu end-->  
                  			<!-- 호스트 -->
+                 			 <c:if test="${count != 0}"> 
                                 <!-- user-profile-menu-->
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
@@ -46,6 +47,7 @@
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
+							</c:if>
 							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
