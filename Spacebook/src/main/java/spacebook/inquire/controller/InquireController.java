@@ -115,7 +115,7 @@ public class InquireController {
 	
 	//1:1문의 관리 삭제
 	@RequestMapping(value = "deleteInquireHost.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
-	public void deleteInquire2(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
+	public void deleteInquireHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
 		inquireService.deleteSpaceInquire(inquireDTO);
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());

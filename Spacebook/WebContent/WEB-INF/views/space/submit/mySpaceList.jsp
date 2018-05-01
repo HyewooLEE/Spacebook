@@ -97,7 +97,7 @@
 							    <tbody id="spaceTbody">
 							    <c:if test="${page.articleCount == 0}">
 							    	<tr>
-								        <td colspan="5" align="center"><h5>해당 결과물이 없습니다.</h5></td>
+								        <td colspan="7" align="center"><h5>해당 결과물이 없습니다.</h5></td>
 								    </tr>
 							    </c:if>
 							    <c:if test="${page.articleCount > 0}">

@@ -131,9 +131,7 @@ public class MemberController {
 	    securityContext.setAuthentication(authentication);
 	    session = request.getSession(true);
 	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-		
-		
-		return "main";
+		return "redirect:/main.do";
 	}
 	
 	@RequestMapping(value = "passwordLogin.do", method = RequestMethod.POST)

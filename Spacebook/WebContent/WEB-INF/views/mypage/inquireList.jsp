@@ -104,7 +104,7 @@
 									        <c:if test="${inquireList.inq_step == 0 }">
 									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 									        </c:if>
-									        <c:if test="${inquireList.inq_step != 0 }">
+									        <c:if test="${inquireList.inq_step > 0 }">
 									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>${inquireList.inq_title }</a></td>
 									        </c:if>
 									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
