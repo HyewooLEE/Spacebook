@@ -14,7 +14,7 @@
 					<a href=main.do>홈</a><span>프로필 수정</span>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" style="height: 100%">
 				<div class="col-md-3">
 					<div class="fixed-bar fl-wrap">
 						<div class="user-profile-menu-wrap fl-wrap">

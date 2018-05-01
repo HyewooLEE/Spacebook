@@ -14,7 +14,7 @@
 					<a href=main.do>홈</a><span>1:1문의</span>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" style="height: 100%">
 				<div class="col-md-3">
 					<div class="fixed-bar fl-wrap">
 						<div class="user-profile-menu-wrap fl-wrap">
@@ -72,9 +72,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-12">
+				<div class="col-md-9" style="height: 100%">
+					<div class="row" style="height: 100%">
+						<div class="col-md-12" style="height: 100%">
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
