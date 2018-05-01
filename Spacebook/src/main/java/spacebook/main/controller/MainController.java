@@ -53,18 +53,19 @@ public class MainController {
       if (principal != null && principal instanceof MemberDTO) {
          String name = ((MemberDTO) principal).getUsername();
          MemberVO vo = service.selectMember(name);
-         //recommend = mainService.recommendSpace(vo);
+         recommend = mainService.recommendSpace(vo);
          
          session.setAttribute("login", vo);
       }else {
     	  MemberVO vo = new MemberVO();
     	  recommend = mainService.recommendSpace(vo);
+
       }
       
       List<SpaceDTO> categorySpace = mainService.categorySpace();
       List<MainDTO> review = mainService.reviewList();
 
-      //model.addAttribute("recommend", recommend);
+      model.addAttribute("recommend", recommend);
       model.addAttribute("category", categorySpace);
       model.addAttribute("review", review);
 

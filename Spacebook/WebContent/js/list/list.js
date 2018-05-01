@@ -1,26 +1,25 @@
-function locationList(){
+function locationList(length){
+	var location ="0";
+	var zone = "0";
 	
-	var location ="";
-	var zone = "";
-	
+	location = length.value;
 	var params = "location="+ location +"&zone="+zone;
-	
 	$.ajax({
-		type: "get",
-		url: "/Spacebook/showReview.do",
+		type: "GET",
+		url: "/Spacebook/location.do",
 		data: params,
-		cache: false,
+		/*cache: false,*/
 		dataType:"json",
 		success:function(result) {
-			
 			$('#spaceList').html('');
 			for(var i=0; i<result.data.length; i++) {
 				$('#spaceList').append(
+						"<div class='listing-item' >"+
 						"<article class='geodir-category-listing fl-wrap'>"+
                         "<div class='geodir-category-img'>"+
                             "<a href='spaceView.do?space_no="+result.data[i].space_no+"'><img src='"+result.data[i].space_img1+"' style='width:420px;height:210px;'></a>"+
                             "<div class='overlay'></div>"+
-                            "<div class='list-post-counter'><span>"+result.data[i].spaceReviewDTO.rev_rate+"</span><i class='fa fa-heart'></i></div>"+
+                            "<div class='list-post-counter'><span>"+result.data[i].spaceFavoriteDTO.favorite+"</span><i class='fa fa-heart'></i></div>"+
                         "</div>"+
                     "<div class='geodir-category-content fl-wrap' style='width:420px;height:230px;'>"+
                         "<a class='listing-geodir-category' href='listing.html'>"+result.data[i].space_category+"</a>"+
@@ -30,13 +29,14 @@ function locationList(){
                         "<h3><a href='spaceView.do?space_no="+result.data[i].space_no+"'>"+result.data[i].space_name+"</a></h3>"+
                         "<p>"+result.data[i].space_intro1+"</p>"+
                         "<div class='geodir-category-options fl-wrap'>"+
-                            "<div class='listing-rating card-popup-rainingvis' data-starrating2='5'>"+
-                                "<span>(7 reviews)</span>"+
+                            "<div class='listing-rating card-popup-rainingvis' data-starrating2='"+result.data[i].spaceReviewDTO.rev_rate+"'>"+
+                                "<span>("+result.data[i].spaceReviewDTO.count+"reviews)</span>"+
                             "</div>"+
-                            "<div class='geodir-category-location' align='left'><i class='fa fa-map-marker' aria-hidden='true'></i>"+result.data[i].space_addr1+"<br>"+result.data[i].space_addr2+"</div>"+
+                            "<div class='geodir-category-location' align='left'><i class='fa fa-map-marker' aria-hidden='true'></i>"+result.data[i].space_addr1+"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+result.data[i].space_addr2+"</div>"+
                        "</div>"+
     				"</div>"+
-                "</article>"
+                "</article>"+
+    			"</div>"
 				);
 			}
 		}

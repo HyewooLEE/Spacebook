@@ -26,4 +26,6 @@ public interface SpaceService {
 	public List<SpaceDTO> searchSpace(SpaceDTO spaceDto, String search);
 	
 	public List<SpaceDTO> etcSpaceList(int mem_no);
+	
+	public SpaceDTO selectSpace(int space_no);
 }

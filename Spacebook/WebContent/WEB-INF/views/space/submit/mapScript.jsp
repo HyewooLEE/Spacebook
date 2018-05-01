@@ -4,4 +4,7 @@
        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDJW3_aez5Ahaxl88X9ZNR5QB2JMa1lcs0"></script>
        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/map_infobox.js"></script>
        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/markerclusterer.js"></script>  
-       <script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map.js"></script> 
+       <script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map.js"></script>
+       <script type="text/javascript" src="${pageContext.request.contextPath}/js/list/list.js"></script>
+       
+         

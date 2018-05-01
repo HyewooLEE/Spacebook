@@ -96,7 +96,7 @@
 									        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 									        </c:if>
 									        <c:if test="${inquireList.inq_step > 0 }">
-									        	<td width="10%" style="text-align:center;">관리자</td>
+									        	<td width="10%" style="text-align:center;">호스트</td>
 									        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font> ${inquireList.inq_title }</a></td>
 									        </c:if>
 									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>

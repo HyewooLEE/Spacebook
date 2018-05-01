@@ -5,10 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="space">
 
-	<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
+	<resultMap type="spacebook.favorite.model.SpaceFavoriteDTO" id="SpaceFavoriteDTO">
+		<result column="FAVORITE" property="favorite"/>
+	</resultMap>
+
+<resultMap type="spacebook.login.model.MemberVO" id="MemberVO">
 	    <result column="MEM_NO" property="mem_No"/>
 	    <result column="MEM_NAME" property="mem_Name"/>
+	    <result column="MEM_IMG" property="mem_Img"/>
 	</resultMap> 
+
+	<resultMap type="spacebook.view.model.SpaceReviewDTO" id="SpaceReviewDTO">
+	    <result column="REV_NO" property="rev_no"/>
+	    <result column="SPACE_NO" property="space_no"/>
+	    <result column="MEM_NO" property="mem_no"/>
+	    <result column="REV_WRITEDATE" property="rev_writeDate"/>
+	    <result column="REV_NOTE" property="rev_note"/>
+	    <result column="REV_RATE" property="rev_rate"/>
+	    <result column="COUNT" property="count"/>
+	</resultMap>
 
 	<resultMap type="spacebook.submit.model.SpaceDTO" id="spaceDTO">
 	    <result column="SPACE_NO" property="space_no"/>
@@ -35,6 +50,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="SPACE_SUM" property="space_sum"/>
 	    <result column="SPACE_BANK" property="space_bank"/>
 	    <collection property="memberVO" resultMap="MemberVO"/>
+	    <collection property="spaceReviewDTO" resultMap="SpaceReviewDTO"/>
+	    <collection property="spaceFavoriteDTO" resultMap="SpaceFavoriteDTO"/>
 	</resultMap> 
 
 	<insert id="insertSpace" parameterType="spacebook.submit.model.SpaceDTO" >
@@ -77,7 +94,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectSpaceAll" resultType="spacebook.submit.model.SpaceDTO" resultMap="spaceDTO">
-		select * from space s left outer join MEMBER m on s.mem_no = m.mem_no order by s.space_no
+	select s.space_no, avg(r.rev_rate) rev_rate,space_name, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
+		from SPACE s FULL OUTER join review r on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no
+		GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name
+		having s.space_no is not null
+		order by space_no desc
 	</select>
 	
 	<select id="spaceMap" resultType="spacebook.submit.model.SpaceDTO" >
@@ -203,6 +224,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="etcSpace" resultType="spacebook.submit.model.SpaceDTO">
 	select * from space where mem_no = #{mem_no}
+</select>
+
+<select id="selectSpace" parameterType="map" resultMap="spaceDTO">
+select s.space_no, avg(r.rev_rate) rev_rate,space_name, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img
+from SPACE s FULL OUTER join review r on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no 
+<where>
+ s.space_no = #{space_no}
+</where>
+ GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name
+ having s.space_no is not null
+ order by space_no desc
 </select>
 
 </mapper>

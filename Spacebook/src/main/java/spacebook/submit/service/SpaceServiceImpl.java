@@ -74,4 +74,8 @@ public class SpaceServiceImpl implements SpaceService{
 		return spaceDao.etcSpaceList(mem_no);
 	}
 	
+	@Override
+	public SpaceDTO selectSpace(int space_no){
+		return spaceDao.selectSpace(space_no);
+	}
 }

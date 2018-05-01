@@ -16,10 +16,12 @@
                     <div class="listsearch-header fl-wrap">
                     
                     	<!------ 검색어가 있을경우 출력 ------>
-                    	<c:if test="${search != null }">
-                    		<h3>Results For 검색결과: <span>${search }</span></h3>
+                    	<c:if test="${result != null }">
+                    		<h3>검색결과: <span>${result}</span></h3>
                     	</c:if>
-                        <h3>Results For 검색결과 : <span>Food and Drink</span></h3>
+                    	<c:if test='${result == null || result==""}'>
+                        <h3><span>원하는 곳으로 이동해봐!!</span></h3>
+                        </c:if>
                         
                         <div class="listing-view-layout">
                             <ul>
@@ -38,7 +40,7 @@
                             <input type="text" placeholder="검색키워드" value="" id="search" name="search"/>
                         </div>
                         <div class="listsearch-input-item" style="width:40%;">
-                            <select  id="space_category" name="space_category" class="chosen-select">
+                            <select name="space_category" class="chosen-select">
                             	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
                            		<option value="연습실">연습실</option>
@@ -56,15 +58,15 @@
                      	</div>
                         <div class="listsearch-input-text">
                             <!-- <label><i class="mbri-map-pin"></i> 주소검색 입력 </label> -->
-                            <input type="text" placeholder="주소 검색" value="" id="space_addr1" name="space_addr1"/>
-                            <span class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></span>
+                            <input type="text" placeholder="주소 검색" value="" name="space_addr1"/>
+                            <span class="loc-act qodef-archive-current-location" onclick="locationList();"><i class="fa fa-dot-circle-o"></i></span>
                         </div>
                         <!-- hidden-listing-filter -->
                         <div class="hidden-listing-filter fl-wrap">
                             <div class="distance-input fl-wrap">
                                 <div class="distance-title"> 내 위치 근방 <span></span> km 이내의 공간</div>
                                 <div class="distance-radius-wrap fl-wrap">
-                                    <input class="distance-radius rangeslider--horizontal" type="range" min="1" max="100" step="1" value="1" data-title="Radius around selected destination">
+                                    <input class="distance-radius rangeslider--horizontal" type="range" min="0" max="100" step="1" value="1" data-title="Radius around selected destination" onchange = "locationList(this)">
                                 </div>
                             </div>
                             <!-- Checkboxes -->
@@ -95,13 +97,14 @@
                     		예약 가능한 공간이 없습니다.<br>
 						   다른 검색조건으로 공간을 찾아보세요.
                     </c:if>
+                    <div id="spaceList" class="spaceList">
                     <c:forEach var="spaceAll" items="${spaceAll}" varStatus="status">
-                    <div class="listing-item" id="spaceList">
+                    <div class="listing-item" >
                         <article class="geodir-category-listing fl-wrap">
 	                            <div class="geodir-category-img">
 	                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:420px;height:210px;"></a>
 	                                <div class="overlay"></div>
-	                                <div class="list-post-counter"><span>${spaceAll.spaceReviewDTO.rev_rate }</span><i class="fa fa-heart"></i></div>
+	                                <div class="list-post-counter"><span>${spaceAll.spaceFavoriteDTO.favorite }</span><i class="fa fa-heart"></i></div>
 	                            </div>
                             <div class="geodir-category-content fl-wrap" style="width:420px;height:230px;">
                                 <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
@@ -111,15 +114,16 @@
                                 <h3><a href="spaceView.do?space_no=${spaceAll.space_no }">${spaceAll.space_name }</a></h3>
                                 <p>${spaceAll.space_intro1 }</p>
                                 <div class="geodir-category-options fl-wrap">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
-                                        <span>(7 reviews)</span>
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="${spaceAll.spaceReviewDTO.rev_rate}">
+                                        <span>(${spaceAll.spaceReviewDTO.count} reviews)</span>
                                     </div>
-                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>${spaceAll.space_addr2}</div>
+                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${spaceAll.space_addr2}</div>
                                 </div>
                             </div>
                         </article>
                     </div>
                     </c:forEach>
+                    </div>
                     <!-- listing-item end-->                           
                     <div class="clearfix"></div>
                 </div>

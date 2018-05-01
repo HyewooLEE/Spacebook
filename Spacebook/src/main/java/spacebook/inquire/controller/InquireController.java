@@ -54,7 +54,8 @@ public class InquireController {
 	public String submitInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum , SpaceInquireDTO inquireDTO, Model model) {
 		inquireService.insertSpaceInquire(inquireDTO);
 		
-		return "redirect:inquireContentHost.do?inq_no="+inquireDTO.getInq_no()+"&pageNum="+pageNum;
+		//return "redirect:inquireContentHost.do?inq_no="+inquireDTO.getInq_no()+"&pageNum="+pageNum;
+		return "redirect:inquireListHost.do";
 	}
 
 	//나의 1:1문의 (일반) 리스트
