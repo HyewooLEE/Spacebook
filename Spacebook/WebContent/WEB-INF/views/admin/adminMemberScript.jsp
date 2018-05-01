@@ -104,4 +104,13 @@ height: 35px;
 height: 37px;
 border-radius: 0px 10px 10px 0px;
 }
+
+
+.box-widget-item{
+margin-bottom: 0px;}
+
+@media only screen and (max-width: 768px){
+.box-widget-item{
+margin-bottom: 20px;}
+}
 </style>

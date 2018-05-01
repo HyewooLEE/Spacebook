@@ -39,7 +39,7 @@
                            		<option value="">기타</option>
                            	</select>
                         </div>
-                        <button class="header-search-button" type="submit">검색하기</button>
+                        <button class="header-search-button" type="submit">검색하기${login.mem_Auth}</button>
                         </form>
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>검색하기</span></div>

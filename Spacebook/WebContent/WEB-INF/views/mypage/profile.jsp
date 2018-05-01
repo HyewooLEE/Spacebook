@@ -112,7 +112,7 @@
 										<div class="edit-profile-photo fl-wrap">
 											<img src="${login.mem_Img}" alt="" class="respimg" id="profileImg" style="object-fit: cover; border-radius: 50%; width: 200px; height: 200px;">
 											<div class="change-photo-btn" style="width: 100%">
-												<div class="photoUpload" style="width: 100%">
+												<div class="photoUpload" style="width: 100%; margin-bottom: 25px;">
 													<span><i class="fa fa-upload"></i> 프로필 사진 변경</span> <input type="file" class="upload" id="file" name="file">
 												</div>
 											</div>

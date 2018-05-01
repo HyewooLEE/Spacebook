@@ -20,6 +20,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     // TODO Auto-generated method stub
     // Ajax를 통해 들어온것인지 파악한다
     String ajaxHeader = request.getHeader("X-Ajax-call");
+    boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+    System.out.println(ajax);
     String result = "";
      
     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -36,8 +38,10 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
       request.getRequestDispatcher(errorPage).forward(request, response);
     }else{
       if("true".equals(ajaxHeader)){    // true로 값을 받았다는 것은 ajax로 접근했음을 의미한다
+    	  System.out.println("ajax call");
         result = "{\"result\" : \"fail\", \"message\" : \"" + accessDeniedException.getMessage() + "\"}";
       }else{                // 헤더 변수는 있으나 값이 틀린 경우이므로 헤더값이 틀렸다는 의미로 돌려준다
+    	  System.out.println("ajax call2");
         result = "{\"result\" : \"fail\", \"message\" : \"Access Denied(Header Value Mismatch)\"}";
       }
       response.getWriter().print(result);
