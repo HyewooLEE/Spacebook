@@ -229,7 +229,7 @@
 										<textarea cols="40" rows="3" name="rev_note" id="rev_note" placeholder="리뷰를 작성해주세요.."></textarea>
 									</fieldset>
 									</form>
-									<button class="btn  big-btn  color-bg flat-btn" onclick="reviewSubmit()" style="margin-top: 10px">
+									<button class="btn  big-btn  color-bg flat-btn" onclick="reviewSubmit('${login.mem_No}', '${spaceDetail.mem_no}')" style="margin-top: 10px">
 										리뷰 작성 <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 									</button>
 								</div>
@@ -343,7 +343,7 @@
 							<div class="box-widget list-author-widget">
 								<div
 									class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
-									<span class="list-author-widget-link"><a href="/Spacebook/hostView.do?space_no=${spaceDetail.space_no}" >${spaceDetail.memberVO.mem_Name}</a></span>
+									<span class="list-author-widget-link">${spaceDetail.memberVO.mem_Name}</span>
 									<img src="${spaceDetail.memberVO.mem_Img}">
 								</div>
 								<div class="box-widget-content">
@@ -364,7 +364,7 @@
 												</li>
 											</ul>
 										</div>
-										<a href="javascript:;" onclick="openInquire()" class="btn transparent-btn"> 1:1 문의 </a>
+										<a href="javascript:;" onclick="openInquire('${login.mem_No}', '${spaceDetail.mem_no}')" class="btn transparent-btn"> 1:1 문의 </a>
 									</div>
 								</div>
 							</div>

@@ -126,11 +126,18 @@ function payment(pay_category, pay_spaceName, space_no, mem_no) {
 	}
 }
 
-function reviewSubmit() {
+function reviewSubmit(mem_no, host_no) {
 	var mem_name = document.getElementById("mem_name").value;
 	var mem_email = document.getElementById("mem_email").value;
 	var comm_note = document.getElementById("rev_note").value;
-	
+	if(mem_no == '') {
+		swal("로그인 후에 작성이 가능합니다.");
+		return;
+		window.location.href="loginPage.do";
+	} else if(mem_no == host_no) {
+		swal("호스트는 작성이 불가능합니다.");
+		return;
+	}
 	if(mem_name == "") {
 		swal("리뷰 작성자 이름을 입력해주세요");
 		return;
@@ -147,18 +154,6 @@ function reviewSubmit() {
 }
 
 function deleteReview(rev_no, space_no) {
-	/*$.ajax({
-		type: "get",
-		url: "/Spacebook/deleteReview.do",
-		data: {
-			rev_no   : rev_no,
-			space_no : space_no
-		},
-		cache: false,
-		success:function(result) {
-			alert("리뷰 삭제 완료");
-		}
-	});*/
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/deleteReview.do",
@@ -315,9 +310,21 @@ function favorite(space_no, mem_no) {
 		}
 	});
 }
-function openInquire() {
-	$('.modalInquire').fadeIn();
-    $("html, body").addClass("hid-body");
+function openInquire(mem_no, host_no) {
+	if(mem_no == '') {
+		swal("로그인 후에 작성이 가능합니다.")
+		.then((value) => {
+			window.location.href="loginPage.do";
+			return;
+		});
+		
+	} else if(mem_no == host_no) {
+		swal("호스트는 작성이 불가능합니다.");
+		return;
+	} else {
+		$('.modalInquire').fadeIn();
+	    $("html, body").addClass("hid-body");
+	}
 }
 
 function inquireCancel() {
