@@ -35,7 +35,7 @@
                                             <ul>
                                                 <li><span><i class="fa fa-map-marker"></i> 주소 :</span> <a href="#">서울 중구 대하동 KH빌딩 3층</a></li>
                                                 <li><span><i class="fa fa-phone"></i> 전화번호 :</span> <a href="#">010-1234-1234</a></li>
-                                                <li><span><i class="fa fa-envelope-o"></i> 이메일 :</span> <a href="#">email@kh.com</a></li>
+                                                <li><span><i class="fa fa-envelope-o"></i> 이메일 :</span> <a href="#">khspacebook@gmail.com</a></li>
                                                 <li><span><i class="fa fa-globe"></i> 블로그 :</span> <a href="#">facebook.com/spacebook</a></li>
                                             </ul>
                                         </div>

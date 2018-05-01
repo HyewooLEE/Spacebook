@@ -259,31 +259,31 @@
 					</div>
 					<div class="images-collage-main images-collage-item">
 						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+							src="${pageContext.request.contextPath}/resources/images/byung.png"
 							alt="">
 					</div>
 					<div class="images-collage-other images-collage-item"
 						data-position-left="23" data-position-top="10" data-zindex="2">
 						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+							src="${pageContext.request.contextPath}/resources/images/nam.png"
 							alt="">
 					</div>
 					<div class="images-collage-other images-collage-item"
 						data-position-left="62" data-position-top="54" data-zindex="5">
 						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+							src="${pageContext.request.contextPath}/resources/images/joo.png"
 							alt="">
 					</div>
 					<div class="images-collage-other images-collage-item anim-col"
 						data-position-left="18" data-position-top="70" data-zindex="11">
 						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+							src="${pageContext.request.contextPath}/resources/images/hye.png"
 							alt="">
 					</div>
 					<div class="images-collage-other images-collage-item"
-						data-position-left="37" data-position-top="90" data-zindex="1">
+						data-position-left="37" data-position-top="100" data-zindex="1">
 						<img
-							src="${pageContext.request.contextPath}/resources/bootstrap/images/avatar/1.jpg"
+							src="${pageContext.request.contextPath}/resources/images/you.png"
 							alt="">
 					</div>
 				</div>
