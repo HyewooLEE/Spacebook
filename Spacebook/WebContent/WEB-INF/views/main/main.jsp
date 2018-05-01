@@ -268,7 +268,7 @@
 							src="${pageContext.request.contextPath}/resources/images/nam.png"
 							alt="">
 					</div>
-					<div class="images-collage-other images-collage-item"
+					<div class="images-collage-other images-collage-item anim-col"
 						data-position-left="62" data-position-top="54" data-zindex="5">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/joo.png"
