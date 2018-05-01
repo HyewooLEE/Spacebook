@@ -33,5 +33,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/plugins.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/main/main.js"></script>
+<tiles:insertAttribute name="script" />
 </body>
 </html>

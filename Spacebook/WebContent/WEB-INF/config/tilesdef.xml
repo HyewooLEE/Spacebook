@@ -28,7 +28,7 @@
 		<definition name="login" extends="base_layout2" >
 			<put-attribute name="title" value="스페이스북 로그인 페이지"/>
 			<put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
-			<put-attribute name="script" value="" />
+			<put-attribute name="script" value="/WEB-INF/views/common/loginScript.jsp" />
 		</definition>
 		<definition name="passwordFind" extends="base_layout2" >
 			<put-attribute name="title" value="비밀번호 찾기"/>

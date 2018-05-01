@@ -13,6 +13,16 @@ video{
 }
 
 
-@media only screen and (max-width: 768px){
-	
+section.hero-section{
+	padding-top:250px;
 }
+
+@media only screen and (max-width: 768px){
+	section.hero-section{
+	padding-top:150px;}
+}
+@media only screen and (max-width: 768px){
+	section.hero-section{
+	padding-top:150px;}
+}
+

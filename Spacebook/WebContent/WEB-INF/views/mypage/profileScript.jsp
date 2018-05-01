@@ -152,3 +152,17 @@ function readURL(input) {
 	}); 
 </script>
 </c:if>
+
+<style>
+@media only screen and (max-width: 768px){
+	.edit-profile-photo img{
+	margin : 20px auto;
+	}
+}
+@media only screen and (max-width: 1064px){
+	.edit-profile-photo img{
+	float: none;
+	margin : 20px auto;
+	}
+}
+</style>

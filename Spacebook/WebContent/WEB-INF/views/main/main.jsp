@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--section -->
-<section class="scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1" style="height: -webkit-fill-available; padding-top: 250px;" >
+<section class="scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1" style="height: -webkit-fill-available; " >
 	<div class="media-container video-parallax" data-scrollax="properties: { translateY: '200px' }"  >
-		<div class="bg mob-bg" style="background-image: url(${pageContext.request.contextPath}/resources/bootstrap/images/bg/1.jpg)" ></div>
+		<div class="bg mob-bg" style="background-image: url(${pageContext.request.contextPath}/resources/bootstrap/images/all/5.jpg)" ></div>
 		<div class="video-container" >
 			<video autoplay loop muted class="bgvid" height="100%;" style="width:auto;max-width: none;">
 				<source src="${pageContext.request.contextPath}/resources/bootstrap/video/2.mp4" 	type="video/mp4" >
