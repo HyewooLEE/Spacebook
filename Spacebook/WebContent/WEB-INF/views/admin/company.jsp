@@ -30,7 +30,11 @@
                                         <div class="list-single-main-media fl-wrap">
                                             <img src="${pageContext.request.contextPath}/resources/bootstrap/images/all/6.jpg" class="respimg" alt="">
                                         </div>
-                                        <p>저희 회사는 위치기반을 중심으로 하여 고객들의 필요 한 공간을 대여 관리해주는 그런 사이트를 만들려고하는데 왜하는거지 ?</p>
+                                        <p>
+                                        위치기반 공간 공유 사이트로서 누구나 호스트가 될 수 있고, 수익을 창출 할 수 있는 사이트입니다. <br>
+                                        스터디룸, 세미나실, 파티룸, 연습실까지! 우리에게 꼭 맞는 모임장소가 필요할 땐, <br>
+										스페이스클라우드에서 공간을 예약해보세요 <br>
+                                        </p>
                                         <div class="list-author-widget-contacts" style="border-bottom: 0px;">
                                             <ul>
                                                 <li><span><i class="fa fa-map-marker"></i> 주소 :</span> <a href="#">서울 중구 대하동 KH빌딩 3층</a></li>

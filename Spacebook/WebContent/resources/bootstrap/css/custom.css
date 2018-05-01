@@ -11,4 +11,8 @@ video{
 .soc-log a:hover{
 	background: none;
 }
+
+
+@media only screen and (max-width: 768px){
 	
+}
