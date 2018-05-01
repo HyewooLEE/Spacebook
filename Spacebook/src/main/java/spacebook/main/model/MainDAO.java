@@ -38,10 +38,7 @@ public class MainDAO extends SqlSessionDaoSupport{
 		}else {
 			recommendList = getSqlSession().selectList("main.recommendMain");
 		}
-		/*if(vo == null) {
-			System.out.println("test2");
-			recommendList = getSqlSession().selectList("main.recommendMain");
-		}*/
+
 		return recommendList;
 	}
 

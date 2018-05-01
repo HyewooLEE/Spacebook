@@ -54,14 +54,11 @@ public class MainController {
          String name = ((MemberDTO) principal).getUsername();
          MemberVO vo = service.selectMember(name);
          recommend = mainService.recommendSpace(vo);
-         
          session.setAttribute("login", vo);
       }else {
     	  MemberVO vo = new MemberVO();
     	  recommend = mainService.recommendSpace(vo);
-
       }
-      
       List<SpaceDTO> categorySpace = mainService.categorySpace();
       List<MainDTO> review = mainService.reviewList();
 
