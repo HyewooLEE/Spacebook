@@ -2,13 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script>
-function deleteInquire(inq_no){
-	var params = "inq_no="+inq_no;
-	var countVal = 0;
+function deleteInquire(inq_no,inq_ref){
  	$.ajax({
 		type:"GET",
 		url:"/Spacebook/deleteInquireHost.do",
-		data:params,
+		data:{
+			inq_no : inq_no,
+			inq_ref : inq_ref
+		},
 		dataType:"json",
 		success:function(result){
 			swal("삭제 완료되었습니다.");
@@ -21,7 +22,7 @@ function deleteInquire(inq_no){
 						        	'<td width="10%" style="text-align:center;">'+result.data[i].memberVO.mem_Name+'</td>'+
 						        	'<td width="35%"><a href="inquireContentHost.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+'">'+result.data[i].inq_title+' </a></td>'+
 						        	'<td width="20%" style="text-align:center;">'+result.data[i].inq_writeDate+'</td>'+
-						        	'<td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+						        	'<td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+','+result.data[i].inq_ref+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 						      '</tr>'
 						 );
 					}else if(result.data[i].inq_step>0){
@@ -31,15 +32,13 @@ function deleteInquire(inq_no){
 						        	'<td width="10%" style="text-align:center;">호스트</td>'+
 						        	'<td width="35%"><a href="inquireContentHost.do?inq_no='+result.data[i].inq_no+'&pageNum='+result.page+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>'+result.data[i].inq_title+'</a></td>'+
 						        	'<td width="20%" style="text-align:center;">'+result.data[i].inq_writeDate+'</td>'+
-						        	'<td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+						        	'<td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('+result.data[i].inq_no+','+result.data[i].inq_ref+');"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 						      '</tr>'     
 							 );
 					}
 			 }
 		} 
 		,error:function(e){
-			alert(params);
-			alert(result.data[i].inq_no);
 			swal.getState();
 			swal("실패", "삭제 실패했습니다", "warning", {
 				buttons : "닫기"

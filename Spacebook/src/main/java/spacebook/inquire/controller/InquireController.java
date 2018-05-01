@@ -62,15 +62,12 @@ public class InquireController {
 	public String submitInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum , SpaceInquireDTO inquireDTO, Model model) {
 		inquireService.insertSpaceInquire(inquireDTO);
 		
-		//return "redirect:inquireContentHost.do?inq_no="+inquireDTO.getInq_no()+"&pageNum="+pageNum;
 		return "redirect:inquireListHost.do";
 	}
 
 	//나의 1:1문의 (일반) 리스트
 	@RequestMapping("inquireList.do")
 	public String inquireList(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpSession session, SpaceInquireDTO inquireDTO, Model model) {
-		//List<SpaceInquireDTO> inquireList = inquireService.selectSpaceInquire(pageNum);
-		
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum,memVO.getMem_No());
 		int countInquire = inquireService.myInquireCount(memVO.getMem_No());
@@ -99,8 +96,15 @@ public class InquireController {
 	
 	//나의 1:1문의 삭제
 	@RequestMapping(value = "deleteInquire.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
-	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
-		inquireService.deleteSpaceInquire(inquireDTO);
+	public void deleteInquire(@RequestParam(value="pageNum", defaultValue="1") int pageNum, HttpServletResponse response, HttpSession session, SpaceInquireDTO inquireDTO, Model model)throws Exception {
+		int inq_no = inquireDTO.getInq_no();
+		int inq_ref = inquireDTO.getInq_ref();
+		
+		if(inq_no==inq_ref) {
+			inquireService.deleteSpaceInquire(inquireDTO);//원글
+		}else {
+			inquireService.deleteSpaceInquire(inquireDTO);//댓글
+		}
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum, memVO.getMem_No());
 		
@@ -116,7 +120,14 @@ public class InquireController {
 	//1:1문의 관리 삭제
 	@RequestMapping(value = "deleteInquireHost.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void deleteInquireHost(@RequestParam(value="pageNum", defaultValue="1") int pageNum,HttpServletResponse response,HttpSession session, SpaceInquireDTO inquireDTO,Model model)throws Exception {
-		inquireService.deleteSpaceInquire(inquireDTO);
+		int inq_no = inquireDTO.getInq_no();
+		int inq_ref = inquireDTO.getInq_ref();
+		
+		if(inq_no==inq_ref) {
+			inquireService.deleteSpaceInquire(inquireDTO);//원글
+		}else {
+			inquireService.deleteSpaceInquire(inquireDTO);//댓글
+		}
 		MemberVO memVO =  (MemberVO)session.getAttribute("login");
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireListHost(pageNum,memVO.getMem_No());
 		

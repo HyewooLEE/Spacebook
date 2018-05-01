@@ -120,5 +120,10 @@ public class SpaceInquireServiceImpl implements SpaceInquireService{
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO) {
 		inquireDAO.spaceInquireDelete(inquireDTO);
 	}
+	
+	@Override
+	public void deleteSpaceInquire2(SpaceInquireDTO inquireDTO) {
+		inquireDAO.spaceInquireDelete2(inquireDTO);
+	}
 
 }

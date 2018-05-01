@@ -18,8 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<resultMap type="spacebook.inquire.model.SpaceInquireDTO" id="spaceInquireDTO">
-		<result column="INQ_STEP" property="inq_step"/>
 	    <result column="INQ_NO" property="inq_no"/>
+	    <result column="INQ_REF" property="inq_ref"/>
+	    <result column="INQ_STEP" property="inq_step"/>
 	    <result column="MEM_NO" property="mem_no"/>
 	    <result column="SPACE_NO" property="space_no"/>
 	    <result column="INQ_WRITEDATE" property="inq_writeDate"/>
@@ -55,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    where inq_no=#{inqNo}
 	</select>
 	
-	<select id="myInquireList" resultMap="spaceInquireDTO"  parameterType="java.util.Map" resultType="spacebook.inquire.model.SpaceInquireDTO">
+	<select id="myInquireList" resultMap="spaceInquireDTO"  parameterType="java.util.Map" >
 		select * from
 			(select rownum r, INQ_NO,INQ_TITLE,INQ_NOTE,INQ_WRITEDATE,INQ_REF,INQ_STEP,INQ_LEVEL,SPACE_NO,SPACE_NAME,WRITER_NAME,MEM_NO, HOST	   		
 	   		 from(select i.INQ_NO,i.INQ_TITLE,i.INQ_NOTE,i.INQ_WRITEDATE,i.INQ_REF,i.INQ_STEP,i.INQ_LEVEL,s.SPACE_NO,s.SPACE_NAME,m.MEM_NAME WRITER_NAME,m.MEM_NO,s.MEM_NO HOST
@@ -104,7 +105,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select max(inq_no) from inquire
 	</select>
 	
+	<!-- 원글 삭제 -->
 	<delete id="deleteInquire">
+		delete inquire where inq_ref = #{inq_ref}
+	</delete>
+	
+	<!-- 답변글 삭제 -->
+	<delete id="deleteInquire2">
 		delete inquire where inq_no = #{inq_no}
 	</delete>
 	

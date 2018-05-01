@@ -111,7 +111,7 @@
 									        	<td width="35%"><a href="inquireContentHost.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font> ${inquireList.inq_title }</a></td>
 									        </c:if>
 									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
-									        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+									        <td width="10%" style="text-align:center;" onclick="event.cancelBubble = true;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire('${inquireList.inq_no }','${inquireList.inq_ref}');"><span class="glyphicon glyphicon-trash"></span></button></td>
 									      </tr>
 								    </c:forEach>
 								    </c:if>

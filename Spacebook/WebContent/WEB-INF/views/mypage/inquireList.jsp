@@ -101,14 +101,18 @@
 								    <c:forEach var="inquireList" items="${inquireList }">
 									      <tr style ="cursor:pointer;" onClick =" location.href='inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }' ">
 									        <td width="30%" style="text-align:center;">${inquireList.spaceDTO.space_name}</td>
-									        <c:if test="${inquireList.inq_step == 0 }">
+									        <c:if test="${inquireList.inq_step == 0 }"><!-- 원글 -->
 									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">${inquireList.inq_title }</a></td>
 									        </c:if>
-									        <c:if test="${inquireList.inq_step > 0 }">
+									        <c:if test="${inquireList.inq_step > 0 }"><!-- 답글 -->
 									        	<td width="30%"><a href="inquireContent.do?inq_no=${inquireList.inq_no }&pageNum=${pageNum }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red;">ㄴ[답변]</font>${inquireList.inq_title }</a></td>
 									        </c:if>
 									        <td width="20%" style="text-align:center;">${inquireList.inq_writeDate }</td>
-									      	<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;"><button class="btn btn-danger btn-xs" onClick="return deleteInquire(${inquireList.inq_no });"><span class="glyphicon glyphicon-trash"></span></button></td>
+									      	<td width="20%" onclick="event.cancelBubble = true;" style="text-align:center;">
+									      		<button class="btn btn-danger btn-xs" onClick="return deleteInquire('${inquireList.inq_no }','${inquireList.inq_ref}');">
+									      		<span class="glyphicon glyphicon-trash"></span>
+									      		</button>
+									      	</td>
 									      </tr>
 								    </c:forEach>
 								   	</c:if>

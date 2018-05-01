@@ -52,9 +52,15 @@ public class SpaceInquireDAO extends SqlSessionDaoSupport {
 		int maxInqRef = getSqlSession().selectOne("spaceInquire.selectMaxInqRef");
 		return maxInqRef;
 	}
-
-	//1:1문의 글 삭제
+	
+	//1:1문의 원글 삭제
 	public void spaceInquireDelete(SpaceInquireDTO inquireDTO) {
 		getSqlSession().delete("spaceInquire.deleteInquire", inquireDTO);
 	}
+
+	//1:1문의 답변글 삭제
+	public void spaceInquireDelete2(SpaceInquireDTO inquireDTO) {
+		getSqlSession().delete("spaceInquire.deleteInquire2", inquireDTO);
+	}
+	
 }

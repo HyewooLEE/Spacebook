@@ -19,4 +19,6 @@ public interface SpaceInquireService {
 	public SpaceInquireDTO selectInqContent(int inq_no);
 	
 	public void deleteSpaceInquire(SpaceInquireDTO inquireDTO);
+	
+	public void deleteSpaceInquire2(SpaceInquireDTO inquireDTO);
 }
