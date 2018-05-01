@@ -5,11 +5,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +41,10 @@ public class MemberController {
 	public void setEncoder(ShaEncoder encoder) {
 		this.encoder = encoder;
 	}
-
+	
+	@Resource(name="userService")
+	protected UserDetailsService userDetailsService;
+	
 	@Autowired
 	private MemberDaoService service;
 	public void setService(@Qualifier("UserDaoServiceImpl") MemberDaoService service) {
@@ -104,7 +115,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="registInform.do" ,method=RequestMethod.POST)
-	public String insertInform2(@ModelAttribute MemberVO vo,@RequestParam("favor") String[] favor ,HttpServletRequest request) {
+	public String insertInform2(@ModelAttribute MemberVO vo,@RequestParam("favor") String[] favor ,HttpServletRequest request,HttpSession session) {
 		String favorvo = "";
 		for (String str : favor) {
 			favorvo += str+",";
@@ -113,6 +124,15 @@ public class MemberController {
 		service.insertInform(vo);
 		MemberVO vo2 = service.selectMember(vo.getMem_Id()); 
 		request.getSession().setAttribute("login", vo2);
+		
+		UserDetails ckUserDetails = userDetailsService.loadUserByUsername(vo2.getMem_Id());
+	    Authentication authentication = new UsernamePasswordAuthenticationToken(ckUserDetails,vo2.getMem_Pwd(),ckUserDetails.getAuthorities());
+	    SecurityContext securityContext = SecurityContextHolder.getContext();
+	    securityContext.setAuthentication(authentication);
+	    session = request.getSession(true);
+	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+		
+		
 		return "main";
 	}
 	

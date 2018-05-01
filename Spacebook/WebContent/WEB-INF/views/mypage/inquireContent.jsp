@@ -24,25 +24,36 @@
 						<div class="user-profile-menu-wrap fl-wrap">
 							<!-- user-profile-menu-->
 							<div class="user-profile-menu">
+							<c:set var="str1" value="${login.mem_Id }"/>
+							<c:set var="str2" value="@"/>
 								<h3>마이 페이지</h3>
 								<ul>
+								<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' ||login.mem_Auth eq 'ROLE_USER' }">
 									<li><a href="profile.do"><i class="fa fa-user-o"></i>나의 프로필</a></li>
+								</c:if>
+								<c:if test="${fn:contains(str1, str2)}">
 									<li><a href="password.do"><i class="fa fa-unlock-alt"></i>비밀번호 변경</a></li>
+								</c:if>
 								</ul>
 							</div>
 							<!-- 일반 -->
                                 <!-- user-profile-menu-->
-                                <div class="user-profile-menu">
-                                    <h3>나의 공간 (일반)</h3>
-                                    <ul>
-                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>예약리스트</a></li>
-                                        <li><a href="favoriteList.do"><i class="fa fa-heart"></i>나의 찜공간</a></li>
-                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
-                                    </ul>
-                                </div>
+                                <c:if test="${login.mem_Auth eq 'ROLE_USER' || login.mem_Auth eq 'ROLE_GUEST'}">
+	                                <div class="user-profile-menu">
+	                                    <h3>나의 공간 (일반)</h3>
+	                                    <ul>	
+	                                    <c:if test="${login.mem_Auth eq 'ROLE_USER'}">
+	                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>예약리스트</a></li>
+	                                    </c:if>
+	                                        <li><a href="favoriteList.do"><i class="fa fa-heart"></i>나의 찜공간</a></li>
+	                                        <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의</a></li>
+	                                    </ul>
+	                                </div>
+                                </c:if>
                                 <!-- user-profile-menu end-->  
                  			<!-- 호스트 -->
                                 <!-- user-profile-menu-->
+                              	<c:if test="${login.mem_Auth eq 'ROLE_USER'}">
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
@@ -51,8 +62,9 @@
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리</a></li>
                                     </ul>
                                 </div>
+                                </c:if>
 							<!-- user-profile-menu end-->
-							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN'}">
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
@@ -61,7 +73,6 @@
 								</ul>
 							</div>
 							</c:if>
-				
 						</div>
 					</div>
 				</div>

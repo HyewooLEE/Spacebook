@@ -12,7 +12,15 @@
    <http pattern="/resources/**" security="none"/>
    <http auto-config="true" use-expressions="true" create-session="never">
       <intercept-url pattern="/adminMember.do" access="hasRole('ROLE_ADMIN')" />
+      <intercept-url pattern="/adminArticle.do" access="hasRole('ROLE_ADMIN')" />
       <intercept-url pattern="/submitSpaceForm.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/spaceInquire.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/inquireList.do" access="hasAnyRole('ROLE_GUEST','ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/inquireListHost.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/insertRent.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/myRentList.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/favoriteList.do" access="hasAnyRole('ROLE_GUEST','ROLE_USER','ROLE_ADMIN')" />
+      <intercept-url pattern="/rentList.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
       <intercept-url pattern="/join.do" access="hasAnyRole('ROLE_GUEST')" />
       <intercept-url pattern="/main.do" access="permitAll" />
       <intercept-url pattern="/**" access="permitAll" />

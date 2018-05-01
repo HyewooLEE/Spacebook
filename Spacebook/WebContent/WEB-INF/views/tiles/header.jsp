@@ -59,24 +59,35 @@
                            	</c:if>
                         </div>
                         <ul>
+                        	<c:set var="str1" value="${login.mem_Id }"/>
+							<c:set var="str2" value="@"/>
+                        	<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' ||login.mem_Auth eq 'ROLE_USER' }">
                             <li><a href="profile.do">나의 프로필</a></li>
+                            </c:if>
+                            <c:if test="${fn:contains(str1, str2)}">
                             <li><a href="password.do">비밀번호 변경</a></li>
+                            </c:if>
                             <li><a href="#"></a></li>
+                            <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' || login.mem_Auth eq 'ROLE_USER'}">
                             <li><a href="myRentList.do">예약리스트</a></li>
+                            </c:if>
+                            <c:if test="${login.mem_Auth eq 'ROLE_GUEST' ||login.mem_Auth eq 'ROLE_USER' }">
                             <li><a href="favoriteList.do">나의 찜공간</a></li>
                             <li><a href="inquireList.do">나의 1:1문의</a></li>
                             <li><a href="#"></a></li>
+                            </c:if>
+                            <c:if test="${login.mem_Auth eq 'ROLE_USER' }">
                             <li><a href="mySpaceList.do">나의 공간관리</a></li>
                             <li><a href="rentList.do">공간 예약현황</a></li>
                             <li><a href="inquireListHost.do">1:1문의관리</a></li>
                             <li><a href="#"></a></li>
+                            </c:if>
                             <c:if test="${login.mem_Auth eq 'ROLE_ADMIN' }">
                             <li><a href="adminMember.do">회원 관리</a></li>
                             <li><a href="adminArticle.do">게시글 관리</a></li>
                             <li><a href="#"></a></li>
                             </c:if>
-                            <c:set var="str1" value="${login.mem_Id }"/>
-							<c:set var="str2" value="@"/>
+                            
 							<c:if test="${fn:contains(str1, str2)}">
                            		<li><a href="#" onclick="logout();"> 로그아웃</a></li>
                             </c:if>
