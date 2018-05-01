@@ -82,7 +82,10 @@
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
-									<h4>나의 1:1문의</h4>
+									<h4 style="display:inline; float:left">나의 1:1문의</h4>
+									<button class="btn color-bg flat-btn" onclick='history.back(-1); return false;' style="float:right">
+										목록으로<i class="fa fa-angle-left"></i>
+									</button>
 								</div>
 							</div>
 							<div >
@@ -90,13 +93,15 @@
 							    <tbody>
 							      <tr>
 							        <th class="centerBold">제목</th>
-							        <td colspan="3" class="center">${inquireList.inq_title }</td>
+							        <td colspan="3">${inquireList.inq_title }</td>
 							      </tr>
 							      <tr>
-							        <th width="20%" class="centerBold">문의 남긴 공간명</th>
-							        <td width="30%" class="center">${inquireList.spaceDTO.space_name}</td>
-							        <th width="20%" class="centerBold">작성일</th>
-							        <td width="30%" class="center">${inquireList.inq_writeDate }</td>
+							        <th class="centerBold">문의 남긴 공간명</th>
+							        <td >${inquireList.spaceDTO.space_name}</td>
+							      </tr>
+							      <tr>
+							        <th class="centerBold">작성일</th>
+							        <td >${inquireList.inq_writeDate }</td>
 							      </tr>
 							      <tr>
 							        <th class="centerBold">내용</th>
@@ -105,14 +110,11 @@
 							    </tbody>
 							  </table>
 							</div>
-							<div align="right">
-								<!-- <button class="btn color-bg flat-btn" onclick="">
-									삭제<i class="fa fa-angle-left"></i>
-								</button> -->
-								<a class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
+							<!-- <div align="right">
+								<button class="btn color-bg flat-btn" onclick='history.back(-1); return false;' style="float:right">
 									목록으로<i class="fa fa-angle-left"></i>
-								</a>
-							</div>
+								</button>
+							</div> -->
 						</div>
 					</div>
 				</div>

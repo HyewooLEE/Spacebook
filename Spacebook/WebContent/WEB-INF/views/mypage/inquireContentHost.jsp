@@ -84,10 +84,8 @@
 							<!-- profile-edit-container-->
 							<div class="profile-edit-container">
 								<div class="profile-edit-header fl-wrap" style="padding-bottom: 0px;">
-									<h4>1:1문의 관리</h4>
-								</div>
-								<div align="right">
-									<button class="btn color-bg flat-btn" onclick='history.back(-1); return false;'>
+									<h4 style="display:inline; float:left">1:1문의 관리</h4>
+									<button class="btn color-bg flat-btn" onclick='history.back(-1); return false;' style="float:right">
 										목록으로<i class="fa fa-angle-left"></i>
 									</button>
 								</div>
@@ -97,13 +95,15 @@
 							    <tbody>
 							      <tr>
 							        <th class="centerBold">제목</th>
-							        <td colspan="3" class="center">${inquireList.inq_title }</td>
+							        <td colspan="3">${inquireList.inq_title }</td>
 							      </tr>
 							      <tr>
-							        <th width="20%" class="centerBold">문의 남긴 공간명</th>
-							        <td width="30%" class="center">${inquireList.spaceDTO.space_name }</td>
-							        <th width="20%" class="centerBold">작성일</th>
-							        <td width="30%" class="center">${inquireList.inq_writeDate }</td>
+							        <th class="centerBold">문의 남긴 공간명</th>
+							        <td>${inquireList.spaceDTO.space_name }</td>
+							      </tr>
+							      <tr>
+							        <th class="centerBold">작성일</th>
+							        <td>${inquireList.inq_writeDate }</td>
 							      </tr>
 							      <tr>
 							        <th class="centerBold">내용</th>
@@ -123,11 +123,11 @@
 										<label>내용</label> <textarea cols="40" rows="3" name="inq_note" id="inq_note"></textarea>
 									</div>
 									<div class="col-md-12">
-									    <button class="btn color-bg flat-btn" onClick="submitInquire();">
-											답변 등록<i class="fa fa-angle-right"></i>
-										</button>
-									    <button type="button" class="btn color-bg flat-btn" onclick="return sendInquire(1);" class="cancelButton">
+									    <button type="button" class="btn color-bg flat-btn pull-right" onclick="return sendInquire(1);" class="cancelButton" style="margin-left:15px;">
 											취소<i class="fa fa-angle-up"></i>
+										</button>
+									    <button class="btn color-bg flat-btn pull-right" onClick="submitInquire();">
+											답변 등록<i class="fa fa-angle-right"></i>
 										</button>
 									</div>
 								</div>
