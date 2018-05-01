@@ -1,9 +1,12 @@
+	var latitude = "0";
+	var longitude = "0";
+	
 function locationList(length){
 	var location ="0";
-	var zone = "0";
+
 	
 	location = length.value;
-	var params = "location="+ location +"&zone="+zone;
+	var params = "location="+ location +"&latitude="+latitude+"&longitude="+longitude;
 	$.ajax({
 		type: "GET",
 		url: "/Spacebook/location.do",
@@ -43,26 +46,28 @@ function locationList(length){
 	});	
 }
 
-var  ourCoords = { //DB안의 위치
-		latitude : 37.5666263,
-		longitude : 126.9783924
-}
-
-//window.onload = getMyLocation
-
-function getMyLocation(){
-	
-	if(navigator.geolocation){
-		
-		navigator.geolocation.getCurrentPosition(
-				displayLocation,displayError
-		);
-		
-	}else{
-		alert("내 위치 정보제공 설정이 꺼져 있거나, 지원하지 않는 브라우져 입니다.");
+function getLocation() {
+	  if (navigator.geolocation) { // GPS를 지원하면
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	    	latitude = position.coords.latitude;
+	    	longitude = position.coords.longitude;
+	      alert(position.coords.latitude + ' ' + position.coords.longitude);
+	    }, function(error) {
+	    	alert("브라우저의 위치추적을 허용하지 않으셨습니다. 기본좌표로 이동합니다.");
+	    	latitude = 37.5327619;
+	    	longitude = 127.0139427;
+	      console.error(error);
+	    }, {
+	      enableHighAccuracy: false,
+	      maximumAge: 0,
+	      timeout: Infinity
+	    });
+	  } else {
+	    alert('GPS를 지원하지 않습니다');
+	  }
 	}
-}
-
+	getLocation()
+	
 function displayLocation(position){
 	
 	var latitude = position.coords.latitude;

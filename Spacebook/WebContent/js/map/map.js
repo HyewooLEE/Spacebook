@@ -29,6 +29,7 @@
 					locations[i] = [locationData('#',args.data[i].space_category, args.data[i].space_img1, args.data[i].space_name, args.data[i].space_addr1, args.data[i].space_phone,"+38099231212","4","10"), args.data[i].map_latitude, args.data[i].map_longitude,i,markerIcon]
 					//args.data[idx] : args 는 function(args)의 인자.data는 controller.java에서 json객체에 넣어준 key(여기서는 list가 값이 된다).[idx]는 list의 몇번째 데이터를 가져올지 배열을 나타냄
 					}
+				locations[args.data.length] = [locationData('#','내 위치', '${pageContext.request.contextPath}/PROFILE/profile_default.jpg', '현재 위치 입니다.', '여기가 어딜까??', '전화번호',"+38099231212","4","10"), latitude, longitude,args.data.length,markerIcon]
 				
 				
 				/*locations = [  //경로 				, type    ,       대표사진            ,    제목                        , 위치이름                        ,  전화 번호
@@ -179,6 +180,30 @@
        
         
         //Map 시작
+        if(latitude != 0){
+        	var map = new google.maps.Map(document.getElementById('map-main'), {
+                zoom: 15,
+                scrollwheel: scrollEnabled,
+                center: new google.maps.LatLng(latitude, longitude), //시작 위치
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                panControl: false,
+                navigationControl: false,
+                streetViewControl: false,
+                animation: google.maps.Animation.BOUNCE,
+                gestureHandling: 'cooperative',
+                styles: [{
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{
+                            "color": "#444444"
+                        }]
+                    }
+                ]
+            });
+        }else{
         var map = new google.maps.Map(document.getElementById('map-main'), {
             zoom: 6,
             scrollwheel: scrollEnabled,
@@ -201,7 +226,7 @@
                 }
             ]
         });
-        
+        }
         var boxText = document.createElement("div");
         boxText.className = 'map-box'
         var currentInfobox;

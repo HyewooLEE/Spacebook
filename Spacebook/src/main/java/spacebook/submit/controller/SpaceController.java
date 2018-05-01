@@ -368,8 +368,8 @@ public class SpaceController {
 	@RequestMapping(value = "/location.do", method = RequestMethod.GET, produces="text/plain;charset=utf-8")
 	public void location(HttpServletResponse response,@RequestParam("location") int location)throws Exception{
 		int length = location;
-		String startPointLat="37.566535";
-		String startPointLon="126.97796919999996";
+		String startPointLat="37.8315403";
+		String startPointLon="127.50988269999993";
 		List<SpaceDTO> spacedto = spaceService.selectMapList();
 		List<SpaceDTO> spaceAll = spaceService.selectSpaceAll();
 		List<SpaceDTO> locationSpace = new ArrayList();
