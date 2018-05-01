@@ -61,73 +61,83 @@ function subQuantity() {
 }
 
 function payment(pay_category, pay_spaceName, space_no, mem_no) {
-	var msecPerMinute = 1000 * 60; //분
-	var msecPerHour = msecPerMinute * 60; //시간
-	var msecPerDay = msecPerHour * 24; //날
-	var pay_sum = $('#pay_sum').text();
-	var pay_name = $('#pay_name').val();
-	var pay_email = $('#pay_email').val();
-	var pay_phone = $('#pay_phone').val();
-	var pay_quantity = $('#pay_quantity').val();
-	var pay_message = $('#pay_message').val();
-    var pay_method = $('#pay_method').val();
-    var pay_startDate = $('#pay_startDate').val();
-	var pay_endDate = $('#pay_endDate').val();
-	
-	var minDate = new Date($('#pay_endDate').val()) - new Date($('#pay_startDate').val()) + 1;
-	var totalDate = Math.floor(minDate/ msecPerDay);
-	
-	if(pay_method == "") {
-    	swal("결제 방식을 선택해주세요.","");
-    } else {
-    	IMP.init('imp78921561');
-    	 
-    	IMP.request_pay({
-    	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
-    	    pay_method : pay_method, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-    	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
-    	    name : (pay_category) + pay_spaceName,
-    	    amount : pay_sum,
-    	    buyer_email : pay_email,
-    	    buyer_name : pay_name,
-    	    buyer_tel : pay_phone //누락되면 이니시스 결제창에서 오류
-    	},  function(rsp) {
-    	    if ( rsp.success ) {
-    	        $.ajax({
-            		type: "get",
-            		url: "/Spacebook/insertRent.do",
-            		data: {
-        	    		space_no : space_no,
-        	    		mem_no : mem_no,
-        	    		rent_name : pay_name,
-        	    		rent_email : pay_email,
-        	    		rent_phone : pay_phone,
-        	    		pay_name : pay_name,
-        	    		rent_note : pay_message,
-        	    		rent_pay_method : pay_method,
-        	    		rent_start : pay_startDate,
-        	    		rent_end : pay_endDate,
-            			rent_sum : pay_sum
-            		},
-            		cache: false,
-            		dataType:"json"
-            	});
-        		swal("결제가 완료 되었습니다.","");
-        		cancel();
-    	    } else {
-    	    	swal("결제가 실패 하였습니다. 관리자에게 문의 부탁드립니다.","");
-    	    }
-
-    	    
-    	});
-    }
+	if(mem_no != 0) {
+		var msecPerMinute = 1000 * 60; //분
+		var msecPerHour = msecPerMinute * 60; //시간
+		var msecPerDay = msecPerHour * 24; //날
+		var pay_sum = $('#pay_sum').text();
+		var pay_name = $('#pay_name').val();
+		var pay_email = $('#pay_email').val();
+		var pay_phone = $('#pay_phone').val();
+		var pay_quantity = $('#pay_quantity').val();
+		var pay_message = $('#pay_message').val();
+	    var pay_method = $('#pay_method').val();
+	    var pay_startDate = $('#pay_startDate').val();
+		var pay_endDate = $('#pay_endDate').val();
+		
+		var minDate = new Date($('#pay_endDate').val()) - new Date($('#pay_startDate').val()) + 1;
+		var totalDate = Math.floor(minDate/ msecPerDay);
+		
+		if(pay_method == "") {
+	    	swal("결제 방식을 선택해주세요.","");
+	    } else {
+	    	IMP.init('imp78921561');
+	    	 
+	    	IMP.request_pay({
+	    	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+	    	    pay_method : pay_method, //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+	    	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
+	    	    name : (pay_category) + pay_spaceName,
+	    	    amount : pay_sum,
+	    	    buyer_email : pay_email,
+	    	    buyer_name : pay_name,
+	    	    buyer_tel : pay_phone //누락되면 이니시스 결제창에서 오류
+	    	},  function(rsp) {
+	    	    if ( rsp.success ) {
+	    	        $.ajax({
+	            		type: "get",
+	            		url: "/Spacebook/insertRent.do",
+	            		data: {
+	        	    		space_no : space_no,
+	        	    		mem_no : mem_no,
+	        	    		rent_name : pay_name,
+	        	    		rent_email : pay_email,
+	        	    		rent_phone : pay_phone,
+	        	    		pay_name : pay_name,
+	        	    		rent_note : pay_message,
+	        	    		rent_pay_method : pay_method,
+	        	    		rent_start : pay_startDate,
+	        	    		rent_end : pay_endDate,
+	            			rent_sum : pay_sum
+	            		},
+	            		cache: false,
+	            		dataType:"json"
+	            	});
+	        		swal("결제가 완료 되었습니다.","");
+	        		cancel();
+	    	    } else {
+	    	    	swal("결제가 실패 하였습니다. 관리자에게 문의 부탁드립니다.","");
+	    	    }
+	    	});
+	    }
+	} else {
+		swal("로그인 후에 결제가 가능합니다.","");
+		window.location.href="loginPage.do";
+	}
 }
 
-function reviewSubmit() {
+function reviewSubmit(mem_no, host_no) {
 	var mem_name = document.getElementById("mem_name").value;
 	var mem_email = document.getElementById("mem_email").value;
 	var comm_note = document.getElementById("rev_note").value;
-	
+	if(mem_no == '') {
+		swal("로그인 후에 작성이 가능합니다.");
+		return;
+		window.location.href="loginPage.do";
+	} else if(mem_no == host_no) {
+		swal("호스트는 작성이 불가능합니다.");
+		return;
+	}
 	if(mem_name == "") {
 		swal("리뷰 작성자 이름을 입력해주세요");
 		return;
@@ -144,18 +154,6 @@ function reviewSubmit() {
 }
 
 function deleteReview(rev_no, space_no) {
-	/*$.ajax({
-		type: "get",
-		url: "/Spacebook/deleteReview.do",
-		data: {
-			rev_no   : rev_no,
-			space_no : space_no
-		},
-		cache: false,
-		success:function(result) {
-			alert("리뷰 삭제 완료");
-		}
-	});*/
 	$.ajax({
 		type: "get",
 		url: "/Spacebook/deleteReview.do",
@@ -312,9 +310,21 @@ function favorite(space_no, mem_no) {
 		}
 	});
 }
-function openInquire() {
-	$('.modalInquire').fadeIn();
-    $("html, body").addClass("hid-body");
+function openInquire(mem_no, host_no) {
+	if(mem_no == '') {
+		swal("로그인 후에 작성이 가능합니다.")
+		.then((value) => {
+			window.location.href="loginPage.do";
+			return;
+		});
+		
+	} else if(mem_no == host_no) {
+		swal("호스트는 작성이 불가능합니다.");
+		return;
+	} else {
+		$('.modalInquire').fadeIn();
+	    $("html, body").addClass("hid-body");
+	}
 }
 
 function inquireCancel() {
