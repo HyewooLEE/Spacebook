@@ -22,7 +22,7 @@
 							<div class="user-profile-menu">
 								<h3>마이 페이지</h3>
 								<ul>
-									<li><a href="profile.do"><i class="fa fa-user-o"></i>프로필 수정</a></li>
+									<li><a href="profile.do"><i class="fa fa-user-o"></i>나의 프로필</a></li>
 									<li><a href="password.do"><i class="fa fa-unlock-alt"></i>비밀번호 변경</a></li>
 								</ul>
 							</div>
@@ -31,8 +31,8 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 (일반)</h3>
                                     <ul>
-                                        <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>나의 예약리스트 </a></li>
-                                        <li><a href="dashboard-bookings.html"><i class="fa fa-heart"></i>나의 찜공간 </a></li>
+                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>예약리스트 </a></li>
+                                        <li><a href="favoriteList.do"><i class="fa fa-heart"></i>나의 찜공간 </a></li>
                                         <li><a href="inquireList.do" class="user-profile-act"><i class="fa fa-comments-o"></i>나의 1:1문의 </a></li>
                                     </ul>
                                 </div>
@@ -42,10 +42,9 @@
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do"><i class="fa fa-th-list"></i>나의 공간 </a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
-                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
-                                        <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>공간 정산정보</a></li>
+                                        <li><a href="mySpaceList.do"><i class="fa fa-th-list"></i>나의 공간관리</a></li>
+                                        <li><a href="rentList.do"> <i class="fa fa-calendar-check-o"></i>공간 예약현황</a></li>
+                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리</a></li>
                                     </ul>
                                 </div>
 							<!-- user-profile-menu end-->
@@ -53,8 +52,8 @@
 							<div class="user-profile-menu">
 								<h3>관리자 메뉴</h3>
 								<ul>
-									<li><a href="adminMember.do"><i class="fa fa-th-list"></i>회원 관리 </a></li>
-									<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리 </a></li>
+									<li><a href="adminMember.do"><i class="fa fa-th-list"></i>회원 관리</a></li>
+									<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리</a></li>
 								</ul>
 							</div>
 							</c:if>
