@@ -102,7 +102,7 @@
                     <div class="listing-item" >
                         <article class="geodir-category-listing fl-wrap">
 	                            <div class="geodir-category-img" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${spaceAll.space_no }'">
-	                                <img src="${spaceAll.space_img1 }" style="width:420px;height:210px;">
+	                                <img src="${spaceAll.space_img1 }"  style="height: 240px"><!-- style="width:420px;height:210px;" -->
 	                                <div class="overlay"></div>
 	                                <div class="list-post-counter"><span>${spaceAll.spaceFavoriteDTO.favorite }</span><i class="fa fa-heart"></i></div>
 	                            </div>
@@ -118,7 +118,7 @@
                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="${spaceAll.spaceReviewDTO.rev_rate}">
                                         <span>(${spaceAll.spaceReviewDTO.count} reviews)</span>
                                     </div>
-                                    <div class="geodir-category-location" align="left"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${spaceAll.space_addr2}</div>
+                                    <div class="geodir-category-location" align="left" style="height: 70px"><i class="fa fa-map-marker" aria-hidden="true"></i>${spaceAll.space_addr1} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${spaceAll.space_addr2}</div>
                                 </div>
                             </div>
                         </article>

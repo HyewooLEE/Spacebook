@@ -73,7 +73,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9" style="height: 100%">
 					<div class="row">
 						<div class="col-md-12">
 							<!-- profile-edit-container-->

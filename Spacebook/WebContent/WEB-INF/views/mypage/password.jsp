@@ -2,6 +2,8 @@
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!--section -->
 <section id="sec1">
 	<!-- container -->
@@ -72,7 +74,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9" style="height: 100%">
 				<form action="passwordLogin.do" method="POST" id="pwdChange">
 					<!-- profile-edit-container-->
 					<div class="profile-edit-container">

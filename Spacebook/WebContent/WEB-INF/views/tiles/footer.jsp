@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!--section -->
-<section class="gradient-bg">
+<section class="gradient-bg" style="z-index: 1000">
 	<div class="cirle-bg">
 		<div class="bg" data-bg="${pageContext.request.contextPath}/resources/bootstrap/images/bg/circle.png"></div>
 	</div>
