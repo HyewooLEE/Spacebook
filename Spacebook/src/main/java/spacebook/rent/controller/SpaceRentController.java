@@ -16,6 +16,7 @@ import spacebook.login.model.MemberVO;
 import spacebook.rent.model.SpaceRentDTO;
 import spacebook.rent.model.SpaceRentVO;
 import spacebook.rent.service.SpaceRentService;
+import spacebook.submit.service.SpaceService;
 
 @Controller
 public class SpaceRentController{
@@ -24,6 +25,13 @@ public class SpaceRentController{
 	
 	public void setSrs(SpaceRentService srs){
 		this.srs = srs;
+	}
+	
+	@Autowired
+	private SpaceService spaceService;
+	
+	public void setSpaceService(SpaceService spaceService) {
+		this.spaceService = spaceService;
 	}
 
 	@RequestMapping(value="/insertRent.do", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
@@ -53,7 +61,10 @@ public class SpaceRentController{
 	    pageNation.setMem_no(member.getMem_No());
 	 
 		List<SpaceRentDTO> myRentList = srs.rentList(pageNation);
-
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
+		
+		model.addAttribute("count", count);
 		model.addAttribute("myRentList", myRentList);
 		model.addAttribute("paging", pageNation);
 		model.addAttribute("pageNum", pageNum);

@@ -87,4 +87,8 @@ having s.space_no is not null
 order by rev_rate asc
 	</select>
 	
+	<select id="mySpace" resultType="int">
+		select count(*) from space where mem_no=#{mem_no}
+	</select>
+	
 </mapper>

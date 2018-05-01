@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import spacebook.login.model.MemberVO;
 import spacebook.login.service.MemberDaoService;
 import spacebook.profile.model.ProfileVO;
+import spacebook.submit.service.SpaceService;
 
 @Controller
 public class ProfileController implements ApplicationContextAware {
@@ -34,6 +37,13 @@ public class ProfileController implements ApplicationContextAware {
 	public void setService(@Qualifier("MemberDaoServiceImpl") MemberDaoService service) {
 		this.service = service;
 	}
+	
+	@Autowired
+	private SpaceService spaceService;
+	
+	public void setSpaceService(SpaceService spaceService) {
+		this.spaceService = spaceService;
+	}
 
 	private WebApplicationContext context = null;
 
@@ -43,7 +53,11 @@ public class ProfileController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(value = "profile.do", method = RequestMethod.GET)
-	public String page() {
+	public String page(HttpSession session, Model model) {
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
+		model.addAttribute("count", count);
+		
 		return "profile";
 	}
 
@@ -68,7 +82,10 @@ public class ProfileController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(value = "password.do", method = RequestMethod.GET)
-	public String page2() {
+	public String page2(HttpSession session, Model model) {
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
+		model.addAttribute("count", count);
 		return "password";
 	}
 

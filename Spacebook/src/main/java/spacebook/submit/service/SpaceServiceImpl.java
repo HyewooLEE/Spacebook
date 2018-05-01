@@ -78,4 +78,10 @@ public class SpaceServiceImpl implements SpaceService{
 	public SpaceDTO selectSpace(int space_no){
 		return spaceDao.selectSpace(space_no);
 	}
+	
+	@Override
+	public int mySpace(int mem_no) {
+		return spaceDao.mySpace(mem_no);
+	}
+	
 }

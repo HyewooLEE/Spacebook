@@ -18,12 +18,20 @@ import spacebook.inquire.model.SpaceInquireDTO;
 import spacebook.inquire.service.SpaceInquireService;
 import spacebook.login.model.MemberVO;
 import spacebook.submit.model.SpaceDTO;
+import spacebook.submit.service.SpaceService;
 import spacebook.view.service.SpaceViewService;
 
 import spacebook.admin.util.Pagination;
 
 @Controller
 public class InquireController {
+	
+	@Autowired
+	private SpaceService spaceService;
+	
+	public void setSpaceService(SpaceService spaceService) {
+		this.spaceService = spaceService;
+	}
 	
 	@Autowired
 	SpaceViewService svs;
@@ -67,7 +75,10 @@ public class InquireController {
 		List<SpaceInquireDTO> inquireList = inquireService.myInquireList(pageNum,memVO.getMem_No());
 		int countInquire = inquireService.myInquireCount(memVO.getMem_No());
 		Pagination page =new Pagination(pageNum, countInquire);
+		MemberVO memdto =  (MemberVO)session.getAttribute("login");
+		int count = spaceService.mySpace(memdto.getMem_No());
 		
+		model.addAttribute("count", count);
 		model.addAttribute("countInquire", countInquire);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("inquireList",inquireList);

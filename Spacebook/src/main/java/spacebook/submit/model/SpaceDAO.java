@@ -86,4 +86,8 @@ public class SpaceDAO extends SqlSessionDaoSupport{
 		
 		return getSqlSession().selectOne("space.selectSpace",map);
 	}
+	
+	public int mySpace(int mem_no) {
+		return getSqlSession().selectOne("main.mySpace",mem_no);
+	}
 }

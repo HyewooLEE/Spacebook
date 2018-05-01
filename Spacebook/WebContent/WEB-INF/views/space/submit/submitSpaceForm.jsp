@@ -36,7 +36,8 @@
                                         <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의</a></li>
                                     </ul>
                                 </div>
-                                <!-- user-profile-menu end-->  
+                                <!-- user-profile-menu end-->
+                                <c:if test="${count != 0}"> 
                                 <!-- user-profile-menu-->
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
@@ -46,6 +47,7 @@
                                         <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
                                     </ul>
                                 </div>
+                                </c:if>  
                                 <c:if test="${login.mem_Id eq 'admin@admin.com' }">
 								<div class="user-profile-menu">
 									<h3>관리자 메뉴</h3>
