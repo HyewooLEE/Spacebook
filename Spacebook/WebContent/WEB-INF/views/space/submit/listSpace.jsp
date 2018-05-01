@@ -101,14 +101,15 @@
                     <c:forEach var="spaceAll" items="${spaceAll}" varStatus="status">
                     <div class="listing-item" >
                         <article class="geodir-category-listing fl-wrap">
-	                            <div class="geodir-category-img">
-	                                <a href="spaceView.do?space_no=${spaceAll.space_no }"><img src="${spaceAll.space_img1 }" style="width:420px;height:210px;"></a>
+	                            <div class="geodir-category-img" style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${spaceAll.space_no }'">
+	                                <img src="${spaceAll.space_img1 }" style="width:420px;height:210px;">
 	                                <div class="overlay"></div>
 	                                <div class="list-post-counter"><span>${spaceAll.spaceFavoriteDTO.favorite }</span><i class="fa fa-heart"></i></div>
 	                            </div>
-                            <div class="geodir-category-content fl-wrap" style="width:420px;height:230px;">
-                                <a class="listing-geodir-category" href="listing.html">${spaceAll.space_category }</a>
-                                <div class="listing-avatar"><a href="author-single.html"><img src="${login.mem_Img }" alt=""></a>
+                            <div class="geodir-category-content fl-wrap" ><!-- style="width:420px;height:230px;" -->
+                                <a class="listing-geodir-category">${spaceAll.space_category }</a>
+                                <!-- style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'" -->
+                                <div class="listing-avatar"><img src="${login.mem_Img }" alt="">
                                     <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>
                                 </div>
                                 <h3><a href="spaceView.do?space_no=${spaceAll.space_no }">${spaceAll.space_name }</a></h3>
