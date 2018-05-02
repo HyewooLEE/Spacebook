@@ -75,7 +75,7 @@
 					<div class="dashboard-list-box fl-wrap">
 						<div class="dashboard-header fl-wrap">
 							<form class="fl-wrap" method="POST" action="adminMember.do" id="form1">
-							<input type="hidden" name="pageNumber" value="${page.pageNumber }"/>
+							<input type="hidden" name="pageNumber" value="${page.pageNumber }" id="pageNumber"/>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<!-- <h3 style="display:inline; float:left;">회원 관리</h3> -->
 							<div class="box-widget-item fl-wrap pull-right" style="display: inline; width:300px; ">

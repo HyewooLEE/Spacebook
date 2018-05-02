@@ -45,7 +45,7 @@
          invalidate-session="true" />
       <remember-me key="pecoKey" token-validity-seconds="2419200" remember-me-parameter="remember-me" remember-me-cookie="remember-me"/>
       <session-management invalid-session-url="/main.do">
-         <concurrency-control max-sessions="2" expired-url="/main.do" error-if-maximum-exceeded="true"  />
+         <concurrency-control max-sessions="-1" expired-url="/main.do" error-if-maximum-exceeded="true"  />
       </session-management> 
       <csrf/>
    </http>

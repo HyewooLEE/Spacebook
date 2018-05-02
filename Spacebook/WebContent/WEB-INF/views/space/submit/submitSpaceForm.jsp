@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
     <!--section --> 
@@ -16,51 +17,62 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="fixed-bar fl-wrap">
-                            <div class="user-profile-menu-wrap fl-wrap">
+					<div class="fixed-bar fl-wrap">
+						<div class="user-profile-menu-wrap fl-wrap">
+							<!-- user-profile-menu-->
+							<div class="user-profile-menu">
+							<c:set var="str1" value="${login.mem_Id }"/>
+							<c:set var="str2" value="@"/>
+								<h3>마이 페이지</h3>
+								<ul>
+								<c:if test="${login.mem_Auth eq 'ROLE_ADMIN' ||login.mem_Auth eq 'ROLE_USER' }">
+									<li><a href="profile.do"><i class="fa fa-user-o"></i>나의 프로필</a></li>
+								</c:if>
+								<c:if test="${fn:contains(str1, str2)}">
+									<li><a href="password.do"><i class="fa fa-unlock-alt"></i>비밀번호 변경</a></li>
+								</c:if>
+								</ul>
+							</div>
+							<!-- 일반 -->
                                 <!-- user-profile-menu-->
-								<div class="user-profile-menu">
-									<h3>마이 페이지</h3>
-									<ul>
-										<li><a href="profile.do"><i class="fa fa-user-o"></i>나의 프로필</a></li>
-										<li><a href="password.do"><i class="fa fa-unlock-alt"></i>비밀번호 변경</a></li>
-									</ul>
-								</div>
-								<!-- user-profile-menu end-->
+                                <c:if test="${login.mem_Auth eq 'ROLE_USER' || login.mem_Auth eq 'ROLE_GUEST'}">
+	                                <div class="user-profile-menu">
+	                                    <h3>나의 공간 (일반)</h3>
+	                                    <ul>	
+	                                    <c:if test="${login.mem_Auth eq 'ROLE_USER'}">
+	                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>예약리스트</a></li>
+	                                    </c:if>
+	                                        <li><a href="favoriteList.do"><i class="fa fa-heart"></i>나의 찜공간</a></li>
+	                                        <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의</a></li>
+	                                    </ul>
+	                                </div>
+                                </c:if>
+                                <!-- user-profile-menu end-->  
+                 			<!-- 호스트 -->
                                 <!-- user-profile-menu-->
-                                <div class="user-profile-menu">
-                                    <h3>나의 공간 (일반)</h3>
-                                    <ul>
-                                        <li><a href="myRentList.do"><i class="fa fa-th-list"></i>예약리스트</a></li>
-                                        <li><a href="favoriteList.do"> <i class="fa fa-calendar-check-o"></i>나의 찜공간</a></li>
-                                        <li><a href="inquireList.do"><i class="fa fa-comments-o"></i>나의 1:1문의</a></li>
-                                    </ul>
-                                </div>
-                                <!-- user-profile-menu end-->
-                                <c:if test="${count != 0}"> 
-                                <!-- user-profile-menu-->
+                              	<c:if test="${login.mem_Auth eq 'ROLE_USER'}">
                                 <div class="user-profile-menu">
                                     <h3>나의 공간 관리 (호스트)</h3>
                                     <ul>
-                                        <li><a href="mySpaceList.do"><i class="fa fa-th-list"></i>나의 공간</a></li>
-                                        <li><a href="rentList.do"> <i class="fa fa-calendar-check-o"></i>예약현황 </a></li>
-                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리 </a></li>
+                                        <li><a href="mySpaceList.do"><i class="fa fa-th-list"></i>나의 공간관리</a></li>
+                                        <li><a href="rentList.do"> <i class="fa fa-calendar-check-o"></i>공간 예약현황</a></li>
+                                        <li><a href="inquireListHost.do"><i class="fa fa-comments-o"></i>1:1문의 관리</a></li>
                                     </ul>
                                 </div>
-                                </c:if>  
-                                <c:if test="${login.mem_Id eq 'admin@admin.com' }">
-								<div class="user-profile-menu">
-									<h3>관리자 메뉴</h3>
-									<ul>
-										<li><a href="adminMember.do" class="user-profile-act"><i class="fa fa-th-list"></i>회원 관리</a></li>
-										<li><a href="adminArticle.do"><i class="fa fa-th-list"></i>게시글 관리</a></li>
-									</ul>
-								</div>
-								</c:if>
-                                <!-- user-profile-menu end-->                                      
-                            </div>
-                        </div>
-                    </div>
+                                </c:if>
+							<!-- user-profile-menu end-->
+							<c:if test="${login.mem_Auth eq 'ROLE_ADMIN'}">
+							<div class="user-profile-menu">
+								<h3>관리자 메뉴</h3>
+								<ul>
+									<li><a href="adminMember.do"><i class="fa fa-th-list"></i>회원 관리</a></li>
+									<li><a href="adminArticle.do" ><i class="fa fa-th-list"></i>게시글 관리</a></li>
+								</ul>
+							</div>
+							</c:if>
+						</div>
+					</div>
+				</div>
                     <div class="col-md-9">
                     
                     <form id="submitSpaceForm" action="submitSpace.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
