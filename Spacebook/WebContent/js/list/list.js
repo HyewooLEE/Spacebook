@@ -51,7 +51,6 @@ function getLocation() {
 	    navigator.geolocation.getCurrentPosition(function(position) {
 	    	latitude = position.coords.latitude;
 	    	longitude = position.coords.longitude;
-	      alert(position.coords.latitude + ' ' + position.coords.longitude);
 	    }, function(error) {
 	    	alert("브라우저의 위치추적을 허용하지 않으셨습니다. 기본좌표로 이동합니다.");
 	    	latitude = 37.5327619;
@@ -76,19 +75,4 @@ function displayLocation(position){
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

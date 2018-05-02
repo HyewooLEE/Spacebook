@@ -109,8 +109,8 @@
                             <div class="geodir-category-content fl-wrap" ><!-- style="width:420px;height:230px;" -->
                                 <a class="listing-geodir-category">${spaceAll.space_category }</a>
                                 <!-- style="cursor:pointer;" onClick="location.href='spaceView.do?space_no=${category.space_no }'" -->
-                                <div class="listing-avatar"><img src="${login.mem_Img }" alt="">
-                                    <span class="avatar-tooltip">Added By  <strong> ${login.mem_Name }</strong></span>
+                                <div class="listing-avatar"><img src="${spaceAll.memberVO.mem_Img }" alt="">
+                                    <span class="avatar-tooltip">Added By  <strong> ${spaceAll.memberVO.mem_Name }</strong></span>
                                 </div>
                                 <h3><a href="spaceView.do?space_no=${spaceAll.space_no }">${spaceAll.space_name }</a></h3>
                                 <p>${spaceAll.space_intro1 }</p>

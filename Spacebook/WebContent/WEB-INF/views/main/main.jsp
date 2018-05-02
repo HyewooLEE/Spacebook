@@ -211,8 +211,7 @@
 							<a class="listing-geodir-category" href="spaceView.do?space_no=${recommend.space_no }">${recommend.space_category}</a>
 							<div class="listing-avatar">
 								<a href="spaceView.do?space_no=${recommend.space_no }"><img src="${recommend.memberVO.mem_Img}"
-									alt=""></a> <span class="avatar-tooltip">Added By <strong>Lisa
-										Smith</strong></span>
+									alt=""></a> <span class="avatar-tooltip">Added By <strong> ${recommend.memberVO.mem_Name}</strong></span>
 							</div>
 							<h3>
 								<a href="spaceView.do?space_no=${recommend.space_no }">${recommend.space_name}</a>
