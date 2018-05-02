@@ -14,49 +14,56 @@ $(".dashboard-message-text a.toggle").on("click", function (a) {
 });
 
 $(document).ready( function() {
-	
-	 $("#type1").change(function () {
-		document.getElementById('form1').submit();
+   
+    $("#type1").change(function () {
+      $("#pageNumber").val("1");
+      document.getElementById('form1').submit();
+      
         });
-	 $("#type2").change(function () {
-		document.getElementById('form1').submit();
+    $("#type2").change(function () {
+      $("#pageNumber").val("1");
+      document.getElementById('form1').submit();
+        });
+    $("#searchName").change(function () {
+      $("#pageNumber").val("1");
+      document.getElementById('form1').submit();
         });
 });
 $(document).ready( function() {
-	$("#form1 > div:nth-child(4) > span > div.dropdown > ul > li.sel.selected").css("display","none");
-	$("#form1 > div:nth-child(5) > span > div.dropdown > ul > li.selected.sel").css("display","none");
-	 $(".customFilter").change(function (e) {
-	 	var filter = $(this).find('option:selected').attr('value');
-	 	var mem_Id = $(this).attr('id');
-	 	$.ajax({
-			type:"GET",
-			url:"${pageContext.request.contextPath}/changeAuth.do",
-			data:{
-				filter : filter,
-				mem_Id : mem_Id
-			},
-			dataType:"json",
-			success:function(check){
-				if(check.check == '1'){
-					swal.getState();
-					swal("성공", "수정 완료 됬습니다", "success", {
-						buttons : "닫기"
-					});
-				}else{
-					swal.getState();
-					swal("실패", "수정 실패했습니다", "warning", {
-						buttons : "닫기"
-					});
-				}
-			}
-			,error:function(e){
-				swal.getState();
-				swal("실패", "수정 실패했습니다", "warning", {
-					buttons : "닫기"
-				});
-			}
-		});
-	});
+   $("#form1 > div:nth-child(4) > span > div.dropdown > ul > li.sel.selected").css("display","none");
+   $("#form1 > div:nth-child(5) > span > div.dropdown > ul > li.selected.sel").css("display","none");
+    $(".customFilter").change(function (e) {
+       var filter = $(this).find('option:selected').attr('value');
+       var mem_Id = $(this).attr('id');
+       $.ajax({
+         type:"GET",
+         url:"${pageContext.request.contextPath}/changeAuth.do",
+         data:{
+            filter : filter,
+            mem_Id : mem_Id
+         },
+         dataType:"json",
+         success:function(check){
+            if(check.check == '1'){
+               swal.getState();
+               swal("성공", "수정 완료 됬습니다", "success", {
+                  buttons : "닫기"
+               });
+            }else{
+               swal.getState();
+               swal("실패", "수정 실패했습니다", "warning", {
+                  buttons : "닫기"
+               });
+            }
+         }
+         ,error:function(e){
+            swal.getState();
+            swal("실패", "수정 실패했습니다", "warning", {
+               buttons : "닫기"
+            });
+         }
+      });
+   });
         });
  
 </script>
@@ -70,7 +77,7 @@ $(document).ready( function() {
    $("#form1 > div:nth-child(4) > span > div.select > div").html(text);  
 }); 
 </script>
-</c:if> 	
+</c:if>    
 
 
 <c:if test="${param.type2 !='' && param.type2 != null &&param.type2 ne null}">
@@ -87,7 +94,7 @@ $(document).ready( function() {
 <script>
  $(document).ready(function(){
    var filter = "${param.search }";
-   $("#search").prop("value",filter);
+   $("#searchName").val("${param.search }");
 }); 
 </script>
 </c:if>   
