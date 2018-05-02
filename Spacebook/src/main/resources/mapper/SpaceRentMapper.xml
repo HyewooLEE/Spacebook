@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			VALUES(
 					SPACE_RENT_SEQ.NEXTVAL, #{space_no}, 
 					#{mem_no}, #{rent_name}, #{rent_email}, #{rent_phone}, 
-					#{rent_note}, #{rent_pay_method}, #{rent_writedate}, 
+					#{rent_note,jdbcType=VARCHAR}, #{rent_pay_method}, #{rent_writedate}, 
 					#{rent_start}, #{rent_end}, #{rent_sum}
 				   )
 	</insert>
