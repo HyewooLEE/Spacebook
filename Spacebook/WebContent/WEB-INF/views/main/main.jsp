@@ -196,12 +196,10 @@
 			<c:forEach var="recommend" items="${recommend }" begin="0" end="5">
 			<div class="slick-slide-item">
 				<!-- listing-item -->
-				<div class="listing-item">
-					<article class="geodir-category-listing fl-wrap">
+				<div class="listing-item" >
+					<article class="geodir-category-listing fl-wrap" >
 						<div class="geodir-category-img">
-							<img
-								src="${recommend.space_img1}"
-								alt="">
+							<img src="${recommend.space_img1}"	alt="" style="height: 240px">
 							<div class="overlay"></div>
 							<div class="list-post-counter">
 								<span>${recommend.spaceFavoriteDTO.favorite }</span><i class="fa fa-heart"></i>
