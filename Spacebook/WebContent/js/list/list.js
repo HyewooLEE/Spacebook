@@ -52,7 +52,7 @@ function getLocation() {
 	    	latitude = position.coords.latitude;
 	    	longitude = position.coords.longitude;
 	    }, function(error) {
-	    	alert("브라우저의 위치추적을 허용하지 않으셨습니다. 기본좌표로 이동합니다.");
+	    	swal("브라우저의 위치추적을 허용하지 않으셨습니다. 기본좌표로 이동합니다.");
 	    	latitude = 37.5327619;
 	    	longitude = 127.0139427;
 	      console.error(error);
