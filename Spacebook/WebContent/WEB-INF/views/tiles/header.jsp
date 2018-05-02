@@ -20,10 +20,10 @@
                     	<form action="search.do" method="post">
                     	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="header-search-input-item">
-                            <input type="text" placeholder="검색키워드" value="" id="search" name="search"/>
+                            <input type="text" placeholder="검색키워드" value="" id="search1" name="search"/>
                         </div>
                         <div class="header-search-select-item">
-                        	<select  id="space_category" name="space_category" class="chosen-select">
+                        	<select  id="space_category1" name="space_category" class="chosen-select">
                             	<option value="">공간유형</option>
                            		<option value="작업실">작업실</option>
                            		<option value="연습실">연습실</option>
