@@ -28,7 +28,7 @@
                                             <h3>회사 <span> 소개 </span></h3>
                                         </div>
                                         <div class="list-single-main-media fl-wrap">
-                                            <img src="${pageContext.request.contextPath}/resources/bootstrap/images/all/6.jpg" class="respimg" alt="">
+                                            <img src="${pageContext.request.contextPath}/resources/images/company_photo.jpg" class="respimg" alt="">
                                         </div>
                                         <p>
                                         위치기반 공간 공유 사이트로서 누구나 호스트가 될 수 있고, 수익을 창출 할 수 있는 사이트입니다. <br>
