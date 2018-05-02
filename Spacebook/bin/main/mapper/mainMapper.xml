@@ -62,9 +62,9 @@ ORDER BY REV_NO DESC) WHERE ROWNUM BETWEEN 1 AND 5
 	<select id="recommendList" resultMap="spaceDTO">
 		select * from
 (select s.space_no, avg(r.rev_rate) rev_rate,s.space_name, count(r.mem_no) count,count(DISTINCT(FAV_NO)) favorite, s.mem_no , s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,
-m.mem_img
+m.mem_img,m.mem_name
 from review r FULL OUTER join SPACE s on r.space_no =s.space_no FULL OUTER join MEMBER m on s.mem_no = m.mem_no FULL OUTER join FAVORITE f on s.space_no = f.space_no
-GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name
+GROUP BY  s.space_no, s.mem_no, s.space_category,space_addr1,space_addr2, s.SPACE_INTRO1,s.SPACE_IMG1,m.mem_img,s.space_name,m.mem_name
 order by rev_rate asc)natural join 
 (select space_no from space 
 		<where>
